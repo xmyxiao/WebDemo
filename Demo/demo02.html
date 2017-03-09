@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<title>knockout.js 绑定数组</title>
+		<style>
+			h2{
+				text-align: center;
+			}
+			table{
+				width: 100%;
+			}
+			table td{
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>成绩表</h2>
+		<table>
+		    <thead>
+		    	<tr>
+			        <th>姓名</th>
+			        <th>科目</th>
+			        <th>成绩</th>
+			        <th>备注</th>
+			    </tr>
+		    </thead>
+		    <tbody data-bind="foreach: seats">
+		        <tr>
+		            <td data-bind="text: name"></td>
+		            <td data-bind="text: meal().subjectName"></td>
+		            <td data-bind="text: meal().score"></td>
+		            <td data-bind="text: mark"></td>
+		            <td><a href="#" data-bind="click: $root.removeSeat">删除</a></td>
+		        </tr>    
+		    </tbody>
+		</table>
+		<a href="#" data-bind="click: $root.addSeat">添加</a>
+		<p>foreach循环seats生成列表  seats的数据在ReservationsViewModel中定义</p>
+	</body>
+	<script src="../js/jquery-1.9.1.min.js"></script>
+	<script src="../js/knockout-3.4.1.js"></script>
+	<script>
+		$(function(){
+			ko.applyBindings(new ReservationsViewModel());
+		});
+		//实际参数和表格中的参数对应
+		function SeatReservation(name, pare) {
+		    var self = this;
+		    self.name = name;
+		    self.meal = ko.observable(pare);//页面绑定时要使用meal().score的方式
+		    self.mark = pare.mark;//页面绑定时直接使用text: mark
+		}
+		
+		// 页面视图
+		function ReservationsViewModel() {
+		    var self = this;
+			var scoreBase = 20;
+		    // 基础数据
+		    self.availableMeals = [
+		        { subjectName: "语", score: add(scoreBase) , mark : 0},
+		        { name: "name2" , subjectName: "数", score: 101 ,mark : 1},
+		        { subjectName: "英", score: 102 ,mark : 0}
+		    ];
+		
+		    //编辑数据  可以在基础数据上添加其余数据  生成实际的循环数据
+		    self.seats = ko.observableArray([
+		        new SeatReservation("name1", self.availableMeals[0]),
+		        new SeatReservation(self.availableMeals[1].name, self.availableMeals[1]),
+		        new SeatReservation("name3", self.availableMeals[2])
+		    ]);
+		    //添加增加与移除数据方法
+		    self.addSeat = function() {
+			    self.seats.push(new SeatReservation("add", self.availableMeals[0]));//生成新的数据行
+			}
+			self.removeSeat = function(seat) { 
+				self.seats.remove(seat) 
+			}
+		}	
+		//数据处理  可以通过判断数值来插入表格或者替换文字
+		function add(pare){
+			return pare*5;
+		}
+	</script>
+</html>
