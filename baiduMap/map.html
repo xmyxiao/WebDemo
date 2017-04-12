@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>百度地图DEMO</title>
+		<style>
+			.map-content{
+				margin:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="companyMap" style="position:absolute;top:0;left:0;bottom:0;right:0;">
+			<div style="width:100%;height:100%;"></div>
+		</div>
+		<div id="map-address0" style="display:none">
+		   <p class="map-content">自定义内容</p>
+		   <p class="map-content">另一段自定义内容</p>
+		</div>
+	</body>
+	<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="map.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+	<script type="text/javascript">
+		$(function (){
+			mapPageInt();
+		});
+	</script>
+</html>
+
