@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<title>knockout.js 单次绑定、双向绑定、依赖绑定</title>
+	</head>
+	<body>
+		<div data-bind="text:name1"></div>
+		<input type="text" data-bind="value:name1"/>
+		
+		<div data-bind="text:name2"></div>
+		<input type="text" data-bind="value:name2"/>
+		
+		<div data-bind="text:name3"></div>
+		<input type="text" data-bind="value:name3"/>
+		
+		<div data-bind="text:name4"></div>
+		<input type="text" data-bind="value:name4"/>
+		
+		<div data-bind="text:name5"></div>
+		<input type="text" data-bind="value:name5"/>
+		<p>name1与name2为双向绑定  name3为单次绑定</p>
+		<p>双向绑定随页面数值改变  单向不随页面数值改变</p>
+		<p>name4和name5为依赖绑定 根据基础值的改变而改变</p>
+		<p>name5根据name4生成 所以name4的声明必须在name5之前</p>
+		<p>也可以通过data-bind = "enable:xxxx"的方式进行值的判断</p>
+	</body>
+	<script src="../js/jquery-1.9.1.min.js"></script>
+	<script src="../js/knockout-3.4.1.js"></script>
+	<script>
+		$(function(){
+			ko.applyBindings(new ViewModel());
+		});
+		function ViewModel(){
+		    this.name1 = ko.observable("name1 val");
+		    this.name2 = ko.observable("name2 val");
+		    this.name3 = "name3 val";
+		    
+		    this.name4 = ko.computed(function() {
+		        return this.name1() + "+" + this.name2();    
+		    }, this);
+		    this.name5 = ko.computed(function() {
+		        return this.name4() + "+" + this.name2();    
+		    }, this);
+		};
+	</script>
+</html>

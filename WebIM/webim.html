@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+        <title>在线客服系统</title>
+        <!-- 公共css -->
+		<link rel="stylesheet" href="css/lib/normalize.css">
+		<link rel="stylesheet" href="css/font/iconfont.css" type="text/css">
+		<link rel="stylesheet" href="css/lib/default.css" />
+		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+		<!-- 公共css结束 -->
+		<!-- 页面css -->
+		<link rel="stylesheet" href="css/customservicemrg.css" type="text/css">
+		<link rel="stylesheet" href="css/message.css" type="text/css">
+		<!-- 页面css结束 -->
+    </head>
+    <body>
+    	<!-- 客服页面主体 -->
+    	<div id="customservicemrg" class="clearfix">
+    		<!-- 左侧侧边栏 -->
+    		<div id="webImSidebar" class="ui-fl">
+    			<!-- 个人信息 -->
+    			<div class="sidebar-header">
+    				<h1 class="sidebar-title">在线客服系统</h1>
+    				<div class="sidebar-user">
+						<div class="avatar">
+							<img class="img" src="images/webwxgeticon.jpg">
+						</div>
+						<div class="info">
+							<h3 class="nickname">
+								<span class="sidebar-user-name ui-textellipsis">客服人员</span>
+								<span class="sidebar-user-state ui-textellipsis">暂停服务</span>
+							</h3>
+						</div>
+					</div>
+    			</div>
+    			<!-- 个人信息结束 -->
+    			<!-- 搜索框 -->
+    			<div class="sidebar-body">
+    				<div class="sidebar-search">
+						<i class="sidebar-search-icon iconfont icon-sousuo"></i>
+						<input type="text" value="" class="frm-search" id="persionSearch" placeholder="搜索">
+					</div>
+    			</div>
+    			<!-- 搜索框结束 -->
+    			<!-- 列表切换 -->
+    			<table class="sidebar-tab">
+    				<tr>
+    					<td>
+    						<a href="javascript:void(0)" class="sidebar-tab-item iconfont icon-contact-copy select" title="联系">
+    							<i class="in-bl tab-item-circle"></i>
+    						</a>
+    					</td>
+    					<td>
+    						<a href="javascript:void(0)" class="sidebar-tab-item iconfont icon-tuandui1" title="团队"></a>
+    					</td>
+    					<td>
+    						<a href="javascript:void(0)" class="sidebar-tab-item iconfont icon-trade" title="最近"></a>
+    					</td>
+    				</tr>
+    			</table>
+				<!-- 列表切换结束 -->
+				<!-- 聊天列表 -->
+				<div class="sidebar-list ui-scroll-bar-styleFc">
+					<div class="sidebar-list-item select">
+						<div class="chat-item chat-item-select" persion-type="persion">
+							<div class="avatar">
+								<img src="images/webwxgeticon.jpg" class="img">
+							</div>
+							<div class="info">
+								<h3 class="nickname ui-textellipsis">
+									<ul class="chat-icon-list">
+										<li class="in-bl">
+											<a href="javascript:void(0)" class="chat-item-icon iconfont icon-xin"></a>
+										</li>
+										<li class="in-bl">
+											<a href="javascript:void(0)" class="chat-item-icon iconfont icon-zhuanyi"></a>
+										</li>
+										<li class="in-bl">
+											<a href="javascript:void(0)" class="chat-item-icon iconfont icon-iconyuetiaobeizhu"></a>
+										</li>
+										<li class="in-bl">
+											<a href="javascript:void(0)" class="chat-item-icon iconfont icon-1"></a>
+										</li>
+									</ul>
+									<p class="nickname-text ui-textellipsis">客服名称</p>
+								</h3>
+								<div class="">
+									<p class="chat-item-time ui-fr">13：01</p>
+									<p class="info-msg">消息显示</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="sidebar-list-item">
+						<div class="chat-item chat-item-select" persion-type="persion">
+							<div class="avatar">
+								<img src="images/webwxgeticon.jpg" class="img">
+							</div>
+							<div class="info">
+								<h3 class="nickname ui-textellipsis">
+									<ul class="chat-icon-list">
+										<li class="in-bl">
+											<a href="javascript:void(0)" class="chat-item-icon iconfont icon-zhuanyi"></a>
+										</li>
+										<li class="in-bl">
+											<a href="javascript:void(0)" class="chat-item-icon iconfont icon-1"></a>
+										</li>
+									</ul>
+									<p class="nickname-text ui-textellipsis">客服名称</p>
+								</h3>
+								<div class="">
+									<p class="chat-item-time ui-fr">13：01</p>
+									<p class="info-msg">消息显示</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 聊天列表结束 -->
+				<!-- 设置 -->
+				<ul class="sidebar-setting">
+					<li class="sidebar-setting-item">
+						<a href="javascript:void(0)">
+							<i class="setting-item-icon iconfont icon-shezhi-copy"></i>
+							<span>设置</span>
+						</a>
+					</li>
+					<li class="sidebar-setting-item">
+						<a href="javascript:void(0)">
+							<i class="setting-item-icon iconfont icon-bangongxitong"></i>
+							<span>系统管理</span>
+						</a>
+					</li>
+				</ul>
+				<!-- 设置结束 -->
+    		</div>
+    		<!-- 左侧侧边栏结束 -->
+    		<!-- 聊天窗主体 -->
+    		<div id="webImMain" class="ui-fl">
+    			<h2 class="main-header">客户昵称</h2>
+    			<div class="main-content">
+    				<div class="main-content-body ui-scroll-bar-styleFc">
+    					<div class="main-content-chat">
+    						<div class="chat-history system-message">
+    							<span class="content">
+    								<a class="system-history" href="javascript:void(0);">点击加载更多</a>
+    							</span>
+    						</div>
+    						<div class="chat-history-end system-message">
+    							<span class="content">
+    								<hr class="in-bl system-line" size="1" color="#e5e8ea" style="margin-right: 10px;" />
+    								<span class="system-history-end">以上是历史消息</span>
+    								<hr class="in-bl system-line" size="1" color="#e5e8ea" style="margin-left: 10px;" />
+    							</span>
+    						</div>
+    						<div class="chat-time system-message">
+    							<span class="content">
+    								<span class="in-bl system-time">13:01</span>
+    							</span>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    			<!-- 输入框 -->
+    			<div class="main-text clearfix">
+    				<!-- 输入框头部 -->
+    				<div class="main-toolbar">
+    					<a class="main-toolbar-items ui-fr" href="javascript:void(0);" title="备注">
+							<i class="in-bl main-toolbar-icon main-toolbar-face iconfont icon-iconyuetiaobeizhu"></i>
+							<i class="in-bl circular"></i>
+							<span>备注</span>
+						</a>
+						<a class="main-toolbar-items" href="javascript:void(0);" title="表情">
+							<i class="in-bl main-toolbar-icon main-toolbar-face iconfont icon-biaoqing4"></i>
+						</a>
+						<a class="main-toolbar-items main-toolbar-file" href="javascript:void(0);" title="图片和文件">
+							<i class="in-bl main-toolbar-icon main-toolbar-pic iconfont icon-tupian"></i>
+							<input type="file" name="" id="file">
+							<input type="button" name="" id="upLoad" value="upLoad" style="display:none;" />
+						</a>
+						<a class="main-toolbar-items main-toolbar-evaluate" href="javascript:void(0);" title="满意度">
+							<i class="in-bl main-toolbar-icon main-toolbar-face iconfont icon-xin"></i>
+							<span>满意度评价</span>
+						</a>
+						<a class="main-toolbar-items main-toolbar-transfer" href="javascript:void(0);" title="转移">
+							<i class="in-bl main-toolbar-icon main-toolbar-face iconfont icon-zhuanyi"></i>
+							<span>转移<span>
+						</a>
+						<div class="face-panel">
+							<div class="face-expression">
+							<ul>
+								<li><a href="javascript:void(0)" id="qq-show">QQ表情</a></li>
+							</ul>
+							<div class="face-show">
+								<div class="face-content face-content-sel">
+									
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					<!-- 输入框头部结束 -->
+					<div class="ui-fr main-send">  
+    					<a href="javascript:void(0);" class="in-bl main-send-text">发送</a>
+    					<span class="main-send-line">|</span>
+    					<a href="javascript:void(0);" class="main-send-select iconfont icon-xiala-copy"></a>
+    				</div>
+    				<div contenteditable="true" class="ui-fl main-text-msg"></div>
+    			</div>
+    			<!-- 输入框结束 -->
+    		</div>
+    		<!-- 聊天窗主体结束 -->
+    		<!-- 右侧常见问题列表 -->
+    		<div id="webImProblem" class="ui-fl">
+    			<h2 class="problem-header">常见问题</h2>
+    			<div class="problem-content">
+    				<h3 class="problem-content-title">全部问题</h3>
+    				<div class="sidebar-search">
+						<i class="sidebar-search-icon iconfont icon-sousuo"></i>
+						<input type="text" value="" class="frm-search" id="problemSearch" placeholder="请输入关键字搜索..">
+					</div>
+					<ul class="problem-content-list">
+						<li class="problem-list-item">
+							<div class="problem-item-title ui-textellipsis">
+								Q1&nbsp;登录的时候提示连接服务器失败?
+							</div>
+							<div class="problem-item-content">
+								<p>A1：登录的时候提示连接服务器失败,请检查网络，是否testtest网络不稳定导致，或关闭再重启。</p>
+								<i class="in-bl problem-item-buttom"></i>
+							</div>
+						</li>
+						<li class="problem-list-item">
+							<div class="problem-item-title ui-textellipsis">
+								Q2&nbsp;忘记密码怎么办?
+							</div>
+						</li>
+						<li class="problem-list-item">
+							<div class="problem-item-title ui-textellipsis">
+								Q1&nbsp;怎么开通漫游申请?
+							</div>
+						</li>
+					</ul>
+    			</div>
+    		</div>
+    		<!-- 右侧常见问题列表结束 -->
+    		<!-- 页尾 -->
+	    	<div class="webImFoot">
+	    		技术支持：@2000-2100福州奥迈软件有限公司
+	    	</div>
+	    	<!-- 页尾结束 -->
+    	</div>
+    	<!-- 客服页面主体结束 -->
+    	
+    </body>
+    <!-- 插件js -->
+    <script type="text/javascript" src="js/lib/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/lib/strophe.js"></script>
+    <script type="text/javascript" src="js/lib/plupload.full.min.js"></script>
+    <script type="text/javascript" src="js/lib/md5.js"></script>
+    <script type="text/javascript" src="js/lib/makePy.min.js"></script>
+    <!-- 插件js结束 -->
+    <!-- 页面js -->
+    <script type="text/javascript" src="js/webim/webim.js"></script>
+    <!-- 页面js结束 -->
+</html>

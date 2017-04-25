@@ -1,0 +1,429 @@
+body {
+    font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+	line-height: 1.6;
+	background: url(../images/back.png) no-repeat;
+	/* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+	background-attachment: fixed;
+	/* 让背景图基于容器大小伸缩 */
+	background-size: cover;
+}
+div{
+	box-sizing: border-box;
+}
+#customservicemrg{
+	margin: auto;
+	margin-bottom: 0;
+    width: 1280px;
+}
+.webImFoot{
+	width: 100%;
+	height: 60px;
+	text-align: center;
+	line-height: 60px;
+	color: #fff;
+	font-size: 14px;
+}
+/*页面左侧开始*/
+#webImSidebar{
+	width: 280px;
+	height: 712px;
+	overflow: hidden;
+	border-bottom-left-radius:5px;
+}
+.sidebar-header{
+	width: 100%;
+	height: 128px;
+	border-top: 1px solid #359af8;
+	border-left: 1px solid #359af8;
+	background-color: #50a6fa;
+	border-top-left-radius:5px;
+}
+.sidebar-title{
+	font-size: 20px;
+    font-weight: bolder;
+	text-align: center;
+    color: #fff;
+    margin:16px 0;
+}
+.sidebar-user{
+	padding: 0 15px;
+}
+.avatar,.info{
+    display: table-cell;
+    vertical-align: middle;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.sidebar-user .avatar{
+	white-space: nowrap;
+	padding-right: 8px;
+}
+.sidebar-user .info{
+	vertical-align: top;
+    width: 200px;
+}
+.avatar .img {
+    width: 56px;
+    height: 56px;
+    display: block;
+    cursor: pointer;
+}
+.sidebar-user-name{
+	font-size: 14px;
+	color: #fff;
+	padding-top: 5px;
+	display: inline-block;
+    width: 156px;
+    word-wrap: normal;
+    vertical-align: top;
+    text-decoration: none;
+}
+.sidebar-user-state{
+	float: right;
+	font-size: 14px;
+	color: #fff;
+}
+.sidebar-search{
+	position: relative;
+	background-color: #fff;
+}
+.sidebar-search .frm-search{
+	width: 230px;
+    height: 34px;
+    outline: 0;
+    border: 0;
+    font-size: 12px;
+    color: #999;
+    padding-left: 10px;
+    padding-right: 40px;
+}
+.sidebar-search-icon{
+	position: absolute;
+    top: 1px;
+    right: 15px;
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+}
+.sidebar-tab{
+	width: 100%;
+	height: 44px;
+}
+.sidebar-tab-item{
+	position: relative;
+	display: inline-block;
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    color: #d1d1d1;
+    font-size: 32px;
+    text-align: center;
+    background-color: #f3f3f3;
+}
+.sidebar-tab-item:hover{
+	text-decoration: none;
+}
+.sidebar-tab-item.select{
+	color:#50a6fa;
+}
+.tab-item-circle{ 
+	position: absolute;
+    top: 21px;
+    left: 42px;
+	width: 6px; 
+	height: 6px; 
+	background-color: #ff3b30; 
+	-moz-border-radius: 3px; 
+	-webkit-border-radius: 3px; 
+	border-radius: 3px; 
+} 
+.sidebar-list{
+	height: 466px;
+	background-color: #f3f3f3;
+}
+.sidebar-setting{
+	height: 40px;
+	background-color: #f3f3f3;
+}
+.sidebar-setting-item{
+	float: left;
+	line-height: 39px;
+	margin-left: 20px;
+}
+.sidebar-setting-item a{
+	color: #d1d1d1;
+}
+.sidebar-setting-item span{
+	font-size: 12px;
+	color: #aeaeae;
+}
+.setting-item-icon{
+	font-size: 20px;
+	color: #d1d1d1;
+	vertical-align: middle;
+}
+.sidebar-list{
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.sidebar-list-item{
+	overflow: hidden;
+    padding: 8px 12px;
+    cursor: pointer;
+    position: relative;
+}
+.chat-item .avatar{
+	white-space: nowrap;
+	padding-right: 6px;
+}
+.sidebar-list-item .info{
+	vertical-align: top;
+    font-size: 14px;
+    color: #333;
+}
+.chat-item .info .info-msg {
+    color: #aeaeae;
+    font-size: 12px;
+    width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    height: 27px;
+    line-height: 27px;
+}
+.chat-item .nickname{
+	width: 190px;
+}
+.nickname .nickname-text{
+	width: 95px;
+	height: 28px;
+	line-height: 28px;
+}
+.chat-item .chat-icon-list{
+    float: right;
+    font-size: 12px;
+    text-align: right;
+}
+.chat-item .chat-item-time{
+	font-size: 12px;
+	color: #c1c1c1;
+	line-height: 27px;
+}
+.chat-item .chat-item-icon{
+	display: inline-block;
+    width: 21px;
+    font-size: 18px;
+	color: #c4dba7;
+}
+.chat-item .icon-zhuanyi{
+	position: relative;
+    top: -2px;
+}
+.chat-item .icon-1{
+	position: relative;
+    top: -1px;
+}
+.sidebar-list-item.select{
+	background-color: #e7e7e7;
+}
+/*页面左侧结束*/
+/*聊天窗主体*/
+#webImMain{
+	width: 720px;
+	height: 712px;
+	overflow: hidden;
+}
+.main-header,.problem-header{
+	width: 100%;
+	height: 56px;
+	line-height: 56px;
+	text-align: center;
+	font-size: 16px;
+	background-color: #2c8fef;
+	color: #fff;
+}
+.main-content{
+	width: 100%;
+	height: 476px;
+	box-sizing: border-box;
+	border-left: 1px solid #e3e3e3;
+	background-color: #f7f7f7;
+}
+.main-text{
+	width: 100%;
+	height: 180px;
+	box-sizing: border-box;
+	border-left: 1px solid #e3e3e3;
+	border-top: 1px solid #e3e3e3;
+	background-color: #fff;
+}
+.main-toolbar {
+    height: 45px;
+    padding: 0 20px;
+}
+.main-toolbar-items{
+	margin-right: 20px;
+	position: relative;
+}
+.main-toolbar-items span{
+	font-size: 14px;
+	color: #444;
+}
+.main-toolbar-evaluate span{
+	position: relative;
+	top: 3px;
+	color:#e64a19;
+}
+.main-toolbar-transfer span{
+	position: relative;
+	top: 4px;
+}
+.main-toolbar-icon {
+    color: #777;
+    font-size: 26px;
+    vertical-align: middle;
+    line-height: 45px;
+}
+.main-toolbar-evaluate .main-toolbar-icon{
+	color:#e64a19;
+}
+.main-toolbar-pic{
+	position: relative;
+	top: -2px;
+	overflow: hidden;	
+}
+.main-toolbar-file input {
+    position: absolute;
+    font-size: 100px;
+    right: 15px;
+    top: 10px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+    height: 28px;
+}
+.main-toolbar-items .circular{
+	position: absolute;
+	left: 20px;
+    top: 5px;
+	width: 8px;
+    height: 8px;
+    background-color: #ff3b30;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+.face-panel {
+    position: absolute;
+    background-color: #fff;
+    top: -277px;
+    left: 15px;
+    outline: 0;
+    display: none;
+}
+.main-text .main-text-msg{
+	width: 590px;
+	height: 120px;
+	box-sizing: border-box;
+	padding-left: 24px;
+	border: 0;
+	outline: 0;
+	font-size: 14px;
+	color: #111;
+}
+.main-send{
+	width: 88px;
+	height: 34px;
+	line-height: 34px;
+	margin-right: 35px;
+	margin-top: 70px;
+	font-size: 16px;
+	background-color: #2c8fef;
+	color: #fff;
+	-moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+.main-send-text{
+	width: 55px;
+	text-align: center;
+	color: #fff;
+}
+.main-send-line{
+	position: relative;
+	left: -8px;
+}
+.main-send-select{
+	position: relative;
+    left: -5px;
+	color: #fff;
+    vertical-align: middle;
+}
+/*聊天窗结束*/
+/*页面右侧开始*/
+#webImProblem{
+	width: 280px;
+	height: 712px;
+	overflow: hidden;
+}
+.problem-header{
+	background-color: #50a6fa;
+	border-top-right-radius:5px;
+}
+.problem-content{
+	width: 100%;
+	border-left:1px solid #eee;
+	box-sizing: border-box;
+	height: 656px;
+	border-bottom-right-radius:5px;
+	background-color: #fff;
+}
+.problem-content-title{
+	height: 27px;
+	line-height: 27px;
+	box-sizing: border-box;
+	border-bottom: 1px solid #f3f3f3;
+	padding-left: 15px;
+	font-size: 14px;
+	color: #444;
+}
+.problem-content .sidebar-search{
+	background-color: #f7f7f7;
+	border-bottom: 1px solid #f3f3f3;
+}
+.problem-content .sidebar-search .frm-search{
+	width: 215px;
+	font-size: 14px;
+	color:#999;
+	padding-left: 25px;
+}
+.problem-item-content,.problem-item-title{
+	box-sizing: border-box;
+	border-bottom: 1px solid #f3f3f3;
+	padding: 0 15px;
+	font-size: 14px;
+}
+.problem-item-title{
+	height: 32px;
+	line-height: 32px;
+	color: #50a6fa;
+	cursor: pointer;
+}
+.problem-item-content{
+	position: relative;
+	color: #777;
+	height: 100px;
+	padding-top: 10px;
+}
+.problem-item-buttom{
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	width: 37px;
+	height: 23px;
+	background: url(../images/quote.png);
+	cursor: pointer;
+}
+/*页面右侧结束*/
+
