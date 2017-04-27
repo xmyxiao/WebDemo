@@ -48,7 +48,6 @@
     				<tr>
     					<td>
     						<a href="javascript:void(0)" class="sidebar-tab-item iconfont icon-contact-copy select" title="联系">
-    							<i class="in-bl tab-item-circle"></i>
     						</a>
     					</td>
     					<td>
@@ -66,6 +65,9 @@
 						<div class="chat-item chat-item-select" persion-type="persion">
 							<div class="avatar">
 								<img src="images/webwxgeticon.jpg" class="img">
+								<span class="in-bl circular">
+									<span>1</span>
+								</span>
 							</div>
 							<div class="info">
 								<h3 class="nickname ui-textellipsis">
@@ -139,6 +141,7 @@
     		<!-- 聊天窗主体 -->
     		<div id="webImMain" class="ui-fl">
     			<h2 class="main-header">客户昵称</h2>
+    			<!-- 消息显示 -->
     			<div class="main-content">
     				<div class="main-content-body ui-scroll-bar-styleFc">
     					<div class="main-content-chat">
@@ -159,9 +162,28 @@
     								<span class="in-bl system-time">13:01</span>
     							</span>
     						</div>
+    						<div class="message-other clearfix">
+    							<div class="in-bl message-content">
+    								<span class="message-time" style="display:none;">2017-04-10 11:31:09</span>
+    								<div class="message-bubble">
+    									<span class="bubble-text">wenb</span>
+    								</div>
+    							</div>
+    							<img src="images/webwxgeticon.jpg" class="photo-other">
+    						</div>
+    						<div class="message-me clearfix">
+    							<img src="images/webwxgeticon.jpg" class="photo-other">
+    							<div class="in-bl message-content">
+    								<span class="message-time" style="display:none;">2017-04-10 11:31:09</span>
+    								<div class="message-bubble">
+    									<span class="bubble-text">wenb</span>
+    								</div>
+    							</div>
+    						</div>
     					</div>
     				</div>
     			</div>
+    			<!-- 消息显示结束 -->
     			<!-- 输入框 -->
     			<div class="main-text clearfix">
     				<!-- 输入框头部 -->

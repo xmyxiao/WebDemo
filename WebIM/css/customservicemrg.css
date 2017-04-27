@@ -137,6 +137,20 @@ div{
 	-webkit-border-radius: 3px; 
 	border-radius: 3px; 
 } 
+.avatar .circular{
+	position: absolute;
+	top: -5px;
+	right: 0;
+	width: 18px;
+    height: 18px;
+    text-align: center;
+    line-height: 18px;
+	background:url(../images/red-circular.png) no-repeat -1px -83px;
+}
+.avatar .circular span{
+	font-size: 12px;
+    color: #fff;
+}
 .sidebar-list{
 	height: 466px;
 	background-color: #f3f3f3;
@@ -173,6 +187,7 @@ div{
     position: relative;
 }
 .chat-item .avatar{
+	position: relative;
 	white-space: nowrap;
 	padding-right: 6px;
 }
@@ -305,14 +320,11 @@ div{
 }
 .main-toolbar-items .circular{
 	position: absolute;
+	top: 7px;
 	left: 20px;
-    top: 5px;
 	width: 8px;
     height: 8px;
-    background-color: #ff3b30;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
+	background:url(../images/red-circular.png) no-repeat -1px -72px;
 }
 .face-panel {
     position: absolute;
