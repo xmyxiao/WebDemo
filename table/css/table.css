@@ -1,0 +1,217 @@
+.scroll-table{
+	float: left;
+	background-color: #f3f3f3;
+    font-size: 12px;
+}
+.table-left-header{
+	border-top:1px solid #ddd;
+	border-left:1px solid #ddd;
+}
+
+.table-left,.table-right-header{
+	background-color: #f3f3f3;
+}
+.scroll-table td{
+	height: 30px;
+	line-height: 30px;
+}
+.table-left-header td,.table-right-header td{
+	text-align: center;
+	color: #000;
+    vertical-align: middle;
+    padding: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: bold;
+    border-color: #ddd;
+    border-width: 0px 1px 1px 0px;
+    border-style: solid;
+}
+.table-left-body td,.table-right-body td{
+	text-align: center;
+	color: #000;
+    vertical-align: middle;
+    padding: 5px 0;
+    line-height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-color: #ddd;
+    border-width: 0px 1px 1px 0px;
+    border-style: solid;
+}
+.table-right{
+	background-color: #f3f3f3;
+}
+.table-left-title{
+	font-size: 16px;
+}
+.table-left-body .table-left-content{
+	padding:0 5px;
+	text-align: left;
+}
+/*序号格宽度*/
+.table-left-number{
+	width: 113px;
+}
+/*左侧内容项宽度*/
+.table-left-content{
+	width: 354px;
+}
+/*右侧单个td的宽度*/
+.table-right-title,.table-right-content{
+	width: 304px;
+}
+/*左侧身体*/
+.table-left-body{
+	height: 200px;
+	border-left:1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+	overflow: hidden;
+	box-sizing: content-box;
+}
+/*右侧头部*/
+.table-right-header{
+	width: 600px;
+	overflow: hidden;
+	border-top:1px solid #ddd;
+}
+/*主体宽高*/
+.table-right-body{
+	width: 600px;
+	height: 200px;
+	overflow: auto;
+	background-color: #fff;
+}
+/*内容样式*/
+.table-textarea{
+	width: 50px;
+}
+.right-title-check{
+	width: 70px;
+	height: 30px;
+	margin: 0 auto;
+}
+.right-title-check .button{
+	position: relative;
+	top: -2px;
+}
+.button{
+	height:24px; l
+	line-height:24px; 
+	display:inline-block; 
+	margin:2px; 
+	padding:0px 5px; 
+	font-size:12px; 
+	text-align:center; 
+	vertical-align:middle; 
+	overflow:hidden; 
+	cursor:pointer; 
+	white-space:nowrap; 
+	background:#FFF; 
+	border:#ccc 1px solid; 
+	border-radius:2px;
+}
+.button:hover{
+	color:#ffffff; 
+	text-decoration:none;
+	background-color: #008EEE;
+}
+.button:hover{
+	box-shadow:0px 1px 3px #888; 
+	-webkit-box-shadow:0px 1px 3px #888; 
+	-moz-box-shadow:0px 1px 3px #888; 
+	border:#005085 1px solid;
+}
+.button:active{
+	box-shadow:inset 0 1px 4px rgba(0,0,0,0.2); 
+	background:none; 
+	background-color:#008eee;
+}
+.button:focus{
+	border:#ccc 1px solid; 
+	outline: 0;
+}
+.btn-icon{
+	width:16px; 
+	height:16px; 
+	margin:4px 1px; 
+	display:inline-block; 
+	vertical-align:top; 
+}
+.btn-check,.btn-gray:hover .btn-check{
+	background:url(../images/fun_icon.png) no-repeat;
+	background-position:-442px -20px;
+}
+.btn-gray .btn-check,.btn-gray2 .btn-check{
+	background:url(../images/fun_icon.png) no-repeat;
+	background-position:-442px -20px;
+}
+.btn-close,.btn-gray:hover .btn-close{
+	background:url(../images/fun_icon.png) no-repeat;
+	background-position:-482px -20px;
+}
+.btn-gray .btn-close .btn-close{
+	background:url(../images/fun_icon.png) no-repeat;
+	background-position:-482px -20px;
+}
+
+.table-right-body td{
+	padding: 0;
+	height: 40px;
+	line-height: 40px;
+}
+.table-right-body .table-right-content{
+	height: 100%;
+}
+.table-content-left,.table-content-right{
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.table-content-left{
+	border-right:1px solid #ddd ;
+	text-align: right;
+}
+.table-content-right{
+	text-align: left;
+}
+.table-content-right .button{
+	margin-left: 5px;
+}
+.table-content-left .button{
+	margin-right: 5px;
+}
+.table-left-textarea{
+	height: 92px;
+	line-height: 92px;
+	text-align: left;
+	padding-left: 5px;
+}
+.right-textarea{
+	resize: none;
+    width: 90%;
+    min-height: 80px;
+    margin: 5px auto;
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+.left-content-title{
+	padding-right: 5px;
+}
+.right-content-check{
+	position: relative;
+    top: 3px;
+    margin-right: 5px;
+}
+.right-content-input{
+	text-align: center;
+}
+.content-input{
+	box-sizing: border-box;
+	width: 95%;
+    height: 27px;
+    border: 1px solid #ddd;
+    padding: 0 5px;
+}
