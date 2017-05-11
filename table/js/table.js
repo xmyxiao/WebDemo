@@ -8,11 +8,15 @@ $(function(){
 			$(".table-right-header").attr("style","width:"+width+"px");
 			$(".table-right").css("border-right","1px solid #ddd");
 			$(".scroll-table").css("border-bottom","1px solid #ddd");
+			$(".scroll-table").width($(".table-right").width()+$(".table-left").width()+1);
+			$(".scroll-table").height($(".table-left").height()+18);
 		}else{
 			var width = $(".table-right-body table").width();
 			$(".table-right-header").css("width",width+"px");
 			$(".table-right-body").css("width",width+17+"px");
 			$(".scroll-table").css("border-bottom","1px solid #ddd");
+			$(".scroll-table").width($(".table-right").width()+$(".table-left").width()+1);
+			$(".scroll-table").height($(".table-left").height());
 		}
 	}else{
 		if($(".table-right-body")[0].scrollWidth > $(".table-right-body")[0].clientWidth){
@@ -20,6 +24,8 @@ $(function(){
 			$(".table-right-body").css("height",height+18+"px");
 			$(".table-left-body").css("height",height+"px");
 			$(".table-right").css("border-right","1px solid #ddd");
+			$(".scroll-table").width($(".table-right").width()+$(".table-left").width());
+			$(".scroll-table").height($(".table-left").height()+18);
 		}else{
 			var width = $(".table-right-body table").width()
 			$(".table-right-header").css("width",width+"px");
@@ -27,8 +33,11 @@ $(function(){
 			var height = $(".table-right-body table").height();
 			$(".table-right-body").css("height",height+"px");
 			$(".table-left-body").css("height",height+"px");
+			$(".scroll-table").width($(".table-right").width()+$(".table-left").width()+1);
+			$(".scroll-table").height($(".table-left").height());
 		}
 	}
+	
 	//监听滚动
 	 $(".table-right-body").scroll(function(){
 	 	var width = $(".table-right-body")[0].scrollLeft;
