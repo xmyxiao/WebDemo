@@ -63,7 +63,7 @@
 }
 /*左侧身体*/
 .table-left-body{
-	height: 200px;
+	height: 300px;
 	border-left:1px solid #ddd;
     border-bottom: 1px solid #ddd;
 	overflow: hidden;
@@ -71,14 +71,14 @@
 }
 /*右侧头部*/
 .table-right-header{
-	width: 600px;
+	width: 700px;
 	overflow: hidden;
 	border-top:1px solid #ddd;
 }
 /*主体宽高*/
 .table-right-body{
-	width: 600px;
-	height: 200px;
+	width: 700px;
+	height: 300px;
 	overflow: auto;
 	background-color: #fff;
 }
