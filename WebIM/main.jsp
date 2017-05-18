@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
@@ -16,11 +16,11 @@
     </head>
     <body>
     	<div style="display: none;">
-    		<input type="text" id="userJid" value="14532@openfire.fdauto.com" />
-    		<input type="password" id="userPass" value="9999" />
-    		<input type="text" id="toJid" value="00925@openfire.fdauto.com">
-    		<input type="password" id="httpAddress" value="openfire.fdauto.com" />
-			<input type="password" id="fileAddress" value="http://smart.fdauto.com:8181" />
+    		<input type="text" id="userJid" value="" />
+    		<input type="password" id="userPass" value="" />
+    		<input type="text" id="toJid" value="">
+    		<input type="password" id="httpAddress" value=${httpAddress} />
+			<input type="password" id="fileAddress" value=${fileAddress} />
     	</div>
     	<!-- 客服页面主体 -->
     	<div id="customservicemrg" class="clearfix">
@@ -53,63 +53,7 @@
     			<!-- 搜索框结束 -->
 				<!-- 聊天列表 -->
 				<div class="sidebar-list ui-scroll-bar-styleFc" id="chatList">
-					<div class="sidebar-list-item select">
-						<div class="chat-item chat-item-select" persion-type="persion">
-							<div class="avatar">
-								<img src="images/webwxgeticon.jpg" class="img">
-								<span class="in-bl circular">
-									<span>1</span>
-								</span>
-							</div>
-							<div class="info">
-								<h3 class="nickname ui-textellipsis">
-									<ul class="chat-icon-list">
-										<li class="in-bl">
-											<a href="javascript:void(0)" class="chat-item-icon iconfont icon-xin"></a>
-										</li>
-										<li class="in-bl">
-											<a href="javascript:void(0)" class="chat-item-icon iconfont icon-zhuanyi"></a>
-										</li>
-										<li class="in-bl">
-											<a href="javascript:void(0)" class="chat-item-icon iconfont icon-iconyuetiaobeizhu"></a>
-										</li>
-										<li class="in-bl">
-											<a href="javascript:void(0)" class="chat-item-icon iconfont icon-1"></a>
-										</li>
-									</ul>
-									<p class="nickname-text ui-textellipsis">客服名称</p>
-								</h3>
-								<div class="">
-									<p class="chat-item-time ui-fr">13：01</p>
-									<p class="info-msg">消息显示</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="sidebar-list-item">
-						<div class="chat-item chat-item-select" persion-type="persion">
-							<div class="avatar">
-								<img src="images/webwxgeticon.jpg" class="img">
-							</div>
-							<div class="info">
-								<h3 class="nickname ui-textellipsis">
-									<ul class="chat-icon-list">
-										<li class="in-bl">
-											<a href="javascript:void(0)" class="chat-item-icon iconfont icon-zhuanyi"></a>
-										</li>
-										<li class="in-bl">
-											<a href="javascript:void(0)" class="chat-item-icon iconfont icon-1"></a>
-										</li>
-									</ul>
-									<p class="nickname-text ui-textellipsis">客服名称</p>
-								</h3>
-								<div class="">
-									<p class="chat-item-time ui-fr">13：01</p>
-									<p class="info-msg">消息显示</p>
-								</div>
-							</div>
-						</div>
-					</div>
+					
 				</div>
 				<!-- 聊天列表结束 -->
 				<!-- 团队列表 -->
@@ -180,7 +124,7 @@
 						<a class="in-bl main-toolbar-items main-toolbar-file" href="javascript:void(0);" title="图片和文件">
 							<i class="in-bl main-toolbar-icon main-toolbar-pic iconfont icon-tupian"></i>
 							<input type="file" name="" id="file">
-							<input type="button" name="" id="upLoad" value="upLoad" style="display:none;" />
+							<input type="button" name="" id="upLoad" value="upLoad" />
 						</a>
 						<a class="main-toolbar-items main-toolbar-evaluate" href="javascript:void(0);" title="满意度">
 							<i class="in-bl main-toolbar-icon main-toolbar-face iconfont icon-xin"></i>
@@ -201,7 +145,7 @@
 					</div>
 					<!-- 输入框头部结束 -->
 					<div class="ui-fr main-send">  
-    					<a href="javascript:void(0);" class="in-bl main-send-text">发送</a>
+    					<a href="javascript:void(0);" class="in-bl main-send-text" id="msgSend">发送</a>
     				</div>
     				<div contenteditable="true" class="ui-fl main-text-msg" id="msgText"></div>
     			</div>
@@ -231,7 +175,45 @@
 	    	<!-- 页尾结束 -->
     	</div>
     	<!-- 客服页面主体结束 -->
-    	
+    	<!-- 图片展示 -->
+    	<div id="showChatPicture" style="display:none;">
+			<div class="showChatPicture-overlay"></div>
+			<div class="showChatPicture-content">
+				<div class="pic-container">
+					<div class="pic-wrp" draggable="true">
+						<img src="" onmousewheel="chatFileMsg.imgChange.changeSize()" />
+						<a href="javascript:void(0);" class="img-preview-close" title="关闭" onclick="chatFileMsg.showFileMsg.closeBigPicture();">
+							<i class="web-wechat-close-window"></i>
+						</a>
+					</div>
+				</div>
+				<div class="pic-button-container">
+					<ul class="pic-button-list">
+						<li class="pic-button-item">
+							<a onclick="chatFileMsg.showFileMsg.showPrevPicture()" href="javascript:void(0);" title="查看上一个">
+								<i class="pic-button-ico pic-button-left"></i>
+							</a>
+						</li>
+						<li class="pic-button-item">
+							<a onclick="chatFileMsg.showFileMsg.downloadPicture()" href="javascript:void(0);" title="下载图片">
+								<i class="pic-button-ico pic-button-download"></i>
+							</a>
+						</li>
+						<li class="pic-button-item">
+							<a onclick="chatFileMsg.showFileMsg.rotatePicture()" href="javascript:void(0);" title="旋转图片">
+		                    <i class="pic-button-ico pic-button-rotate"></i>
+		                </a>
+						</li>
+						<li class="pic-button-item">
+							<a onclick="chatFileMsg.showFileMsg.showNextPicture()" href="javascript:void(0);" title="查看下一个">
+								<i class="pic-button-ico pic-button-right"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- 图片展示结束 -->
     </body>
     <!-- 插件js -->
     <script type="text/javascript" src="js/lib/jquery-1.9.1.min.js"></script>
@@ -240,10 +222,13 @@
     <script type="text/javascript" src="js/lib/plupload.full.min.js"></script>
     <script type="text/javascript" src="js/lib/md5.js"></script>
     <script type="text/javascript" src="js/lib/makePy.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.lazyload.js"></script>
+    
     <!-- 插件js结束 -->
     <!-- 页面js -->
     <script type="text/javascript" src="js/webim/IM.js"></script>
     <script type="text/javascript" src="js/webim/webim.js"></script>
-        <script type="text/javascript" src="js/webim/page.js"></script>
+    <script type="text/javascript" src="js/webim/page.js"></script>
+    <script type="text/javascript" src="js/webim/fileMsg.js"></script>
     <!-- 页面js结束 -->
 </html>

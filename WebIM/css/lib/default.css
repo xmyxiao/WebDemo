@@ -6,6 +6,7 @@ ol,ul{list-style:none;}
 caption,th{text-align:left;}
 h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
 div{box-sizing: border-box;}
+img{border: 0;}
 .clearfix:after{
 	visibility: hidden; 
 	display: block; 
@@ -64,7 +65,7 @@ body {
 	background-color: #fff;
 }
 .ui-scroll-bar-styleFc::-webkit-scrollbar{
-	width: 10px;
+	width: 5px;
 	background-color: #fff;
 	background: transparent;
 }

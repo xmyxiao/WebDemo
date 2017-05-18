@@ -53,8 +53,8 @@
 			}
 			//监听滚动
 			tableRightBody.scroll(function(){
-				var width = tableRightBody.scrollLeft;
-				var height = tableRightBody.scrollTop;
+				var width = tableRightBody.scrollLeft();
+				var height = tableRightBody.scrollTop();
 				tableRrightHeader.scrollLeft(width);
 				tableLeftBody.scrollTop(height);
 			});
