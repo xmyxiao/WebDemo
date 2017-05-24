@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="renderer" content="webkit">
+		<title>直播测试页面</title>
+		<!-- 直播必须文件 -->
+		<link href="http://vjs.zencdn.net/5.5.3/video-js.css" rel="stylesheet">  
+		<script src="http://vjs.zencdn.net/5.5.3/video.js"></script>     
+		<script src="http://vjs.zencdn.net/ie8/1.1.1/videojs-ie8.min.js"></script>
+		<!-- 页面使用资源 -->
+		<link rel="stylesheet" href="css/lib/default.css" />
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- 图标 -->
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<h1>直播间<i class="fa fa-camera-retro fa-lg"></i></h1>  
+		
+		<!-- poster参数为视频未播放时的显示图片 -->
+		<video id="my-video" class="video-js" controls preload="auto" width="640" height="300" poster="img/void.png" data-setup="{}">  
+		    <source src="rtmp://live.hkstv.hk.lxdns.com/live/hks" type="rtmp/flv">  
+		    <!-- 如果上面的rtmp流无法播放，就播放hls流 -->  
+		    <!-- <source src="http://10.10.5.119/live/livestream.m3u8" type='application/x-mpegURL'> -->  
+		    <p class="vjs-no-js">播放视频需要启用 JavaScript，推荐使用支持HTML5的浏览器访问。  
+		    	<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>  
+		    </p>  
+		</video> 
+		<!-- 百度jq cdn -->
+		<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<!-- 页面单独js -->
+		<script type="text/javascript" src="js/voidJs/voidPage.js" ></script>>
+	</body>
+</html>
