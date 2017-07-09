@@ -1,4 +1,4 @@
-<video id="my-video" class="video-js" controls preload="auto" autoplay width="640" height="300" poster="http://ppt.downhot.com/d/file/p/2014/08/12/9d92575b4962a981bd9af247ef142449.jpg" data-setup="{}">  
+<video id="my-video" class="video-js" controls preload="auto" autoplay width="640" height="300" poster="void.jpg" data-setup="{}">  
     <source src="rtmp://live.hkstv.hk.lxdns.com/live/hks" type="rtmp/flv">  
     <!-- 如果上面的rtmp流无法播放，就播放hls流 -->  
     <!-- <source src="http://10.10.5.119/live/livestream.m3u8" type='application/x-mpegURL'> -->  
@@ -7,9 +7,10 @@
     </p>  
 </video> 
 
-video标签下autoplay 熟悉表示自动播放
+video标签下autoplay 表示自动播放
 poster参数为视频未播放时的显示图片
 参数也可以写成 data-setup='{"autoplay":auto}'
+class="video-js"  基础的视频样式
 
 <!-- 支持IE8必须文件 -->  
 <script src="http://vjs.zencdn.net/ie8/1.1.1/videojs-ie8.min.js"></script> 
