@@ -1,0 +1,93 @@
+﻿body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockqupte,th,td{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+ol,ul{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+div{box-sizing: border-box;}
+img{border: 0;}
+.clearfix:after{
+	visibility: hidden; 
+	display: block; 
+	font-size: 0; 
+	content: "."; 
+	clear: both; 
+	height: 0; 
+	zoom: 1; 
+}
+.in-bl{
+	display:inline-block;
+	*zoom: 1;
+	*display: inline;
+}
+a{
+	text-decoration: none;
+	cursor: pointer;
+}
+a:hover {
+    text-decoration: none;
+}
+a:focus{
+	outline: 0;
+}
+body {
+    font-family: "Microsoft YaHei","微软雅黑";
+	line-height: 1.6;
+	
+}
+/*ui共用*/
+.ui-fl{
+	float:left;
+}
+.ui-fr{
+	float:right;
+}
+.ui-textellipsis{
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.ui-btn{
+	display: inline-block;
+	zoom: 1;
+	line-height: 24px;
+	cursor: pointer;
+	overflow: hidden;
+	border: 0;
+	margin: 0;
+	padding: 0 6px;
+	text-decoration: none;
+}
+/*背景*/
+.ui-scroll-bar-styleFc::-webkit-scrollbar-track{
+	border-radius: 5px;
+	background-color: #fff;
+}
+.ui-scroll-bar-styleFc::-webkit-scrollbar{
+	width: 5px;
+	background-color: #fff;
+	background: transparent;
+}
+/*滑块*/
+.ui-scroll-bar-styleFc::-webkit-scrollbar-thumb{
+	border-radius: 5px;
+	background-color: #c8c8c8;
+}
+
+/*背景*/
+.ui-scroll-bar-styleSc::-webkit-scrollbar-track{
+	border-radius: 5px;
+	background-color: #282c33;
+}
+.ui-scroll-bar-styleSc::-webkit-scrollbar{
+	width: 5px;
+	background-color: #fff;
+	background: transparent;
+}
+/*滑块*/
+.ui-scroll-bar-styleSc::-webkit-scrollbar-thumb{
+	border-radius: 5px;
+	background-color: #848484;
+}
+/*ui共用  end*/
