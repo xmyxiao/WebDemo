@@ -1,31 +1,27 @@
+//目前使用版本为6.6
 $(function(){
+	//单文件
 	/*jwplayer("myElement").setup({
 	    playlist: [{
 	        image: "img/player.jpg",
 	        sources: [{
 	            file: "rtmp://live.hkstv.hk.lxdns.com/live/hks"
-	        },{
-	            file: ""
 	        }]
 	    }],
 	    primary: "flash",
 	    autostart: false,//自动播放
 	    controls:true//显示控件按钮
 	});*/
+	//多文件
 	jwplayer("myElement").setup({
-		playlist: [{
-	        "file": "rtmp://live.hkstv.hk.lxdns.com/live/hks"
-	    },{
-	        "file": "img/sintel.mp4"
-	    }],
-	    /*playlist: [{
+	    playlist: [{
 	        image: "img/player.jpg",
 	        sources: [{
 	            file: "rtmp://live.hkstv.hk.lxdns.com/live/hks"
 	        },{
 	            file: "img/sintel.mp4"
 	        }]
-	    }],*/
+	    }],
 	    autostart:false,
 	    overstretch:true,
 	    width: "100%",
