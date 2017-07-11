@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>CSS3 transform 属性</title>
+		<link rel="stylesheet" href="../lib/normalize.css" />
+		<link rel="stylesheet" href="../lib/default.css" />
+		<style>
+			.transform-scaleBtn{
+				display: block;
+				width: 200px;
+				height: 60px;
+				margin: 30px auto;
+				background-color:#f7931d;
+				color: #fff;
+				text-align: center;
+				line-height: 60px;
+			}
+			.transform-scaleBtn:hover{
+				transform: scale(1.05);
+    			-webkit-transform: scale(1.05);
+    			-moz-transform: scale(1.05);
+    			-ms-transform: scale(1.05);
+			}
+			.transform-rotateYBtn{
+				display: block;
+				width: 200px;
+				height: 200px;
+				margin: 30px auto;
+				background-color:#f7931d;
+				color: #fff;
+				text-align: center;
+				line-height: 200px;
+				transform: rotateY(-50deg) skew(0deg,-10deg);
+			    -webkit-transform: rotateY(-50deg) skew(0deg,-10deg);
+			    -moz-transform: rotateY(-50deg) skew(0deg,-10deg);
+			    -ms-transform: rotateY(-50deg) skew(0deg,-10deg);
+			}
+			.transform-rotateYBtn:hover{
+				transform: rotateY(0deg) skew(0deg,0deg);
+			    -webkit-transform: rotateY(0deg) skew(0deg,0deg);
+			    -moz-transform: rotateY(0deg) skew(0deg,0deg);
+			    -ms-transform: rotateY(0deg) skew(0deg,0deg);
+			}
+		</style>
+	</head>
+	<body>
+		<a href="#" class="transform-scaleBtn">缩放转换</a>
+		<div style="overflow: hidden;"><a href="#" class="transform-rotateYBtn">Y轴旋转转换</a></div>
+		<p>rotateY(0deg) Y轴装换   skew(0deg,0deg)倾斜转换  scale(1.05)缩放转换</p>
+	</body>
+</html>
