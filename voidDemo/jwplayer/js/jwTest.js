@@ -14,19 +14,30 @@ $(function(){
 	});*/
 	//多文件
 	jwplayer("myElement").setup({
-	    playlist: [{
-	        image: "img/player.jpg",
-	        sources: [{
-	            file: "rtmp://live.hkstv.hk.lxdns.com/live/hks"
+	    playlist: [
+	        {
+	        	image : "img/player.jpg",
+	        	title : "rtmp文件",
+	        	description : "rtmp直播流视频",
+	            file : "rtmp://live.hkstv.hk.lxdns.com/live/hks"
 	        },{
+	        	image: "img/player.jpg",
+	        	title : "本地mp4文件",
+	        	description : "本地文件播放测试",
 	            file: "img/sintel.mp4"
-	        }]
-	    }],
+	        }
+	    ],
 	    autostart:false,
 	    overstretch:true,
 	    width: "100%",
+	    aspectratio : "16:9",
 		ratio: "100%",
-		responsive: true
+		responsive: true,
+		displaytitle:false,
+		listbar : {
+			position : "right",
+			size : "20%"
+		}
 	});
 	//获取播放时间
 	//jwplayer("myElement").getPosition();
