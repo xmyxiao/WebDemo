@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>测试</title>
+	</head>
+	
+	<body>
+	<div id="element_id">
+	    <select class="province"></select>
+	    <select class="city"></select>
+	    <select class="area"></select>
+	</div>
+
+	<script type="text/javascript" src="js/lib/jquery-1.11.0.js" ></script>
+	<script type="text/javascript" src="js/select/jquery.cxselect.min.js" ></script>
+	<script>
+		//设置全局默认值
+		$.cxSelect.defaults.url = 'js/select/cityData.min.json'; //如果服务器不支持 .json 类型文件，请将文件改为 .js 文件
+		$.cxSelect.defaults.nodata = 'none';
+		//selects 为数组形式，请注意顺序
+		$('#element_id').cxSelect({
+		    selects: ['province', 'city', 'area'],
+		    nodata: 'none'
+		});
+	</script>
+	</body>
+</html>
