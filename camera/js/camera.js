@@ -37,8 +37,7 @@
 			snap = $('#snap'),
 			close = $('#close'),
 			upload = $('#upload'),
-			uploaded = $('#uploaded'),
-			mediaStreamTrack;
+			uploaded = $('#uploaded');
 			 
 			// 获取媒体方法（新方法）
 			// 使用新方法打开摄像头
@@ -53,7 +52,11 @@
 			        video.src = (window.URL || window.webkitURL).createObjectURL(stream);
 			        video.play();
 			    }).catch(function(err) {
-			        console.log(err);
+			    	console.log(err);
+			    	if(err.name == "DevicesNotFoundError"){
+			    		alert("请接入设备");
+			    		return true;
+			    	}
 			    })
 			}
 			// 使用旧方法打开摄像头
@@ -70,9 +73,9 @@
 			}
 			 
 			// 截取图像
-			snap.addEventListener('click', function() {
+			/*snap.addEventListener('click', function() {
 			    context.drawImage(video, 0, 0, 200, 150);
-			}, false);
+			}, false);*/
 			 
 			// 关闭摄像头
 			close.addEventListener('click', function() {
@@ -99,4 +102,17 @@
 	}	
 })(this);
 
- 
+var mediaStreamTrack;
+function $(elem) {
+    return document.querySelector(elem);
+}
+//拍照
+function carmup(){
+	var canvas = $('canvas'),
+		context = canvas.getContext('2d'),
+		video = $('video');
+	context.drawImage(video, 0, 0, 200, 150);
+	var snapData = canvas.toDataURL('image/png'),
+	uploaded = $('#uploaded');
+	uploaded.src = "data:image/png;" + snapData;
+}
