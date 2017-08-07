@@ -72,9 +72,20 @@
 				</div>
 			</div>
 		</div>
+		<div id="dd">
+			<p>文字</p>
+		</div>
 		<script type="text/javascript" src="js/lib/jquery-1.11.0.js"></script>
 		<script type="text/javascript" src="js/lib/jquery.easyui.min.js"></script>
 		<script>
+			$('#dd').dialog({
+			    title: 'My Dialog',
+			    width: 400,
+			    height: 200,
+			    closed: true,
+			    cache: false,
+			    modal: true
+			});
 			function doSearch(value,name){
 				
 			}
