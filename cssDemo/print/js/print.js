@@ -8,3 +8,6 @@ function winPrint(){
 	window.print();
 	window.document.body.innerHTML = bdhtml;
 }
+function winJsPrint(){
+	$("#jsPrint").jqprint();
+}

@@ -2,19 +2,20 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>打印</title>
+		<title>页面打印的两种方式</title>
 	</head>
 	<body>
 		<!--startprint-->
-		<style>
-			p{
-				text-align: center;
-			}
-		</style>
-		<p>浏览器打印预览</p>
+		<p style="text-align: center;">浏览器打印预览1</p>
 		<!--endprint-->
-		<p>样式必须在要打印的内容内</p>
-		<button onclick="winPrint();">打印</button>
+		<p style="text-align: center;">样式必须在要打印的内容内</p>
+		<div id="jsPrint">
+			<p style="text-align: center;">浏览器打印预览2</p>
+		</div>
+		<button onclick="winPrint();">打印方式1</button>
+		<button onclick="winJsPrint();">打印方式2</button>
+		<script type="text/javascript" src="js/jquery-1.8.0.min.js" ></script>
 		<script type="text/javascript" src="js/print.js" ></script>
+		<script type="text/javascript" src="js/jquery.jqprint-0.3.js" ></script>
 	</body>
 </html>
