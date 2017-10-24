@@ -7,139 +7,41 @@
 		<link rel="stylesheet" type="text/css" href="css/lib/icon.css">
 
 		<title>easyUI Demo</title>
+		<style>
+			.main{
+				width: 900px;
+				height: auto;
+				margin: auto;
+				padding-bottom: 10px;
+			}
+		</style>
 	</head>
 	<body>
-		<div class="easyui-tabs" style="width:auto;height:250px;min-width: 1000px;">
-			<div title="新增培训项目实施" style="padding:10px">
-				<div class="easyui-panel" title="培训基本信息（*号必填）" style="width:auto;padding:10px;">
-					<table style = "width: 100%;"><tbody>
-						<tr >
-							<td>
-								<div for="name" style="width: 100px;">关联计划:</div>
-								<div>
-									<input class="easyui-searchbox" name="name" data-options="prompt:'关联计划',searcher:doSearch" style="width:300px"></input>
-								</div>
-							</td>
-							<td>
-								<label for="name">主办部门:</label>
-								<input class="easyui-searchbox" name="name" data-options="prompt:'主办部门',searcher:doSearch" style="width:300px"></input>
-							</td>
-							<td>
-								<label for="name">OA审批编号:</label>
-								<input class="easyui-searchbox" name="name" data-options="prompt:'OA审批编号',searcher:doSearch" style="width:300px"></input>
-							</td>
-						</tr>
-						<tr>      
-                            <th>
-                                <label for="Province">所在省份：</label>
-                            </th>
-                            <td>
-                                <select class="easyui-combobox" id="Province" name="Province"  style="width:120px;"></select> 
-                            </td>
-                            <th>
-                                <label for="City">城市：</label>
-                            </th>
-                            <td>
-                                <select class="easyui-combobox" id="City" name="City"  style="width:120px;"></select> 
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="District">所在行政区：</label>
-                            </th>
-                            <td>
-                                <select class="easyui-combobox" id="District" name="District"  style="width:120px;"></select>
-                            </td>
-                            <th>
-                                <label for="Hometown">籍贯：</label>
-                            </th>
-                            <td>
-                                <select class="easyui-combobox" id="Hometown" name="Hometown"  style="width:120px;"></select>
-                            </td>
-                        </tr>
-					</tbody></table>
-					
-				</div>
-			</div>
-			<div title="第二个选项" style="padding:10px">
-				<div>第二个选项</div>
-				<input id="dateid" class="easyui-datebox">
-			</div>
-			<div title="图标与关闭" data-options="iconCls:'icon-help',closable:true" style="padding:10px">
-				<div>
-					iconCls参数设置图标
-					closable 参数设置是否可以关闭
+		<div class="main">
+			<div class="easyui-layout" style="width:700px;height:500px;">
+				<div data-options="region:'east',split:true" title="East" style="width:100px;"></div>
+				<div data-options="region:'center',title:'Main Title',iconCls:'icon-ok'">
+					<table class="easyui-datagrid"
+							data-options="url:'datagrid_data1.json',method:'get',border:false,singleSelect:true,fit:true,fitColumns:true">
+						<thead>
+							<tr>
+								<th data-options="field:'itemid'" width="80">Item ID</th>
+								<th data-options="field:'productid'" width="100">Product ID</th>
+								<th data-options="field:'listprice',align:'right'" width="80">List Price</th>
+								<th data-options="field:'unitcost',align:'right'" width="80">Unit Cost</th>
+								<th data-options="field:'attr1'" width="150">Attribute</th>
+								<th data-options="field:'status',align:'center'" width="60">Status</th>
+							</tr>
+						</thead>
+					</table>
 				</div>
 			</div>
 		</div>
-		<div id="dd">
-			<p>文字</p>
-		</div>
+		
 		<script type="text/javascript" src="js/lib/jquery-1.11.0.js"></script>
 		<script type="text/javascript" src="js/lib/jquery.easyui.min.js"></script>
 		<script>
-			$('#dd').dialog({
-			    title: 'My Dialog',
-			    width: 400,
-			    height: 200,
-			    closed: true,
-			    cache: false,
-			    modal: true
-			});
-			function doSearch(value,name){
-				
-			}
-			//只显示年月
-	    $(function(){
-	        var currTime=new Date();
-	        var strDate=currTime.getFullYear()+"-"+(currTime.getMonth()+1)+"-01";
-	        $('#dateid').datebox({formatter:function(date){
-	            var y = date.getFullYear();
-	            var m = date.getMonth() + 1;
-	            m = m < 10 ? '0' + m : m;
-	            return y.toString() + '-' + m.toString();
-	        },parser:function(date){
-	            console.log(date);
-	            if (date) {
-	                return new Date(String(date).substring(0, 4) + '-'
-	                        + String(date).substring(5,7));
-	            } else {
-	                return new Date();
-	            }
-	        }});
-	        $('#dateid').datebox('setValue',strDate);//默认加载当前月份
-	        function BindProvinceCity() {
-	            var province = $('#Province').combobox({
-	                valueField: 'Value', //值字段
-	                textField: 'Text', //显示的字段
-	                url: '/Province/GetAllProvince',
-	                editable: true,
-	                onChange: function (newValue, oldValue) {
-	                    $.get('/City/GetCitysByProvinceName', { provinceName: newValue }, function (data) {
-	                        city.combobox("clear").combobox('loadData', data);
-	                        district.combobox("clear")
-	                    }, 'json');
-	                }
-	            });
-	
-	            var city = $('#City').combobox({
-	                valueField: 'Value', //值字段
-	                textField: 'Text', //显示的字段
-	                editable: true,
-	                onChange: function (newValue, oldValue) {
-	                    $.get('/District/GetDistrictByCityName', { cityName: newValue }, function (data) {
-	                        district.combobox("clear").combobox('loadData', data);
-	                    }, 'json');
-	                }
-	            });
-	
-	            var district = $('#District').combobox({
-	                valueField: 'Value', //值字段
-	                textField: 'Text', //显示的字段
-	                editable: true
-	            });
-	        }
-	    });
+			
 		</script>
 	</body>
 </html>

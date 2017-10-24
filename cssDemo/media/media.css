@@ -1,0 +1,27 @@
+body{
+    background-color: rgb(203,232,238);
+    font: 12px/ 1.5 Microsoft YaHei, Helvitica, Verdana, Arial, san-serif;
+    padding: 0;
+    margin: 0;
+    text-align:center;
+}
+@media(min-width: 540px){
+    body{
+    	font: 13px/ 1.5 Microsoft YaHei, Helvitica, Verdana, Arial, san-serif;
+    }
+}
+@media(min-width: 768px){
+    body{
+    	font: 15px/ 1.5 Microsoft YaHei, Helvitica, Verdana, Arial, san-serif;
+    }
+}
+@media(min-width: 992px){
+    body{
+    	font: 24px/ 1.5 Microsoft YaHei, Helvitica, Verdana, Arial, san-serif;
+    }
+}
+@media(min-width: 1200px){
+    body{
+    	font: 40px/ 1.5 Microsoft YaHei, Helvitica, Verdana, Arial, san-serif;
+    }
+}
