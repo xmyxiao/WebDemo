@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>加载js与css</title>
+		<script src="https://cdn.bootcss.com/mui/3.4.0/js/mui.max.js"></script>
+		<script>window.mui || document.write('<script src="js/jquery-2.1.0.js">\x3C/script>')</script>
+		<script>
+			var linkNode = document.createElement('link');
+			linkNode.rel = 'stylesheet';
+			linkNode.type = 'text/css';
+			linkNode.href = 'https://cdn.bootcss.com/mui/3.4.0/css/mui.max.css';
+			linkNode.onerror = function(){
+			   linkNode.href = 'css/style.css';
+			};
+			document.getElementsByTagName('head')[0].appendChild(linkNode);
+		</script>
+	</head>
+	<body>
+		cdn加载js和css 加载失败则加载本地文件
+		onerror 方法多用于chrome  ie以及火狐较早版本不支持
+	</body>
+</html>
