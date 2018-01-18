@@ -6,11 +6,15 @@
 	</head>
 	<body>
 		<!--startprint-->
-		<p style="text-align: center;">浏览器打印预览1</p>
+		<p style="text-align: center;">浏览器打印预览1，页面1</p>
+		<div style="page-break-after:always;"></div>
+		<p style="text-align: center;">浏览器打印预览1，页面2</p>
 		<!--endprint-->
 		<p style="text-align: center;">样式必须在要打印的内容内</p>
 		<div id="jsPrint">
-			<p style="text-align: center;">浏览器打印预览2</p>
+			<p style="text-align: center;">浏览器打印预览2，页面1</p>
+			<p style="page-break-after:always;"></p>
+			<p style="text-align: center;">浏览器打印预览2，页面2</p>
 		</div>
 		<button onclick="winPrint();">打印方式1</button>
 		<button onclick="winJsPrint();">打印方式2</button>

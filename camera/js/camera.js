@@ -4,14 +4,9 @@
 	    return document.querySelector(elem);
 	}
 	camera = global.camera = {
-		//判断浏览器
+		//判断浏览器并限制为chrome47以上版本
 		init : function(){
 			var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
-		    var isOpera = userAgent.indexOf("Opera") > -1;
-		    if (isOpera) {
-		    	alert("此浏览器不支持网页拍照,请使用chrome47及以上版本");
-		        return true;
-		    }; //判断是否Opera浏览器
 		    
 		    if (userAgent.indexOf("Chrome") > -1){
 		  		navigator.getMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMeddia || navigator.msGetUserMedia;
