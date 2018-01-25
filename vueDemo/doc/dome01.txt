@@ -1,0 +1,7 @@
+<li v-for="item in itemList" v-if="item.id == 1">
+v-for 与 v-if可以连用 可以实现循环判断
+
+如果vue的el是"#test04"  那么v-for只能在这个id的子标签下使用
+vueTest04.itemList.push({id: 4, text: '新项目' }) 可以直接操作循环项
+
+v-model 实现表单和应用的双向绑定
