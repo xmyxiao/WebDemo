@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8">
+		<title>vue测试</title>
+	</head>
+	<body>
+	<div id="test01">{{msg}}</div>
+	<div id="test02" v-bind:title="msg">
+		鼠标停留触发
+	</div>
+	<div id="test03" v-if="seen">是否可见,通过vueTest03.seen = false,将状态转为不可见</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var vueTest01 = new Vue({
+			el : "#test01",
+			data : {
+			    msg : "test01"
+			}
+		});
+
+        var vueTest02 = new Vue({
+            el : "#test02",
+            data : {
+                msg : "页面加载于" + new Date().toLocaleString()
+            }
+        });
+
+        var vueTest03 = new Vue({
+			el : "#test03",
+			data : {
+			    seen : true
+			}
+		})
+	</script>
+	</body>
+</html>

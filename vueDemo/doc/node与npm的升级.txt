@@ -1,0 +1,3 @@
+window系统下无法安转n模块
+所以无法通过cmd升级  一般升级使用官网下载最新的方式
+官网 ：https://nodejs.org/en/
