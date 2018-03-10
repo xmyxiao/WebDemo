@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ie下的js问题 -- Document.getElementsByClassName</title>
+	</head>
+	<body>
+		<ul id="u1">
+	        <li>1</li>
+	        <li>2</li>
+	        <li>3</li>
+	        <li>4</li>
+	    </ul>
+	    <script>
+	    	var dom = document.getElementById("u1");
+			alert(dom.childNodes.length);
+			//ie 7、8下输出为4  ie9及以上版本和其他浏览器输出为9
+			//因为除了ie8以及以下版本外  浏览器会把回车也解析为一个子节点
+	    </script>
+	</body>
+</html>

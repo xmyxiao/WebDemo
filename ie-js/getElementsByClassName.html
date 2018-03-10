@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ie下的js问题 -- Document.getElementsByClassName</title>
+	</head>
+	<body>
+		<div class="test">
+			<p>Document.getElementsByClassName("test");</p>
+			<p>getElementsByClassName 方法在ie8及以下浏览器不支持 Firefox 3.0以下也不支持</p>
+		</div>
+	</body>
+	<script>
+	//getElementsByClassName 兼容性写法
+    function getElementsByClassName(node, className) {
+        if (node.getElementsByClassName) { //如果支持 则使用原生方法
+            return node.getElementsByClassName(className);
+        } else {//如果不支持  则使用遍历的方式进行查找
+            var results = [],
+                elems = node.getElementsByTagName("*");
+            for (var i = 0, len = elems.length; i < len; i++) {
+                if (elems[i].className.indexOf(className) != -1) {
+                    results[results.length] = elems[i];
+                }
+            }
+            return results;
+        }
+    } 
+
+	//使用方式
+    alert(getElementsByClassName(document,"test"));
+	</script>
+</html>
