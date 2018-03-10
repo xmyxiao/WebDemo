@@ -17,7 +17,6 @@
 				<span>{{item.id}}、{{item.text}}</span>
 			</li>
 		</ul>-->
-
 	</div>
 	<div id = "test05">
 		<p>{{msg}}</p>
@@ -28,8 +27,15 @@
 		<input v-model="msg">
 	</div>
 
+	<div id="test07">
+		<ul>
+			<todo-item v-for = "item in list" v-bind:todo = "item" v-bind:key = "item.id"></todo-item>
+		</ul>
+	</div>
+
 	<script src="../js/vue.js"></script>
 	<script>
+		//el 必须是选择  也可以使用.class
 		var vueTest01 = new Vue({
 			el : "#test01",
 			data : {
@@ -81,6 +87,21 @@
 			    msg:"双向绑定"
 			}
 		})
+
+		Vue.component("todo-item",{
+			props:["todo"],
+			template:"<li>{{todo.text}}</li>"
+		});
+		
+		var vueTest07 = new Vue({
+			el : "#test07",
+			data :{
+			    list:[
+					{id: 1, text: "第一项"},
+					{id: 2, text: "第二项"}
+				]
+			}
+		});
 	</script>
 	</body>
 </html>
