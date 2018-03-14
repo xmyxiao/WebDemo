@@ -14,8 +14,10 @@
 	    <script>
 	    	var dom = document.getElementById("u1");
 			alert(dom.childNodes.length);
+			alert(dom.children.length);
 			//ie 7、8下输出为4  ie9及以上版本和其他浏览器输出为9
 			//因为除了ie8以及以下版本外  浏览器会把回车也解析为一个子节点
+			//可以使用 children 代替 
 	    </script>
 	</body>
 </html>

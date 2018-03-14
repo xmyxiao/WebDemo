@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vertical-align</title>
+		<style>
+			.test{
+				width: 100%;
+			    background-color: #ccc;
+			    height: 50px;
+			    display: table;
+			}
+			.text{
+				display: table-cell;
+				height: 100%;
+				vertical-align: bottom;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="test">
+			<span class="text">文字居于底部</span>
+		</div>
+		
+		<p>
+			vertical-align 在block元素下无法生效  推荐是使用display:table-cell
+		</p>
+	</body>
+</html>
