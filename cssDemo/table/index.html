@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>table的常用写法</title>
+		<style>
+			.table{
+				table-layout: fixed;
+				border-collapse:collapse ;
+			}
+			.table,.table tr th,.table tr td{
+				border: 1px solid #ddd;
+			}
+		</style>
+	</head>
+	<body>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td style="width: 100px;">11</td>
+					<td colspan="2">12</td>
+				</tr>
+				<tr>
+					<td>21</td>
+					<td>22</td>
+					<td>23</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>
+			rowspan 跨行 collapse 跨列  table-layout: fixed; 设置td宽度根据style
+		</p>
+		<p>
+			border-collapse:collapse ;  合并边框
+		</p>
+	</body>
+</html>

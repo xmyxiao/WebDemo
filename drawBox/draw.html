@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>绘图测试</title>
+		<style>
+			#jsDraw{
+				position: relative;
+				background-color: #f8f8f8;
+				border: 1px solid #ccc;
+				height: 200px;
+				margin-bottom: 10px;
+			}
+			.p-xtDraw-item{
+				position: absolute;
+				background-color: transparent;
+				border: 1px dotted #f00;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="jsDraw" ondragstart="return false" onselectstart="return false"></div>
+	</body>
+	<script type="text/javascript" src="../lib/jquery-1.11.0.js" ></script>
+	<script>
+		(function(global){
+			var DrawButton;
+			DrawButton = global.DrawButton = {
+				init:function(config){
+					var drawId = config.id || "";
+
+					if(drawId == ""){
+						return;
+					}
+					var me = this;
+					me.btnList = [];
+					me.demo = $("#"+drawId+"");
+					
+					me.demo.bind("mousedown",me.mouseDown);
+					me.demo.bind("mousemove",me.mouseMove);
+					me.demo.bind("mouseup",me.mouseUp);
+				},
+				mouseDown:function(event){
+					var me = DrawButton;
+					me.startMouse = {
+						x : event.clientX - me.demo.offset().left,
+						y : event.clientY - me.demo.offset().top
+					};
+					if(!me.mouseDemo){
+						var html = '<div class="p-xtDraw-item"></div>';
+						me.mouseDemo = $(html);
+						me.demo.append(me.mouseDemo);
+						me.mouseDemo.css("top",me.startMouse.y+"px");
+						me.mouseDemo.css("left",me.startMouse.x+"px");
+					}
+				},
+				mouseMove:function(event){
+					var me = DrawButton;
+					if(!me.mouseDemo){
+						return;
+					}
+					me.mouseEnd = {
+						x : event.clientX -me.demo.offset().left,
+						y : event.clientY -me.demo.offset().top
+					}
+					var moveData = {
+						left:me.mouseEnd.x >= me.startMouse.x ?  me.startMouse.x : me.mouseEnd.x,
+						top:me.mouseEnd.y >= me.startMouse.y ?  me.startMouse.y : me.mouseEnd.y,
+						width:me.mouseEnd.x >= me.startMouse.x ? me.mouseEnd.x - me.startMouse.x : me.startMouse.x - me.mouseEnd.x,
+						height:me.mouseEnd.y >= me.startMouse.y ? me.mouseEnd.y - me.startMouse.y : me.startMouse.y - me.mouseEnd.y
+					}
+					
+					me.mouseDemo.css("top",moveData.top+"px");
+					me.mouseDemo.css("left",moveData.left+"px");
+					if((moveData.width + moveData.left) > me.demo.width()){
+						moveData.width = me.demo.width() - moveData.left;
+					}
+					if((moveData.height + moveData.top) > me.demo.height()){
+						moveData.height = me.demo.height() - moveData.top;
+					}
+					me.mouseDemo.width(moveData.width);
+					me.mouseDemo.height(moveData.height);
+				},
+				mouseUp:function(){
+					var me = DrawButton;
+					if(!me.mouseDemo){
+						return;
+					}
+					
+					if(me.mouseDemo.width() > 0 || me.mouseDemo.height() > 0){
+						var data={
+							id:me.newGuid(),
+							x1:me.mouseDemo.offset().left,
+							y1:me.mouseDemo.offset().top,
+							x2:me.mouseDemo.offset().left + me.mouseDemo.width(),
+							y2:me.mouseDemo.offset().top + me.mouseDemo.height()
+						}
+						me.mouseDemo.attr("data-id",data.id);
+						me.btnList.push(data);
+					}else{
+						me.mouseDemo.remove();
+					}
+					me.mouseDemo = null;
+				},
+				newGuid:function() {
+					var guid = "";
+					for (var i = 1; i <= 32; i++) {
+						var n = Math.floor(Math.random() * 16.0).toString(16);
+						guid += n;
+						if ((i == 8) || (i == 12) || (i == 16) || (i == 20))
+							guid += "-";
+					}
+					return guid;
+				},
+				showMsg:function(){
+					var me = this;
+					if(me.btnList.length < 1){
+						return;
+					}
+					for(var i = 0; i < me.btnList.length; i++){
+						
+					}
+				}
+			};
+		})(this);
+		var p = {
+			id : "jsDraw"
+		}
+		DrawButton.init(p);
+	</script>
+</html>
