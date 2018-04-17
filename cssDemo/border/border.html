@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>border各个属性的顺序</title>
+		<style>
+			.p-border{
+				display: inline-block;
+				width: 100px;
+				height: 100px;
+				margin: 10px;
+				background-color: #ccc;
+			}
+			.p-border1{
+				border-style: solid;
+				border-color: #f00;
+				border-top: 1px;
+				border-right: 1px;
+				border-bottom: 1px;
+				border-left: 1px;
+			}
+			.p-border2{
+				border-top: 1px;
+				border-right: 1px;
+				border-bottom: 1px;
+				border-left: 1px;
+				border-style: solid;
+				border-color: #f00;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="p-border p-border1"></div>
+		<div class="p-border p-border2"></div>
+		<p>border-top: 1px;border-style: solid;border-color: #f00;是正确的书写顺序</p>   
+		<p>如果border-style与border-color在各个边框设置的前面，则border-style与border-color属性并不会生效</p>
+	</body>
+</html>
