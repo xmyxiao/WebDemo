@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>步骤的写法</title>
+		<style>
+			.p-steps{
+			    list-style: none;
+			    margin: 0;
+			    padding: 0;
+			}
+			.p-steps-inline{
+			    display: inline-block;
+			    margin: auto;
+			}
+			.p-steps>li{
+			    padding: 0 1rem;
+			    display: table-cell;
+			    text-align: center;
+			    position: relative;
+			}
+			.p-steps>li:after{
+			    content:"";
+			    position: absolute;
+			    top:1.6rem;
+			    right:50%;
+			    width:100%;
+			    border-bottom:1px #4d5082 solid;
+			}
+			.p-steps>li:first-child:after{
+			    border:0;
+			}
+			.p-steps>li .num{
+			    position: relative;
+			    z-index: 1;
+			    display: inline-block;
+			    width:3rem;
+			    height:3rem;
+			    line-height: 2.8rem;
+			    font-size:2rem;
+			    color:#282828;
+			    -webkit-border-radius:50%;
+			    -moz-border-radius:50%;
+			    border-radius:50%;
+			    background-color:#4d5082;
+			}
+			.p-steps>li .txt{
+			    padding: 0.1rem 0;
+			    color:#4d5082;
+			    font-size: 1.5rem;
+			    word-wrap: normal;
+			    text-overflow: ellipsis;
+			    white-space: nowrap;
+			}
+			
+			.p-steps>li.on .num{
+			    background-color:#ffd200;
+			}
+			.p-steps>li.on .txt{
+			    color:#ffd200;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="am-text-center">
+	        <ul class="p-steps p-steps-inline">
+	            <li class="on">
+	                <div class="num">1</div>
+	                <div class="txt">第一步</div>
+	            </li>
+	            <li>
+	                <div class="num">2</div>
+	                <div class="txt">第二步</div>
+	            </li>
+	            <li>
+	                <div class="num">3</div>
+	                <div class="txt">第三步</div>
+	            </li>
+	        </ul>
+	    </div>
+	</body>
+</html>
