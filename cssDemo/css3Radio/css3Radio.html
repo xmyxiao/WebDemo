@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>纯css的radio样式写法</title>
+		<style>
+			.p-chkBox{
+			    display:block;
+			    margin: 10px 0;
+			    padding: 0;
+			    font-weight: normal;
+			}
+			.p-chkBox>input{
+			    position: absolute;
+			    left:-9999px;
+			}
+			.p-chkBox-icon{
+			    display: inline-block;
+			    vertical-align: middle;
+			    width: 25px;
+			    height: 25px;
+			    -webkit-border-radius:50%;
+			    -moz-border-radius:50%;
+			    border-radius:50%;
+			    border:1px #ccc solid;
+			    font-family: "iconfont";
+			    position: relative;
+			}
+			.p-chkBox>input:checked+.p-chkBox-icon{
+			    border-color:#ffd200;
+			    background-color: #ffd200;
+			    color:#fff;
+			}
+			.p-chkBox>input:checked+.p-chkBox-icon:after{
+			    content: '';
+			    font-style: normal;
+			    position: absolute;
+			    top:1px;
+			    width: 100%;
+			    left: 0;
+			    line-height: 20px;
+			    font-size: 18px;
+			    text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<label class="p-chkBox">
+            <input type="radio" name="test" />
+            <i class="p-chkBox-icon"></i>
+            <span class="p-chkLab">测试按钮1</span>
+        </label>
+        <label class="p-chkBox">
+            <input type="radio" name="test" />
+            <i class="p-chkBox-icon"></i>
+            <span class="p-chkLab">测试按钮2</span>
+        </label>
+        <p>有使用到css3的样式，因此使用的时候要注意兼容</p>
+	</body>
+</html>
