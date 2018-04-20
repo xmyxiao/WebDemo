@@ -36,71 +36,70 @@
 					me.btnList = [];
 					me.demo = $("#"+drawId+"");
 					
-					me.demo.bind("mousedown",me.mouseDown);
-					me.demo.bind("mousemove",me.mouseMove);
-					me.demo.bind("mouseup",me.mouseUp);
-				},
-				mouseDown:function(event){
-					var me = DrawButton;
-					me.startMouse = {
-						x : event.clientX - me.demo.offset().left,
-						y : event.clientY - me.demo.offset().top
-					};
-					if(!me.mouseDemo){
-						var html = '<div class="p-xtDraw-item"></div>';
-						me.mouseDemo = $(html);
-						me.demo.append(me.mouseDemo);
-						me.mouseDemo.css("top",me.startMouse.y+"px");
-						me.mouseDemo.css("left",me.startMouse.x+"px");
-					}
-				},
-				mouseMove:function(event){
-					var me = DrawButton;
-					if(!me.mouseDemo){
-						return;
-					}
-					me.mouseEnd = {
-						x : event.clientX -me.demo.offset().left,
-						y : event.clientY -me.demo.offset().top
-					}
-					var moveData = {
-						left:me.mouseEnd.x >= me.startMouse.x ?  me.startMouse.x : me.mouseEnd.x,
-						top:me.mouseEnd.y >= me.startMouse.y ?  me.startMouse.y : me.mouseEnd.y,
-						width:me.mouseEnd.x >= me.startMouse.x ? me.mouseEnd.x - me.startMouse.x : me.startMouse.x - me.mouseEnd.x,
-						height:me.mouseEnd.y >= me.startMouse.y ? me.mouseEnd.y - me.startMouse.y : me.startMouse.y - me.mouseEnd.y
-					}
-					
-					me.mouseDemo.css("top",moveData.top+"px");
-					me.mouseDemo.css("left",moveData.left+"px");
-					if((moveData.width + moveData.left) > me.demo.width()){
-						moveData.width = me.demo.width() - moveData.left;
-					}
-					if((moveData.height + moveData.top) > me.demo.height()){
-						moveData.height = me.demo.height() - moveData.top;
-					}
-					me.mouseDemo.width(moveData.width);
-					me.mouseDemo.height(moveData.height);
-				},
-				mouseUp:function(){
-					var me = DrawButton;
-					if(!me.mouseDemo){
-						return;
-					}
-					
-					if(me.mouseDemo.width() > 0 || me.mouseDemo.height() > 0){
-						var data={
-							id:me.newGuid(),
-							x1:me.mouseDemo.offset().left,
-							y1:me.mouseDemo.offset().top,
-							x2:me.mouseDemo.offset().left + me.mouseDemo.width(),
-							y2:me.mouseDemo.offset().top + me.mouseDemo.height()
+					me.demo.on({
+						"mousedown" : function(e){
+							var me = e.data.scop;
+							me.startMouse = {
+								x : event.clientX - me.demo.offset().left,
+								y : event.clientY - me.demo.offset().top
+							};
+							if(!me.mouseDemo){
+								var html = '<div class="p-xtDraw-item" onclick="DrawButton.showMsg(this)"></div>';
+								me.mouseDemo = $(html);
+								me.demo.append(me.mouseDemo);
+								me.mouseDemo.css("top",me.startMouse.y+"px");
+								me.mouseDemo.css("left",me.startMouse.x+"px");
+							}
+						},
+						"mousemove" : function(e){
+							var me = e.data.scop;
+							if(!me.mouseDemo){
+								return;
+							}
+							me.mouseEnd = {
+								x : event.clientX -me.demo.offset().left,
+								y : event.clientY -me.demo.offset().top
+							}
+							var moveData = {
+								left:me.mouseEnd.x >= me.startMouse.x ?  me.startMouse.x : me.mouseEnd.x,
+								top:me.mouseEnd.y >= me.startMouse.y ?  me.startMouse.y : me.mouseEnd.y,
+								width:me.mouseEnd.x >= me.startMouse.x ? me.mouseEnd.x - me.startMouse.x : me.startMouse.x - me.mouseEnd.x,
+								height:me.mouseEnd.y >= me.startMouse.y ? me.mouseEnd.y - me.startMouse.y : me.startMouse.y - me.mouseEnd.y
+							}
+							
+							me.mouseDemo.css("top",moveData.top+"px");
+							me.mouseDemo.css("left",moveData.left+"px");
+							if((moveData.width + moveData.left) > me.demo.width()){
+								moveData.width = me.demo.width() - moveData.left;
+							}
+							if((moveData.height + moveData.top) > me.demo.height()){
+								moveData.height = me.demo.height() - moveData.top;
+							}
+							me.mouseDemo.width(moveData.width);
+							me.mouseDemo.height(moveData.height);
+						},
+						"mouseup" : function(e){
+							var me = e.data.scop;
+							if(!me.mouseDemo){
+								return;
+							}
+							
+							if(me.mouseDemo.width() > 0 || me.mouseDemo.height() > 0){
+								var data={
+									id:me.newGuid(),
+									x1:me.mouseDemo.offset().left,
+									y1:me.mouseDemo.offset().top,
+									x2:me.mouseDemo.offset().left + me.mouseDemo.width(),
+									y2:me.mouseDemo.offset().top + me.mouseDemo.height()
+								}
+								me.mouseDemo.attr("data-id",data.id);
+								me.btnList.push(data);
+							}else{
+								me.mouseDemo.remove();
+							}
+							me.mouseDemo = null;
 						}
-						me.mouseDemo.attr("data-id",data.id);
-						me.btnList.push(data);
-					}else{
-						me.mouseDemo.remove();
-					}
-					me.mouseDemo = null;
+					},null,{scop:me});
 				},
 				newGuid:function() {
 					var guid = "";
@@ -112,13 +111,19 @@
 					}
 					return guid;
 				},
-				showMsg:function(){
+				showMsg:function(el){
 					var me = this;
 					if(me.btnList.length < 1){
 						return;
 					}
 					for(var i = 0; i < me.btnList.length; i++){
-						
+						if($(el).attr("data-id") == me.btnList[i].id){
+							var selectItem = me.btnList[i];
+							for(key in selectItem){
+								console.log(key + ":" + selectItem[key]);
+							}
+							return;
+						}
 					}
 				}
 			};
