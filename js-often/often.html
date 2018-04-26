@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>常用易忘</title>
+	</head>
+	<body>
+		<p>
+			$(selector).serialize()  通过序列化表单值，创建 URL 编码文本字符串。
+			可以选择一个或多个表单元素（比如 input 及/或 文本框），或者 form 元素本身
+			一般可以用于ajax提交
+		</p>
+		<script>
+			/*
+			 数组的操作方式
+			 * */
+			//定义
+			var arrayObj = ["1","2","3"];
+			//移除最后一个元素并返回该元素值
+			arrayObj.pop(); 
+			//移除最前一个元素并返回该元素值，数组中元素自动前移
+			arrayObj.shift(); 
+			//删除从指定位置deletePos开始的指定数量deleteCount的元素，数组形式返回所移除的元素
+			arrayObj.splice(deletePos,deleteCount); 
+			
+			//返回数组的拷贝数组，注意是一个新的数组，不是指向
+			arrayObj.concat(); 
+			
+			//反转元素（最前的排到最后、最后的排到最前），返回数组地址
+			arrayObj.reverse(); 
+			//对数组元素排序，返回数组地址
+			arrayObj.sort();
+			
+			//数组转字符串
+			arrayObj.join(separator);
+			
+			/*
+			 对象
+			 * */
+			//合并对象，修改第一个对象
+			var object1 = {id : "1",name1:"a"},object2 = {id:"2",name2:"b",other:"c"};
+			$.extend(object1, object2); 
+			object1 变为 {id: "2", name1: "a", name2: "b", other: "c"}
+		</script>
+	</body>
+</html>

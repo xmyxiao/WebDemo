@@ -23,6 +23,14 @@
 	</body>
 	<script type="text/javascript" src="../lib/jquery-1.11.0.js" ></script>
 	<script>
+		/* *
+		 * $(selector).on(event,childSelector,data,function)
+		 * event 事件
+		 * childSelector 规定只能添加到指定的子元素上的事件处理程序
+		 * data 规定传递到函数的额外数据  
+		 * function 规定当事件发生时运行的函数
+		 * 例如 $(selector).on(function(){},null,{scop:me});取值时使用e.data.scop
+		 * */
 		(function(global){
 			var DrawButton;
 			DrawButton = global.DrawButton = {
