@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue基础示例03</title>
+	</head>
+	<body>
+		<p>vue会循环data中的数据 （数据劫持） 并给这些数据增加get与set方法（）</p>
+		<p>数据要先初始化  否则新增的话不会刷新页面  或者使用vm.$set增加监听的属性  再或者使用app.a = {}替换原对象</p>
+		<div id="app">
+			<div v-text="a.id + a.name"></div>
+			<div v-text="arr[1]"></div>
+		</div>
+		
+		
+		<script src="../js/vue.js"></script>
+		<script>
+			//虽然这时候a.id并没有用到   但是之后赋值要使用  所以必须先初始化
+			let app = new Vue({
+				el : "#app",
+				data : {
+				    a : {id:""},
+				    arr : [1,2,3,4,5]
+				}
+			});
+			app.a.id = "1";
+			app.$set(app.a,"name","cs");
+			app.arr[1] = 100;  //对数组单独的某个值进行修改是无效的
+		</script>
+	</body>
+</html>

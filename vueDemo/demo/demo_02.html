@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue基础示例02</title>
+	</head>
+	<body>
+		<p>v-text等价于{{}}写法  但是{{}}写法在js未加载的时候是直接显示的 如果加载js过慢  会影响页面展示</p>
+		<div id="app">
+			<div>{{msg}}</div><!--加载的时候会先直接显示-->
+			<div v-text="msg"></div><!--节点不能有文字  会被替换-->
+		</div>
+		
+		<p>v-once 值不会被数据更改  只渲染一次 不会再次渲染</p>
+		<div id="app1">
+			<input v-model="msg" />
+			<div v-once v-text = "msg"></div>
+		</div>
+		
+		<p>v-html 把html字符渲染为html  必须是可信任的  不能为脚本</p>
+		<div id="app2">
+			<div>{{p}}</div>
+			<div v-html = "p"></div>
+		</div>
+		
+		<script src="../js/vue.js"></script>
+		<script>
+			let app = new Vue({
+				el : "#app",
+				data : {
+				    msg : "测试"
+				}
+			});
+			
+			let app1 = new Vue({
+				el : "#app1",
+				data : {
+				    msg : "测试2"
+				}
+			});
+			
+			let app2 = new Vue({
+				el : "#app2",
+				data : {
+				    p : "<p>测试</p>"
+				}
+			});
+		</script>
+	</body>
+</html>

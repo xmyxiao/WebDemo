@@ -22,6 +22,8 @@
 			arrayObj.shift(); 
 			//删除从指定位置deletePos开始的指定数量deleteCount的元素，数组形式返回所移除的元素
 			arrayObj.splice(deletePos,deleteCount); 
+			//插入元素 第三个参数是添加的新项目  后面可以有多个新项目
+			arrayObj.splice(0,0,"asp");
 			
 			//返回数组的拷贝数组，注意是一个新的数组，不是指向
 			arrayObj.concat(); 
