@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue基础示例04</title>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" id="appInput" v-on:keydown="inputKeyDown" v-model="val" />
+			<ul>
+				<li v-for="(item,index) in arr">{{item}}<span v-on:click="delItem(index)">&nbsp;&nbsp;删除</span></li>
+			</ul>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			let vm = new Vue({
+				el : "#app",
+				data : {
+					val : "",
+				    arr : []
+				},
+				methods: {
+	                inputKeyDown:function () {
+						if(event.keyCode == 13){
+							this.arr.unshift(this.val);
+							this.val = "";
+						}
+	                },
+	                delItem:function(index){
+	                	
+	                }
+				}
+			});
+		</script>
+	</body>
+</html>

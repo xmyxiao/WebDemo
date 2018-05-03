@@ -17,19 +17,26 @@
 			//定义
 			var arrayObj = ["1","2","3"];
 			//移除最后一个元素并返回该元素值
-			arrayObj.pop(); 
+			arrayObj.pop();
 			//移除最前一个元素并返回该元素值，数组中元素自动前移
-			arrayObj.shift(); 
+			arrayObj.shift();
+			//数组插入第一个元素
+			arrayObj.unshift();
 			//删除从指定位置deletePos开始的指定数量deleteCount的元素，数组形式返回所移除的元素
-			arrayObj.splice(deletePos,deleteCount); 
+			arrayObj.splice(deletePos,deleteCount);
 			//插入元素 第三个参数是添加的新项目  后面可以有多个新项目
 			arrayObj.splice(0,0,"asp");
+			//创建一个新数组, 其包含通过所提供函数实现的测试的所有元素
+			arrayObj.filter() 
+			var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
+			const isBigEnough = value => value >= 10;
+			// filtered is [12, 130, 44]
 			
 			//返回数组的拷贝数组，注意是一个新的数组，不是指向
-			arrayObj.concat(); 
+			arrayObj.concat();
 			
 			//反转元素（最前的排到最后、最后的排到最前），返回数组地址
-			arrayObj.reverse(); 
+			arrayObj.reverse();
 			//对数组元素排序，返回数组地址
 			arrayObj.sort();
 			

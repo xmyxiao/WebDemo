@@ -25,7 +25,8 @@
 			});
 			app.a.id = "1";
 			app.$set(app.a,"name","cs");
-			app.arr[1] = 100;  //对数组单独的某个值进行修改是无效的
+			app.arr[1] = 100;  //对数组单独的某个值进行修改是无效的  数组长度改变也是无效的
+			//但是数组的变异方法是起效的  比如pop push shift unshift sort reserve splice
 		</script>
 	</body>
 </html>
