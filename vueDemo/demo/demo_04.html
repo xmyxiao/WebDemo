@@ -6,7 +6,8 @@
 	</head>
 	<body>
 		<div id="app">
-			<input type="text" id="appInput" v-on:keydown="inputKeyDown" v-model="val" />
+			<!-- 键盘修饰符写法   keydown.ctrl.enter 这个是指同时按住ctrl和enter时触发-->
+			<input type="text" id="appInput" v-on:keydown.enter="inputKeyDown" v-model="val" />
 			<ul>
 				<li v-for="(item,index) in arr">{{item}}<span v-on:click="delItem(index)">&nbsp;&nbsp;删除</span></li>
 			</ul>
@@ -21,13 +22,16 @@
 				},
 				methods: {
 	                inputKeyDown:function () {
-						if(event.keyCode == 13){
+	                	//demo式写法
+						/*if(event.keyCode === 13){
 							this.arr.unshift(this.val);
 							this.val = "";
-						}
+						}*/
+						this.arr.unshift(this.val);
+						this.val = "";
 	                },
-	                delItem:function(index){
-	                	
+	                delItem:function(i){
+	                	this.arr = this.arr.filter((item,index) => index != i);
 	                }
 				}
 			});

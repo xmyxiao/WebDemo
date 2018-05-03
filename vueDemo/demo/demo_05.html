@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue基础示例05</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 如果是复选框  只有一个复选框的情况下  会把这个值转为boolean -->
+			<input type="checkbox" v-model="val" />{{val}}
+			<br>
+			<!-- 如果是多个checkbox需要value属性 并且要是数组 -->
+			<input type="checkbox" v-model="valList" value="1" />1
+			<input type="checkbox" v-model="valList" value="2" />2
+			<input type="checkbox" v-model="valList" value="3" />3
+			{{valList}}
+			<br>
+			<!-- radio根据v-model分组  value就是选择后的值 -->
+			<input type="radio" v-model="radioList" value="1" />1
+			<input type="radio" v-model="radioList" value="2" />2
+			{{radioList}}
+			<br>
+			<!-- 如果value的值不写  则取的是option的内容 -->
+			<select v-model="selectList" multiple>
+				<option value ="" disabled>请选择</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+			{{selectList}}
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			let vm = new Vue({
+				el : "#app",
+				data : {
+					val : 1,
+					valList : [],
+					radioList : "",
+					selectList : []
+				}
+			});
+		</script>
+	</body>
+</html>
