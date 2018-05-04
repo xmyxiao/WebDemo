@@ -1,0 +1,11 @@
+[{
+	"isChecked" : "true",
+	"itemName" : "列表测试1",
+	"itemPrice" : 10,
+	"itemCount" : 1
+},{
+	"isChecked" : "true",
+	"itemName" : "列表测试2",
+	"itemPrice" : 20,
+	"itemCount" : 2
+}]
