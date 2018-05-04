@@ -50,6 +50,16 @@
 			var object1 = {id : "1",name1:"a"},object2 = {id:"2",name2:"b",other:"c"};
 			$.extend(object1, object2); 
 			object1 变为 {id: "2", name1: "a", name2: "b", other: "c"}
+			
+			//回调函数就是将后续逻辑传入当前要执行的函数
+			function a(callback){
+				//当前执行函数
+				callback();
+			}
+			function b(){
+				//后续逻辑
+			}
+			a(b);
 		</script>
 	</body>
 </html>

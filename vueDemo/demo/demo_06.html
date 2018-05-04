@@ -16,7 +16,26 @@
 				el : "#app",
 				//专门用来发送ajax的方法
 				created(){ //数据初始化后调用  this指向vm实例
-					
+					/*axios.get("../json/itemData.json")
+					.then(function(data){//成功执行  回调函数的this指向windown
+						var rows = data.data;
+						vm.items = rows;
+					})
+					.catch(function(err){//失败执行
+						console.log(err)
+					});*/
+					//promise  解决回调问题
+					//promise  三个状态  成功  失败  等待
+					//Promise  自带类
+					axios.get("../json/itemData.json")
+					//箭头函数没有自己的this指针   this指针继承其所在作用域
+					.then(data =>{//成功执行  回调函数的this指向windown
+						var rows = data.data;
+						this.items = rows;
+					})
+					.catch(err =>{//失败执行
+						console.log(err)
+					});
 				},
 				data : {
 					items : []
