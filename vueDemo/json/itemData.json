@@ -4,7 +4,7 @@
 	"itemPrice" : 10,
 	"itemCount" : 1
 },{
-	"isChecked" : "true",
+	"isChecked" : "false",
 	"itemName" : "列表测试2",
 	"itemPrice" : 20,
 	"itemCount" : 2

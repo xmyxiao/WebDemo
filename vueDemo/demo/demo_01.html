@@ -8,6 +8,10 @@
 	<!-- 可以存放值 表达式 计算 三元运算符  但是要尽量少写逻辑 computed -->
 	<div id="test01">{{msg}}</div>
 	<!-- 指令是dom元素的行间属性 v-开头 后面的都是变量 这里的msg就是变量 -->
+	<!--
+		<img v-bind:src="msg"> 动态绑定指令
+		<img :src="msg">  绑定图片地址的时候使用这种方式
+	-->
 	<div id="test02" v-bind:title="msg">
 		鼠标停留触发
 	</div>

@@ -39,7 +39,14 @@
 			arrayObj.reverse();
 			//对数组元素排序，返回数组地址
 			arrayObj.sort();
-			
+			//数组累加器  这里的0代表的是第一个数  可以没有  prev累加结果  next下一个数  ie9以上
+			arrayObj.reduce((prev,next) => {
+				return prev + next.itemCount*next.itemPrice;
+			},0);
+			//数组循环  没有返回值 ie9以上
+			arrayObj.forEach(item =>item.isChecked)
+			//测试是否所有数据都通过函数
+			arrayObj.every(item => item.isChecked);
 			//数组转字符串
 			arrayObj.join(separator);
 			

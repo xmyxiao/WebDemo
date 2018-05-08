@@ -6,11 +6,16 @@
 	</head>
 	<body>
 		<div id="app">
-			
+			<!-- 过滤器 在数据不变的情况下改变现实形式 -->
+			<ul>
+				<li v-for="item in items">{{item.isChecked | toChecked(2)}}</li>
+			</ul>
+			<div>{{sun()}}</div>
 		</div>
 		<script src="../js/vue.js"></script>
 		<script src="../js/axios.min.js"></script>
 		<script>
+			//对象与对象之间  如果不在同一个空间不能比较
 			//axios
 			let vm = new Vue({
 				el : "#app",
@@ -32,13 +37,38 @@
 					.then(data =>{//成功执行  回调函数的this指向windown
 						var rows = data.data;
 						this.items = rows;
+						//checkAll的初始化  默认值可能和数据计算结果不同
+						this.checkAll = this.items.every(item => item.isChecked);
 					})
 					.catch(err =>{//失败执行
 						console.log(err)
 					});
 				},
-				data : {
-					items : []
+				data : {//存放数据
+					items : [],
+					//如果要做全选时间  可以使用这个  绑定change事件  通过this.checkAll来获取全选按钮的状态
+					//this.items.forEach(item =>item.isChecked = this.checkAll)
+					//子节点也要添加change事件
+					//this.checkAll = this.items.forEach.every(item => item.isChecked)
+					checkAll : false
+				},
+				methods : {//存放自定义方法
+					sun(){//求和  在页面中使用{{sun()}}  不会缓存  性能不高
+						return this.items.reduce((prev,next) => {
+							return prev + next.itemCount*next.itemPrice;
+						},0);
+						//执行结果返回到页面
+					}
+				},
+				filters : {  //存放自定义过滤器
+					toChecked(input,param1){  //这里的this指向window  input是这个函数前的数据
+						//param1 是传进来的第一个参数  这里是2
+						if(input == "true"){
+							return param1;
+						}else{
+							return "否"	
+						}
+					}
 				}
 			});
 		</script>
