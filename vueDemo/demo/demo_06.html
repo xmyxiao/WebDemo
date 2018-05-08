@@ -11,6 +11,7 @@
 				<li v-for="item in items">{{item.isChecked | toChecked(2)}}</li>
 			</ul>
 			<div>{{sun()}}</div>
+			<div>{{comsun}}</div>
 		</div>
 		<script src="../js/vue.js"></script>
 		<script src="../js/axios.min.js"></script>
@@ -45,12 +46,12 @@
 					});
 				},
 				data : {//存放数据
-					items : [],
+					items : []
 					//如果要做全选时间  可以使用这个  绑定change事件  通过this.checkAll来获取全选按钮的状态
 					//this.items.forEach(item =>item.isChecked = this.checkAll)
 					//子节点也要添加change事件
-					//this.checkAll = this.items.forEach.every(item => item.isChecked)
-					checkAll : false
+					//this.checkAll = this.items.every(item => item.isChecked)
+					//checkAll : false
 				},
 				methods : {//存放自定义方法
 					sun(){//求和  在页面中使用{{sun()}}  不会缓存  性能不高
@@ -69,6 +70,34 @@
 							return "否"	
 						}
 					}
+				},
+				computed : {//最后也会在实例上  不能重名
+					//checkAll  是计算得出的方法
+					checkAll : {
+						get(){//这里的this依然是指向实例
+							//绑定到页面上时  会调用这里的值
+							//当值变化时  会进行重新计算  会进行缓存
+							return this.items.every(item => item.isChecked)
+						},
+						set(val){
+							//赋值时
+							this.items.forEach(item => item.isChecked = val)
+						}
+					},
+					comsun:{
+						get(){
+							//结果会被缓存  依赖数据不变就不会重新计算  比{{sun()}}写法更优
+							return this.items.reduce((prev,next) => {
+								return prev + next.itemCount*next.itemPrice;
+							},0);
+						}
+					}
+					/*,  属性写成方法的时候默认调用get方法
+					comsun(){
+						return this.items.reduce((prev,next) => {
+							return prev + next.itemCount*next.itemPrice;
+						},0);
+					}*/
 				}
 			});
 		</script>
