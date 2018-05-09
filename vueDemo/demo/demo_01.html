@@ -15,7 +15,11 @@
 	<div id="test02" v-bind:title="msg">
 		鼠标停留触发
 	</div>
+	<!-- v-if v-show if操作的是元素  show操作的是样式  当频繁切换显示隐藏时一般使用show  操作dom的性能一般比较低 -->
+	<!-- 一般只在元素显示与隐藏时使用vue的动画 -->
+	<!-- 在html中不需要this  可以直接使用seen数据 -->
 	<div id="test03" v-if="seen">是否可见,通过vueTest03.seen = false,将状态转为不可见</div>
+	<transition></transition>
 	<div id="test04">
 		<!-- v-for是被循环的项上的属性 推荐使用item in list的写法 -->
 		<!-- $0可以打印出在控制台中选中的元素 -->
