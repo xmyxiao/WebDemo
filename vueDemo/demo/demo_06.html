@@ -70,17 +70,27 @@
 							return "否"	
 						}
 					}
+					/*
+					 Vue.fllter("funcName",funcName(){
+					 	
+					 });
+					 在原型上添加方法  也就是全局过滤器  每次只能添加一次
+					 必须在实例前定义
+					 * */
 				},
-				computed : {//最后也会在实例上  不能重名
+				computed : {//最后也会在实例上  不能重名  这是个属性  不是方法
 					//checkAll  是计算得出的方法
 					checkAll : {
 						get(){//这里的this依然是指向实例
 							//绑定到页面上时  会调用这里的值
-							//当值变化时  会进行重新计算  会进行缓存
+							//当值变化时  会进行重新计算  会进行缓存  归vue管理的数据 可以响应式变化
+							//不能只写set
+							//返回的值直接赋值给checkAll
 							return this.items.every(item => item.isChecked)
 						},
 						set(val){
 							//赋值时
+							//通过js赋值影响他人或者元素设置时  会调用set方法
 							this.items.forEach(item => item.isChecked = val)
 						}
 					},

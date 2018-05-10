@@ -6,6 +6,7 @@
 	</head>
 	<body>
 	<!-- 可以存放值 表达式 计算 三元运算符  但是要尽量少写逻辑 computed -->
+	<!-- {{'msg'}} 这里的msg是字符串 -->
 	<div id="test01">{{msg}}</div>
 	<!-- 指令是dom元素的行间属性 v-开头 后面的都是变量 这里的msg就是变量 -->
 	<!--
@@ -19,6 +20,7 @@
 	<!-- 一般只在元素显示与隐藏时使用vue的动画 -->
 	<!-- 在html中不需要this  可以直接使用seen数据 -->
 	<div id="test03" v-if="seen">是否可见,通过vueTest03.seen = false,将状态转为不可见</div>
+	<!-- 这个是vue自定义的标签 -->
 	<transition></transition>
 	<div id="test04">
 		<!-- v-for是被循环的项上的属性 推荐使用item in list的写法 -->
@@ -51,6 +53,9 @@
 		<!--<button @:click="changeMsg();">{{btnMsg}}</button>-->
 		<!-- 如果不传参不需要括号  如果手动传参 时间源为$event -->
 	</div>
+	<!-- v-model修饰符  .number限制数字格式  .lazy 稍候执行  .enter监听回车事件 -->
+	<!-- preventDefault  事件 -->
+
 	<div id="test06">
 		<p>{{msg}}</p>
 		<input v-model="msg">

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue基础示例07</title>
+	</head>
+	<body>
+		<!-- @事件.stop 阻止事件传播  不是阻止冒泡  向上和向下都阻止  -->
+		<!-- capture捕获  捕获的会先执行  然后在直接到达目标  最后进行冒泡 -->
+		<!-- @事件.self 相当于.once -->
+		<!-- @click.prevent 可以用于a标签  阻止跳转地址 -->
+		<div id="app">
+			<div @click.capture = "parent">parent
+				<div @click="child">child</div>
+			</div>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script src="../js/axios.min.js"></script>
+		<script>
+			let vm = new Vue({
+				el : "#app",
+				data : {
+					
+				},
+				methods : {
+					parent(){
+						alert("parent");
+					},
+					child(){
+						alert("child");
+						//e.cancelBubble(true);  阻止冒泡
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
