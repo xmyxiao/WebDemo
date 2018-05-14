@@ -19,9 +19,15 @@
 	<!-- v-if v-show if操作的是元素  show操作的是样式  当频繁切换显示隐藏时一般使用show  操作dom的性能一般比较低 -->
 	<!-- 一般只在元素显示与隐藏时使用vue的动画 -->
 	<!-- 在html中不需要this  可以直接使用seen数据 -->
+	<!-- v-else-if v-else 必须连续 -->
 	<div id="test03" v-if="seen">是否可见,通过vueTest03.seen = false,将状态转为不可见</div>
 	<!-- 这个是vue自定义的标签 -->
 	<transition></transition>
+	<!-- template 没有实际的意义 主要是用于包裹元素 渲染时页面上不会有template元素  v-show不支持template 但是v-if支持-->
+	<!-- 如果有相同的input元素 需要增加key属性 -->
+	<template v-if="true">
+		<div>被包裹的元素</div>
+	</template>
 	<div id="test04">
 		<!-- v-for是被循环的项上的属性 推荐使用item in list的写法 -->
 		<!-- $0可以打印出在控制台中选中的元素 -->

@@ -3,6 +3,14 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>vue基础示例07</title>
+		<style>
+			.x{
+				color: #000;
+			}
+			.y{
+				font-size: 14px;
+			}
+		</style>
 	</head>
 	<body>
 		<!-- @事件.stop 阻止事件传播  不是阻止冒泡  向上和向下都阻止  -->
@@ -13,6 +21,21 @@
 			<div @click.capture = "parent">parent
 				<div @click="child">child</div>
 			</div>
+			<!-- class="x"与:class="y"不冲突 -->
+			<!-- {className:isActive,className2:isActive2} -->
+			<!-- 后添加的样式会覆盖之前的样式  这里生效的是color:#ccc
+				<div style="color:#fff;" :style="color:#ccc"></div>
+				要使用驼峰命名方式
+				<div style="color:#fff;" :style="{backgroundColor:#ccc}"></div>
+			-->
+			<div class="x" :class="{z:flag}">
+				测试
+			</div>
+			<!-- 有class1属性显示  实例没有class2属性不显示 -->
+			<div class="x" :class="[class1,class2,{z:true}]">
+				测试
+			</div>
+			<input v-model="a" />
 		</div>
 		<script src="../js/vue.js"></script>
 		<script src="../js/axios.min.js"></script>
@@ -20,7 +43,10 @@
 			let vm = new Vue({
 				el : "#app",
 				data : {
-					
+					a:"",
+					class1:"y",
+					sty:{backgroundColor:'red'},
+					flag: true
 				},
 				methods : {
 					parent(){
@@ -29,6 +55,17 @@
 					child(){
 						alert("child");
 						//e.cancelBubble(true);  阻止冒泡
+					}
+				},
+				computed:{//不支持异步属性  比如延时触发
+					msg(){
+						
+					}
+				},
+				watch:{//观察者  只有值变化的时候才触发  this也是指向实例
+					//支持异步计算
+					a(newVal,oldVal){//属性名与观察的对象一样
+						
 					}
 				}
 			})
