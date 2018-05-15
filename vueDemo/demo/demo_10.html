@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue基础示例10</title>
+	</head>
+	<body>
+		<div id="app></div>
+		<script src="../js/vue.js"></script>
+		<script>
+			/* 
+			声明周期  创建 beforeCreate() created()  
+			挂载 beforeMount() mounted()
+			更新 beforeUpdate() updated()
+			死亡 beforeDestor() destored()
+			*/		
+			
+			let vm = new Vue({ //vm根实例  初始化时会调用很多方法（钩子函数）可以看做回调函数
+				el:'#app',
+				data:{
+					item:"1"
+				},
+				beforeCreate(){//这个时候data还没有 基本使用较少
+					
+				},
+				created(){//这个时候data可以获取到  获取ajax 初始化操作
+					
+				}
+			});
+		</script>
+	</body>
+</html>
+
+
+

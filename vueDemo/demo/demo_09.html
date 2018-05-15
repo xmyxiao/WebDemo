@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue基础示例09</title>
+	</head>
+	<body>
+		<div id="app">
+			<span v-color="flag"></span>
+			<!-- 可拖拽 与下方的directives中的函数名要一致 -->
+			<div v-drag></div>
+			<!-- html中用-分隔  则在directives中要用驼峰命名方式 -->
+			<div v-drag-test></div>
+		<div>
+		<script src="../js/vue.js"></script>
+		<script>
+			var vm = new Vue({
+				el:"#app",
+				data:{
+					flag :"red"
+				},
+				directives:{
+					dragTest(){
+						
+					},
+					drag(el){
+						el.onmousedown = function(e){
+							document.onmousemove = function(e){
+								//执行拖动赋值元素操作
+							}
+						}
+						document.onmouseup = function(){
+							document.onmousemove = document.onmouseup = null;
+						}
+						e.preventDefault();//防止默认事件的触发
+					}
+					color(el,bindings){//默认执行  数据加载之后就执行
+						el.style.background = bindings.value;
+					}
+				},
+				watch:{
+					//watch 默认只能监控一层数据  即是数组包对象  对象中的数据变化无法监听到
+					todos:{
+						handler{
+							
+						},deep:true //是否深度监听
+					}
+				}
+			});
+			
+			//const 定义常量  但是不能执行覆盖操作
+			//keyup 与 keydown 的区别 在keydown执行时数据还未输入
+			//vue 中的remeber(item)  记住某个对象
+			//监控哈希值变化  window.addEventListener('hashchange',()=>{
+				//这里的箭头函数是为了防止this重新指向window
+				window.location.hash  //获取页面的哈希值
+				//刷新时默认不触发hashchange 所以一般页面加载时也要取一次hash的值
+			},false);
+		</script>
+	</body>
+</html>
+
+
