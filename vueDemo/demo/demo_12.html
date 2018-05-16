@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue基础示例12</title>
+	</head>
+	<body>
+		<div id="app">
+			<my-id></my-id>
+		</div>
+		<!-- 组件  页面级组件   一个页面是一个组件    -->
+		<!-- 基础组件  将可复用的部分抽取出来 -->
+		<script src="../js/vue.js"></script>
+		<script>
+			// 组件优点  提高开发效率  方便复用  便于协同开发  更加易于管理和维护
+			// 一个自定义标签  vue就会把他看成一个组件  div p span header ....  vue可以赋予一定的意义
+			//用法  全局组件  局部组件
+			//全局组件可以声明一次任何地方使用  局部组件必须告诉这个组件属于谁
+			//这里的例子是全局组件
+			Vue.component("my-id",{//一个对象可以看成一个组件
+				//组件名不要带有大写（首字母可以大写）  多个单词用-分隔
+				//html使用横线隔开  js中使用驼峰是可以的
+				template:"<div>{{msg}}</div>",  //可以取自己组件中的数据
+				data(){//组件中的数据必须是函数类型  返回一个实例作为组件数据
+					return {msg:"全局组件"}
+				}
+			})
+			
+			let vm = new Vue({
+				el : "#app",
+				data:{
+					item:"1"
+				}
+			});
+		</script>
+	</body>
+</html>
+
+
+

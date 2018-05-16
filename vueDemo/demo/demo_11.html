@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue基础示例11</title>
+	</head>
+	<body>
+		<div id="app">
+			<p ref="testP"></p><!-- 这里的ref是固定的写法 -->
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			let vm = new Vue({
+				el : "#app",
+				data:{
+					item:"1"
+				},
+				mounted(){//this.$data this.$watch this.$el this.$set  自身属性
+					this.$refs.testP  //可以取到#app下的p元素   如果不是根据v-for循环出来的只能获取一个
+					//是v-for循环出来的可以获取多个
+					//dom 的渲染是异步的
+					this.$nextTick(()=>{//数据变化想要获取真实的dom中的内容  需要等待页面渲染结束后再获取
+						//所有的dom操作 最好是在nextTick中
+						//这里可以直接取vm  这是一个异步方法  在dom渲染完成后执行
+					});//当前队列底部
+				}
+			});
+		</script>
+	</body>
+</html>
+
+
+

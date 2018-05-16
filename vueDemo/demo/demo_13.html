@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue基础示例13</title>
+	</head>
+	<body>
+		<div id="app">
+			<testdemo></testdemo>
+			<testdemo2></testdemo2>
+		</div>
+		
+		<script src="../js/vue.js"></script>
+		<script>
+			//局部组件三步  1.创建组件  2.注册组件  3.引用组件
+			//组件相互独立  不能跨作用域   vm实例也是组件
+			//组件也拥有声明周期函数
+			//子组件不能直接使用父组件的数据
+			//组件理论上可以无限嵌套
+			let obj = {a:"1"};  
+			let testdemo = {
+					template:"<div>局部组件</div>",
+					data(){
+						return obj;
+					},
+					methods:{
+						//this指向这个组件
+					}
+				};  //创建  这里的命名规则和全局组件一样
+			let testdemo2 = {
+				template:"<div>局部组件2</div>",
+				data(){
+					//return obj;  //组件共用数据会导致同时更新
+				}
+			}
+			let vm = new Vue({
+				el : "#app",
+				components:{
+					testdemo,//注册
+					testdemo2
+				},
+				data:{
+					item:"1"
+				}
+			});
+			
+		</script>
+	</body>
+</html>
+
+
+

@@ -5,28 +5,47 @@
 		<title>vue基础示例10</title>
 	</head>
 	<body>
-		<div id="app></div>
+		<div id="app">
+			<p>123</p>
+		</div>
 		<script src="../js/vue.js"></script>
 		<script>
-			/* 
-			声明周期  创建 beforeCreate() created()  
-			挂载 beforeMount() mounted()
-			更新 beforeUpdate() updated()
-			死亡 beforeDestor() destored()
-			*/		
-			
+			//声明周期  创建 beforeCreate() created()  
+			//挂载 beforeMount() mounted()
+			//更新 beforeUpdate() updated()
+			//死亡 beforeDestroy() destored()
+
+			//钩子函数是重点
 			let vm = new Vue({ //vm根实例  初始化时会调用很多方法（钩子函数）可以看做回调函数
-				el:'#app',
-				data:{
-					item:"1"
-				},
+				//这里是vue执行的顺序
+				el : "#app",
 				beforeCreate(){//这个时候data还没有 基本使用较少
 					
 				},
+				data:{
+					item:"1"
+				},
 				created(){//这个时候data可以获取到  获取ajax 初始化操作
+					
+				},
+				template:'<div>{{item}}</div>',// 模板属性  这个属性会覆盖html  只能有一个根元素不能是文本节点
+				beforeMount(){//模板渲染前
+					
+				},
+				mounted(){//真实dom渲染完成  可以操作dom了
+					
+				},
+				beforeUpdate(){//更新前
+					
+				},
+				updated(){//更新后
+					//更新前和更新后  可以使用watch来代替这两个操作
+				},
+				beforeDestroy(){//销毁前  可以清楚计时器和事件绑定
 					
 				}
 			});
+			// vm.$destory();销毁  监听器和方法都会移除  但是el并不会移除
 		</script>
 	</body>
 </html>
