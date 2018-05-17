@@ -8,6 +8,10 @@
 		<div id="app">
 			<testdemo></testdemo>
 			<testdemo2></testdemo2>
+			<!-- 当前组件的属性=父级的值  这里的m是当前组件的属性  而1是父级的值 -->
+			<!-- <testdemo3 m="1"></testdemo3> -->
+			<!-- 加冒号看作是一个对戏 -->
+			<testdemo3 :m="1"></testdemo3>
 		</div>
 		
 		<script src="../js/vue.js"></script>
@@ -17,16 +21,18 @@
 			//组件也拥有声明周期函数
 			//子组件不能直接使用父组件的数据
 			//组件理论上可以无限嵌套
+			//如果组件要使用另一个组件  必须保证要使用的组件存在  在components中注册  需要在父级组件中
+			//通过标签进行引用
 			let obj = {a:"1"};  
 			let testdemo = {
-					template:"<div>局部组件</div>",
-					data(){
-						return obj;
-					},
-					methods:{
-						//this指向这个组件
-					}
-				};  //创建  这里的命名规则和全局组件一样
+				template:"<div>局部组件</div>",
+				data(){
+					return obj;
+				},
+				methods:{
+					//this指向这个组件
+				}
+			};  //创建  这里的命名规则和全局组件一样
 			let testdemo2 = {
 				template:"<div>局部组件2</div>",
 				data(){
@@ -37,7 +43,23 @@
 				el : "#app",
 				components:{
 					testdemo,//注册
-					testdemo2
+					testdemo2,
+					testdemo3:{
+						//props:["m"],//this.m = 传递进来的m  相当于在当前组件上声明一个m属性 值是父亲的
+						//数组写法无法校验
+						props:{  //对象写法可以校验
+							m:{ //校验类型  类型是数组中的值通过
+								//data中不能再定义一个m  属性名不能重复
+								type:[String,Boolean],
+								//default:0 //设置默认值  如果不传则调用default
+								required:true, //这个属性必须传  与default不能同时存在
+								validator(val){  //自定义校验值  第一个参数是第一个传递的值
+									
+								}
+							}
+						},
+						template:"<div>局部组件3</div>"
+					}
 				},
 				data:{
 					item:"1"

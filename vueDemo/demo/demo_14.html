@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue基础示例14</title>
+	</head>
+	<body>
+		<div id="app">
+			父节点：{{item}}
+			<!-- 子节点绑定父组件的事件 -->
+			<testdemo :mnu="item" @return-paraent="getChange"></testdemo>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			//父节点绑定事件  子节点触发事件传递参数  单向数据流父数据刷新 子节点也更新
+			let vm = new Vue({
+				el :"#app",
+				components:{
+					testdemo:{
+						props:{
+							mnu:{ 
+								type:[String,Number]
+							}
+						},
+						template:'<div>子节点：{{mnu}}<button @click="setChange()">改变数字</button></div>',
+						methods:{
+							setChange(){
+								//发布与订阅
+								this.$emit("return-paraent",2);//触发自定义事件   执行父组件的事件
+							}
+						}
+					}
+				},
+				data :{
+					item : 1
+				},
+				methods:{
+					getChange(val){//获取子组件返回的值
+						this.item = val;
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
