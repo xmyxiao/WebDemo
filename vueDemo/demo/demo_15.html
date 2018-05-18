@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue基础示例15</title>
+		<style>
+			.mask{
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				top: 0;
+				left: 0;
+				background: #000;
+				opacity: 0.3;
+			}
+			.dialog{
+				width: 400px;
+				height: 300px;
+				position: fixed;
+			    display: inline-block;
+			    background: #f8f8f8;
+			    top: 50%;
+			    left: 50%;
+			    transform: translate3d(-50%,-50%,0);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<button @click="()=>flag = true">dialog</button>
+			<!-- close是点击关闭按钮时触发的函数 -->
+			<modal :show="flag" @close="val=>flag=false"></modal>
+		</div>
+		<!-- template 不能写在父组件中会有引用错误 -->
+		<template id="dialog">
+			<div class="mask" v-show="show">
+				<div class="dialog">
+					<button @click="closeDialog">关闭</button>
+				</div>
+			</div>
+		</template>
+		<script src="../js/vue.js"></script>
+		<script>
+			let modal = {
+				props:["show"],//接受父组件的值  这里对应的是<modal>里面的 :show
+				template:'#dialog',
+				methods:{
+					closeDialog(){
+						this.$emit('close');
+					}
+				}
+			}
+			let vm = new Vue({
+				el:'#app',
+				components:{
+					modal
+				},
+				data:{
+					flag:false
+				}
+			});
+		</script>
+	</body>
+</html>

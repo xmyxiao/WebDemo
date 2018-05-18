@@ -9,6 +9,10 @@
 			父节点：{{item}}
 			<!-- 子节点绑定父组件的事件 -->
 			<testdemo :mnu="item" @return-paraent="getChange"></testdemo>
+			<!-- 这里的函数还是属于父节点的 这里的上下两句是一样的 -->
+			<!-- 但是基本是按照原有的写法来写 -->
+			<!-- <testdemo :mnu="item" @update:mnu="val=>this.item=val"></testdemo> -->
+			<!-- <testdemo :mnu.sync="item" ></testdemo> -->
 		</div>
 		<script src="../js/vue.js"></script>
 		<script>
@@ -22,7 +26,7 @@
 								type:[String,Number]
 							}
 						},
-						template:'<div>子节点：{{mnu}}<button @click="setChange()">改变数字</button></div>',
+						template:'<div>子节点：{{mnu}}<button @click="setChange()">变为2</button></div>',
 						methods:{
 							setChange(){
 								//发布与订阅
