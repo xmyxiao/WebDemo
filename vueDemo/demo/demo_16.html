@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue基础示例16</title>
+	</head>
+	<body>
+		<div id="app">
+			<loading ref="load"></loading>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			//
+			let loading = {
+				data(){
+					return {flag:true}
+				},
+				template:'<div v-show="flag">加载中...</div>',
+				methods:{
+					hide(){
+						this.flag = false;
+					}
+				}
+			}
+			let vm = new Vue({
+				el : '#app',
+				components:{
+					loading
+				},
+				mounted(){//ref 如果是在组件上 获取到的是组件的实例 不是dom元素
+					debugger
+					this.$refs.load.hide();
+				}
+			});
+		</script>
+	</body>
+</html>

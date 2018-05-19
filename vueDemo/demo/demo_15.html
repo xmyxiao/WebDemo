@@ -31,7 +31,7 @@
 			<!-- close是点击关闭按钮时触发的函数 -->
 			<modal :show="flag" @close="val=>flag=false"></modal>
 		</div>
-		<!-- template 不能写在父组件中会有引用错误 -->
+		<!-- template 不能写在父组件中会有引用错误  模板中只能有一个根元素 -->
 		<template id="dialog">
 			<div class="mask" v-show="show">
 				<div class="dialog">
@@ -39,8 +39,22 @@
 				</div>
 			</div>
 		</template>
+		<!-- <solt>默认值</solt> 插槽  将<modal></modal>中的内容插入插槽 可以放默认内容-->
+		<!-- <solt>的作用是定制模板 -->
+		<!--
+		这里的内容都属于父模板点击函数也是父组件  只有属性名属于子组件
+		<modal :show="flag" @close="val=>flag=false"><span name="title">标题</span></modal>
+		<template id="dialog">
+			<div class="mask" v-show="show">
+				<solt name="title">默认值<solt>
+			</div>
+		</template>
+		name属性可以指定插入位置  没有name时插入默认位置
+		这里将插槽内容替换为<span name="title">标题</span> 
+		-->
 		<script src="../js/vue.js"></script>
 		<script>
+			// 弹出框  父子组件间传值
 			let modal = {
 				props:["show"],//接受父组件的值  这里对应的是<modal>里面的 :show
 				template:'#dialog',
