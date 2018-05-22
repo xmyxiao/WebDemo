@@ -2,16 +2,66 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>vue基础示例16</title>
+		<title>vue基础示例17</title>
+		<link rel="stylesheet" href="../css/bootstrap.css" />
 	</head>
 	<body>
 		<div id="app">
-			
+			<!-- parent-click 不能使用驼峰法命名 -->
+			<!-- 组件循环时需要注意要有key值 -->
+			<mypanel type="default" @parent-click="parent">
+				<div slot="title">头部</div>
+				<div slot="body">内容</div>
+				<div slot="foot">底部</div>
+			</mypanel>
 		</div>
+		<template id="my-panel">
+			<!-- :class="['panel'+type]" 这个写法也是可以的 -->
+			<div class="panel" :class="color">
+				<div class="panel-heading">
+					<slot name="title"></slot>
+				</div>
+				<div class="panel-body">
+					<slot name="body"></slot>
+				</div>
+				<div class="panel-footer">
+					<slot name="foot">默认值</slot>
+					<button @click="btnClick">按钮</button>
+				</div>
+			</div>
+		</template>
 		<script src="../js/vue.js"></script>
 		<script>
+			let mypanel ={
+				computed:{
+					color(){
+						return 'panel-' + this.type;
+					}
+				},
+				props:{
+					type:{
+						type:[String],
+						default:'default'
+					}
+				},
+				methods:{
+					btnClick(){
+						this.$emit('parent-click','传输值');
+					}
+				},
+				template:"#my-panel"
+			}
 			let vm = new Vue({
 				el : '#app',
+				components:{
+					mypanel
+				},
+				methods:{
+					parent(val){
+						console.log('点击');
+						console.log(val);
+					}
+				},
 				data : {
 					
 				}
