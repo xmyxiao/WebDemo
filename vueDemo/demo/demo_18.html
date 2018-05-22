@@ -2,22 +2,82 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>vue基础示例17</title>
+		<title>vue基础示例18</title>
 	</head>
 	<body>
 		<!-- eventBus 事件之间的传递主要用于简单项目中  
 			主要的实现是通过发布订阅的原理
 		-->
 		<div id="app">
+			<!-- router-link的to属性是必须的  而且这里的路径和path必须一致 -->
+			<!-- tag设置将这个链接渲染成什么标签 -->
+			<!-- 点击标签时带有router-link-exact-active router-link-active两个样式表示选中
+				可以通过这个来改变样式  动态路由以:开头  比如  to="/home/:id"
+				也可以直接加class属性
+			-->
 			
+			<router-link to="/home" tag="button" class="aa">首页</router-link>
+			<!-- 声明式 -->
+			<router-link to="/list" tag="button">列表</router-link>
+			<router-link :to="{path:'/other'}" tag="button">编程式</router-link>
+			<!-- router-view是一个全局组件  可以直接使用  将页面插入到这里 -->
+			<router-view></router-view>
 		</div>
 		<script src="../js/vue.js"></script>
+		<!-- 必须在vue之后 这个功能基于vue -->
+		<script src="../js/vue-router.js"></script>
 		<script>
+			//路由  访问不同的路径  返回不同的结果
+			//多页面 (spa)  单页面  切换组件
+			//前端负责跳转  后端只负责提供数据  跳转使用hash或者是history.pushState
+			let home = {
+				template:'<div>首页</div>'
+			}
+			let list = {
+				template:'<div>列表</div>',
+				linkActiveClass:'cative'  //可以改变选中时的样式名  默认是router-link-active
+			}
+			let other = {
+				template:'<div>编程式<button @click="toHome">返回</button></div>',
+				methods:{
+					toHome(){
+						this.$router.push('/home');//强制跳转页面
+						// this.$router.go(-1); 返回之前   也可以使用back
+						// this.$router.replace('/list') 路由替换
+					}
+				}
+			}
+			let myroutes = [//路由映射表
+				{
+					path:'',         //默认展示路由
+					component:home   //这个是默认值页面刚加载时默认显示的
+				},
+				{
+					path:'/home',   // 这里/代表路径  路径必须有/
+					component:home //配置发关系就是页面级组件
+				},{
+					path:'/list',
+					component:list 
+				},{
+					path:'/other',
+					component:other 
+				}/*,{
+					path:'*',          //当路由匹配不到时    路径不变 组件切换
+					component:other 
+				}*/,{
+					path:'*',          //路径改变  组件也改变  可以用于404
+					redirect:'home'
+				}
+			]
+			let router = new VueRouter({//引入vue-router自带vueRouter类
+				routes:myroutes
+			});
 			let vm = new Vue({
 				el : '#app',
 				data:{
 					
-				}
+				},
+				router   //每个组件都会有一个$router的属性(存的是方法)   还有一个名字叫 $route（存的是属性）
 			})
 		</script>
 	</body>
