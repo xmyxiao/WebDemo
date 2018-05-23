@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue基础示例20</title>
+	</head>
+	<body>
+		<div id="app">
+			<router-link to="/article/1">跳转1</router-link>
+			<router-link to="/article/2">跳转2</router-link>
+			<!-- 如果用对象作为to的属性，并且使用了参数  必须给路由起个名字  通过名字跳转 -->
+			<router-link :to="{path:'/article',name:'test',params:{c:3,a:2}}">跳转3</router-link>
+			<router-view></router-view>
+		</div>
+		<script src="../../js/vue.js"></script>
+		<script src="../../js/vue-router.js"></script>
+		<script>
+			let article = {
+				template:'<div>内容{{$route.params.c}}</div>',
+				created(){//只会触发一次  组件不销毁 默认会复用
+					
+				},
+				watch:{//路径参数发生变化  监控参数变化  发生ajax
+					$route(){
+						console.log("1");
+					}
+				}
+			}
+			let routes = [//路径参数  表示必须要有  但是值是随机的
+				{
+					path:'/article/:c',  //this.$route.params
+					component:article,
+					name:'test'
+				}
+			]
+			let router = new VueRouter({
+				routes
+			});
+			let vm = new Vue({
+				el : '#app',
+				data:{
+					
+				},
+				router
+			});
+		</script>
+	</body>
+</html>
