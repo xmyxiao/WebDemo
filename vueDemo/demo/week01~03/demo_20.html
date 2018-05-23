@@ -10,7 +10,15 @@
 			<router-link to="/article/2">跳转2</router-link>
 			<!-- 如果用对象作为to的属性，并且使用了参数  必须给路由起个名字  通过名字跳转 -->
 			<router-link :to="{path:'/article',name:'test',params:{c:3,a:2}}">跳转3</router-link>
-			<router-view></router-view>
+			<!-- mode="out-in"动画的模式 -->
+			<!-- transition vue自带封装组件 -->
+			<!-- keep-alive 保证组件不销毁 要缓存什么就把什么包起来 -->
+			<transition enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+				<keep-alive>
+				<router-view></router-view>
+				</keep-alive>
+			</transition>
+			
 		</div>
 		<script src="../../js/vue.js"></script>
 		<script src="../../js/vue-router.js"></script>
