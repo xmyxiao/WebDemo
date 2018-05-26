@@ -10,6 +10,7 @@
 		</div>
 		<script src="../../js/vue.js"></script>
 		<script>
+			//项目启动顺序
 			//下载一个全局生成vue项目的脚手架
 			//vue-cli
 			// npm  install vue-cli -g
@@ -17,6 +18,14 @@
 			// cd 项目名
 			// npm install
 			// npm run dev
+			
+			//模块  node模块规范commonjs(不能在页面直接使用)  
+			//cmd seajs amd require  
+			//esmodule(es6  能在页面直接使用)  1.一个js就是一个模块  2.导出：  export  3.import  script标签下 type="module" 声明模块
+			//export  如果是第三方模块不需要加./  文件模块需要加./
+			//import {str} from ./a.js  a.js是自己写的模块 (文件模块)
+			//在另一个文件中将内容解构出来即可使用  import 有声明的功能 不能重命名  import最好是放在页面的顶部
+			//umd 兼容处理上述
 			let vm = new Vue({
 				el : '#app',
 				data : {
