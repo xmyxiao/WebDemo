@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>handsontable 测试</title>
+		<link rel="stylesheet" href="node_modules/handsontable/dist/handsontable.css" />
+	</head>
+	<body>
+		<div id="example"></div>
+		<script src="node_modules/handsontable/dist/handsontable.js"></script>
+		<script>
+			var data = [
+			  ["1", "2", "3", "4", "5"],
+			  ["2017", 10, 11, 12, 13],
+			  ["2018", 20, 11, 14, 13],
+			  ["2019", 30, 15, 12, 13],
+			  ["2020", 30, 15, 12, 13],
+			  ["2021", 30, 15, 12, 13],
+			  ["2022", 30, 15, 12, 13]
+			];
+			
+			var container = document.getElementById('example');
+			var hot = new Handsontable(container, {
+			  data: data,
+			  rowHeaders: true,
+			  colHeaders: true,
+			  contextMenu : true,
+			  manualRowResize : true,
+			  manualColumnResize : true,
+			  manualColumnMove : true,
+			  manualRowMove : true,
+			  manualColumnFreeze : true,
+			  copyPaste : true,
+			  wordWrap : true,
+			  afterCreateRow : onAfterCreateRow ,
+			  afterRemoveRow : onAfterRemoveRow,
+			  afterCreateCol : onAfterCreateCol,
+			  afterRemoveCol : onAfterRemoveCol,
+			});
+			
+			function onAfterCreateRow(index,amount,source){
+				var that = this;
+				var rowAr = [];
+				if(that.getSettings().rowHeights && that.getSettings().rowHeights.length == that.countRows()){
+					rowAr = that.getSettings().rowHeights.concat();
+				}else{
+					for(var i = 0; i <= that.countRows(); i++){
+						rowAr.push(that.getRowHeight(i) || 23);
+					}
+				}
+				
+				rowAr.splice(index,0,23);
+				that.updateSettings({rowHeights:rowAr});			
+				var r = that.getPlugin('ManualRowResize');
+				r.setManualSize(index,23);
+				that.forceFullRender = true;
+				that.view.render();
+				that.view.wt.wtOverlays.adjustElementsSize(true);
+			}
+			function onAfterCreateCol(index,amount,source){
+				var that = this;
+				var colAr = [];
+				if(that.getSettings().colWidths && that.getSettings().colWidths.length == that.countCols()){
+					colAr = that.getSettings().colWidths.concat();
+				}else{
+					for(var i = 0;i <= that.countCols(); i++){
+						colAr.push(that.getColWidth(i) || 50);
+					}
+				}
+
+				colAr.splice(index,0,50);
+				that.updateSettings({colWidths:colAr});			
+				var r = that.getPlugin('ManualColumnResize');
+				r.setManualSize(index,50);
+				that.forceFullRender = true;
+				that.view.render();
+				that.view.wt.wtOverlays.adjustElementsSize(true);
+			}
+			function onAfterRemoveRow(index,amount){
+				var that = this;
+				var rowAr = [];
+				if(that.getSettings().rowHeights && that.getSettings().rowHeights.length == that.countRows()){
+					rowAr = that.getSettings().rowHeights.concat();
+				}else{
+					for(var i = 0; i <= that.countRows(); i++){
+						rowAr.push(that.getRowHeight(i) || 23);
+					}
+				}
+				var r = that.getPlugin('ManualRowResize');
+				if(amount > 1){
+					for(;amount >= 0; amount--){
+						rowAr.splice(r.selectedRows[amount],1);
+					}
+				}else{
+					rowAr.splice(r.selectedRows[0],1);
+				}
+				
+				that.updateSettings({rowHeights:rowAr});
+				
+				for(;index < rowAr.length; index++){
+					r.setManualSize(index,rowAr[index]);
+				}
+				that.forceFullRender = true;
+				that.view.render();
+				that.view.wt.wtOverlays.adjustElementsSize(true);
+			}
+			function onAfterRemoveCol(index,amount){
+				var that = this;
+				var colAr = [];
+				if(that.getSettings().colWidths && that.getSettings().colWidths.length == that.countCols()){
+					colAr = that.getSettings().colWidths.concat();
+				}else{
+					for(var i = 0;i <= that.countCols(); i++){
+						colAr.push(that.getColWidth(i) || 50);
+					}
+				}
+				
+				
+				var r = that.getPlugin('ManualColumnResize');
+				if(amount > 1){
+					for(;amount >= 0; amount--){
+						colAr.splice(r.selectedCols[amount],1);
+					}
+				}else{
+					colAr.splice(r.selectedCols[0],1);
+				}
+				
+				that.updateSettings({colWidths:colAr});	
+				
+				for(;index < colAr.length; index++){
+					r.setManualSize(index,colAr[index]);
+				}
+				that.forceFullRender = true;
+				that.view.render();
+				that.view.wt.wtOverlays.adjustElementsSize(true);
+			}
+		</script>
+	</body>
+</html>

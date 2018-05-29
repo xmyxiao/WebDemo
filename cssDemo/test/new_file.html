@@ -1,0 +1,78 @@
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>  
+    <title>移动单选按钮</title>  
+    <style>  
+        /*纯CSS写法*/  
+        .checkbox-group input{display:none;opacity:0;}  
+        
+        /*使用背景图片写法*/  
+        .xuan-group input{display:none;opacity:0;}  
+        .xuan-group input[type=checkbox]+label, .xuan-group input[type=radio]+label {  
+            line-height: 1;  
+            position: relative;  
+            display: -webkit-box;  
+            display: -webkit-flex;  
+            display: -ms-flexbox;  
+            display: flex;  
+            /*cursor: pointer;*/  
+            -webkit-box-align: center;  
+            -webkit-align-items: center;  
+            -ms-flex-align: center;  
+            align-items: center;  
+            margin:2px;  
+        }  
+        .xuan-group input[type=checkbox]+label:before, .xuan-group input[type=radio]+label:before {  
+            line-height: 20px;  
+            display: inline-block;  
+            width: 18px;  
+            height: 18px;  
+            margin-right: 8px;  
+            content: '';  
+            color: #fff;  
+            border: 1px solid #dce4e6;  
+            background-color: #f3f6f8;  
+            border-radius: 18px;  
+        }  
+        .xuan-group input[type=checkbox]:checked+label:before,.xuan-group input[type=radio]:checked+label:before{  
+            content:' ';  
+            background:#e02222 url(images/input_checked_1.png) 2px 1px no-repeat;  
+            background-size:80% 80%;  
+        }  
+    </style>  
+</head>  
+<body>  
+    
+  
+    <div style="border:5px solid blue;">  
+        <p style="font-size:20px">使用背景图片写法：</p>  
+        <p>第一组单选</p>  
+        <div class="xuan-group">  
+            <input type="radio" id="radioOne" name="picRadio"/>  
+            <label for="radioOne">勾选</label>  
+        </div>  
+        <div class="xuan-group">  
+            <input type="radio" id="radioTwo" name="picRadio"/>  
+            <label for="radioTwo">勾选</label>  
+        </div>  
+        <div class="xuan-group">  
+            <input type="radio" id="radioThree" name="picRadio"/>  
+            <label for="radioThree">勾选</label>  
+        </div>  
+        <p>第一组复选</p>  
+        <div class="xuan-group">  
+            <input type="checkbox" id="radioOne2" name="picBox"/>  
+            <label for="radioOne2">勾选</label>  
+        </div>  
+        <div class="xuan-group">  
+            <input type="checkbox" id="radioTwo2" name="picBox"/>  
+            <label for="radioTwo2">勾选</label>  
+        </div>  
+        <div class="xuan-group">  
+            <input type="checkbox" id="radioThree2" name="picBox"/>  
+            <label for="radioThree2">勾选</label>  
+        </div>  
+    </div>  
+</body>  
+</html>  
