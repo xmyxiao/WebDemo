@@ -43,21 +43,10 @@
 			function onAfterCreateRow(index,amount,source){
 				var that = this;
 				var rowAr = [];
-				/*var $move = hot.getPlugin("ManualRowMove");
-				if($move.rowsMapper.__arrayMap){
-					for(var i = 0; i < $move.rowsMapper.__arrayMap.length; i++){
-						rowAr.push(that.getRowHeight($move.rowsMapper.__arrayMap[i]) || 23);
-					}
-				}else{
-					for(var i = 0; i < that.countRows(); i++){
-						rowAr.push(that.getRowHeight(i) || 23);
-					}
-				}*/
 				
 				for(var i = 0; i < that.countRows(); i++){
 					rowAr.push(that.getRowHeight(i) || 23);
 				}
-				//rowAr.splice(index,0,23);
 				rowAr[index] = rowAr.splice(index+1, 1, rowAr[index])[0];
 				
 				var $moveArr = hot.getPlugin("ManualRowMove").rowsMapper.__arrayMap;
@@ -73,7 +62,6 @@
 					r.setManualSize(j,rowAr[j]);
 				}
 				that.updateSettings({rowHeights:rowAr});
-				//tableRender(that);
 			}
 			function onBeforeRowMove(rows,target){
 				var that = this;
@@ -92,23 +80,13 @@
 					r.setManualSize(j,rowAr[j]);
 				}
 				that.updateSettings({rowHeights:rowAr});
-				//tableRender(that);
 			}
 			function onAfterRowMove(rows,target){
 				var that = this;
 				var rowAr = [];
 				var $move = hot.getPlugin("ManualRowMove");
-				/*if($move.rowsMapper.__arrayMap){
-					for(var i = 0; i < $move.rowsMapper.__arrayMap.length; i++){
-						rowAr.push(that.getRowHeight($move.rowsMapper.__arrayMap[i]) || 23);
-					}
-				}*/
 				rowAr = that.getSettings().rowHeights.concat();
 				
-				//$move.rowsMapper.__arrayMap.sort();
-				//rowAr[rows] = rowAr.splice(target, 1, rowAr[rows])[0];
-				//rowAr.splice(rows,1);
-				//that.updateSettings({rowHeights:rowAr});
 				var r = that.getPlugin('ManualRowResize');
 				for(var j = 0; j < rowAr.length; j++){
 					r.setManualSize(j,rowAr[j]);
@@ -126,16 +104,16 @@
 				rowAr.splice(index,1);
 				var $moveArr = hot.getPlugin("ManualRowMove").rowsMapper.__arrayMap;
 				for(var i = 0; i < $moveArr.length; i++){
-					if($moveArr[i] >= index){
+					if($moveArr[i] > index){
 						$moveArr[i] -= 1;
 					}
 				}
 				$moveArr.splice(index,1);
+				
 				for(var i = 0;i < rowAr.length; i++){
 					r.setManualSize(i,rowAr[i]);
 				}
 				that.updateSettings({rowHeights:rowAr});
-				//tableRender(that);
 			}
 			function onAfterCreateCol(index,amount,source){
 				var that = this;
