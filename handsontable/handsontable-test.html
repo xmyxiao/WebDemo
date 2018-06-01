@@ -34,8 +34,12 @@
 			  wordWrap : true,
 			  afterCreateRow : onAfterCreateRow ,
 			  afterRemoveRow : onAfterRemoveRow,
+			  afterCreateCol : onAfterCreateCol,
+			  afterRemoveCol : onAfterRemoveCol,
 			  beforeRowMove : onBeforeRowMove,
 			  afterRowMove : onAfterRowMove,
+			  beforeColMove : onBeforeColMove,
+			  afterColMove : onAfterColMove
 			});
 			
 			function onAfterCreateRow(index,amount,source){
@@ -88,9 +92,7 @@
 				for(var j = 0; j < rowAr.length; j++){
 					r.setManualSize(j,rowAr[j]);
 				}
-				that.forceFullRender = true;
-				that.view.render();
-				that.view.wt.wtOverlays.adjustElementsSize(true);
+				tableRender(that);
 			}
 			function onAfterRemoveRow(index,amount,source){
 				var that = this;
@@ -114,7 +116,87 @@
 				}
 				that.updateSettings({rowHeights:rowAr});
 			}
-			
+			function onAfterCreateCol(index,amount,source){
+				var that = this;
+				var colAr = [];
+
+				for(var i = 0; i < that.countCols(); i++){
+					colAr.push(that.getColWidth(i) || 50);
+				}
+				colAr[index] = colAr.splice(index+1, 1, colAr[index])[0];
+				
+				var $moveArr = that.getPlugin("ManualColumnMove").columnsMapper.__arrayMap;
+				for(var i = 0; i < $moveArr.length; i++){
+					if($moveArr[i] >= index){
+						$moveArr[i] += 1;
+					}
+				}
+				$moveArr.splice(index,0,index);
+				
+				var r = that.getPlugin('ManualColumnResize');
+				for(var j = 0; j < colAr.length; j++){
+					r.setManualSize(j,colAr[j]);
+				}
+				that.updateSettings({colWidths:colAr});
+			}
+			function onBeforeColMove(cols,target){
+				var that = this;
+				var colAr = [];
+				for(var i = 0; i < that.countCols(); i++){
+					colAr.push(that.getColWidth(i) || 50);
+				}
+				if(cols > target){
+					colAr[cols] = colAr.splice(target, 1, colAr[cols])[0];
+				}else{
+					colAr[cols] = colAr.splice(target-1, 1, colAr[cols])[0];
+				}
+				
+				var r = that.getPlugin('ManualColumnResize');
+				for(var j = 0; j < colAr.length; j++){
+					r.setManualSize(j,colAr[j]);
+				}
+				that.updateSettings({colWidths:colAr});
+			}
+			function onAfterColMove(cols,target){
+				var that = this;
+				var colAr = [];
+				var $move = that.getPlugin("ManualColumnMove");
+				colAr = that.getSettings().rowHeights.concat();
+				
+				var r = that.getPlugin('ManualColumnResize');
+				for(var j = 0; j < colAr.length; j++){
+					r.setManualSize(j,colAr[j]);
+				}
+				tableRender(that);
+			}
+			function onAfterRemoveCol(index,amount){
+				var that = this;
+				var colAr = [];
+				
+				for(var i = 0;i <= that.countCols(); i++){
+					colAr.push(that.getColWidth(i) || 50);
+				}
+				
+				colAr.splice(index,1);
+				var $moveArr = that.getPlugin("ManualColumnMove").columnsMapper.__arrayMap;
+				for(var i = 0; i < $moveArr.length; i++){
+					if($moveArr[i] > $moveArr[index]){
+						$moveArr[i] -= 1;
+					}
+				}
+				$moveArr.splice(index,1);
+				var r = that.getPlugin('ManualColumnResize');
+				for(var j = 0; j < colAr.length; j++){
+					r.setManualSize(j,colAr[j]);
+				}
+				that.updateSettings({colWidths:colAr});
+			}
+			function tableRender(hot){
+				var that = hot;
+				that.forceFullRender = true;
+				that.view.render();
+				that.view.wt.wtOverlays.adjustElementsSize(true);
+			}
 		</script>
 	</body>
 </html>
