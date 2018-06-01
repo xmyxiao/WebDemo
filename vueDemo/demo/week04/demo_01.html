@@ -26,12 +26,32 @@
 			//import {str} from ./a.js  a.js是自己写的模块 (文件模块)
 			//在另一个文件中将内容解构出来即可使用  import 有声明的功能 不能重命名  import最好是放在页面的顶部
 			//umd 兼容处理上述
+			
+			//import * as b from './a.js'  导出
+			//import str form './a.js'  str就是导出的
+			//export default{}  可以批量导出
+			//export let a = () =>{do something} 
 			let vm = new Vue({
 				el : '#app',
 				data : {
 					
 				}
 			});
+			/*
+			webpack 与 less最好不要全局安装  否则可能导致webpack的版本差异
+			在package.json中配置一个脚本  这个脚本的命令是webpack  回去当前的node_modules下找相对应的
+			webpack名字让其执行  执行的就是webpack/bind/webpack.js
+			webpack.js 需要当前目录下有个名字叫webpack.config.js的文件
+			通过npm run bulid 执行的是当前文件的目录  所以会去当前目录下查找
+			 * */
+			/*
+			* babel 转义es6->es5
+			* npm install babel-core --save-dev
+			* npm install babel-loader --save-dev   //解析语法
+			* 安转完后可能会导致webpack无法使用  需要重新安装
+			* babel-preset-es2015 es6   让loader拥有es6语法
+			* npm install babel-preset-es2015 --save-dev
+			* */
 		</script>
 	</body>
 </html>
