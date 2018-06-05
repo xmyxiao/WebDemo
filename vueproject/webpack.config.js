@@ -11,7 +11,9 @@ module.exports = {
   //js 匹配所有的js文件 用babel-loader转义  排除掉mode_modules
   module:{
     rules: [
-      {test:/\.js$/,use:'babel-loader',exclude:'/node_modules'}
+      {test:/\.js$/,use:'babel-loader',exclude:'/node_modules'},
+      //use 时从右往左写
+      {test:/\.css$/,user:['style-loader','css-loader']}
     ]
   }
 }

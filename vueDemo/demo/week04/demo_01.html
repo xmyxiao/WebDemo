@@ -52,6 +52,25 @@
 			* babel-preset-es2015 es6   让loader拥有es6语法
 			* npm install babel-preset-es2015 --save-dev
 			* */
+
+			/*
+			* 解析样式
+			* css-loader 将css解析成模块，将解析的内容插入到
+			* npm install css-loader style-loader  --save-dev
+			* 以style的方式插入到页面
+			* less/sass/stylus + loader预处理语言  这边的导入和css一样
+			* npm install less less-loader --save-dev
+			* */
+
+			/*
+			* 解析图片
+			* file-loader url-loader(依赖于file-loader)
+			* npm install file-loader url-loader --save-dev
+			* {test:/\.(jpg|png|gif)$/,user:'url-loader?limit=8192'}  8K（8192字节）以下转为base64(可以不发起请求)
+			* let img = new Image(); img.src='./test.jpg' 这种的属于一段字符  webpack不会被解析
+			* 所以在js中引入图片需要import或者一个线上地址
+			* import page form './test.jpg'  这里的page就是打包后的图片的路径
+			* */
 		</script>
 	</body>
 </html>
