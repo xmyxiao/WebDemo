@@ -13,8 +13,9 @@ module.exports = {
   module:{
     rules: [
       {test:/\.js$/,use:'babel-loader',exclude:'/node_modules'},
-      //use 时从右往左写
-      {test:/\.css$/,use:['style-loader','css-loader']}
+      //use 时从右往左写  这里表示先解析成css-loader插入到style-loader
+      {test:/\.css$/,use:['style-loader','css-loader']},
+      {test:/\.vue$/,use:'vue-loader'}
     ]
   },
   plugins:[

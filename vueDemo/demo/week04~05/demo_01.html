@@ -10,9 +10,10 @@
 		</div>
 		<script src="../../js/vue.js"></script>
 		<script>
-			//项目启动顺序
-			//下载一个全局生成vue项目的脚手架
-			//vue-cli
+			// 项目启动顺序
+			// 新建文件夹 mkdir fileName  cls清屏
+			// 下载一个全局生成vue项目的脚手架
+			// vue-cli
 			// npm  install vue-cli -g
 			// vue init webpack <项目名>  esl开始选择n
 			// cd 项目名
@@ -39,12 +40,14 @@
 			});
 			/*
 			webpack 与 less最好不要全局安装  否则可能导致webpack的版本差异
-			在package.json中配置一个脚本  这个脚本的命令是webpack  回去当前的node_modules下找相对应的
+			在package.json中配置一个脚本  这个脚本的命令是webpack  会去当前的node_modules下找相对应的
 			webpack名字让其执行  执行的就是webpack/bind/webpack.js
 			webpack.js 需要当前目录下有个名字叫webpack.config.js的文件
 			通过npm run bulid 执行的是当前文件的目录  所以会去当前目录下查找
-			 * */
-			/*
+
+			* npm install --save-dev webpack
+			* 4.0以上版本 npm install --save-dev webpack-cli
+			* 解析js
 			* babel 转义es6->es5
 			* npm install babel-core --save-dev
 			* npm install babel-loader --save-dev   //解析语法
@@ -55,7 +58,7 @@
 
 			/*
 			* 解析样式
-			* css-loader 将css解析成模块，将解析的内容插入到
+			* css-loader 将css解析成模块，将解析的内容插入到页面
 			* npm install css-loader style-loader  --save-dev
 			* 以style的方式插入到页面
 			* less/sass/stylus + loader预处理语言  这边的导入和css一样
@@ -70,6 +73,45 @@
 			* let img = new Image(); img.src='./test.jpg' 这种的属于一段字符  webpack不会被解析
 			* 所以在js中引入图片需要import或者一个线上地址
 			* import page form './test.jpg'  这里的page就是打包后的图片的路径
+			* */
+
+			/*
+			* 需要解析html插件
+			* 插件的作用是以我们自己的html为模板将打包后的结果，自动引入到html中产出到dist目录下
+			* npm install html-webpack-plugin --save-dev
+			* */
+
+			/*
+			* webpack-dev-server
+			* 内置一个服务  可以启动一个端口号，当代码更新时可以自动打包（内存中打包）
+			* 不生成实际的文件   监听代码当代码有变化就重新执行
+			* npm install webpack-dev-server --save-dev
+			* 安装提示无权限时 cmd可以用管理员模式打开
+			* package.json中 script  "dev": "webpack-dev-server",
+			* webstorm 取消自动保存
+			* */
+
+			/*
+			* 新建文件夹 mkdir fileName  cls清屏
+			* nom init -y 初始化 -y可以跳过信息
+			* npm install webpack webpack-dev-server babel-core babel-preset-es2015 babel-preset-stage-0
+			* css-loader style-loader less less-loader file-loader url-loader html-webpack-plugin --save-dev
+			*
+			* 新建webpack.config.js文件
+			* .babelrc用于解析js文件
+			*
+			* <div id="app"></div> html文件要有这一句
+			* */
+
+			/*
+			* 安装vue-loader 解析vue vue-template-compiler 解析vue模板
+			* vue会自动调用vue-template-compiler
+			* npm install vue-loader vue-template-compiler --save-dev
+			* */
+
+			/*
+			* 更改配置文件之后要重新启动npm run dev
+			* ctr+c退出run
 			* */
 		</script>
 	</body>

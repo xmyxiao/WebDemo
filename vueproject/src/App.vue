@@ -10,7 +10,8 @@ export default {
   name: 'App'
 }
 </script>
-
+<!-- <style scoped></style> scoped是h5属性 设置作用域-->
+<!-- webstore下可以新建一个模板 -->
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
