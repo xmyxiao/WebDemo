@@ -1,0 +1,54 @@
+<!doctype html>
+<html class="no-js p-bgGraDef">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>测试页面</title>
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    <link rel="stylesheet" href="js/AmazeUI-2.7.2/css/amazeui.min.css" />
+    <link rel="stylesheet" href="css/iconfont/iconfont.css" />
+    <link rel="stylesheet" href="css/app1.css" />
+    <!-- 移动端适配 -->
+    <script>
+        var html = document.querySelector('html');
+        changeRem();
+        window.addEventListener('resize', changeRem);
+
+        function changeRem() {
+            var width = html.getBoundingClientRect().width;
+            html.style.fontSize = width / 10 + 'px';
+        }
+    </script>
+</head>
+
+<body class="p-extension">
+	<div class="p-extension-btn">
+		<div class="am-padding-sm">
+			<button class="am-btn-block am-btn btn-extension-red btn-extension">
+				<span class="btn-extension-text">进入游戏</span>
+			</button>
+			<button class="am-btn-block am-btn btn-extension-yellow btn-extension">
+				<span class="btn-extension-text">获取推广码</span>
+			</button>
+	    </div>
+	</div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/AmazeUI-2.7.2/js/amazeui.min.js"></script>
+</body>
+
+</html>

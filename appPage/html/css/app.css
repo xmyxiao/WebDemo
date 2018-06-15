@@ -1,0 +1,145 @@
+.am-navbar-default .am-navbar-nav{
+    background-color: #fff;
+    -webkit-box-shadow: 0 -1px 3px 3px rgba(0,0,0,0.05);
+    -moz-box-shadow: 0 -1px 3px 3px rgba(0,0,0,0.05);
+    box-shadow: 0 -1px 3px 3px rgba(0,0,0,0.05);
+}
+.am-navbar{
+    height: 5.4rem;
+    line-height:5.4rem;
+}
+.am-navbar-default a{
+    color: #7b8699;
+    line-height:5.4rem;
+}
+.am-navbar-default a .iconfont+.iconfont{
+    display: none;
+}
+.am-navbar-default .iconfont{
+    position: relative;
+}
+.am-navbar-default .tip{
+    position: absolute;
+    top:0;
+    right:-5px;
+    width: 0.7rem;
+    height: 0.7rem;
+    background-color: red;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+}
+.am-navbar-default .inner{
+    display: inline-block;
+    padding: 3px 15px;
+    margin: 3px auto 0;
+}
+.am-navbar-default .active{
+    color:#2a2b67;
+    text-shadow: 1px 1px 1px rgba(115,158,235,0.5);
+}
+.am-navbar-default .active:active{
+    background-color: #eee;
+}
+.am-navbar-default .active .iconfont:after{
+    content: "";
+    position: absolute;
+    left:-0.8rem;
+    top:-0.8rem;
+    -webkit-box-shadow: 0 0 2rem 2rem rgba(255,255,255,0.5);
+    -moz-box-shadow: 0 0 2rem 2rem rgba(255,255,255,0.5);
+    box-shadow: 0 0 2rem 2rem rgba(255,255,255,0.5);
+}
+.am-navbar-default .active .iconfont{
+    display: none;
+}
+.am-navbar-default .active .iconfont+.iconfont{
+    display: block;
+}
+.index-head{
+	width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+/*推广页面*/
+.p-extension{
+	background:url(../images/bg_extension.png);
+	background-size:100% auto;
+	background-repeat:no-repeat;
+	max-width: 100%; 
+	min-height: 450px;
+	display: block;
+}
+.p-extension-btn{
+	padding: 14rem 0;
+}
+.btn-extension-red{
+	background: url(../images/btn-ren.png);
+	background-size:100% 100%;
+	color: #fff;
+	font-size: 2.5rem;
+    padding: 0;	
+    margin: auto;
+    margin-bottom: 2rem;
+}
+.btn-extension-yellow{
+	background: url(../images/btn-yellow.png);
+	background-size:100% 100%;
+	color: #ce2222;
+	font-size: 2.5rem;
+    padding: 0;	
+    margin: auto;
+}
+.btn-extension{
+  	min-height: 4.5rem;
+	max-width: 25rem;
+}
+.btn-extension .btn-extension-text{
+	position: relative;
+	top: -0.4rem;
+}
+@media only screen and (min-width:760px) {
+  .p-extension-btn {
+    padding: 38rem 0;
+  }
+  .btn-extension{
+  	min-height: 7.5rem;
+    max-width: 37rem;
+  }
+}
+@media only screen and (max-width:760px) {
+  .p-extension-btn {
+    padding: 26rem 0;
+  }
+  .btn-extension{
+  	min-height: 4.5rem;
+	max-width: 25rem;
+  }
+}
+@media only screen and (max-width:670px) {
+  .p-extension-btn {
+    padding: 23rem 0;
+  }
+  .btn-extension{
+  	min-height: 6.5rem;
+	max-width: 34rem;
+  }
+}
+@media only screen and (max-width:450px) {
+  .p-extension-btn {
+    padding: 18rem 0;
+  }
+  .btn-extension{
+  	min-height: 4.5rem;
+	max-width: 20rem;
+  }
+}
+@media only screen and (max-width:350px) {
+  .p-extension-btn {
+    padding: 16rem 0;
+  }
+  .btn-extension{
+  	min-height: 3.5rem;
+	max-width: 16rem;
+  }
+}
