@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>测试页面</title>
+    <title>推广页</title>
     <!-- Set render engine for 360 browser -->
     <meta name="renderer" content="webkit">
     <!-- No Baidu Siteapp-->
@@ -22,21 +22,12 @@
     <meta name="msapplication-TileColor" content="#0e90d2">
     <link rel="stylesheet" href="js/AmazeUI-2.7.2/css/amazeui.min.css" />
     <link rel="stylesheet" href="css/iconfont/iconfont.css" />
-    <link rel="stylesheet" href="css/app1.css" />
-    <!-- 移动端适配 -->
-    <script>
-        var html = document.querySelector('html');
-        changeRem();
-        window.addEventListener('resize', changeRem);
-
-        function changeRem() {
-            var width = html.getBoundingClientRect().width;
-            html.style.fontSize = width / 10 + 'px';
-        }
-    </script>
+    <link rel="stylesheet" href="css/app.css" />
+    
 </head>
 
-<body class="p-extension">
+<body>
+	<div class="p-extension">
 	<div class="p-extension-btn">
 		<div class="am-padding-sm">
 			<button class="am-btn-block am-btn btn-extension-red btn-extension">
@@ -47,6 +38,18 @@
 			</button>
 	    </div>
 	</div>
+	</div>
+	<!-- 移动端适配 -->
+    <script>
+        var html = document.querySelector('html');
+        changeRem();
+        window.addEventListener('resize', changeRem);
+
+        function changeRem() {
+            var width = html.getBoundingClientRect().width;
+            html.style.fontSize = width / 10 + 'px';
+        }
+    </script>
     <script src="js/jquery.min.js"></script>
     <script src="js/AmazeUI-2.7.2/js/amazeui.min.js"></script>
 </body>

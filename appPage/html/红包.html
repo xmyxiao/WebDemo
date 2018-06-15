@@ -1,0 +1,152 @@
+<!doctype html>
+<html class="no-js p-bgGraDef">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>红包</title>
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    <link rel="stylesheet" href="js/AmazeUI-2.7.2/css/amazeui.min.css" />
+    <link rel="stylesheet" href="css/iconfont/iconfont.css" />
+     <link rel="stylesheet" href="css/app.css" />
+</head>
+
+<body>
+	<div class="p-index-wrap">
+		<div class="index-head" id="indexHead">
+			<span class="p-js-title1">恭喜：**拆到88.88元红包 恭喜：**拆到56.8元红包</span>
+			<span class="p-js-title2"></span>
+		</div>
+		<div class="p-field-flex">
+			<div class="p-field-left">
+				<span class="text-bg">
+					<span class="text">ID:101666</span>
+				</span>
+			</div>
+			<div class="p-field-right">
+				<span>佣金：223元</span>
+				<a href="#">提现</a>
+			</div>
+		</div>
+		<div id="contentText">
+			<span class="p-js-title1">全民福利大放送，小伙伴们火速转发获取市场第一桶金</span>
+			<span class="p-js-title2"></span>
+		</div>
+		<div class="p-hb-content">
+			<div class="p-field-flex">
+				<div class="p-hb-left">
+					<a href="#">
+					<div class="p-hb-bg">
+						<div class="p-hb-title">10元</div>
+						<div class="p-hb-main">抢1~400元</div>
+					</div>
+					</a>
+				</div>
+				<div class="p-hb-right">
+					<div class="p-hb-bg">
+						<div class="p-hb-title">20元</div>
+						<div class="p-hb-main">抢2~800元</div>
+					</div>
+				</div>
+			</div>
+			<div class="p-field-flex p-hb-line">
+				<div class="p-hb-left">
+					<a href="#">
+					<div class="p-hb-bg">
+						<div class="p-hb-title">50元</div>
+						<div class="p-hb-main">抢15~1500元</div>
+					</div>
+					</a>
+				</div>
+				<div class="p-hb-right">
+					<div class="p-hb-bg">
+						<div class="p-hb-title">100元</div>
+						<div class="p-hb-main">抢20~4000元</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default " id="" style="font-size: 16px;">
+      <ul class="am-navbar-nav am-cf am-avg-sm-4">
+          <li >
+            <a href="#" class="">
+                <span class="p-nav-icon p-navIcon1"></span>
+                <span class="am-navbar-label">抢红包</span>
+            </a>
+          </li>
+          <li >
+            <a href="#" class="">
+                <span class="p-nav-icon p-navIcon2"></span>
+                <span class="am-navbar-label">收入</span>
+            </a>
+          </li>
+          <li data-am-navbar-share>
+            <a href="#" class="">
+                <span class="p-nav-icon p-navIcon3"></span>
+                <span class="am-navbar-label">赚钱</span>
+            </a>
+          </li>
+          <li >
+            <a href="#" class="">
+               	<span class="p-nav-icon p-navIcon4"></span>
+                <span class="am-navbar-label">客服</span>
+            </a>
+          </li>
+      </ul>
+  	</div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/AmazeUI-2.7.2/js/amazeui.min.js"></script>
+    <!-- 移动端适配 -->
+    <script>
+        var html = document.querySelector('html');
+        changeRem();
+        window.addEventListener('resize', changeRem);
+
+        function changeRem() {
+            var width = html.getBoundingClientRect().width;
+            html.style.fontSize = width / 10 + 'px';
+        }
+    </script>
+    <script>
+		var PartArea = $('#indexHead')[0],
+        Scroll1 = $('#indexHead .p-js-title1')[0],
+        Scroll2 = $('#indexHead .p-js-title2')[0];
+        
+        var cPartArea = $('#contentText')[0],
+        cScroll1 = $('#contentText .p-js-title1')[0],
+        cScroll2 = $('#contentText .p-js-title2')[0];
+
+        Scroll2.innerHTML = Scroll1.innerHTML;
+		cScroll2.innerHTML = cScroll1.innerHTML;
+        function roll() {
+            if(Scroll2.offsetWidth - PartArea.scrollLeft <= 0) {
+                PartArea.scrollLeft -= Scroll1.offsetWidth;
+            } else {
+                PartArea.scrollLeft++;
+            }
+            if(cScroll2.offsetWidth - cPartArea.scrollLeft < 0) {
+                cPartArea.scrollLeft -= cScroll1.offsetWidth;
+            } else {
+                cPartArea.scrollLeft++;
+            }
+        }
+        var StopRoll = setInterval(roll, 60);
+	</script>
+</body>
+
+</html>
