@@ -20,16 +20,14 @@
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
     <!-- Tile icon for Win8 (144x144 + tile color) -->
     <meta name="msapplication-TileColor" content="#0e90d2">
-    <link rel="stylesheet" href="js/AmazeUI-2.7.2/css/amazeui.min.css" />
-    <link rel="stylesheet" href="css/iconfont/iconfont.css" />
-     <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/app.css" />
 </head>
 
 <body>
 	<div class="p-index-wrap">
 		<div class="index-head" id="indexHead">
-			<span class="p-js-title1">恭喜：**拆到88.88元红包 恭喜：**拆到56.8元红包</span>
-			<span class="p-js-title2"></span>
+			<span id="p-jsindex-title1">恭喜：**拆到88.88元红包 恭喜：**拆到56.8元红包</span>
+			<span id="p-jsindex-title2"></span>
 		</div>
 		<div class="p-field-flex">
 			<div class="p-field-left">
@@ -43,8 +41,8 @@
 			</div>
 		</div>
 		<div id="contentText">
-			<span class="p-js-title1">全民福利大放送，小伙伴们火速转发获取市场第一桶金</span>
-			<span class="p-js-title2"></span>
+			<span id="p-jscontent-title1">全民福利大放送，小伙伴们火速转发获取市场第一桶金</span>
+			<span id="p-jscontent-title2"></span>
 		</div>
 		<div class="p-hb-content">
 			<div class="p-field-flex">
@@ -109,8 +107,6 @@
           </li>
       </ul>
   	</div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/AmazeUI-2.7.2/js/amazeui.min.js"></script>
     <!-- 移动端适配 -->
     <script>
         var html = document.querySelector('html');
@@ -123,13 +119,13 @@
         }
     </script>
     <script>
-		var PartArea = $('#indexHead')[0],
-        Scroll1 = $('#indexHead .p-js-title1')[0],
-        Scroll2 = $('#indexHead .p-js-title2')[0];
+		var PartArea = document.getElementById('indexHead'),
+        Scroll1 = document.getElementById('p-jsindex-title1'),
+        Scroll2 = document.getElementById('p-jsindex-title2');
         
-        var cPartArea = $('#contentText')[0],
-        cScroll1 = $('#contentText .p-js-title1')[0],
-        cScroll2 = $('#contentText .p-js-title2')[0];
+        var cPartArea = document.getElementById('contentText'),
+        cScroll1 = document.getElementById('p-jscontent-title1'),
+        cScroll2 = document.getElementById('p-jscontent-title2');
 
         Scroll2.innerHTML = Scroll1.innerHTML;
 		cScroll2.innerHTML = cScroll1.innerHTML;
