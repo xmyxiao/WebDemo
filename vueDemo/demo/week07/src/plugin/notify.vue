@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="p-notify">notify的页面</div>
+        <div class="p-notify">{{value}}</div>
     </div>
 </template>
 
@@ -13,7 +13,7 @@
 
         },
         methods:{
-
+			
         },
         computed:{
 
