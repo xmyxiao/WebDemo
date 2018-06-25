@@ -8,7 +8,8 @@ import my from '../components/my.vue';
 
 export default new Router({
   routes: [
-    {path:'/home',component:home},
+	{path:'',component:home},
+  {path:'/home',component:home},
 	{path:'/list',component:list},
 	{path:'/my',component:my}
   ]

@@ -1,26 +1,18 @@
 <template>
-    <div>
-        列表
+    <div id="home">
+        <pageHeader :back="true">
+			列表
+		</pageHeader>
     </div>
 </template>
 
 <script>
+	import pageHeader from '../base/pageHeader.vue'
     export default {
-        data(){
-            return {}
-        },
-        created(){
-
-        },
-        methods:{
-
-        },
-        computed:{
-
-        },
-        components:{
-
-        }
+      name: 'home',
+      components:{
+    	  pageHeader
+      }
     }
 </script>
 
