@@ -8,12 +8,17 @@
 
 <script>
 	import pageHeader from '../base/pageHeader.vue'
-    export default {
-      name: 'home',
-      components:{
-    	  pageHeader
-      }
-    }
+	import {getDataDObj} from '../api';
+	export default {
+		name: 'home',
+		created(){
+			//在创建时获取数据
+			//let res = getDataDObj();
+		},
+		components:{
+			pageHeader
+		}
+	}
 </script>
 
 <style scoped>
