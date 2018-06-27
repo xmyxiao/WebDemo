@@ -1,0 +1,23 @@
+[
+    {
+        "bookId":1,
+        "bookImg":"https://img.javascriptcn.com/9d8b377ba3e80c94906699502cbc501f.png?imageView2/1/w/130",
+        "bookName":"《JavaScript权威指南》",
+        "bookInfo":"《JavaScript权威指南(第6版)(中文版)》PDF",
+        "bookPrice":60
+    },
+    {
+        "bookId":2,
+        "bookImg":"https://img.javascriptcn.com/9d8b377ba3e80c94906699502cbc501f.png?imageView2/1/w/130",
+        "bookName":"《JavaScript权威指南》",
+        "bookInfo":"《JavaScript权威指南(第6版)(中文版)》PDF",
+        "bookPrice":70
+    },
+    {
+        "bookId":3,
+        "bookImg":"https://img.javascriptcn.com/9d8b377ba3e80c94906699502cbc501f.png?imageView2/1/w/130",
+        "bookName":"《JavaScript权威指南》",
+        "bookInfo":"《JavaScript权威指南(第6版)(中文版)》PDF",
+        "bookPrice":80.5
+    }
+]

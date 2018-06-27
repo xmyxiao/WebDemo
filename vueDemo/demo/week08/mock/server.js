@@ -6,7 +6,18 @@ let url = require('url');
 let data = [1,2,3];
 //可以将数据放在一个js文件中  然后进行调用
 //数据文件module.exports= [1,2,3]  导入let data = require('./data')  文件路径
-debugger;
+function read(cb){
+	fs.readFile('./book.json','utf8',function(err,data){
+		if(err || data.length == 0){
+			cb([]);
+		}else{
+			cb(JSON.parse(data));
+		}
+	});	
+}
+read(function(books){
+
+})
 http.createServer((req,res)=>{
 	//node跨域头
 	res.setHeader("Access-Control-Allow-Origin", "*");  
@@ -20,7 +31,10 @@ http.createServer((req,res)=>{
     
 	let {pathname,query} = url.parse(req.url);
 	if(pathname === '/getData'){
-		res.end(JSON.stringify(data));
+		return res.end(JSON.stringify(data));
+	}
+	if(pathname ==='/hot'){
+		
 	}
 }).listen(3000);
 

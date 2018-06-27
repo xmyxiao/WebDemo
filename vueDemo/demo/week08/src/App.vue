@@ -20,11 +20,10 @@ export default {
 		margin: 0;
 		padding: 0;
 	}
-	ul,li:{
+	ul,li{
 		list-style: none;
 	}
-	a:{
-		text-underline: none;
+	a{
 		text-decoration: none;
 	}
 	input,button{

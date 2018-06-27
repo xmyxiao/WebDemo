@@ -1,8 +1,8 @@
 <template>
     <div id="home">
-        <pageHeader :back="false">
-			首页
-		</pageHeader>
+      <pageHeader :back="false">
+				首页
+			</pageHeader>
     </div>
 </template>
 
