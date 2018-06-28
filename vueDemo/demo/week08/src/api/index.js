@@ -1,9 +1,18 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:3000';
 //设置默认请求路径
+axios.defaults.baseURL = 'http://localhost:3000';
+
+//统一拦截结果  将结果处理成res.data
+axios.interceptors.response.use((res)=>{
+	return res.data;
+})
 
 //返回一个promise对象
-export let getDataDObj = () =>{
+export function getDataDObj(){
 	return axios.get('/getData');
+}
+
+export let getHotBook = () => {
+	return axios.get('/hot');
 }
