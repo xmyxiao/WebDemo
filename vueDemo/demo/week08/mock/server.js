@@ -27,7 +27,7 @@ http.createServer((req,res)=>{
 		return res.end();
 	}
 
-	let {pathname,query} = url.parse(req.url);
+	let {pathname,query} = url.parse(req.url,true);  //true将query转为对象
 	if(pathname === '/getData'){
 		return res.end(JSON.stringify(sliders));
 	}

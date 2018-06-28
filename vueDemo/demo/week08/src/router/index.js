@@ -8,9 +8,10 @@ import my from '../components/my.vue';
 
 export default new Router({
   routes: [
-	{path:'',component:home},
+	{path:'/',redirect:'/home'},  //redirect重定向
   {path:'/home',component:home},
 	{path:'/list',component:list},
-	{path:'/my',component:my}
+  {path:'/my',component:my},
+  {path:'*',redirect:'/home'}
   ]
 })
