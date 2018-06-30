@@ -10,6 +10,9 @@
 					<img :src="hot.bookImg" alt="">
 					<span>{{hot.bookName}}</span>
 				</li>
+				<!-- <router-link v-for="hot in book" :to="{name:'detail',params:{bid:hot.bookId}}" :key="index" tag="li"> -->
+				<!-- link里面有按钮的时候  使用@click.stop 阻止冒泡 -->
+				<!-- 传到其他页面时  接收使用{{$route.params.bid}} 这里的参数来自于link的to-->
 			</ul>
 		</div>
     </div>

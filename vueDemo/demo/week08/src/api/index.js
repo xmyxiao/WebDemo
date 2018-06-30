@@ -16,3 +16,7 @@ export function getDataDObj(){
 export let getHotBook = () => {
 	return axios.get('/hot');
 }
+//删除
+export let delBook = (id) => {
+	return axios.delete('./book?id=$(id)');
+}

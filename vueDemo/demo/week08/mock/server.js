@@ -16,6 +16,10 @@ function read(cb){
 		}
 	});
 }
+//写入文件
+/*function write(data,cb){
+	fs.writeFile(path.join(__dirname,'./book.json'),JSON.stringify(data),cb);
+}*/
 
 http.createServer((req,res)=>{
 	//node跨域头
@@ -23,7 +27,7 @@ http.createServer((req,res)=>{
 	res.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 	res.setHeader("Access-Control-Allow-Methods","*");
 	res.setHeader("X-Powered-By",' 3.2.1');
-	if(req.method == 'OPTIONS'){
+	if(req.method == 'OPTIONS'){  //试探性请求
 		return res.end();
 	}
 
@@ -39,6 +43,9 @@ http.createServer((req,res)=>{
 		});
 		return;
 	}
+	/*
+	
+	*/
 }).listen(3000);
 
 //这里可以使用http://localhost:3000/getData 来访问数据
