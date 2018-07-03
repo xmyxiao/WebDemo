@@ -1,0 +1,2 @@
+score ： 扇形得分    
+来源地址 ： http://www.jq22.com/jquery-info9243
