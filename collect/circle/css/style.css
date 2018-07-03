@@ -1,0 +1,45 @@
+.circle {
+    width: 200px;
+    height: 200px;  
+    position: relative;
+    float:left;
+    border-radius: 50%;
+    background: #F64E58;
+    overflow: hidden;
+}
+.pie_left, .pie_right {
+    width: 200px; 
+    height: 200px;
+    position: absolute;
+    top: 0;left: 0;
+}
+.left, .right {
+    width:200px; 
+    height:200px;
+    background:#C3C3C3;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
+.pie_right, .right {
+    clip:rect(0,auto,auto,100px);
+}
+.pie_left, .left {
+    clip:rect(0,100px,auto,0);
+}
+.theValue {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    top: 10px;
+    left: 10px;
+    background: white;
+    position: absolute;
+    text-align: center;
+    line-height: 180px;
+    font-size: 20px;
+    color: #F64E58;;
+
+}
