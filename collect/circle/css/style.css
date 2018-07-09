@@ -21,7 +21,6 @@
     position: absolute;
     top: 0;
     left: 0;
-
 }
 .pie_right, .right {
     clip:rect(0,auto,auto,100px);

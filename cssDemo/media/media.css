@@ -5,6 +5,7 @@ body{
     margin: 0;
     text-align:center;
 }
+/*大于540px时应用*/
 @media(min-width: 540px){
     body{
     	font: 13px/ 1.5 Microsoft YaHei, Helvitica, Verdana, Arial, san-serif;

@@ -7,5 +7,5 @@ WebIM : 网页版聊天工具页面</br>
 table : 表格页面</br>
 camera : 浏览器获取摄像头demo，track人脸检测</br>
 cssDemo : 样式事例</br>
-voidDemo : 播放器测试用例
+voidDemo : 播放器测试用例</br>
 collect : 用过的页面插件
