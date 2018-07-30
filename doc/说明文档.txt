@@ -19,3 +19,4 @@ voidDemo : 视频播放
 vueDemo : vue.js的demo
 WebIM : 仿网页微信的im工具
 zTree : 树型插件
+slashHeader : 斜线表头

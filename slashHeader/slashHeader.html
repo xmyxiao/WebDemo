@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>斜线表头</title>
+		<style>
+			table{
+				border: 1px solid #ccc;
+			}
+			table td{
+				border: 1px solid #ccc;
+			}
+			#SlashHeader{
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<table cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
+	      <tr>
+	          <td style="width: 200px;height: 100px;">
+	          	<div id="SlashHeader">
+	          		
+	          	</div>
+	          </td>
+	          <td>表头1</td>        
+	        </tr>
+	        <tr>
+	            <td>数据1</td>
+	            <td>数据2</td>
+	        </tr> 
+	    </table>
+		<script type="text/javascript" src="../lib/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="js/raphael.min.js"></script>
+		<script type="text/javascript" src="js/slashHeader.js"></script>
+		<script>
+		   $(function() {
+		   		var setting = {
+		   			renderTo: $('#SlashHeader'),
+				    headerArr : ['标题1','标题2','标题3','标题4','标题5'],
+				    initialPoint: 'bottom'
+		   		}
+		   		$.fn.slashHeader(setting);
+		   })
+		</script>
+	</body>
+</html>
