@@ -4,15 +4,15 @@
 		/*
 		* renderTo  渲染位置
 		* headerArr  表头数组
-		* initialPoint  起始点
+		* initialPoint  起始点 top/bottom
 		* stroke  斜线颜色
 		* strokeWidth  斜线宽度
 		* fontClass  标题文字样式
 		* */
-		var me = this;
 		var def = {
 		    renderTo: $(document.body),
 		    headerArr : [],
+		    proportion: [],
 		    initialPoint: 'top',
 		    stroke: '#000',
 		    strokeWidth: 1,
@@ -50,13 +50,31 @@
 		}
 		
 		pointNum = headerArr.length - 1;
-		if(headerArr.length%2 == 0){
-			pointArr[headerArr.length/2-1] = options.renderEnd;
-			if(pointNum-1 > 0){
-				setPointArr()
+		if(proportion.length > 0){
+			proportion.length = headerArr.length;
+			var totalPro = 0,empty = 0;
+			for(var i = 0; i < proportion.length; i++){
+				if(proportion[i]){
+					proportion[i] = parseFloat(proportion[i]);
+					totalPro = parseFloat(totalPro + proportion[i]);
+				}else{
+					empty++;
+				}
+			}
+			if(totalPro > 0 && totalPro <= 100){
+				if(totalPro != 100 || empty != 0){
+					for(var i = 0; i < proportion.length; i++){
+						if(!proportion[i]){
+							proportion[i] = (100-totalPro)/empty;
+						}
+					}
+				}
+				setPointArrByPro();
+			}else{
+				srtAvePoint();
 			}
 		}else{
-			setPointArr();
+			srtAvePoint();
 		}
 		
 		//开始绘制
@@ -105,6 +123,53 @@
 			var div = '<div class="'+options.fontClass+'" style="position:absolute;'
 					+''+fontStyle+'">'+headerArr[i]+'</div>';
 			options.renderTo.append(div);
+		}
+		function srtAvePoint(){
+			if(headerArr.length%2 == 0){
+				pointArr[headerArr.length/2-1] = options.renderEnd;
+				if(pointNum-1 > 0){
+					setPointArr();
+				}
+			}else{
+				setPointArr();
+			}
+		}
+		function setPointArrByPro(){
+			for(var i = 0; i < proportion.length; i++){
+				if(!proportion[i] || proportion[i] == 0){
+					proportion.splice(i,1);
+					headerArr.splice(i,1);
+					i--;
+				}
+			}
+			var proArea = 0;
+			for(var i = 0; i < proportion.length; i++){
+				proArea +=  proportion[i];
+				if(proArea > 50){
+					if(proArea - proportion[i] < 50){
+						proportion[i] = proportion[i] - (50 - (proArea - proportion[i]));
+					}
+					var item = {};
+					item.x = options.renderWidth;
+					if(options.initialPoint == 'top'){
+						item.y = options.renderHeight - options.renderHeight * 2 *proportion[i]/100
+					}else{
+						item.y = options.renderHeight * 2 *proportion[i]/100
+					}
+					
+					pointArr[i] = item;
+				}else{
+					var item = {
+						'x':options.renderWidth * 2 *proportion[i]/100
+					}
+					if(options.initialPoint == 'top'){
+						item.y = options.renderEnd.y;
+					}else{
+						item.y = 0;
+					}
+					pointArr[i] = item;
+				}
+			}
 		}
 		function setPointArr(){
 			for(var i = 0; i < pointNum; i++){
