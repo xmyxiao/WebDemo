@@ -83,6 +83,8 @@
 					fontStyle = 'right:0;top:'+divY+'px';
 				}else if(Math.abs(pointArr[i].x - pointArr[i-1].x) > 0){
 					fontStyle = 'left:'+pointArr[i-1].x+'px;bottom:0;';
+				}else if(headerArr.length == 2 && i == 1){
+					fontStyle = 'right:0;top:0';
 				}
 			}else{
 				if(i == 0){
@@ -96,6 +98,8 @@
 					fontStyle = 'right:0;bottom:'+divY+'px';
 				}else if(Math.abs(pointArr[i].x - pointArr[i-1].x) > 0){
 					fontStyle = 'left:'+pointArr[i-1].x+'px;top:0;';
+				}else if(headerArr.length == 2 && i == 1){
+					fontStyle = 'right:0;bottom:0';
 				}
 			}
 			var div = '<div class="'+options.fontClass+'" style="position:absolute;'
