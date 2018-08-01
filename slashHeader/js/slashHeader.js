@@ -48,7 +48,7 @@
 			options.renderStart = {'x': 0,'y': options.renderHeight};
 			options.renderEnd = {'x': options.renderWidth,'y': 0};
 		}
-		
+		var proportion = options.proportion;
 		pointNum = headerArr.length - 1;
 		if(proportion.length > 0){
 			proportion.length = headerArr.length;
@@ -145,22 +145,20 @@
 			var proArea = 0;
 			for(var i = 0; i < proportion.length; i++){
 				proArea +=  proportion[i];
-				if(proArea > 50){
-					if(proArea - proportion[i] < 50){
-						proportion[i] = proportion[i] - (50 - (proArea - proportion[i]));
-					}
+				if(proArea == 100){
+					return;
+				}else if(proArea > 50){
 					var item = {};
 					item.x = options.renderWidth;
 					if(options.initialPoint == 'top'){
-						item.y = options.renderHeight - options.renderHeight * 2 *proportion[i]/100
+						item.y = options.renderHeight - options.renderHeight * 2 *(proArea-50)/100
 					}else{
-						item.y = options.renderHeight * 2 *proportion[i]/100
+						item.y = options.renderHeight * 2 *(proArea-50)/100
 					}
-					
 					pointArr[i] = item;
 				}else{
 					var item = {
-						'x':options.renderWidth * 2 *proportion[i]/100
+						'x':options.renderWidth * 2 *proArea/100
 					}
 					if(options.initialPoint == 'top'){
 						item.y = options.renderEnd.y;
