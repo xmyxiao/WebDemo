@@ -1,0 +1,2 @@
+promise  http://www.cnblogs.com/rubylouvre/p/3495286.html
+(还不是很理解，异步处理？)
