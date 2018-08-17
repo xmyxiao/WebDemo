@@ -1,7 +1,32 @@
-box-sizing : 设置盒子模型  border-box 从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度（宽高不会被撑开）
-			 content-box在宽度和高度之外绘制元素的内边距和边框（宽高会被撑开）
+box-sizing 
+	盒子模型  border-box 从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度（宽高不会被撑开）
+	content-box在宽度和高度之外绘制元素的内边距和边框（宽高会被撑开）
 
-vertical-align:middle  垂直无效   vertical-align属性只对行元素有效  对块元素无效
+vertical-align:middle  垂直无效   
+	vertical-align属性只对行元素有效  对块元素无效
 
-line-height  行高  不允许使用负值  设置为数值为固定的行间距    设为百分比是基于当前字体尺寸的百分比行间距
+line-height  
+	行高  不允许使用负值  设置为数值为固定的行间距    设为百分比是基于当前字体尺寸的百分比行间距
+
+css reset 和 normalize.css 有什么区别
+	reset 的目的，是将所有的浏览器的自带样式重置掉，这样更易于保持各浏览器渲染的一致性。(抛弃默认样式)
+	normalize 让所有浏览器的标签都跟标准规定的默认样式一致，各浏览器上的标签默认样式基本统一。(统一默认标签)
+
+如何居中
+	水平居中
+		内联：父级元素 text-align:center;
+		块级：margin-left: auto; margin-right: auto;
+	垂直居中
+		table自带功能
+		div 装成 table(display:table)
+		margin-top -50%
+	使用flex
+		display:flex;
+  		align-items:center;/*垂直居中*/
+  		justify-content: center;/*水平居中*/
+  		
+选择器优先级如何确定
+	选择器越具体，优先级越高。 #xxx 大于 .yyy
+	同样优先级，写在后面的覆盖前面的。
+	!important; 优先级最高。
 
