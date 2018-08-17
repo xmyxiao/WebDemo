@@ -4,6 +4,7 @@
 		/*
 		* renderTo  渲染位置
 		* headerArr  表头数组
+		* proportion  表头数组百分比
 		* initialPoint  起始点 top/bottom
 		* stroke  斜线颜色
 		* strokeWidth  斜线宽度
@@ -189,11 +190,9 @@
 					}else{
 						item.y = Number((options.renderHeight/ (headerArr.length/2) * (i-headerArr.length/2+1)).toFixed(2));
 					}
-					
 					pointArr[i] = item;
 				}
 			}
 		}
-		
 	}
 })(jQuery);
