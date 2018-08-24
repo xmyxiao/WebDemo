@@ -1,2 +1,14 @@
-promise  http://www.cnblogs.com/rubylouvre/p/3495286.html
-(还不是很理解，异步处理？)
+jq为什么出现
+	容易上手，强大的选择器，节约开发时间，丰富的UI，完善的事件机制，Ajax的封装。
+
+alert输出换行  :\\n
+
+promise  
+	http://www.cnblogs.com/rubylouvre/p/3495286.html
+	(还不是很理解，异步代码？)
+
+跨域的解决方法和原理
+
+继承
+
+apply和cell方法的作用与差异
