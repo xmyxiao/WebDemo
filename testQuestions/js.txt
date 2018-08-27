@@ -3,6 +3,15 @@ jq为什么出现
 
 alert输出换行  :\\n
 
+js的数据类型有哪些
+	string
+	number  (typeof NaN === 'number')
+	bool
+	undefined
+	null
+	object
+	symbol  (es6新增数据类型)
+
 promise  
 	http://www.cnblogs.com/rubylouvre/p/3495286.html
 	(还不是很理解，异步代码？)

@@ -29,4 +29,25 @@ css reset 和 normalize.css 有什么区别
 	选择器越具体，优先级越高。 #xxx 大于 .yyy
 	同样优先级，写在后面的覆盖前面的。
 	!important; 优先级最高。
-
+	
+BFC是什么
+	BFC(Block Formatting Context)是Web页面中盒模型布局的CSS渲染模式。
+	直译为"块级格式化上下文"。  比较常用到的是清除浮动和取消父子元素margin重叠
+	清除浮动
+		1. 在父元素设置overflow:hidden;
+		2. .clearFix : after{
+			  display:block;
+			  content:'';
+			  clear:both;
+			  zoom:1;  /*为了兼容ie*/
+			}
+		比较推荐在父元素添加.clearFix的这种处理方法
+	取消父子元素margin重叠
+		在页面中我们设置父元素为margin-top：10px;子元素为margn-top:20px;
+		实际我们得到的页面中父元素的margin-top也为20px这种现象就叫做margin重叠
+		
+		处理方式  
+			1.父元素设置overflow:hidden;
+			2.父元素设置padding-top:0.1px;  父元素有padding-top的值的时候margin重叠不会发生  这里
+			的值只要不为0就可以生效  这里设置为0.1px的主要目的是尽量不影响布局。
+			
