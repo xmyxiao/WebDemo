@@ -12,7 +12,25 @@ js的数据类型有哪些
 	object
 	symbol  (es6新增数据类型)
 
-promise  
+promise
+	使用方法
+		.then  
+			$.ajax(...).then(成功函数/失败函数);
+		
+		链式then
+			$.ajax(...).then(成功函数/失败函数).then(成功函数/失败函数);
+			这里即使第一个then触发失败函数  第二个then也会执行
+			
+		自己生成Promise
+			function pro(){
+				return new Promise(function(resolve,reject){
+					setTimeout(()=>{
+						resolve()或reject();    //调用成功函数或者失败函数
+					},3000)
+				})
+			}
+			调用  pro().then(...);
+			
 	http://www.cnblogs.com/rubylouvre/p/3495286.html
 	(还不是很理解，异步代码？)
 
