@@ -33,6 +33,47 @@ promise
 			
 	http://www.cnblogs.com/rubylouvre/p/3495286.html
 	(还不是很理解，异步代码？)
+	
+ajax 
+	let xhr = new XMLHTTPRequest();
+	xhr.open('POST','/xxx');
+	xhr.onreadystatechange = function(){
+		if(xhr.readystate === 4 && xhr.status === 200){
+			console.log(xhr.responseText);
+		}
+	}
+	xhr.send('a=1&b=2');
+
+闭包
+	function foo(){
+		var local = 1;
+		function bar(){
+			local++;
+			return local;
+		}
+		return bar;
+	}
+	
+	var func = foo(); 
+	func();  每次执行则 local+1
+
+this的指向
+	1. fn() 里面的this就是window
+	2. fn() 是strict mode(严格模式) this是undefined
+	3. a.fn()  里面的this就是a 也就是this指向实例
+	4. new fn() 里面的this就是新生成的实例
+	5. ()=>console.log(this)  里面的this和外面的this等值
+	
+立即执行函数
+	;(function(){
+		
+	})() 	
+	主要用于制造一个函数作用域  避免污染全局变量
+	最前面的分号是用于避免解析出错（防御性分号）
+	es6中可以直接使用{}制造一个函数作用域
+
+async/await 语法以及目的
+	
 
 跨域的解决方法和原理
 
