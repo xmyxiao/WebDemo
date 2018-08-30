@@ -73,7 +73,47 @@ this的指向
 	es6中可以直接使用{}制造一个函数作用域
 
 async/await 语法以及目的
+	function returnPromise(){
+		return new Promise(function(resolve,reject){
+			setTimeout(() => {
+				resolve('func')
+			},3000)
+		})
+	}
+	returnPromise.then((result) => {
+		result === 'func'
+	})
+	var result = await returnPromise()  //注意只有控制台支持顶级作用域的await,js文件里的await只能写在async函数里
+	result === 'func'
 	
+	目的： 把异步代码写成同步
+	在vue中可以用于数据返回后进行操作
+	
+js实现深度拷贝
+	1.json拷贝
+		var a = {...}
+		var b = JSON.parse(JSON.stringify(a))
+		缺点： json不支持函数、引用、undefined、RegExp、Date...
+	2.递归遍历一个对象  再将值传入到一个对象中
+	
+数组去重
+	Array.form(new Set(a))
+	
+js原型
+	var a = [1,2,3]
+	这里的a.push() 方法就来自Array  也就是Array.prototype  而Array.prototype就是这里数组a的原型
+	a.__proto__ === Array.prototype
+
+class
+	class polygon{
+		constructor(height,width){  //构造函数
+			this.height = height;
+			this.width = width;
+		}
+	}
+	let square = New polygon(10,10);
+	
+js实现继承
 
 跨域的解决方法和原理
 
