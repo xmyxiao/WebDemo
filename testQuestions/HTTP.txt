@@ -1,0 +1,16 @@
+http 状态码有哪些
+
+301与302的区别
+
+HTTP缓存怎么做
+
+cache-control和Etag的区别是什么
+
+cookie  session localStorage
+
+get和post的区别
+
+怎么跨域  jsonp是什么  cors是什么   postMessage是什么
+
+从输入URL到页面展现中间发生了什么
+

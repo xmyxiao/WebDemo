@@ -114,9 +114,77 @@ class
 	let square = New polygon(10,10);
 	
 js实现继承
+	function Animal(){
+		this.body = '身体'
+	}
+	
+	Animal.prototype.move = function(){
+		console.log('跑');
+	}
+	
+	function human(name){
+		Animal.apply(this,arguments)     //apply 第一个参数代替Animal里面的this对象
+		this.name = name                 //第二个是一个参数数组  用于参数传递    call方法第一个参数相同  后面是一个列表
+	}
+	
+	human.prototype.useTools = function(){
+		console.log('使用工具')
+	}
+	
+	var frank = new Human();
+	
+	extends实现方法  使用es6的class
+	class Animal{
+		constructor(){
+			this.body = '身体'
+		},
+		move(){
+			console.log('跑')
+		}
+	}
+	class human extends Animal{
+		constructor(name){
+			super()     //es6语法要求  子类的构造函数必须执行一次super函数
+			this.name = name
+		},
+		useTools(){
+			console.log('使用工具')
+		}
+	}
+	var frank = New human()
 
-跨域的解决方法和原理
-
-继承
 
 apply和cell方法的作用与差异
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

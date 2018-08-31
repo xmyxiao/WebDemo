@@ -1,0 +1,11 @@
+vue有哪些生命周期钩子函数
+
+vue如何实现组件间通信
+
+Vuex的作用是什么
+
+vueRouter的作用是什么
+
+vue的双向绑定如何实现  有什么缺点
+
+computed计算属性的用法  跟methods的区别
