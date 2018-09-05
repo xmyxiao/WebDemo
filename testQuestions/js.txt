@@ -155,6 +155,19 @@ js实现继承
 
 
 apply和cell方法的作用与差异
+	apply：调用一个对象的一个方法，用另一个对象替换当前对象。例如：B.apply(A, arguments);即A对象应用B对象的方法。
+	call：调用一个对象的一个方法，用另一个对象替换当前对象。例如：B.call(A, args1,args2);即A对象调用B对象的方法。
+	
+	相同
+		方法的含义是一样的，即方法功能是一样的；
+		第一个参数的作用是一样的；
+	
+	不同
+		call可以传入多个参数；
+		apply只能传入两个参数，所以其第二个参数往往是作为数组形式传入
+	作用
+		实现（多重）继承
+	https://blog.csdn.net/wukongtutu/article/details/79660063
 
 
 
