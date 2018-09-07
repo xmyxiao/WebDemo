@@ -14,7 +14,9 @@ HTTP缓存怎么做
 	js和css文件通过加？v=1 这种方式避开缓存
 	
 cache-control和Etag的区别是什么
-	http缓存
+	都是http缓存
+	Cache-Control响应头信息中max-age=[秒]类似于过期时间
+	ETag在没有变化时不重新下载数据。
 	
 cookie  session localStorage
 	cookie

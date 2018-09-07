@@ -1,5 +1,18 @@
 vue有哪些生命周期钩子函数
-
+	https://cn.vuejs.org/v2/guide/instance.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%9B%BE%E7%A4%BA
+	
+	beforeCreate  //实例创建前
+	created       //实例创建后
+	beforeMount   //实例挂载前
+	mounted       //实例挂载后
+	beforeUpdate  //数据更新前
+	updated       //数据更新后
+	activated     //组件激活
+	deactivated   //组件停用
+	beforeDestroy //实例销毁前
+	destroyed     //实例销毁后
+	errorCaptured //获取子孙组件错误(2.5新增)
+	
 vue如何实现组件间通信
 
 Vuex的作用是什么
