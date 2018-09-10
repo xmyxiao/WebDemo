@@ -37,7 +37,22 @@ computed计算属性的用法  跟methods的区别
 	不同：计算属性是基于它们的依赖进行缓存的，只有相关依赖会发生改变时才会重新求值。只要相关依赖未改变，只会返回之前的结果，不再执行函数。
 	
 webpack转译的文件过大怎么办
-
+	1.去除不必要的插件
+	2.提取第三方库
+	3.代码压缩
+		webpack 自带了一个压缩插件 UglifyJsPlugin，只需要在配置文件中引入即可。
+	4.代码分割
+		通过 webpack 的 code split 实现
+	5.设置缓存
+	6.按需加载
+	
 webpack转译速度慢怎么处理
-
+	https://segmentfault.com/a/1190000006087638
+	
 webpack loader
+	https://www.webpackjs.com/concepts/loaders/
+	loader 用于对模块的源代码进行转换。
+	有三种使用 loader 的方式：
+		配置（推荐）：在 webpack.config.js 文件中指定 loader。
+		内联：在每个 import 语句中显式指定 loader。
+		CLI：在 shell 命令中指定它们。
