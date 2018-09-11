@@ -26,3 +26,12 @@ body{
     	font: 40px/ 1.5 Microsoft YaHei, Helvitica, Verdana, Arial, san-serif;
     }
 }
+
+@media(max-width: 1500px) { /*当屏幕尺寸小于1500px时，应用下面的CSS样式*/
+	.snake-panel-80 {
+		width: calc(100% - 300px);
+	}
+	.snake-panel-20 {
+		width: 300px;
+	}
+}

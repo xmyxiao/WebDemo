@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>svg弹幕评论</title>
+	</head>
+	<body>
+		<svg width="1600" height="200">
+			<text font-family="microsoft yahei" font-size="20" y="40" x="584.334" fill="#FFCBD4">
+				<tspan class="135brush" data-brushtype="text">
+					文字
+				</tspan>
+				<animate attributeName="x" values="800;-400" begin="0s" dur="18s" repeatCount="indefinite"></animate>
+			</text>
+		</svg>
+		<script>
+			/*
+			svg中的<animate>标签：
+				随时间动态改变属性
+				attributeName="目标属性名称"
+				from="起始值"
+				to="结束值"
+				dur="持续时间"
+				repeatCount="动画时间将发生"
+			 	repeatCount="indefinite"  重复方式，indefinite无限重复  
+			 	begin="0s"     开始时间，即延迟 
+			 * */
+		</script>
+	</body>
+</html>
