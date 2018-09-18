@@ -1,56 +1,40 @@
 <template>
   <div id="app">
-    <el-row class="main">
-      <el-col :span="24">
-        <div class="p-design-header">
-          <headerNavBar></headerNavBar>
-          <breadcrumbNav></breadcrumbNav>
+    <div class="main">
+      <div class="p-design-header">
+        <headerNavBar></headerNavBar>
+        <breadcrumbNav></breadcrumbNav>
+      </div>
+      <div class="p-design-body clearFix">
+        <div class="p-design-left">
+
         </div>
-      </el-col>
-      <el-col :span="24" class="p-design-body">
-        <el-col :span="5" class="p-all-height">
-          <div class="p-design-left">
-            <asideLeft></asideLeft>
-          </div>
-        </el-col>
-        <el-col :span="14" class="p-all-height">
+        <div  class="p-design-main">
           <div class="p-design-content">主体</div>
           <div class="p-design-bottom">
-            <contentBottom></contentBottom>
+           
           </div>
-        </el-col>
-        <el-col :span="5" class="p-all-height">
-          <div class="p-design-right">
-            <asideRight></asideRight>
-          </div>
-        </el-col>
-      </el-col>
-      <el-col :span="24">
-        <div class="p-design-foot">
-          <pageFoot></pageFoot>
         </div>
-      </el-col>
-    </el-row>
+        <div class="p-design-right">
+
+        </div>
+      </div>
+      <div class="p-design-foot">
+          
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import headerNavBar from './components/headerNavBar.vue'
 import breadcrumbNav from './components/breadcrumbNav.vue'
-import asideLeft from './components/asideLeft.vue'
-import asideRight from './components/asideRight.vue'
-import pageFoot from './components/pageFoot.vue'
-import contentBottom from './components/contentBottom.vue'
 
 export default {
   name: 'App',
   components:{
     headerNavBar,
-    breadcrumbNav,
-    asideLeft,
-    asideRight,
-    pageFoot,
-    contentBottom
+    breadcrumbNav
   }
 }
 </script>
@@ -63,7 +47,7 @@ export default {
   width: 100%;
   height:100%;
 }
-*{
+html,body,div,p,table,ul,li{
   margin: 0;
   padding: 0;
 }
@@ -72,25 +56,43 @@ html,body,.main{
   height: 100%;
   font-size: 14px;
 }
-.p-all-height{
-  height:100%;
+ul,li{
+  list-style: none;
 }
 .p-design-header{
+  width:100%;
   height: 70px;
-  background-color: #02a6ff;
 }
 .p-design-body{
   height:calc(100% - 100px);
   height:-moz-calc(100% - 100px);
   height:-webkit-calc(100% - 100px);
 }
+.clearFix : after{
+  display:block;
+  content:'';
+  clear:both;
+  zoom:1;
+}
 .p-design-left{
+  float:left;
+  width:20%;
   height: 100%;
   border-right:1px solid #ccc;
+  box-sizing: border-box;
+}
+.p-design-main{
+  float:left;
+  width:60%;
+  height: 100%;
+  box-sizing: border-box;
 }
 .p-design-right{
+  float:left;
+  width:20%;
   height: 100%;
   border-left:1px solid #ccc;
+  box-sizing: border-box;
 }
 .p-design-content{
   width: 100%;
