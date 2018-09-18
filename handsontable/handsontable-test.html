@@ -38,8 +38,8 @@
 			  afterRemoveCol : onAfterRemoveCol,
 			  beforeRowMove : onBeforeRowMove,
 			  afterRowMove : onAfterRowMove,
-			  beforeColMove : onBeforeColMove,
-			  afterColMove : onAfterColMove
+			  beforeColumnMove : onBeforeColMove,
+			  afterColumnMove : onAfterColMove
 			});
 			
 			function onAfterCreateRow(index,amount,source){
@@ -72,9 +72,12 @@
 					rowAr.push(that.getRowHeight(i) || 23);
 				}
 				if(rows > target){
-					rowAr[rows] = rowAr.splice(target, 1, rowAr[rows])[0];
+					if(target > 1){target = target -1}
+					rowAr.splice(target,0,rowAr[rows]);
+					roeAr.splic(rows[0]+1,1)
 				}else{
-					rowAr[rows] = rowAr.splice(target-1, 1, rowAr[rows])[0];
+					rowAr.splice(target,0,rowAr[rows]);
+					roeAr.splic(rows[0],1)
 				}
 				
 				var r = that.getPlugin('ManualRowResize');
@@ -146,9 +149,12 @@
 					colAr.push(that.getColWidth(i) || 50);
 				}
 				if(cols > target){
-					colAr[cols] = colAr.splice(target, 1, colAr[cols])[0];
+					if(target > 1){target = target -1}
+					colAr.splice(target,0,colAr[cols]);
+					colAr.splic(cols[0]+1,1)
 				}else{
-					colAr[cols] = colAr.splice(target-1, 1, colAr[cols])[0];
+					colAr.splice(target,0,colAr[cols]);
+					colAr.splic(cols[0],1)
 				}
 				
 				var r = that.getPlugin('ManualColumnResize');
@@ -161,7 +167,7 @@
 				var that = this;
 				var colAr = [];
 				var $move = that.getPlugin("ManualColumnMove");
-				colAr = that.getSettings().rowHeights.concat();
+				colAr = that.getSettings().colWidths.concat();
 				
 				var r = that.getPlugin('ManualColumnResize');
 				for(var j = 0; j < colAr.length; j++){
