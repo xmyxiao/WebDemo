@@ -7,16 +7,16 @@
       </div>
       <div class="p-design-body clearFix">
         <div class="p-design-left">
-
+          <asideLeft></asideLeft>
         </div>
         <div  class="p-design-main">
           <div class="p-design-content">主体</div>
           <div class="p-design-bottom">
-           
+            <contentBottom></contentBottom>
           </div>
         </div>
         <div class="p-design-right">
-
+          <asideRight></asideRight>
         </div>
       </div>
       <div class="p-design-foot">
@@ -29,12 +29,18 @@
 <script>
 import headerNavBar from './components/headerNavBar.vue'
 import breadcrumbNav from './components/breadcrumbNav.vue'
+import asideLeft from './components/asideLeft.vue'
+import asideRight from './components/asideRight.vue'
+import contentBottom from './components/contentBottom.vue'
 
 export default {
   name: 'App',
   components:{
     headerNavBar,
-    breadcrumbNav
+    breadcrumbNav,
+    asideLeft,
+    asideRight,
+    contentBottom
   }
 }
 </script>
@@ -68,7 +74,7 @@ ul,li{
   height:-moz-calc(100% - 100px);
   height:-webkit-calc(100% - 100px);
 }
-.clearFix : after{
+.clearFix:after{
   display:block;
   content:'';
   clear:both;
@@ -76,20 +82,20 @@ ul,li{
 }
 .p-design-left{
   float:left;
-  width:20%;
+  width:15%;
   height: 100%;
   border-right:1px solid #ccc;
   box-sizing: border-box;
 }
 .p-design-main{
   float:left;
-  width:60%;
+  width:70%;
   height: 100%;
   box-sizing: border-box;
 }
 .p-design-right{
   float:left;
-  width:20%;
+  width:15%;
   height: 100%;
   border-left:1px solid #ccc;
   box-sizing: border-box;
