@@ -21,25 +21,39 @@
 			
 			var container = document.getElementById('example');
 			var hot = new Handsontable(container, {
-			  data: data,
-			  rowHeaders: true,
-			  colHeaders: true,
-			  contextMenu : true,
-			  manualRowResize : true,
-			  manualColumnResize : true,
-			  manualColumnMove : true,
-			  manualRowMove : true,
-			  manualColumnFreeze : true,
-			  copyPaste : true,
-			  wordWrap : true,
-			  afterCreateRow : onAfterCreateRow ,
-			  afterRemoveRow : onAfterRemoveRow,
-			  afterCreateCol : onAfterCreateCol,
-			  afterRemoveCol : onAfterRemoveCol,
-			  beforeRowMove : onBeforeRowMove,
-			  afterRowMove : onAfterRowMove,
-			  beforeColumnMove : onBeforeColMove,
-			  afterColumnMove : onAfterColMove
+				data: data,
+				rowHeaders: true,
+				colHeaders : function(){
+					function returnNumber(index){
+						var str = '';
+						if(index > 25){
+							var prv = parseInt(index/26);
+							index = index - 26 * prv;
+							str = returnNumber(prv - 1);
+						}
+						str += String.fromCharCode(65 + index);
+						return str;
+					}
+					var numStr = index + 1;
+					var num = returnNumber(index) + '(' + numStr + ')';
+					return num;
+				},
+				contextMenu : true,
+				manualRowResize : true,
+				manualColumnResize : true,
+				manualColumnMove : true,
+				manualRowMove : true,
+				manualColumnFreeze : true,
+				copyPaste : true,
+				wordWrap : true,
+				afterCreateRow : onAfterCreateRow ,
+				afterRemoveRow : onAfterRemoveRow,
+				afterCreateCol : onAfterCreateCol,
+				afterRemoveCol : onAfterRemoveCol,
+				beforeRowMove : onBeforeRowMove,
+				afterRowMove : onAfterRowMove,
+				beforeColumnMove : onBeforeColMove,
+				afterColumnMove : onAfterColMove
 			});
 			
 			function onAfterCreateRow(index,amount,source){
@@ -203,6 +217,27 @@
 				that.view.render();
 				that.view.wt.wtOverlays.adjustElementsSize(true);
 			}
+			/*
+			 * 拆分:hot.mergeCells.mergedCellInfoCollection.serInfo({row:'',col:'',colspan:'',rowspan:''})
+			 * 设置合并的网格
+			 * 合并网格都存在mergedCellInfoCollection中
+			 * hot.render()//刷新表格
+			 * 
+			 * 菜单可以使用
+			 * contextMenu : {
+			 * 	items : {
+			 * 		'row_above' : {},
+			 * 		'row_below' : {},
+			 * 		'hsep1' : '---------' //分隔线
+			 * 		'split_cells' : {
+			 * 			name : '拆分',
+			 * 			callback : function(key,options){
+			 * 				//执行
+			 * 			}
+			 * 		}
+			 * 	}
+			 * }
+			 * */
 		</script>
 	</body>
 </html>
