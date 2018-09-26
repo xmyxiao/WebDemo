@@ -23,7 +23,7 @@
 			var hot = new Handsontable(container, {
 				data: data,
 				rowHeaders: true,
-				colHeaders : function(){
+				colHeaders : function(index){
 					function returnNumber(index){
 						var str = '';
 						if(index > 25){
@@ -39,6 +39,7 @@
 					return num;
 				},
 				contextMenu : true,
+				mergeCells:true,
 				manualRowResize : true,
 				manualColumnResize : true,
 				manualColumnMove : true,
