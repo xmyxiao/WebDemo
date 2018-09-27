@@ -1,0 +1,7 @@
+错误描述：在A弹框点击按钮弹出B弹出框，但是在B弹出框弹出后，获取当前焦点弹框获取到的却是A弹框
+解决：A弹框点击按钮时需要阻止冒泡与默认事件
+	event.stopPropagation();
+	event.preventDefault();
+	
+原理：在B弹框弹出后A按钮的冒泡事件会导致bjui-dialog.js中的$dialog点击事件触发
+	 进而触发switchDialog($dialog)事件  导致焦点重新切换会A弹出框
