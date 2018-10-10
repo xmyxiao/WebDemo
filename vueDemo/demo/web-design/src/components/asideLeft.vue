@@ -1,34 +1,63 @@
 <template>
   <div class="p-tab-nav clearFix">
     <div class="tab-head">
-      <div class="item" @click="selectItem = 0" :class="{'selected':selectItem === 0}">标签1</div>
+      <div class="item" @click="selectItem = 0" :class="{'selected':selectItem === 0}">
+      	标签1
+      </div>
       <div class="item" @click="selectItem = 1" :class="{'selected':selectItem === 1}">标签2</div>
       <div class="item" @click="selectItem = 2" :class="{'selected':selectItem === 2}">标签3</div>
       <div class="item" @click="selectItem = 3" :class="{'selected':selectItem === 3}">标签4</div>
     </div>
     <div class="tab-body">
       <div v-show="selectItem===0" class="item">
-        标签1
+        	<ul class="viewlist">
+				    <li v-for="(item,index) in views"
+				        :key="index"
+				        draggable="true"
+				        @dragstart="handleDrag(item,$event)">{{item.cname}}</li>
+				  </ul>
       </div>
       <div v-show="selectItem===1"  class="item">
-        标签2
+        	标签2
       </div>
       <div v-show="selectItem===2"  class="item">
-        标签3
+        	标签3
       </div>
       <div v-show="selectItem===3"  class="item">
-        标签4
+        	标签4
       </div>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
-  data() {
+  name: 'leftList',
+  data () {
     return {
-      selectItem : 0
-    };
+    	selectItem : 0,
+      views: [
+        { name: 'FInput', cname: '输入框' },
+        { name: 'FRadioGroup', cname: '单选按钮组' },
+        { name: 'FSelect', cname: '下拉框' },
+        { name: 'FDate', cname: '日期时间选择器' },
+        { name: 'FCheckBoxGroup', cname: '复选框组' },
+        { name: 'FButtonGroup', cname: '按钮组' },
+        { name: 'FSwitch', cname: '开关按钮' },
+        { name: 'FTextArea', cname: '多行文本框' }
+      ]
+    }
+  },
+  methods: {
+    handleDrag (item, event) {
+    	debugger;
+      event.dataTransfer.setData('component', JSON.stringify(item))
+      // console.log(item, event)
+    }
+  },
+  mounted () {
+
   }
 }
 </script>

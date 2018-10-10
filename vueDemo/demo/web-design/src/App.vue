@@ -10,7 +10,8 @@
           <asideLeft></asideLeft>
         </div>
         <div  class="p-design-main">
-          <div class="p-design-content">主体</div>
+          <div class="p-design-content">
+          </div>
           <div class="p-design-bottom">
             <contentBottom></contentBottom>
           </div>
