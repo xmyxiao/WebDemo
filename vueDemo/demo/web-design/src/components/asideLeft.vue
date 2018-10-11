@@ -51,7 +51,6 @@ export default {
   },
   methods: {
     handleDrag (item, event) {
-    	debugger;
       event.dataTransfer.setData('component', JSON.stringify(item))
       // console.log(item, event)
     }
@@ -102,4 +101,22 @@ export default {
     padding:10px;
     box-sizing: border-box;
   }
+</style>
+<style lang="scss" scoped>
+.viewlist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  > li {
+    margin: 0;
+    padding: 0;
+    height: 30px;
+    line-height: 30px;
+    background: aliceblue;
+    cursor: move;
+  }
+  > li:hover {
+    background: bisque;
+  }
+}
 </style>

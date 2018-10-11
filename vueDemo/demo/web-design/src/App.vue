@@ -11,6 +11,7 @@
         </div>
         <div  class="p-design-main">
           <div class="p-design-content">
+          	<edit></edit>
           </div>
           <div class="p-design-bottom">
             <contentBottom></contentBottom>
@@ -33,6 +34,7 @@ import breadcrumbNav from './components/breadcrumbNav.vue'
 import asideLeft from './components/asideLeft.vue'
 import asideRight from './components/asideRight.vue'
 import contentBottom from './components/contentBottom.vue'
+import edit from './components/edit.vue'
 
 export default {
   name: 'App',
@@ -41,7 +43,8 @@ export default {
     breadcrumbNav,
     asideLeft,
     asideRight,
-    contentBottom
+    contentBottom,
+    edit
   }
 }
 </script>

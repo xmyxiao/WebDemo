@@ -1,0 +1,40 @@
+.masking {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: move;
+  box-sizing: border-box;
+}
+.masking:hover {
+  background-color: rgba(255, 0, 255, 0.1);
+  border: 1px solid black;
+}
+
+.masking:hover .masking__edit {
+  display: flex;
+}
+.masking__edit {
+  display: none;
+  position: absolute;
+  right: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  height: 30px;
+  line-height: 30px;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+.masking__edit__item {
+  cursor: pointer;
+  display: block;
+}
+.masking__edit__item + .masking__edit__item {
+  margin-left: 10px;
+}
+.masking__edit__item:hover {
+  background-color: pink;
+}
