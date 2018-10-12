@@ -1,12 +1,14 @@
 <template>
-  <label :label="labelName"
-                :style="styles">
-    <input v-model="result"></input>
+	<div class="form-item">
+  <label :label="labelName" :style="styles">
+  	<span>{{labelName}}</span>
+    <input v-model="result" />
   </label>
+  </div>
 </template>
 
 <script>
-//import Editor from './editor'
+import Editor from './editor'
 export default {
   name: 'FInput',
   data () {
@@ -18,12 +20,17 @@ export default {
     }
   },
   methods: {
-    /*getEditor () {
+    getEditor () {
       return Editor
-    }*/
+    }
   }
 }
 </script>
 
 <style scoped>
+	.form-item{
+		width: 100%;
+		height: 30px;
+		position: relative;
+	}
 </style>

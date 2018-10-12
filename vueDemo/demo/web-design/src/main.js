@@ -3,11 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
 import masking from './directive/masking/index.js'
 
-Vue.use(ElementUI)
 Vue.use(masking)
 Vue.config.productionTip = false
 

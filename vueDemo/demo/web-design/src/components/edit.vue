@@ -1,9 +1,9 @@
 <script>
 	import Vue from 'vue'
 	import editview from './editview'
-	import {FInput} from './index'
+	import {FInput,FButtonGroup} from './index'
 	export default {
-		components: { FInput,editview},
+		components: { FInput,FButtonGroup,editview},
 		data: function (){
 			return {
 		      mFindPosition: '',
@@ -27,10 +27,7 @@
 		    },
 			// 子item开始拖动
 		    childrenDragStart (e) {
-		    debugger;
-		      console.log('childrenDragStart', e)
 		      this.dragStartIndex = e.target.dataset.index
-		      console.log(this.dragStartIndex)
 		    },
 		    // 函数节流
 		    throttle (func, delay = 100) {
@@ -104,6 +101,39 @@
 		      e.preventDefault()
 		    },
 		    handleItemClick (e, index = 0){
+		    //点击组件时
+		    // 设置当前选中的元素的样式，默认添加边框
+			  this.allComponents.map((item, subIndex) => {
+			    item.isActive = index === subIndex
+			  })
+			  // 根据组件id清除当前编辑区内容
+			  var cvm = this.editComponent && this.editComponent.vm ? this.editComponent.vm : null
+			  if (cvm) {
+			    cvm.$destroy(true)//实例销毁
+			    cvm.$el.parentNode.removeChild(cvm.$el)
+			    this.editComponent.vm = null
+			  }
+			  // 拿到当前选中元素的编辑器，设置到右边显示
+			  var clickItem = this.$refs['formItem' + index]
+			  var editorComponent = clickItem.getEditor()
+			  var EditorConstructor = Vue.extend(editorComponent) //构造编辑组件
+			  var mEditor = new EditorConstructor()
+			  var newNode = document.createElement("div");
+			  newNode.id = "currentComponentEditorChild"
+			  document.getElementById("currentComponentEditor").appendChild(newNode)
+			  var vm = mEditor.$mount('#currentComponentEditorChild')//挂载
+			  vm.$on('dataChange', (data) => {
+			    console.log(clickItem.$data, data)
+			    Object.keys(data).map((key) => {
+			      console.log(key)
+			      clickItem.$data[key] = data[key]
+			    })
+			    console.log(clickItem)
+			  })
+			  console.log(vm, vm.$el)
+			  // 设置当前正在编辑组件的id
+			  this.editComponent = this.allComponents[index]
+			  this.editComponent.vm = vm
 		    	
 		    }
 		},
@@ -123,7 +153,6 @@
       },
       ref: 'FForm'  //用来绑定某个dom元素  方便直接获取元素不用再去获取
     }, this.allComponents.map((component, index) => {
-    	debugger;
     	// map() 方法返回一个由原数组中的每个元素调用一个指定方法后的返回值组成的新数组。
     	//allComponents所有组件
       if (!component.hasOwnProperty('isActive')) this.$set(component, 'isActive', false)
@@ -154,10 +183,4 @@
 </script>
 
 <style lang="scss" scoped>
-.el-form {
-  height: 100%;
-  .active {
-    outline: 2px dotted green;
-  }
-}
 </style>

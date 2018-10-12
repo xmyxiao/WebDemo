@@ -1,6 +1,7 @@
 <template>
 	<div class="design-main">
-	
+		<slot></slot>
+		<!-- 插槽用于存放插入的组件 -->
 	</div>
 </template>
 

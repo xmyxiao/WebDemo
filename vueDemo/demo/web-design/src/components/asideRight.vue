@@ -8,7 +8,7 @@
     </div>
     <div class="tab-body">
       <div v-show="selectItem===0" class="item">
-        标签1
+        <div id="currentComponentEditor"></div>
       </div>
       <div v-show="selectItem===1"  class="item">
         标签2

@@ -1,7 +1,9 @@
 import FInput from './FInput/index'
+import FButtonGroup from './FButtonGroup/index'
 
 export {
-  FInput
+  FInput,
+  FButtonGroup
 }
 
 // const pkgs = {}
