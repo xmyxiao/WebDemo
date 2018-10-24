@@ -8,4 +8,5 @@ table : 表格页面</br>
 camera : 浏览器获取摄像头demo，track人脸检测</br>
 cssDemo : 样式事例</br>
 voidDemo : 播放器测试用例</br>
-collect : 用过的页面插件
+collect : 用过的页面插件</br>
+webPage : 测试页面

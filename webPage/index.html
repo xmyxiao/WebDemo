@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>透传云</title>
+		<style>
+			body{
+				font-size: 14px;
+				color: #333;
+			}
+			html,body,ul,li,div,p{
+				padding: 0;
+				margin: 0;
+			}
+			ul,li{
+				list-style: none;
+			}
+			.clearFix:after{
+				display:block;
+			  	content:'';
+			  	clear:both;
+			  	zoom:1;
+			}
+			.p-yun-main{
+				width: 100%;
+				box-sizing: border-box;
+				border-bottom: 1px solid #ddd;
+			}
+			.p-yun-header{
+				padding: 5px 20px;
+				background: #0054a5;
+			}
+			.p-yun-header>.header-logo{
+				float: left;
+				width: 240px;
+				height: 62px;
+			}
+			.p-yun-header>.header-nav{
+				float: right;
+				padding: 20px 0;
+			}
+			.p-yun-header>.header-nav .item{
+				display: inline-block;
+				color: #fff;
+				padding: 0 12px;
+				border-right: 1px solid #0081ed;
+				cursor: pointer;
+			}
+			.p-yun-header>.header-nav .item:last-child{
+				padding-right: 0;
+				border: 0;
+			}
+
+			.p-yun-link{
+				color: #0081f1;
+				text-decoration: underline;
+				cursor: pointer;
+			}
+			.p-yun-body{
+				padding: 40px 30px 10px;
+				border: 1px dashed #e6e6e6;
+			}
+			.p-yun-body>.title{
+				font-size: 18px;
+			}
+			.p-yun-body>.content{
+				padding: 40px 25px;
+			}
+			.p-yun-body>.content .item{
+				line-height: 35px;
+			}
+			.p-yun-body>.msg{
+				font-size: 14px;
+				color: #7b7a7a;
+			}
+			
+			.p-yun-foot{
+				padding-bottom: 10px;
+			}
+			.p-yun-foot>.title{
+				font-size: 16px;
+				padding: 0 30px;
+				line-height: 45px;
+			}
+			.p-yun-foot>.content>.left{
+				float: left;
+				width: 20%;
+				border-top: 5px solid #ec5a17;
+				text-align: center;
+			}
+			.p-yun-foot>.content>.left>.code{
+				width: 100px;
+				height: 100px;
+				margin: 15px auto;
+			}
+			.p-yun-foot>.content>.left>.code-msg{
+				font-weight: bold;
+			}
+			.p-yun-foot>.content>.right{
+				float: left;
+				width: 80%;
+				padding-left: 5px;
+			    box-sizing: border-box;
+			}
+			.p-yun-foot>.content>.right>.company-msg{
+				width: 100%;
+				border-top: 5px solid #0054a5;
+			}
+			.p-yun-foot>.content>.right>.company-msg>.address{
+				float: left;
+				box-sizing: border-box;
+				width: 60%;
+				padding-left: 5px;
+			}
+			.p-yun-foot .company-msg>.address>.name{
+				font-size: 16px;
+				padding: 25px 0px;
+				color: #000;
+			}
+			.p-yun-foot .company-msg>.address>.entrance{
+				padding-bottom: 25px;
+			}
+			.p-yun-foot .p-yun-link{
+				font-size: 14px;
+				text-decoration: none;
+			}
+			.p-yun-foot>.content>.right>.company-msg>.slogan{
+				float: left;
+				width: 40%;
+				font-size: 16px;
+				padding-top: 40px;
+				text-align: center;
+				font-weight: 400;
+			    color: #000;
+			}
+			.p-yun-address{
+				display: inline-block;
+				border-bottom: 1px dashed #ababab;
+				cursor: pointer;
+				word-break: keep-all;
+			}
+		</style>
+	</head>
+	<body class="p-yun-main">
+		<div class="p-yun-header clearFix">
+			<img class="header-logo" src="images/login-logo.png" alt="" title="" />
+			<ul class="header-nav">
+				<li class="item">
+					<a class="text">首页</a>
+				</li>
+				<li class="item">
+					<a class="text">官网</a>
+				</li>
+				<li class="item">
+					<a class="text">产品中心</a>
+				</li>
+				<li class="item">
+					<a class="text">资料下载</a>
+				</li>
+				<li class="item">
+					<a class="text">知识问答</a>
+				</li>
+			</ul>
+		</div>
+		<div class="p-yun-body">
+			<div class="title">
+				尊敬的&nbsp;<a class="p-yun-link">透传云用户</a>：
+			</div>
+			<ul class="content">
+				<li class="item">
+					这里是透传云报警中心，我们检测到您的设备&nbsp;<a class="p-yun-link">我的设备（温湿度仪、电表）</a>下的数据点&nbsp;<a class="p-yun-link">电压</a>有新的报警触发。
+				</li>
+				<li class="item">
+					<a class="p-yun-link">电压太高</a>触发器已经达到您设置的条件
+				</li>
+				<li class="item">
+					设备ID为：<a class="p-yun-link">00016000000000000003</a>
+				</li>
+				<li class="item">
+					从机序号为：<a class="p-yun-link">2</a>
+				</li>
+				<li class="item">
+					从机名称为：<a class="p-yun-link">电表</a>
+				</li>
+				<li class="item">
+					数据点ID为：<a class="p-yun-link">30199</a>
+				</li>
+				<li class="item">
+					当前值为：<a class="p-yun-link">227.34</a>
+				</li>
+				<li class="item">
+					触发条件为：<a class="p-yun-link">电压太高</a>
+				</li>
+				<li class="item">
+					报警时间为：<a class="p-yun-link">2018年9月18日&nbsp;11:37:47</a>
+				</li>
+			</ul>
+			<p class="msg">此为系统邮件请勿回复</p>
+		</div>
+		<div class="p-yun-foot">
+			<div class="title">
+				物联网之联网专家
+			</div>
+			<div class="content clearFix">
+				<div class="left">
+					<img class="code" src="images/code.png" alt="有人微信公众平台" title="有人微信公众平台" />
+					<p class="code-msg">有人微信公众平台</p>
+				</div>
+				<div class="right">
+					<div class="company-msg">
+						<div class="address">
+							<p class="name">济南有人物联网技术有限公司&nbsp;&nbsp;&nbsp;&nbsp;<a class="p-yun-link">www.usr.cn</a></p>
+							<p class="entrance">透传云唯一入口：<a class="p-yun-link">cloud.usr.cn</a></p>
+							<p>地址：<a class="p-yun-address">济南市高新区新泺大街1166号奥盛大厦1号楼11层</a></p>
+						</div>
+						<div class="slogan">
+							有&nbsp;&nbsp;人&nbsp;&nbsp;在&nbsp;&nbsp;认&nbsp;&nbsp;真&nbsp;&nbsp;做&nbsp;&nbsp;事&nbsp;&nbsp;！
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

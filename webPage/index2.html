@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>透传云监控大屏</title>
+		<style>
+			html,body,ul,li,div,p{
+				padding: 0;
+				margin: 0;
+			}
+			html,body{
+			    height: 100%;
+			    min-width: 850px;
+			}
+			body{
+				font-size: 12px;
+				color: #666;
+				background-color: #011226;
+			}
+			ul,li{
+				list-style: none;
+			}
+			.clearFix:after{
+				display:block;
+			  	content:'';
+			  	clear:both;
+			  	zoom:1;
+			}
+			
+			.p-yun-header{
+				padding: 1.4em 2%;
+			    background-image: linear-gradient(175deg, #0a325c 30%, #011226 70%);
+			    box-shadow: 0 1em 3em rgba(0,0,0,0.4);
+			    position: relative;
+			}
+			.p-yun-header>.logo-company{
+				float: left;
+			    width: auto;
+			    font-size: 2.2em;
+			    color: #fff;
+			    opacity: 0.6;
+			    line-height: 48px;
+			}
+			.p-yun-header>.header-info{
+				float: right;
+			    text-align: right;
+			    font-size: 1.2em;
+			    line-height: 1.5;
+			    color: #fff;
+			    opacity: 0.6;
+			    font-size: 0.8em;
+			}
+			.p-yun-body{
+				box-sizing: border-box;
+				width: 100%;
+				height : -moz-calc(100% - 82px);
+				height : -webkit-calc(100% - 82px);
+				height : calc(100% - 82px);
+			    display: table;
+			    table-layout: fixed;
+			    padding: 1% 1.5%;
+			    word-break: break-word;
+			    background-image: linear-gradient(160deg, #0a325c, #011226);
+			}
+			.body-left,.body-center,.body-right{
+				display: table-cell;
+			    vertical-align: top;
+			    height: 100%;
+			}
+			.body-center{
+				width: 55%;
+			    padding-left: 2em;
+			    padding-right: 2em;
+			}
+			.panel{
+				color: #666666;
+			    background-image: linear-gradient(rgba(81,128,199,0.2),transparent);
+			    background-color: transparent;
+			    border: none;
+			    border-radius: 5px;
+			    position: relative;
+			    margin-bottom: 15px;
+			    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.25);
+			    padding: 4px 1em 0;
+			}
+			.panel .title {
+			    line-height: 24px;
+			    font-size: 14px;
+			    color: #6fb0de;
+			}
+			.flex1{
+				flex: 1;
+			}
+			.panel-center{
+				width: 100%;
+			    display: table;
+			    table-layout: fixed;
+			    vertical-align: middle;
+			}
+			
+			.alarm-about {
+			    height: 180px;
+			    box-sizing: border-box;
+			}
+			.alarm-about-center{
+				display: flex;
+			    flex-direction: column;
+			}
+			.usr-chart {
+			    width: 50%;
+			    display: table-cell;
+			    position: relative;
+			}
+			.usr-chart-right {
+			    font-size: 1.2em;
+			    padding-top: 1.2em;
+			    color: #6fb0de;
+			    line-height: 2;
+			    display: table-cell;
+			    vertical-align: middle;
+			}
+			.chart-content {
+			    width: 100%;
+			    font-size: 12px;
+			}
+
+			.alarm-about .span1 {
+			    color: #22c48b;
+			    margin-left: 0.5em;
+			}
+			.alarm-about .span2 {
+			    color: #f1d301;
+			    margin-left: 0.5em;
+			}
+			.alarm-about .span3 {
+			    color: #0054a4;
+			    margin-left: 0.5em;
+			}
+			.foot-chart{
+				height: -moz-calc(100% - 414px);
+				height: -webkit-calc(100% - 414px);
+				height: calc(100% - 414px);
+			}
+			#mapTab {
+			    width: 100%;
+			    height: -moz-calc(100% - 265px);
+				height: -webkit-calc(100% - 265px);
+				height: calc(100% - 265px);
+			    display: block;
+			    position: relative;
+			    overflow: hidden;
+			}
+			.nav-tabs {
+			    display: block;
+			    margin: 0 auto;
+			    border: none;
+			}
+			#myTab2.nav-tabs {
+			    padding-top: 0;
+			}
+			.nav-tabs>li {
+			    display: inline-block;
+			    float: left;
+			    margin-bottom: -1px;
+			}
+			.nav-tabs>li>a {
+			    display: inline-block;
+			    text-align: center;
+			    margin-right: 8px;
+			    margin-bottom: 4px;
+			    font-size: 12px;
+			    line-height: 30px;
+			    width: 120px;
+			    height: 30px;
+			    background: transparent;
+			    border: 1px solid #165e92;
+			    box-sizing: border-box;
+			    color: #fff;
+			    text-decoration: none;
+			}
+			.nav-tabs>li>a:hover{
+				background:#165e92;
+			}
+			.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+				cursor: default;
+			}
+			.nav-tabs>li.active>a{
+				background:#165e92;
+			}
+			#myTab2Content {
+			    width: 100%;
+			    height: -moz-calc(100% - 33px);
+				height: -webkit-calc(100% - 33px);
+				height: calc(100% - 33px);
+			    overflow: hidden;
+			}
+			.content-foot {
+			    display: block;
+			    border: none;
+			    border-radius: 0;
+			    height: 280px;
+			    margin-top: 15px;
+			    position: relative;
+			    box-shadow: 0 1em 2em rgba(0, 0, 0, 0.1);
+			    background-image: linear-gradient(rgba(81, 128, 199, 0.2), transparent);
+			}
+			.alarm-right {
+			    height: 350px;
+			    overflow: hidden;
+			}
+			.alarm-group{
+				height: -moz-calc(100% - 406px);
+				height: -webkit-calc(100% - 406px);
+				height: calc(100% - 406px);
+				margin-top: 15px;
+			}
+			.alarm-right-center{
+				height: 320px;
+				overflow: auto;
+			}
+			.alarm-list {
+			    margin: 1em auto 0;
+			}
+			.alarm-list li {
+			    width: 100%;
+			    overflow: hidden;
+			    font-size: 12px;
+			    color: #6fb0de;
+			    display: table;
+			    table-layout: fixed;
+			    height: 2.8em;
+			    line-height: 2.8em;
+			    vertical-align: middle;
+			    border-top: 1px dashed #6fb0de;
+			}
+			.alarm-list li div {
+			    width: 60%;
+			    display: table-cell;
+			    overflow: hidden;
+			    white-space: nowrap;
+			    text-overflow: ellipsis;
+			    font-size: 12px;
+			}
+			.alarm-list li span {
+			    width: 40%;
+			    text-align: right;
+			    display: table-cell;
+			    overflow: hidden;
+			    white-space: nowrap;
+			    text-overflow: ellipsis;
+			}
+			.panel ::-webkit-scrollbar {
+			    width: 0.6em;
+			    height: 0.6em;
+			}			
+			.panel ::-webkit-scrollbar-thumb {
+			    background: rgba(255, 255, 255, 0.3);
+			    border-radius: 5px;
+			    cursor: pointer;
+			}
+			.panel ::-webkit-scrollbar-track {
+			    background: transparent;
+    			border-radius: 5px;
+			}
+			.content-foot [class^="angle"] {
+			    width: 2em;
+			    height: 2em;
+			    position: absolute;
+			    border-left: 0.1em solid #6fb0de;
+			    border-top: 0.1em solid #6fb0de;
+			}
+			.content-foot .angle1 {
+			    left: -0.1em;
+			    top: -0.1em;
+			}
+			.content-foot .angle2{
+			    top: -0.1em;
+			    right: -0.1em;
+			    transform: rotate(90deg);
+			}
+			.content-foot .angle3{
+		        bottom: -0.1em;
+			    right: -0.1em;
+			    transform: rotate(180deg);
+			}
+			.content-foot .angle4{
+			    bottom: -0.1em;
+			    left: -0.1em;
+			    transform: rotate(-90deg);
+			}
+			.content-foot .foot-info{
+				width: 100%;
+			    display: table;
+			    table-layout: fixed;
+			    padding-top: 15px;
+			}
+			.info-btn {
+				display: table-cell;
+			    width: 3.06em;
+			    text-align: center;
+			    vertical-align: middle;
+			}
+			.info-btn img {
+			    cursor: pointer;
+			    width: 1.06em;
+			    font-size: 1.8em;
+			}
+			img {
+			    border: none;
+			}
+			.content-foot .info-center{
+				display: table-cell;
+				vertical-align: top;
+				width: 100%;
+				padding: 0 0.5em 0 2em;
+			}
+			.info-title{
+				font-size: 15px;
+    			color: #6fb0de;
+			}
+			.info-address{
+				font-size: 12px;
+			    margin-top: 0.5em;
+			    color: #6fb0de;
+			}
+			.info-content{
+				margin: 0;
+			    zoom: 1;
+			    position: relative;
+			    height: 150px;
+			}
+			.shebeiImg {
+			    width: 20%;
+			    margin-top: 10px;
+			    position: absolute;
+			    left: 2%;
+			    top: 0;
+			}
+			.shebeiImg img {
+			    width: 100%;
+			    vertical-align: middle;
+			}
+			.databox {
+			    position: absolute;
+			    left: 25%;
+			    top: 0;
+			    width: 40%;
+			    font-size: 12px;
+			    height: 100%;
+			}
+			.databox-list{
+				overflow: hidden;
+			    width: 100%;
+			    height: 100%;
+			}
+			.datapoint {
+			    width: 50%;
+			    float: left;
+			    margin-bottom: 5px;
+			    height: 50px;
+			    overflow: hidden;
+			}
+			.datapoint .data-title {
+			    color: #6fb0de;
+			    line-height: 24px;
+			    overflow: hidden;
+			    white-space: nowrap;
+			    text-overflow: ellipsis;
+			}
+			.datapoint .data-val {
+			    line-height: 18px;
+			    color: #fff;
+			    overflow: hidden;
+			    white-space: nowrap;
+			    text-overflow: ellipsis;
+			}
+			.data-val-btn{
+				cursor: pointer;
+			}
+			.four-dialogbtn {
+			    position: absolute;
+			    right: 0;
+			    top: 0;
+			    width: 30%;
+			    height: 100%;
+			}
+			.four-dialogbtn .dialogbtn{
+				width: 100%;
+				max-width: 120px;
+			    margin-bottom: 20px;
+			    float: left;
+			    cursor: pointer;
+			    margin-right: 10px;
+			}
+			.four-dialogbtn .dialogbtn .btn{
+				display: block;
+				border-radius: 5px;
+			    font-size: 12px;
+			    padding: 3px 5px;
+			    line-height: 30px;
+			    text-align: center;
+			    color: #fff;
+			    background-color: #175f93;
+			}
+			@media (max-width: 1600px){
+				.alarm-about {
+				    height: 120px;
+				}
+				.foot-chart{
+					height: -moz-calc(100% - 294px);
+					height: -webkit-calc(100% - 294px);
+					height: calc(100% - 294px);
+				}
+				#mapTab {
+				    height: -moz-calc(100% - 225px);
+					height: -webkit-calc(100% - 225px);
+					height: calc(100% - 225px);
+				}
+				.alarm-group{
+					height: -moz-calc(100% - 291px);
+					height: -webkit-calc(100% - 291px);
+					height: calc(100% - 291px);
+					margin-top: 15px;
+				}
+				.content-foot{
+					height: 185px;
+				}
+				.alarm-right {
+				    height: 250px;
+				}
+				.alarm-right-center{
+					height: 220px;
+				}
+				.info-content{
+					height: 120px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="p-yun-header clearFix">
+			<div class="logo-company">透传云监控大屏</div>
+			<div class="header-info">
+		        <p id="time" style="margin-top: 20px;">当前时间：2018-10-24 11:48:04</p>
+		    </div>
+		</div>
+		<div class="p-yun-body">
+			<div class="body-left">
+				<div class="alarm-about panel">
+					<div class="title">设备在线状态统计</div>
+					<div class="alarm-about-center">
+	                    <div class="panel-center flex1">
+	                        <div class="usr-chart">
+	                        	
+	                        </div>
+	                        <div class="usr-chart-right">
+	                            <div class="chart-content">设备总数<span class="span3">114</span></div>
+	                            <div class="chart-content">在线设备<span class="span1">9</span></div>
+	                            <div class="chart-content">离线设备<span class="span2">105</span></div>
+	                        </div>
+	                    </div>
+	                </div>
+				</div>
+				<div class="alarm-about panel">
+					<div class="title">设备在线状态统计</div>
+					<div class="alarm-about-center">
+	                    <div class="panel-center flex1">
+	                        <div class="usr-chart">
+	                        	
+	                        </div>
+	                        <div class="usr-chart-right">
+	                            <div class="chart-content">设备总数<span class="span3">114</span></div>
+	                            <div class="chart-content">在线设备<span class="span1">9</span></div>
+	                            <div class="chart-content">离线设备<span class="span2">105</span></div>
+	                        </div>
+	                    </div>
+	                </div>
+				</div>
+				<div class="panel flex1 foot-chart">
+	                <div class="title">近30天新增设备数</div>
+	                
+	            </div>
+			</div>
+			<div class="body-center">
+				<div id="mapTab">
+		            <ul id="myTab2" class="nav-tabs clearFix">
+		                <li class="active">
+		                	<a href="#map1">地图</a>
+		                </li>
+		                <li>
+		                	<a href="#map2">热力图</a>
+		                </li>
+		            </ul>
+		            <div id="myTab2Content" class="tab-content">
+		                <div class="tab-pane" id="map1">
+		                    
+		                </div>
+		                <div class="tab-pane" id="map2">
+		                    
+		                </div>
+		            </div>
+		        </div>
+		        <div class="content-foot">
+		        	<div class="angle1"></div>
+		        	<div class="angle2"></div>
+		        	<div class="angle3"></div>
+		        	<div class="angle4"></div>
+		        	<div class="foot-info">
+		        		<div class="info-btn"><img src="left.png"> </div>
+		        		<div class="info-center">
+		        			<div class="info-title">共享按摩椅</div>
+		        			<div class="info-address">
+		                        <span>中国山东省济南市天桥区北园立交桥</span>
+		                    </div>
+		                    <div class="info-content">
+		                    	<div class="shebeiImg">
+		                    		<img />
+		                    	</div>
+		                    	<div class="databox">
+		                    		<ul class="databox-list">
+		                    			<li class="datapoint">
+		                    				<div class="data-title">开关</div>
+		                    				<div class="data-val">开关</div>
+		                    			</li>
+		                    			<li class="datapoint">
+		                    				<div class="data-title">按摩气压</div>
+		                    				<div class="data-val">
+		                    					<span class="data-val-btn">4398百帕</span>
+		                    				</div>
+		                    			</li>
+		                    			<li class="datapoint">
+		                    				<div class="data-title">当天使用人数</div>
+		                    				<div class="data-val">
+		                    					<span class="data-val-btn">18523个</span>
+		                    				</div>
+		                    			</li>
+		                    			<li class="datapoint">
+		                    				<div class="data-title">机械手震动频率</div>
+		                    				<div class="data-val">
+		                    					<span class="data-val-btn">1334.2HZ</span>
+		                    				</div>
+		                    			</li>
+		                    		</ul>
+		                    	</div>
+		                    	<div class="four-dialogbtn">
+		                    		<div class=" dialogbtn">
+		                    			<span class="btn">报警记录</span>
+		                    		</div>
+		                    		<div class=" dialogbtn">
+		                    			<span class="btn">报警记录</span>
+		                    		</div>
+		                    	</div>
+		                    </div>
+		        		</div>
+		        		<div class="info-btn"><img src="right.png"> </div>
+		        	</div>
+		        </div>
+			</div>
+			<div class="body-right">
+				<div class="panel alarm-right" >
+	                <div class="title">警情记录</div>
+	                <div class="alarm-right-center">
+	                	<ul class="alarm-list" >
+                            <li>
+                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
+                                <span class="">2018-10-24 17:09:01</span>
+                            </li>
+                            <li>
+                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
+                                <span class="">2018-10-24 17:09:01</span>
+                            </li>
+                            <li>
+                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
+                                <span class="">2018-10-24 17:09:01</span>
+                            </li>
+                            <li>
+                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
+                                <span class="">2018-10-24 17:09:01</span>
+                            </li>
+                            <li>
+                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
+                                <span class="">2018-10-24 17:09:01</span>
+                            </li>
+                            <li>
+                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
+                                <span class="">2018-10-24 17:09:01</span>
+                            </li>
+                            <li>
+                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
+                                <span class="">2018-10-24 17:09:01</span>
+                            </li>
+                            <li>
+                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
+                                <span class="">2018-10-24 17:09:01</span>
+                            </li>
+                            <li>
+                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
+                                <span class="">2018-10-24 17:09:01</span>
+                            </li>
+                        </ul>
+	                </div>
+	                <div style="position: absolute; opacity: 0; width: 8px; top: 2px; right: 2px; bottom: 2px; border-radius: 5px; background: rgb(0, 0, 0);" class="_scroll_box"></div>
+	                <div style="position: absolute; cursor: pointer; opacity: 0; width: 8px; top: 0px; right: 2px; border-radius: 5px; background: rgba(255, 255, 255, 0.3); height: 156px;" class="_scroll_bar"></div>
+	            </div>
+	            <div class="panel alarm-group" >
+	                <div class="title">警情记录</div>
+	            </div>
+			</div>
+		</div>
+	</body>
+</html>
