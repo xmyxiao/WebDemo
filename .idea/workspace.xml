@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d28d74bd-229a-46fe-b8f9-e5ef73de13d9" name="默认的" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/appPage/html/css/app.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/appPage/html/images/HONGbao.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/appPage/html/images/bg_extension.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/appPage/html/images/bg_index.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/appPage/html/images/btn-ren.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/appPage/html/images/btn-yellow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/appPage/html/images/icon-1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/appPage/html/images/icon-2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/appPage/html/images/icon-3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/appPage/html/images/icon-4.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/appPage/html/推广页.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/appPage/html/红包.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vueDemo/demo/week08/mock/server.js" afterPath="$PROJECT_DIR$/vueDemo/demo/week08/mock/server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webPage/index2.html" afterPath="$PROJECT_DIR$/webPage/index2.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,8 +29,8 @@
       <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/vueDemo/demo/week08/mock/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="26" column="30" lean-forward="true" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+            <state relative-caret-position="66">
+              <caret line="24" column="11" lean-forward="false" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -116,8 +103,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/handsontable/node_modules" />
     <handled-path value="$PROJECT_DIR$/vueDemo/demo/week06/node_modules" />
-    <handled-path value="$PROJECT_DIR$/vueDemo/demo/week07/node_modules" />
-    <handled-path value="$PROJECT_DIR$/vueDemo/demo/week08/node_modules" />
+    <handled-path value="$PROJECT_DIR$/vueproject/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
@@ -288,11 +274,12 @@
       <workItem from="1529370906554" duration="1807000" />
       <workItem from="1530002387771" duration="281000" />
       <workItem from="1530154577182" duration="193000" />
+      <workItem from="1541061705352" duration="9000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39093000" />
+    <option name="totallyTimeSpent" value="39102000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -646,8 +633,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vueDemo/demo/week08/mock/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="26" column="30" lean-forward="true" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+        <state relative-caret-position="66">
+          <caret line="24" column="11" lean-forward="false" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
           <folding />
         </state>
       </provider>
