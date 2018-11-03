@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>pdf文件阅读</title>
+<link rel="stylesheet" href="css/pdf.css" type="text/css">
+</head>
+<body>
+	<div class="clearfix" id="pdfWar">
+		<div id="sidebarContainer">
+			<div class="toolbarSidebar">
+
+			</div>
+			<div class="sidebarContent" id="sidebarContent">
+				<ul>
+					<li class="sidebarLi" data-page-number="1">
+						<a class="main" src="images/03.png" id="page1">
+							<img class="lazy" src="images/test.jpg"  onclick="showpic(this)" style="width:98px;height:126px;" data-original="images/01.gif" />
+						</a>
+					</li>
+					<li class="sidebarLi" data-page-number="2">
+						<a class="main" src="images/04.png" id="page2">
+							<img class="lazy" src="images/test.jpg"  onclick="showpic(this)" style="width:98px;height:126px;" data-original="images/02.gif" />
+						</a>
+					</li>
+					<li class="sidebarLi" data-page-number="3">
+						<a class="main" src="images/05.png" id="page3">
+							<img class="lazy" src="images/test.jpg"  onclick="showpic(this)" style="width:98px;height:126px;" data-original="images/03.gif" />
+						</a>
+					</li>
+					<li class="sidebarLi" data-page-number="4">
+						<a class="main" src="images/03.png" id="page4">
+							<img class="lazy" src="images/test.jpg"  onclick="showpic(this)" style="width:98px;height:126px;" data-original="images/04.gif" />
+						</a>
+					</li>
+					<li class="sidebarLi" data-page-number="5">
+						<a class="main" src="images/04.png" id="page5">
+							<img class="lazy" src="images/test.jpg"  onclick="showpic(this)" style="width:98px;height:126px;" data-original="images/05.gif" />
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="mainContainer">
+			<div class="toolbar" onselectstart="return false;">
+				<div class="sidebarToggle-box in-bl" title="侧边框" id="sidebarToggle"><i class="sidebarToggle in-bl"></i></div>
+				<div class="zoomIn-box in-bl" title="放大" id="zoomIn"><i class="zoomIn in-bl"></i></div>
+				<div class="zoomOut-box in-bl" title="缩小" id="zoomOut"><i class="zoomOut in-bl"></i></div>
+			</div>
+			<div class="viewerContainer" id="viewerContainer">
+				<div class="pdfViewer">
+					<ul>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/album.js"></script>
+	<script type="text/javascript" src="js/pdf.js"></script>
+	<script type="text/javascript" src="js/jquery.lazyload.js"></script>
+	
+</body>
+</html>

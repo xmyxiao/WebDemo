@@ -1,0 +1,104 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockqupte,th,td{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+ol,ul{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+.clearfix:after{
+	visibility: hidden; 
+	display: block; 
+	font-size: 0; 
+	content: "."; 
+	clear: both; 
+	height: 0; 
+	zoom: 1; 
+}
+.in-bl{
+	display:inline-block;
+	*zoom: 1;
+	*display: inline;
+}
+a{text-decoration: none;}
+body {
+    font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+}
+#pdfWar{
+	width:700px;
+	height:500px;
+	margin:0 auto;
+	margin-top: 100px;
+}
+#sidebarContainer{
+	width: 200px;
+    background-color: #E6EEF8;
+    float: left;
+    height:100%;
+}
+#mainContainer{
+	width: 500px;
+	float: left;
+	background-color: #3D3D3D;
+}
+#sidebarContainer .sidebarContent{
+	padding: 0 40px;
+	height: 100%;
+	overflow: auto;
+	overflow-x:hidden; 
+}
+#sidebarContainer .sidebarContent ul{
+	padding: 20px 0 10px 0;
+}
+#sidebarContainer .sidebarContent .main img{
+	width: 98px;
+    height: 126px;
+    cursor: pointer;
+}
+.sidebarLi .main img{
+	border: 3px solid #E6EEF8;
+	opacity:0.4;
+	filter:alpha(opacity=40);
+}
+.sidebarLi .main img:hover{
+	opacity:1.0;
+	filter:alpha(opacity=100);
+	border: 3px solid #fff;
+}
+.sidebarLi-selected .main img{
+	border: 3px solid #fff;
+	opacity:1.0;
+	filter:alpha(opacity=100);
+}
+#mainContainer .pdfViewerLi{
+	margin:10px auto;
+	margin-bottom: 0px;
+}
+#mainContainer .viewerContainer{
+	overflow: auto;
+    height: 100%;
+}
+#mainContainer .toolbar{
+	height: 29px;
+    border-bottom: 1px solid #000;
+}
+#mainContainer .sidebarToggle{
+    width: 16px;
+    height:16px;
+    background: url(../images/toolbarButton-sidebarToggle.png);
+}
+#mainContainer .zoomIn{
+    width: 16px;
+    height:16px;
+    background: url(../images/toolbarButton-zoomIn.png);
+}
+#mainContainer .zoomOut{
+    width: 16px;
+    height:16px;
+    background: url(../images/toolbarButton-zoomOut.png);
+}
+
+#mainContainer .sidebarToggle-box,.zoomIn-box,.zoomOut-box{
+	margin-top: 8px;
+    margin-left: 10px;
+    cursor: pointer;
+}
