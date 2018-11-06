@@ -18,7 +18,8 @@
           </div>
         </div>
         <div class="p-design-right">
-          <asideRight></asideRight>
+          
+          <tabPanel></tabPanel>
         </div>
       </div>
       <div class="p-design-foot">
@@ -33,6 +34,7 @@ import headerNavBar from './components/headerNavBar.vue'
 import breadcrumbNav from './components/breadcrumbNav.vue'
 import asideLeft from './components/asideLeft.vue'
 import asideRight from './components/asideRight.vue'
+import tabPanel from './components/tabPanel.vue'
 import contentBottom from './components/contentBottom.vue'
 import edit from './components/edit.vue'
 
@@ -44,7 +46,8 @@ export default {
     asideLeft,
     asideRight,
     contentBottom,
-    edit
+    edit,
+    tabPanel
   }
 }
 </script>
