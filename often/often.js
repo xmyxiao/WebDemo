@@ -115,3 +115,44 @@ function formatDate(setData,type){
 	if(j) j.LS = j.LS || LS;
 	if(c) c.LS = c.LS || LS;
 })(window,window.localStorage);
+
+//页面编码  将特殊符号转为编码
+function htmlEncodeByRegExp(str){
+    var s = "";
+    if(str.length == 0) return "";
+    s = str.replace(/&/g,"&amp;");
+    s = s.replace(/</g,"&lt;");
+    s = s.replace(/>/g,"&gt;");
+    s = s.replace(/ /g,"&nbsp;");
+    s = s.replace(/\'/g,"&#39;");
+    s = s.replace(/\"/g,"&quot;");
+    return s;  
+}
+//页面解码  将编码转为特殊字符
+function htmlDecodeByRegExp(str){
+    var s = "";
+    if(str.length == 0) return "";
+    s = str.replace(/&amp;/g,"&");
+    s = s.replace(/&lt;/g,"<");
+    s = s.replace(/&gt;/g,">");
+    s = s.replace(/&nbsp;/g," ");
+    s = s.replace(/&#39;/g,"\'");
+    s = s.replace(/&quot;/g,"\"");
+    return s;  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

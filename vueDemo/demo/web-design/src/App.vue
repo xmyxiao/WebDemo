@@ -18,8 +18,16 @@
           </div>
         </div>
         <div class="p-design-right">
-          
-          <tabPanel></tabPanel>
+          <desTabs v-bind="tabOps" @selectPanel = "setDesTab">
+          	<template slot="content">
+          		<div v-show="tabOps.selectItem===0" class="item">
+					      	面板1
+					    </div>
+					    <div v-show="tabOps.selectItem===1" class="item">
+					      	面板2
+					    </div>
+          	</template>
+          </desTabs>
         </div>
       </div>
       <div class="p-design-foot">
@@ -35,6 +43,7 @@ import breadcrumbNav from './components/breadcrumbNav.vue'
 import asideLeft from './components/asideLeft.vue'
 import asideRight from './components/asideRight.vue'
 import tabPanel from './components/tabPanel.vue'
+import desTabs from './components/tabPanel/index.vue'
 import contentBottom from './components/contentBottom.vue'
 import edit from './components/edit.vue'
 
@@ -47,7 +56,29 @@ export default {
     asideRight,
     contentBottom,
     edit,
-    tabPanel
+    tabPanel,
+    desTabs
+  },
+  data: function (){
+  	return {
+  		tabOps:{
+  			navList : [
+  				{
+  					text:"面板1"
+  				},
+  				{
+  					text:"面板2"
+  				}
+  			],
+  			selectItem : 0
+  		}
+  		
+  	}
+  },
+  methods:{
+  	setDesTab(val){//设置显示面板
+			this.tabOps.selectItem = val;
+		}
   }
 }
 </script>
