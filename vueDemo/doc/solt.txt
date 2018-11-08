@@ -1,0 +1,14 @@
+使用到具名插槽来传递父组件中的html结构，关于插槽可以看https://segmentfault.com/a/1190000012996217，
+简单来说就是默认插槽直接接收所有父组件传过来的html模板，然后渲染在插槽的位置，
+
+具名插槽如上述所写，父组件中使用 slot="content"来标识要传递到子组件的那个插槽位置，
+子组件则通过<slot name="content"></slot>来接收父组件传过来的html模板。
+
+最后一个作用域插槽则是可以理解为一个带数据的插槽，
+与其他两个插槽的区别就是：作用域插槽只提供模板，不提供数据，数据由子模板产生。
+例如具名插槽中<div v-show="tabOps.selectItem===1" class="item"> 面板1 </div>这里的面板1就是数据，
+而div就是模板，具名插槽和默认插槽需要提供模板和数据，作用域插槽则只提供模板，数据由子组件填充。
+
+父子间的值传递主要通过props，父组件通过<desTabs v-bind="tabOps" @selectPanel = "setDesTab">
+中的v-bind向子组件传递一个tabOps对象，子组件通过props来接收父组件传递的数据，
+子组件再通过this.$emit("selectPanel",index);来触发父组件的方法从而修改父组件的数据。
