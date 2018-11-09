@@ -137,9 +137,10 @@
 			    margin-left: 0.5em;
 			}
 			.foot-chart{
-				height: -moz-calc(100% - 414px);
-				height: -webkit-calc(100% - 414px);
-				height: calc(100% - 414px);
+				height: -moz-calc(100% - 395px);
+				height: -webkit-calc(100% - 395px);
+				height: calc(100% - 395px);
+				margin-bottom: 0;
 			}
 			#mapTab {
 			    width: 100%;
@@ -198,7 +199,7 @@
 			    display: block;
 			    border: none;
 			    border-radius: 0;
-			    height: 280px;
+			    height: 295px;
 			    margin-top: 15px;
 			    position: relative;
 			    box-shadow: 0 1em 2em rgba(0, 0, 0, 0.1);
@@ -209,10 +210,11 @@
 			    overflow: hidden;
 			}
 			.alarm-group{
-				height: -moz-calc(100% - 406px);
-				height: -webkit-calc(100% - 406px);
-				height: calc(100% - 406px);
+				height: -moz-calc(100% - 390px);
+				height: -webkit-calc(100% - 390px);
+				height: calc(100% - 390px);
 				margin-top: 15px;
+				margin-bottom: 0;
 			}
 			.alarm-right-center{
 				height: 290px;
@@ -249,16 +251,27 @@
 			    white-space: nowrap;
 			    text-overflow: ellipsis;
 			}
-			.panel ::-webkit-scrollbar {
+			.alarm-list .alarm-list-img{
+				width: 80px;
+			}
+			.alarm-list .alarm-list-info{
+				flex: 1;
+			}
+			.alarm-list .alarm-list-info .text{
+				overflow: hidden;
+			    white-space: nowrap;
+			    text-overflow: ellipsis;
+			}
+			::-webkit-scrollbar {
 			    width: 0.6em;
 			    height: 0.6em;
 			}			
-			.panel ::-webkit-scrollbar-thumb {
+			::-webkit-scrollbar-thumb {
 			    background: rgba(255, 255, 255, 0.3);
 			    border-radius: 5px;
 			    cursor: pointer;
 			}
-			.panel ::-webkit-scrollbar-track {
+			::-webkit-scrollbar-track {
 			    background: transparent;
     			border-radius: 5px;
 			}
@@ -317,11 +330,17 @@
 			.info-title{
 				font-size: 15px;
     			color: #6fb0de;
+    			overflow: hidden;
+			    white-space: nowrap;
+			    text-overflow: ellipsis;
 			}
 			.info-address{
 				font-size: 12px;
 			    margin-top: 0.5em;
 			    color: #6fb0de;
+			    overflow: hidden;
+			    white-space: nowrap;
+			    text-overflow: ellipsis;
 			}
 			.info-content{
 				margin: 0;
@@ -342,19 +361,20 @@
 			}
 			.databox {
 			    position: absolute;
-			    left: 25%;
+			    left: 0;
 			    top: 0;
-			    width: 40%;
+			    width: 75%;
 			    font-size: 12px;
 			    height: 100%;
 			}
 			.databox-list{
-				overflow: hidden;
+				overflow-x: hidden;
+				overflow-y: auto;
 			    width: 100%;
 			    height: 100%;
 			}
 			.datapoint {
-			    width: 50%;
+			    width: 33.33%;
 			    float: left;
 			    margin-bottom: 5px;
 			    height: 50px;
@@ -381,41 +401,45 @@
 			    position: absolute;
 			    right: 0;
 			    top: 0;
-			    width: 30%;
+			    width: 25%;
 			    height: 100%;
 			}
 			.four-dialogbtn .dialogbtn{
-				width: 100%;
 				max-width: 120px;
-			    margin-bottom: 20px;
-			    float: left;
+			    margin: 0 5px 20px 5px;
 			    cursor: pointer;
-			    margin-right: 10px;
 			}
 			.four-dialogbtn .dialogbtn .btn{
 				display: block;
 				border-radius: 5px;
 			    font-size: 12px;
-			    padding: 3px 5px;
+			    padding: 3px 10px;
 			    line-height: 30px;
 			    text-align: center;
 			    color: #fff;
 			    background-color: #175f93;
 			}
 			.alarm-group-center{
-				height: -moz-calc(100% - 70px);
-				height: -webkit-calc(100% - 70px);
-				height: calc(100% - 70px);
+				height: -moz-calc(100% - 60px);
+				height: -webkit-calc(100% - 60px);
+				height: calc(100% - 60px);
 				overflow:auto;
+			}
+			.info-heard{
+				height: 50px;
+			}
+			.info-heard-item{
+				width: 33.33%;
+				float: left;
 			}
 			@media (max-width: 1600px){
 				.alarm-about {
 				    height: 120px;
 				}
 				.foot-chart{
-					height: -moz-calc(100% - 294px);
-					height: -webkit-calc(100% - 294px);
-					height: calc(100% - 294px);
+					height: -moz-calc(100% - 275px);
+					height: -webkit-calc(100% - 275px);
+					height: calc(100% - 275px);
 				}
 				#mapTab {
 				    height: -moz-calc(100% - 225px);
@@ -423,13 +447,13 @@
 					height: calc(100% - 225px);
 				}
 				.alarm-group{
-					height: -moz-calc(100% - 291px);
-					height: -webkit-calc(100% - 291px);
-					height: calc(100% - 291px);
+					height: -moz-calc(100% - 275px);
+					height: -webkit-calc(100% - 275px);
+					height: calc(100% - 275px);
 					margin-top: 15px;
 				}
 				.content-foot{
-					height: 185px;
+					height: 200px;
 				}
 				.alarm-right {
 				    height: 250px;
@@ -514,14 +538,28 @@
 		        	<div class="foot-info">
 		        		<div class="info-btn"><img src="left.png"> </div>
 		        		<div class="info-center">
-		        			<div class="info-title">共享按摩椅</div>
-		        			<div class="info-address">
-		                        <span>中国山东省济南市天桥区北园立交桥</span>
-		                    </div>
+		        			<div class="info-heard clearfix">
+		        				<div class="info-heard-item">
+		        					<div class="info-title">共享按摩椅</div>
+				        			<div class="info-address">
+				                        <span>中国山东省济南市天桥区北园立交桥</span>
+				                    </div>
+		        				</div>
+		        				<div class="info-heard-item">
+		        					<div class="info-title">共享按摩椅</div>
+				        			<div class="info-address">
+				                        <span>中国山东省济南市天桥区北园立交桥</span>
+				                    </div>
+		        				</div>
+		        				<div class="info-heard-item">
+		        					<div class="info-title">共享按摩椅</div>
+				        			<div class="info-address">
+				                        <span>中国山东省济南市天桥区北园立交桥</span>
+				                    </div>
+		        				</div>
+		        				
+		        			</div>
 		                    <div class="info-content">
-		                    	<div class="shebeiImg">
-		                    		<img />
-		                    	</div>
 		                    	<div class="databox">
 		                    		<ul class="databox-list">
 		                    			<li class="datapoint">
@@ -571,38 +609,6 @@
                                 <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
                                 <span class="">2018-10-24 17:09:01</span>
                             </li>
-                            <li>
-                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
-                                <span class="">2018-10-24 17:09:01</span>
-                            </li>
-                            <li>
-                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
-                                <span class="">2018-10-24 17:09:01</span>
-                            </li>
-                            <li>
-                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
-                                <span class="">2018-10-24 17:09:01</span>
-                            </li>
-                            <li>
-                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
-                                <span class="">2018-10-24 17:09:01</span>
-                            </li>
-                            <li>
-                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
-                                <span class="">2018-10-24 17:09:01</span>
-                            </li>
-                            <li>
-                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
-                                <span class="">2018-10-24 17:09:01</span>
-                            </li>
-                            <li>
-                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
-                                <span class="">2018-10-24 17:09:01</span>
-                            </li>
-                            <li>
-                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
-                                <span class="">2018-10-24 17:09:01</span>
-                            </li>
                         </ul>
 	                </div>
 	                <div style="position: absolute; opacity: 0; width: 8px; top: 2px; right: 2px; bottom: 2px; border-radius: 5px; background: rgb(0, 0, 0);" class="_scroll_box"></div>
@@ -612,41 +618,23 @@
 	                <div class="title">警情记录</div>
 					<div class="alarm-group-center">
 						<ul class="alarm-list" >
-                            <li>
-                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
-                                <span class="">2018-10-24 17:09:01</span>
+                            <li style="height: 4.8em;">
+                                <div class="alarm-list-img">
+                                	
+                                </div>
+                                <div class="alarm-list-info">
+                                	<p class="text">文本文本文本文本文本文本文本文本文本文本文本文本</p>
+                                	<p class="text">文本文本文本文本文本文本文本文本文本文本文本文本</p>
+                                </div>
                             </li>
-                            <li>
-                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
-                                <span class="">2018-10-24 17:09:01</span>
-                            </li>
-                            <li>
-                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
-                                <span class="">2018-10-24 17:09:01</span>
-                            </li>
-                            <li>
-                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
-                                <span class="">2018-10-24 17:09:01</span>
-                            </li>
-                            <li>
-                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
-                                <span class="">2018-10-24 17:09:01</span>
-                            </li>
-                            <li>
-                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
-                                <span class="">2018-10-24 17:09:01</span>
-                            </li>
-                            <li>
-                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
-                                <span class="">2018-10-24 17:09:01</span>
-                            </li>
-                            <li>
-                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
-                                <span class="">2018-10-24 17:09:01</span>
-                            </li>
-                            <li>
-                                <div title="环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0">【未处理】环境监测-成都(气压)&nbsp;:&nbsp; 高于5000.0</div>
-                                <span class="">2018-10-24 17:09:01</span>
+                            <li style="height: 4.8em;">
+                                <div class="alarm-list-img">
+                                	
+                                </div>
+                                <div class="alarm-list-info">
+                                	<p class="text">文本文本文本文本文本文本文本文本文本文本文本文本</p>
+                                	<p class="text">文本文本文本文本文本文本文本文本文本文本文本文本</p>
+                                </div>
                             </li>
                         </ul>
 					</div>
