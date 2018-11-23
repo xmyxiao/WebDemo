@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录页</title>
+		<link rel="stylesheet" href="iconfont/iconfont.css" />
+		<style>
+			body{
+				position: absolute;
+				height: 100%;
+			    width: 100%;
+				font-size: 14px;
+				color: #333;
+			}
+			html,body,ul,li,div,p{
+				padding: 0;
+				margin: 0;
+			}
+			ul,li{
+				list-style: none;
+			}
+			.clearFix:after{
+				display:block;
+			  	content:'';
+			  	clear:both;
+			  	zoom:1;
+			}
+			.p-login-main{
+				min-height: 100vh;
+		    	background: url(bg-final-kuyun.jpg) 50% 50% no-repeat;
+		    	background-size: cover;
+		    	overflow: hidden;
+			}
+			.p-login-main>.logo{
+				display: block;
+			    width: 236px;
+			    height: 52px;
+			    position: fixed;
+			    top: 10%;
+			    left: 10%;
+			    background: url(logo-kuyun3.png) no-repeat;
+			}
+			.p-login-main>.logincontent{
+				box-sizing: border-box;
+				position: absolute;
+			    right: 20%;
+			    top: 20%;
+			    background: #fff !ie;
+			    background: rgba(161, 153, 153, 0.3);
+			    filter: alpha(opacity=30);
+			    width: 320px;
+			    height: 320px;
+			    margin: 0 auto;
+			    margin-bottom: 0px;
+			    padding: 30px;
+			    padding-top: 20px;
+			    padding-bottom: 15px;
+			    -webkit-border-radius: 7px;
+			    -moz-border-radius: 7px;
+			    -ms-border-radius: 7px;
+			    -o-border-radius: 7px;
+			    border-radius: 7px;
+			}
+			.p-login-main>.logincontent>.login-form{
+				padding: 0px;
+    			margin: 0px;
+			}
+			.logincontent .form-title {
+			    text-align: center;
+			    font-weight: 300;
+			    margin-top: 20px;
+			    margin-bottom: 25px;
+			    color: #eee;
+			    font-size: 24px;
+			}
+			.logincontent .alert-danger{
+				padding: 15px;
+			    margin-bottom: 20px;
+			    border: 1px solid transparent;
+			    border-radius: 4px;
+			    background-color: #fbe1e3;
+			    border-color: #fbe1e3;
+			    color: #e73d4a;
+			}
+			.logincontent .close{
+				float: right;
+				display: inline-block;
+			    margin-top: 0px;
+			    margin-right: 0px;
+			    font-size: 12px;
+			    cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="p-login-main">
+			<a class="logo" href="http://www.coderise.cn/" target="_blank"></a>
+			<div class="logincontent">
+	            <form class="login-form">
+	            	<h3 class="form-title">用户登录</h3>
+	            	<div class="alert-danger" style="display: block;">
+		                <i class="close iconfont icon-cha1" data-close="alert"></i>
+		                <span> 请填写用户名和密码 </span>
+		            </div>
+	                <div class="input-icon">
+	                    <i class="fa fa-user"></i>
+	                    <input class="form-control placeholder-no-fix ng-dirty ng-valid-parse ng-touched ng-valid ng-valid-required" type="text" autocomplete="off" placeholder="用户名" name="userId" ng-model="loginForm.userName" required=""> 
+	                </div>
+	                
+	            </form>
+	    	</div>
+		</div>
+	</body>
+</html>

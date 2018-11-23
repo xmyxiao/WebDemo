@@ -116,7 +116,7 @@ function formatDate(setData,type){
 	if(c) c.LS = c.LS || LS;
 })(window,window.localStorage);
 
-//页面编码  将特殊符号转为编码
+//页面编码  将html特殊符号转为编码
 function htmlEncodeByRegExp(str){
     var s = "";
     if(str.length == 0) return "";
@@ -128,7 +128,7 @@ function htmlEncodeByRegExp(str){
     s = s.replace(/\"/g,"&quot;");
     return s;  
 }
-//页面解码  将编码转为特殊字符
+//页面解码  将html编码转为特殊字符
 function htmlDecodeByRegExp(str){
     var s = "";
     if(str.length == 0) return "";
