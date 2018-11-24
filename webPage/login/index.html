@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>登录页</title>
-		<link rel="stylesheet" href="iconfont/iconfont.css" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_731525_rsxogt9v62.css" />
 		<style>
 			body{
 				position: absolute;
@@ -68,8 +68,8 @@
 			.logincontent .form-title {
 			    text-align: center;
 			    font-weight: 300;
-			    margin-top: 20px;
-			    margin-bottom: 25px;
+			    margin-top: 17px;
+			    margin-bottom: 23px;
 			    color: #eee;
 			    font-size: 24px;
 			}
@@ -90,6 +90,133 @@
 			    font-size: 12px;
 			    cursor: pointer;
 			}
+			.input-icon{
+				position: relative;
+				margin-bottom: 15px;
+			}
+			.input-icon > i {
+			    color: #ccc;
+			    display: block;
+			    position: absolute;
+			    margin: 9px 2px 4px 9px;
+			    z-index: 3;
+			    width: 16px;
+			    font-size: 16px;
+			    text-align: center;
+			    left: 0;
+			}
+			.form-control {
+			    display: block;
+			    box-sizing: border-box;
+			    width: 100%;
+			    height: 36px;
+			    padding: 6px 12px;
+			    padding-left: 33px;
+			    font-size: 14px;
+			    line-height: 1.42857;
+			    color: #555555;
+			    background-color: #fff;
+			    background-image: none;
+			    border: 1px solid #c2cad8;
+			    border-radius: 4px;
+				outline: none;
+    			box-shadow: none;
+			}
+			.logincontent .form-actions {
+			    background-color: transparent;
+			    clear: both;
+			    border: 0px;
+			    padding: 0px 30px 10px 30px;
+			    margin-left: -30px;
+			    margin-right: -30px;
+			}
+			.logincontent .form-actions .rememberme {
+				position: relative;
+			    padding-left: 22px;
+			    margin-bottom: 15px;
+			    cursor: pointer;
+			    font-size: 14px;
+				color: #eee;
+			    margin-top: 8px;
+			    display: inline-block;
+			}
+			.logincontent .form-actions .rememberme > input {
+			    position: absolute;
+			    z-index: -1;
+			    opacity: 0;
+			    filter: alpha(opacity=0);
+			}
+			.logincontent .form-actions .rememberme > span {
+				position: absolute;
+				display: inline-block;
+			    top: 3px;
+			    left: 0;
+			    height: 15px;
+			    width: 15px;
+			    box-sizing: border-box;
+			    background: #fff;
+			    border-radius: 4px;
+			}
+			.logincontent .form-actions .rememberme.checked > span{
+				background: #83b7fa;
+			}
+			.logincontent .form-actions .rememberme.checked > span:after{
+				content: "";
+			    position: absolute;
+			    left: 5px;
+			    top: 2px;
+			    width: 3px;
+			    height: 7px;
+			    border: solid #666666;
+			    border-width: 0 2px 2px 0;
+			    transform: rotate(45deg);
+			    border-color: #eee;
+			}
+			.logincontent .btn {
+			    display: inline-block;
+			    box-sizing: border-box;
+			    margin-bottom: 0;
+			    font-weight: normal;
+			    text-align: center;
+			    vertical-align: middle;
+			    cursor: pointer;
+			    background-image: none;
+			    border: 1px solid transparent;
+			    white-space: nowrap;
+			    padding: 10px 12px;
+			    font-size: 14px;
+			    line-height: 1.42857;
+			    border-radius: 4px;
+			    -webkit-user-select: none;
+			    -moz-user-select: none;
+			    -ms-user-select: none;
+			    user-select: none;
+			}
+			.logincontent .pull-right{
+				float: right;
+				margin-top: 1px;
+				background-color: rgba(75, 135, 193, 1);
+			    width: 100%;
+			    color: #eee;
+			    font-weight: bold;
+			}
+			.logincontent .pull-right:hover{
+				color: #333;
+			}
+			.logincontent .forget-container{
+				width: 100%;
+    			height: 20px;
+			}
+			.logincontent .form-actions>.back-password{
+				float: right;
+				margin-top: 8px;
+				text-decoration: none;
+				background-color: transparent;
+				color: #fff;
+			}
+			.logincontent .form-actions>.back-password:hover{
+				text-decoration: none;
+			}
 		</style>
 	</head>
 	<body>
@@ -98,17 +225,58 @@
 			<div class="logincontent">
 	            <form class="login-form">
 	            	<h3 class="form-title">用户登录</h3>
-	            	<div class="alert-danger" style="display: block;">
-		                <i class="close iconfont icon-cha1" data-close="alert"></i>
+	            	<div class="alert-danger" style="display: none;">
+		                <i class="close iconfont icon-cha1"></i>
 		                <span> 请填写用户名和密码 </span>
 		            </div>
 	                <div class="input-icon">
-	                    <i class="fa fa-user"></i>
-	                    <input class="form-control placeholder-no-fix ng-dirty ng-valid-parse ng-touched ng-valid ng-valid-required" type="text" autocomplete="off" placeholder="用户名" name="userId" ng-model="loginForm.userName" required=""> 
+	                    <i class="iconfont icon-wodetubiaodianji"></i>
+	                    <input class="form-control" type="text" autocomplete="off" placeholder="用户名" name="userId" > 
 	                </div>
-	                
+	                <div class="input-icon">
+	                    <i class="iconfont icon-mima"></i>
+	                    <input class="form-control" type="text" autocomplete="off" placeholder="密码" name="password" > 
+	                </div>
+	                <div class="form-actions">
+		                <label class="rememberme checked">
+		                    <input type="checkbox" name="remember" class=""> 记住用户名
+		                    <span></span>
+		                </label>
+	                	<a href="javascript:;" class="back-password">
+	                  		忘记密码？
+	                  </a>
+		            </div>
+		            <button type="submit" class="btn pull-right" > 登录 </button>
 	            </form>
 	    	</div>
 		</div>
 	</body>
+	<script type="text/javascript">
+		window.onload=function (){
+			let $rememberme = document.querySelector(".rememberme");
+			$rememberme.addEventListener("click",function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				var _this = this;
+				if(hasClass(_this,"checked")){
+					removeClass(_this,"checked");
+				}else{
+					addClass(_this,"checked");
+				}			
+			});
+		}
+		function hasClass( elements,cName ){
+        	return !!elements.className.match( new RegExp( "(\\s|^)" + cName + "(\\s|$)") );
+    	};
+    	function addClass( elements,cName ){
+	        if( !hasClass( elements,cName ) ){
+	            elements.className += " " + cName;
+	        };
+	    };
+	    function removeClass( elements,cName ){
+	        if( hasClass( elements,cName ) ){
+	            elements.className = elements.className.replace( new RegExp( "(\\s|^)" + cName + "(\\s|$)" )," " ); // replace方法是替换
+	        };
+	    };
+	</script>
 </html>
