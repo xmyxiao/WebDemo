@@ -19,6 +19,9 @@
 			ul,li{
 				list-style: none;
 			}
+			img {
+			    vertical-align: middle;
+			}
 			.clearFix:after{
 				display:block;
 			  	content:'';
@@ -26,8 +29,10 @@
 			  	zoom:1;
 			}
 			.p-login-main{
-				min-height: 100vh;
-		    	background: url(bg-final-kuyun.jpg) 50% 50% no-repeat;
+				min-height: -moz-calc(100vh - 45px);
+				min-height: -webkit-calc(100vh - 45px);
+				min-height: calc(100vh - 45px);
+		    	background: url("Login-backA.jpg") 50% 50% no-repeat;
 		    	background-size: cover;
 		    	overflow: hidden;
 			}
@@ -36,9 +41,9 @@
 			    width: 236px;
 			    height: 52px;
 			    position: fixed;
-			    top: 10%;
+			    top: 7%;
 			    left: 10%;
-			    background: url(logo-kuyun3.png) no-repeat;
+			    background: url("logoA.png") no-repeat;
 			}
 			.p-login-main>.logincontent{
 				box-sizing: border-box;
@@ -139,6 +144,10 @@
 				color: #eee;
 			    margin-top: 8px;
 			    display: inline-block;
+			    -webkit-user-select: none;
+			    -moz-user-select: none;
+			    -ms-user-select: none;
+			    user-select: none;
 			}
 			.logincontent .form-actions .rememberme > input {
 			    position: absolute;
@@ -217,6 +226,148 @@
 			.logincontent .form-actions>.back-password:hover{
 				text-decoration: none;
 			}
+			#footer {
+			    position: absolute;
+			    bottom: 0;
+			    z-index: 99;
+			    width: 100%;
+			    background: #2c2c2c;
+			    height: 45px;
+			    line-height: 50px;
+			    color: #959595;
+			    overflow: hidden;
+			    margin: 0 auto;
+			}
+			.footer-w {
+			    margin: 0 auto;
+			    text-align: center;
+			}
+			
+			.p-login-flex{
+				position: fixed;
+				right: 30px;
+				bottom: 100px;
+			}
+			.p-login-flex .login-flex-list>.item{
+				margin-bottom: 10px;
+			    position: relative;
+			    list-style: none;
+			}
+			.login-flex-list>.item .flex-icon{
+				display: inline-block;
+			    height: 37px;
+			    width: 37px;
+			    cursor: pointer;
+			}
+			.flex-icon.telephone{
+				background: url(Ico-1.png) no-repeat;
+			}
+			.flex-icon.weixin{
+				background: url(Ico-2.png) no-repeat;
+			}
+			.flex-icon.app{
+				background: url(Ico-3.png) no-repeat;
+			}
+			
+			.login-flex-list>.item a {
+			    display: block;
+			    height: 37px;
+			    outline: 0;
+			    position: relative;
+			    width: 37px;
+			    -webkit-transition: .5s all;
+			    -moz-transition: .5s all;
+			    -ms-transition: .5s all;
+			    -o-transition: .5s all;
+			    transition: .5s all;
+			    -webkit-transform-style: preserve-3d;
+			    -moz-transform-style: preserve-3d;
+			    -ms-transform-style: preserve-3d;
+			    -o-transform-style: preserve-3d;
+			    transform-style: preserve-3d;
+			}
+			.login-flex-list>.item:hover a {
+			    -webkit-transform: rotateY(180deg);
+			    -moz-transform: rotateY(180deg);
+			    transform: rotateY(180deg);
+			}
+			.login-flex-list>.item a .text{
+				transition-property: visibility;
+				transition-duration: 1s;
+				display: none;
+				line-height: 37px;
+			    color: #4d4d4d;
+			    font-weight: bold;
+				-webkit-transform: rotateY(180deg);
+			    -moz-transform: rotateY(180deg);
+			    -ms-transform: rotateY(180deg);
+			    -o-transform: rotateY(180deg);
+			    transform: rotateY(180deg);
+			}
+			.login-flex-list>.item:hover a .text {
+				position: absolute;
+			    background: #ccc;
+			    width: 37px;
+			    height: 37px;
+			    display: inline-block;
+			    transition-property: visibility;
+				transition-duration: 1s;
+			    top: 0;
+			    border-radius: 19px;
+			    text-align: center;
+			}
+			
+			.login-flex-list>.item .tips{
+				display: none;
+				position: absolute;
+			    right: 50px;
+			    top: -50px;
+			}
+			.login-flex-list>.item .weixin.tips{
+				top: -65px;
+			}
+			.login-flex-list>.item .app.tips{
+				top: -65px;
+			}
+			.login-flex-list>.item .tips .con {
+			    background: #383636;
+			    border-radius: 3px;
+			    padding: 10px;
+			    text-align: center;
+			    width: 160px;
+			}
+			.login-flex-list>.item .tips .con h2 {
+			    color: #fff;
+			    font-size: 14px;
+			    font-weight: 700;
+			    line-height: 14px;
+			}
+			.login-flex-list>.item .tips .con h3 {
+			    color: #fff;
+			    font-size: 12px;
+			    font-weight: 700;
+			    line-height: 20px;
+			}
+			.login-flex-list>.item .tips .con img{
+				width: 141px;
+				height: 141px;
+			}
+			.login-flex-list>.item .tips .arrow-right {
+			    width: 0;
+			    height: 0;
+			    display: block;
+			    border-top: 10px solid transparent;
+			    border-bottom: 10px solid transparent;
+			    border-left: 10px solid #383636;
+			    margin-top: -8px;
+			    position: absolute;
+			    right: -5px;
+			    top: 50%;
+			}
+			
+			.login-flex-list>.item:hover .tips {
+			    display: block;
+			}
 		</style>
 	</head>
 	<body>
@@ -231,14 +382,14 @@
 		            </div>
 	                <div class="input-icon">
 	                    <i class="iconfont icon-wodetubiaodianji"></i>
-	                    <input class="form-control" type="text" autocomplete="off" placeholder="用户名" name="userId" > 
+	                    <input class="form-control" id="userId" type="text" autocomplete="off" placeholder="用户名" name="userId" > 
 	                </div>
 	                <div class="input-icon">
 	                    <i class="iconfont icon-mima"></i>
 	                    <input class="form-control" type="text" autocomplete="off" placeholder="密码" name="password" > 
 	                </div>
 	                <div class="form-actions">
-		                <label class="rememberme checked">
+		                <label class="rememberme">
 		                    <input type="checkbox" name="remember" class=""> 记住用户名
 		                    <span></span>
 		                </label>
@@ -246,14 +397,67 @@
 	                  		忘记密码？
 	                  </a>
 		            </div>
-		            <button type="submit" class="btn pull-right" > 登录 </button>
+		            <button type="submit" id="submitBtn" class="btn pull-right" > 登录 </button>
 	            </form>
 	    	</div>
+	    	<div id="footer">
+		        <div class="footer-w">
+		            <span>中海创集团&nbsp;|&nbsp;福州奥迈软件有限公司　版权所有Copyright©WWW.AOMAISOFT.COM&nbsp;All&nbsp;rights&nbsp;reserved</span>
+		        </div>
+		    </div>
+		</div>
+		<div class="p-login-flex">
+			<ul class="login-flex-list">
+				<li class="item">
+					<a title="电话" href="javascript:;">
+						<span class="flex-icon telephone"></span>
+						<span class="text">电话</span>
+					</a>
+					<div class="tips">
+	                    <div class="con">
+	                        <h2>1234-12345678</h2>
+	                        <h2>12345678901</h2>
+	                        <h3 style="line-height: 20px;">工作时间：周一至周五 8:30-17:30</h3>
+	                    </div>
+	                    <i class="arrow-right"></i>
+                	</div>
+				</li>
+				<li class="item">
+					<a title="微信" href="javascript:;">
+						<span class="flex-icon weixin"></span>
+						<span class="text">微信</span>
+					</a>
+					<div class="weixin tips">
+	                    <div class="con">
+	                        <img src="Login-backA.jpg" />
+	                    </div>
+	                    <i class="arrow-right"></i>
+                	</div>
+				</li>
+				<li class="item">
+					<a title="APP" href="javascript:;">
+						<span class="flex-icon app"></span>
+						<span class="text">APP</span>
+					</a>
+					<div class="app tips">
+	                    <div class="con">
+	                        <img src="Login-backA.jpg" />
+	                    </div>
+	                    <i class="arrow-right"></i>
+                	</div>
+				</li>
+			</ul>
 		</div>
 	</body>
 	<script type="text/javascript">
 		window.onload=function (){
-			let $rememberme = document.querySelector(".rememberme");
+			var $rememberme = document.querySelector(".rememberme");
+			var $submitBtn = document.querySelector("#submitBtn");
+			var userId = localStorage.getItem("aomaiyunuserid");
+			if(userId){
+				addClass($rememberme,"checked");
+				document.querySelector("#userId").value = userId;
+			}
 			$rememberme.addEventListener("click",function(e){
 				e.preventDefault();
 				e.stopPropagation();
@@ -263,6 +467,17 @@
 				}else{
 					addClass(_this,"checked");
 				}			
+			});
+			$submitBtn.addEventListener("click",function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				var $userId = document.querySelector("#userId");
+				var $rememberme = document.querySelector(".rememberme");
+				if(hasClass($rememberme,"checked")){
+					window.localStorage.setItem("aomaiyunuserid", $userId.value);
+				}else{
+					window.localStorage.removeItem("aomaiyunuserid");
+				}
 			});
 		}
 		function hasClass( elements,cName ){
