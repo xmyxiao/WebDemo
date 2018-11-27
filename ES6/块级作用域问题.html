@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="1" />
+		<input type="button" value="2" />
+		<input type="button" value="3" />
+		<script>
+			/*window.onload = function(){
+				var btn = document.getElementsByTagName("input");
+				for(var i = 0; i < btn.length; i++){
+					btn[i].onclick = function(){
+						alert(i);
+						//在这里输出的都为3
+					}
+				}
+			}*/
+			/*window.onload = function(){
+				var btn = document.getElementsByTagName("input");
+				for(var i = 0; i < btn.length; i++){
+					(function(i){
+						btn[i].onclick = function(){
+							alert(i);
+						}
+					})(i)
+					//这里可以正确的输出i的值   相当于把i的值再次传回去
+				}
+			}*/
+			window.onload = function(){
+				let btn = document.getElementsByTagName("input");
+				for(let i = 0; i < btn.length; i++){
+					btn[i].onclick = function(){
+						alert(i);
+					}
+					//这里可以正确的输出i的值   因为在es6下有作用域
+				}
+			}
+		</script>
+	</body>
+</html>
