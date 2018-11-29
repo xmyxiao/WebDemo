@@ -7,6 +7,16 @@
 	<body>
 	</body>
 	<script>
+		a(1,2,3,4)
+		function a(a,b,...c){
+			console.log(a,b,c);
+			//这里的c是一个数组，[3,4] a(1,2,3)则c是[3]   a(1,2) 则c是[]
+		}
+		//剩余参数 ...para  用于收集剩余参数  必须位于最后   ...para前面可以没有参数
+		//同时也可以用于展开数组    展开后的效果相当于将数组内容取出
+		let arr = [1,2,3]
+		console.log(...arr);
+		//这里输出  1 2 3  相当于把arr展开  但是赋值式并不支持   即  let a = ...arr并不支持
 		
 	</script>
 </html>
