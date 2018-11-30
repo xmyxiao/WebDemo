@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//解构赋值
+			//左右结构相同  为解构  然后一对一赋值
+			//将值从数组或属性从对象提取到不同的变量中
+			
+			//数组时赋值按顺序
+			let a, b;
+			[a,b] = [10,20];
+			console.log(a);  //10  typeof number
+			
+			//对象解构
+			//对象时  赋值按照名称  变量与属性要同名
+			let o = {c : "10", d : "20"};
+			let {c, d} = o;
+			console.log(c);  //10 typeof string
+			
+			let e, f;
+			({e, f} = {e : "10", f : "20"});
+			console.log(e);
+			//对象解构赋值的完整写法
+			let { foo: foo, bar: bar } = { foo: "aaa", bar: "bbb" };
+			console.log(foo,bar);
+			//变量与属性不同名的写法    这里的foo: f1  foo是匹配模式  f1才是变量
+			let { foo: f1, bar: b1 } = { foo: "aaa", bar: "bbb" };
+			console.log(f1,b1);
+			
+			
+			//结构赋值支持默认值 
+			//只有当一个数组成员严格等于undefined(即 === undefined)，默认值才会生效。
+			let [x = 1] = [undefined];
+			let [y = 2] = [null]
+			console.log(x);  //这里的x是1
+			console.log(y);  //这里的y是null  应为null === undefined 为false
+			
+			//字符串也可以进行解构赋值
+			let [stra, strb, strc, strd, stre, strf] = 'hello';
+			console.log(stra,strb,strc,strd,stre,strf);
+			//这里是取字符串的length属性赋值给len
+			let {length : len} = 'hello';
+			console.log(len);
+			//尽量减少圆括号()的使用
+			
+			//解构赋值的用途
+			//1.数值对调
+			let num1 = 1;
+			let num2 = 2;
+			
+			[num1, num2] = [num2, num1];
+			//2.函数返回多个值  这里函数也可以返回对象
+			function example() {
+			  return [1, 2, 3];
+			}
+			let [exa, exb, exc] = example();
+			//3.可以用于对象属性的提取   方便参数与变量名对应
+			let testObj = {
+				name : '',
+				id : ''
+			}
+			let {id,name} = testObj
+			//4. 可以指定函数默认值
+			//解构赋值可以让语句变得更加清晰
+		</script>
+	</body>
+</html>

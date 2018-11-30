@@ -38,6 +38,19 @@
 					//这里可以正确的输出i的值   因为在es6下有作用域
 				}
 			}
+			
+			/*变量提升*/
+			var test = '123';
+			function f(){
+				console.log(test);
+				//这里输出的是undefined  这里就是var下变量提升带来的问题
+				//当检测到var test = '456'时  会将  var test 提升到最上面  所以这里的值为undefined
+				if(false){
+					var test = '456'
+				}
+			}
+			f();
+			
 		</script>
 	</body>
 </html>
