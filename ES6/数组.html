@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//map      映射                      一对一
+		let mapArr = [10,20,45];
+		let reMapArr = mapArr.map(function(item){
+			console.log(item);
+			return item * 2;
+			//没有 return 则reMapArr为空
+		});
+		console.log(reMapArr)
+		/*
+		 * 箭头函数的写法
+		 let reMapArr = mapArr.map(item=>itme*2)
+		 * */
+		
+		//reduce   汇总                    多对一
+		let reduceArr = [2,4,5,7];
+		let redu = reduceArr.reduce((tmp,item,index)=>{
+			console.log(tmp,item,index)
+			//tmp是上次计算的结果  这里的index是1开始   因为第一个到tmp
+			return tmp + item
+			//这里的返回会成为下次的tmp   最后的返回  会到redu
+		});
+		console.log(redu)
+		//平均值的计算
+		let reduvg = reduceArr.reduce((tem,item,index)=>{
+			return tem + item
+		})/reduceArr.length
+		console.log(reduvg,reduceArr)
+
+		//filter   过滤器
+		//arr.filter(item=>{})
+		//通过true和false来判断是否是否留下
+		let filArr = reduceArr.filter((item)=>{
+			return item%2 === 0
+		})
+		console.log(filArr)
+		//forEach  循环（迭代）
+		//arr.forEach((item,index)=>{})
+	</script>
+</html>

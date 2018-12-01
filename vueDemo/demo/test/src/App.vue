@@ -1,6 +1,9 @@
 <template>
   <div id="page">
-    <router-view/>
+    <router-view></router-view>
+    <router-link to="/register">
+				<span>注册页</span>
+			</router-link>
   </div>
 </template>
 
