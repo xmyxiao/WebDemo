@@ -8,9 +8,27 @@
 		<script>
 			//原本面向对象的实现是通过构造函数  然后通过原型链来添加方法
 			//es6使用clss关键字  class里面加方法
+			function animal(){
+				this.type='animal'
+				this.body = 'body'
+			}
+			
+			animal.prototype.move = function(){
+				this.move = 'run'
+			}
+			
+			let cat = new animal();
+			//添加私有方法
+			cat.cell = function(){
+				console.log('1')
+			}
+			cat.move();
+			console.log(cat.move)
+			cat.cell()
+			//这里的move方法  子类可以调用
 			
 			//继承  es5  constructor?   用处？  user.prototype.constructor = user?
-			//ews6 super 超类 == 父类
+			//es6 super 超类 == 父类
 			
 			//browser.js
 		</script>

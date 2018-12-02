@@ -5,6 +5,9 @@
 		<title></title>
 	</head>
 	<body>
+		<div id="test">
+		
+		<div>
 		<script>
 			//startsWith()  判断是否以一段字符串开头
 			//endsWith()   判断是否以一段字符串结束
@@ -15,6 +18,11 @@
 			console.log(b)
 			//这里输出的是str
 			//可以折行   拼接html时可以用
+			let c = '123'
+			let d = '456'
+			let e =`'<p>${c}</p>'`
+				  +`<p>${d}<p>`
+			document.querySelector('#test').append(e);
 		</script>
 	</body>
 </html>
