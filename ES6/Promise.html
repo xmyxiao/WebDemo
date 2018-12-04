@@ -6,7 +6,31 @@
 	</head>
 	<body>
 		<script>
-			//promise.all()
+			let a = new Promise(function(resolve, reject) {
+				setTimeout(() => resolve(1), 1000)
+			})
+			let b = new Promise(function(resolve, reject) {
+				setTimeout(() => resolve(2), 1000)
+			})
+
+			Promise.all([a,b]).then(values => { 
+				//这里的values是a和b两个请求的结构拼接的数组
+				//相当于映射  传入一个数组  输出一个数组
+			  console.log(values);
+			}, reason => {
+			  console.log(reason)
+			});
+			//promise.all()用于解决多请求嵌套的情况
+			/*
+			 * $.ajax({
+			 * 	success:function(){
+			 * 	  $.ajax({
+			 * 		
+			 * 	  })
+			 * 	}
+			 * })
+			 * 
+			 * */
 		</script>
 	</body>
 </html>

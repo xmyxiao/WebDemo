@@ -16,19 +16,57 @@
 			animal.prototype.move = function(){
 				this.move = 'run'
 			}
+			function cat(){
+				//继承的主要实现  apply的第一个参数this代替animal里面的this
+				//这里主要是实现属性的继承  并不继承方法
+				animal.apply(this,arguments)
+				this.name = 'name'
+			}
+			//这里实现方法的继承  就像是将cat的原型指向animal
+			//不加这句的时候  c.__proto__.constructor  指向cat
+			//加这句  c.__proto__.constructor  指向animal  也就是c的原型的构造函数指向了animal
+			//实际上  这里的c的原型的构造应该是cat
+			cat.prototype = new animal()
+			//将原型的构造函数重新指回cat
+			cat.prototype.constructor = cat
 			
-			let cat = new animal();
+			let c = new cat()
 			//添加私有方法
-			cat.cell = function(){
+			c.say = function(){
 				console.log('1')
 			}
-			cat.move();
-			console.log(cat.move)
-			cat.cell()
+			c.move();
+			console.log(c.move)
+			c.say()
 			//这里的move方法  子类可以调用
 			
-			//继承  es5  constructor?   用处？  user.prototype.constructor = user?
 			//es6 super 超类 == 父类
+			//es6 的继承使用class关键字
+			class plant{
+				constructor(){
+					this.body = 'body'
+				}
+				move(){
+					this.move = null
+				}
+			}
+			
+			class tree extends plant{
+				constructor(){  //构造函数
+					//supper()  代表这个之类继承超类   也就是继承父类
+					super()
+					this.name = 'name'
+				}
+				say(){
+					console.log('2')
+				}
+			}
+			
+			let t = new tree();
+			//t.__proto__.constructor 指向tree  不需要像es5一样重新重新指向原型构造函数
+			t.move()
+			console.log(t.move)
+			t.say()
 			
 			//browser.js
 		</script>
