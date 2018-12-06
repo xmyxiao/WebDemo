@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 * arr.includes    判断数组是否包含某个项
+			 * keys/values/entries  数组方法
+			 * keys取所有的key    values取所有的value    entries(实体  key与value对应)取出所有的key-value值
+			 * for....of   这里循环 是value
+			 * for....in   这里循环的是key
+			 * 
+			 * async  awite  与generator yield相似
+			 * async可以写成箭头函数  generator不能写成箭头函数
+			 * */
+			
+			let arr = [7,5,3];
+			//of 不能用于json  
+			for(let i of arr){
+				//这里输出的是值
+				console.log(i);
+			}
+			for (let key of arr.keys()){
+				console.log(key)
+			}
+			
+			async function show(){
+				awite
+			}
+			//console.log(arr.keys()); 这个不能直接输出
+		</script>
+	</body>
+</html>

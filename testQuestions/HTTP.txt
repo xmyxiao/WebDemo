@@ -50,6 +50,7 @@ get和post的区别
 		
 	cors  跨域资源共享
 		它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制
+		大致上就是增加请求头
 		http://www.ruanyifeng.com/blog/2016/04/cors.html
 	
 	postMessage

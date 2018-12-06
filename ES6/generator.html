@@ -5,5 +5,41 @@
 		<title></title>
 	</head>
 	<body>
+		<script>
+			function *fun(){
+				//代码...
+				yield  //放弃执行
+				//yield可以接受参数
+				//代码
+			}
+			//实际是生成几个小函数
+			//就是把大函数切割成复数个的小函数
+			//第一段函数传参不通过yield   直接通过函数
+			//之后的传参通过yield
+			
+			function *show(a,b){
+				console.log(a);
+				let c = yield;
+				console.log(b);
+				console.log(c);
+			}
+			//这里不能直接使用show  传值和普通函数的传值一样
+			//next方法可以带一个参数，该参数就会被当作上一个yield表达式的返回值
+			var sh1 = show(1,2);
+			//第一个next传值是无效的   第一个next的值在show(1,2)中传递   第一个next相当于启动函数
+			sh1.next(3);
+			//这里函数从let c = 4开始  这里的4就是yield的返回值  
+
+			sh1.next(4);
+			
+			//可以用在请求回调函数上
+			//传统的ajax会创建多级回调  就产生了回调嵌套回调
+			//promise可以处理多个请求一起请求的情况  但是带逻辑的请求一样无法处理
+			/*
+			 * generator可以更好的处理带逻辑的多个ajax请求
+			 * 常用的runner koa
+			 * 
+			 * */
+		</script>
 	</body>
 </html>
