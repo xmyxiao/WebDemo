@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>轮播</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link href="https://cdn.bootcss.com/slick-carousel/1.9.0/slick.min.css" rel="stylesheet">
+		<link href="https://cdn.bootcss.com/slick-carousel/1.9.0/slick-theme.min.css" rel="stylesheet">
+		<style>
+			.slick-main{
+				width: 100%;
+				box-sizing: border-box;
+				padding: 10px 30px;
+    			margin: 0 auto;
+			}
+			.slick-main .slick-prev:before, .slick-main .slick-next:before{
+				color:#828282;
+			}
+			.slick-main .slick-item img{
+				width: 100%;
+			}
+			.slick-main .slick-item,.slick-main .slick-img{
+				position: relative;
+				width: 100%;
+				height: 100%;
+			}
+			.slick-main .slick-btn{
+				text-align: center;
+				padding: 10px 0 20px;
+			}
+			.slick-main .slick-item .overlay {
+			    outline: none;
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    width: 100%;
+			    height: 100%;
+			    background: #fff url(img/eye_gray.svg) no-repeat scroll center;
+			    background-size: 88px;
+			    cursor: pointer;
+			    opacity: 0;
+			    transition: .5s;
+			}
+			.slick-main .slick-item .overlay:hover {
+			    opacity: .5;
+			    transition: .5s;
+			}
+			.slick-main .slick-item .center {
+				padding-top: 10px;
+				line-height: 1.5em;
+			    text-align: center;
+			    letter-spacing: .1px;
+			}
+			.slick-main .slick-next, .slick-main .slick-prev{
+			    top: 40%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="slick-main">
+			<div class="slick">
+			    <div class="slick-item">
+			    	<div class="slick-img">
+			    		<img src="img/fleet-monitoring-dashboard.png" alt="1">
+			    		<a href="#" class="overlay"></a>
+			    	</div>
+			    	<p class="center">一段长文本一段长文本一段长文本一段长文本一段长文本一段长文本一段长文本一段长文本一段长文本</p>
+			    	<div class="slick-btn">
+			    		<a href="#" class="btn btn-primary">第一个按钮</a>
+			    	</div>
+			    </div>
+			    <div class="slick-item">
+			    	<div class="slick-img">
+			    		<img src="img/silos-monitoring-dashboard.png" alt="2">
+			    		<a href="#" class="overlay"></a>
+			    	</div>
+			    	<p class="center">一段长文本一段长文本一段长文本一段长文本一段长文本一段长文本一段长文本一段长文本一段长文本</p>
+			    	<div class="slick-btn">
+			    		<a href="#" class="btn btn-primary">第二个按钮</a>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+		<div class="slick-main">
+			<div class="slick-item">
+		    	<div class="slick-img">
+		    		<img src="img/silos-monitoring-dashboard.png" alt="2">
+		    		<a href="#" class="overlay"></a>
+		    	</div>
+		    </div>
+	    </div>
+		<script type="text/javascript" src="../lib/jquery-1.11.0.js" ></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://cdn.bootcss.com/slick-carousel/1.9.0/slick.min.js"></script>
+		<script>
+			jQuery(function(){
+			    jQuery('.slick').slick({
+			        dots: true,
+			        autoplay: true
+			    });
+			});
+		</script>
+	</body>
+</html>
