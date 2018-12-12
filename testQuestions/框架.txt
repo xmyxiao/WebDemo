@@ -56,3 +56,10 @@ webpack loader
 		配置（推荐）：在 webpack.config.js 文件中指定 loader。
 		内联：在每个 import 语句中显式指定 loader。
 		CLI：在 shell 命令中指定它们。
+		
+		
+		
+vue路由要怎么实现多级路由
+
+
+vuex各个参数的含义

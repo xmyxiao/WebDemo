@@ -1,0 +1,201 @@
+.p-map-main{
+	width: 100%;
+	font-size: 14px;
+    background-color: #fff;
+    margin: 0 auto;
+    font-family: Helvetica Neue,Helvetica,PingFang SC,微软雅黑,Tahoma,Arial,sans-serif;
+}
+.p-map-main .banner-panel{
+	width: 100%;
+}
+.p-map-main .banner-panel img{
+	width: 100%;
+}
+.p-map-main .map-panel{
+	position: relative;
+	background-color: #f8f8f8;
+	margin-bottom: 70px;
+}
+.p-map-main h3{
+	font-size: 30px;
+    font-weight: normal;
+    line-height: 1.7em;
+    margin: 0;
+}
+.p-map-main h5{
+	font-size: 18px;
+    font-weight: normal;
+    line-height: 1.7em;
+    margin: 0;
+}
+.p-map-main .text-center{
+	text-align: center;
+}
+.p-map-main .title{
+	margin-top: 50px;
+}
+.p-map-main .color-gray{
+	color: gray;
+}
+.p-map-main .map-container{
+	background-image: url(http://wlw.fdauto.com/wp-content/uploads/2018/12/newtoniot1.png);
+    background-position: -300px -150px;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+.p-map-main .clear {
+    clear: both;
+}
+.p-map-main .clearFix:after{
+	display:block;
+  	content:'';
+  	clear:both;
+  	zoom:1;
+}
+.p-map-main .left{
+	float: left;
+}
+.p-map-main .map-container-left{
+	float: left;
+	width: 80%;
+}
+.p-map-main .map-container-right{
+	float: left;
+	width: 20%;
+}
+.p-map-main .map-list{
+	padding-left: 80px;
+	list-style: none;
+}
+.p-map-main .map-list .item{
+	margin-top: 50px;
+	list-style: none;
+}
+.p-map-main .map-list .item .line{
+    width: 50%;
+    background-color: #cccccc;
+    height: 1px;
+    overflow: hidden;
+}
+.p-map-main .map-list .item .content{
+	color: #2277da;
+    font-size: 40px;
+    margin: 10px 0;
+}
+.p-map-main .map-list .item .unit{
+	font-size: 20px;
+}
+.p-map-main .map-list .item .info{
+	color: #999999;
+    font-size: 16px;
+}
+.p-map-main .info-container{
+    margin: 0 auto;
+}
+.p-map-main .info-container .info-list{
+	list-style: none;
+	width: 100%;
+    margin-bottom: 50px;
+}
+.p-map-main .info-container .info-list .item{
+	list-style: none;
+	width: 20%;
+    margin: 40px 6.5% 0 6.5%;
+    float: left;
+    height: 148px;
+}
+.p-map-main .info-container .info-list .panel{
+	transition: all 0.2s;
+    cursor: pointer;
+}
+.p-map-main .info-container .info-list .panel .icon{
+	width: 30%;
+	margin: 0 auto;
+    margin-bottom: 10px;
+}
+.p-map-main .info-container .info-list .panel .line{
+    text-align: center;
+    line-height: 20px;
+    font-weight: 400;
+    color: #999;
+}
+.p-map-main .info-container .info-list .panel .info{
+	font-size: 25px;
+    text-align: center;
+    color: #2277da;
+}
+.p-map-main .info-container .info-list .panel .info .unit{
+	font-size: 16px;
+}
+.p-map-main .info-container .info-list .panel:hover{
+    margin-top: -10px;
+}
+.p-map-main .swiper-panel{
+	width: -moz-calc(100% - 200px);
+	width: -webkit-calc(100% - 200px);
+	width: calc(100% - 200px);
+    margin: 0 auto;
+	margin-top: 50px;
+	background-color: #f8f8f8;
+}
+.p-map-main .swiper-content{
+	margin:50px 0;
+	position: relative;
+}
+.swiper-container .item {
+    background-color: #FFF;
+    box-shadow: -4px 0px 8px 0px rgba(14, 5, 10, 0.12);
+    padding: 20px;
+}
+.swiper-container .item img {
+    width: 100%;
+}
+.swiper-container .item .line1 {
+    font-size: 20px;
+    padding: 20px 0 5px 0;
+}
+.swiper-container .item .line1 .right {
+    color: #f7585b;
+    float: right;
+}
+.swiper-container .item .line2 {
+    color: #666666;
+    font-size: 16px;
+    padding: 10px 0;
+}
+.swiper-container .item .line3 {
+    color: #999;
+    font-size: 14px;
+    padding: 3px 0;
+}
+.swiper-container .item .info{
+	width: 100%;
+}
+.swiper-content .button-next {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    right: -80px;
+    top: 50%;
+    margin-top: -60px;
+    background-image: url(http://wlw.fdauto.com/wp-content/uploads/2018/12/arrow-r-2.png);
+    outline: 0;
+    cursor: pointer;
+}
+.swiper-content .button-next:hover {
+    background-image: url(http://wlw.fdauto.com/wp-content/uploads/2018/12/arrow-r-2-on.png);
+}
+.swiper-content .button-prev {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: -80px;
+    top: 50%;
+    margin-top: -60px;
+    background-image: url(http://wlw.fdauto.com/wp-content/uploads/2018/12/arrow-l-2.png);
+    outline: 0;
+    cursor: pointer;
+}
+.swiper-content .button-prev:hover {
+    background-image: url(http://wlw.fdauto.com/wp-content/uploads/2018/12/arrow-l-2-on.png);
+}
