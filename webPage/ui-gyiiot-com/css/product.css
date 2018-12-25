@@ -1,0 +1,102 @@
+html{
+	background: #fff;
+}
+.px-product{
+	max-width: 1200px;
+	background-color: #fff;
+	margin: auto;
+	color: #333;
+	font-size: 14px;
+}
+.px-product .px-product-head{
+	padding-top: 40px;
+}
+.px-product .px-product-head .product-row{
+	
+}
+.px-product .px-product-head .product-row-left{
+	padding-left: 50px;
+	width: 500px;
+	float: left;
+}
+.px-product .px-product-head .product-row-left>img{
+	width: 100%;
+}
+.px-product .px-product-head .product-row-right{
+	padding-left: 520px;
+	width: 100%;
+	padding: 20px 10px 0 20px;
+}
+.px-product .px-product-head .product-row-title{
+	font-size: 18px;
+	color: #000;
+	font-weight: bolder;
+	padding-bottom: 18px;
+}
+.px-product .px-product-head .product-row-passage{
+	font-size: 14px;
+	padding-bottom: 14px;
+}
+.px-product .px-product-head .product-img-list{
+	padding: 15px 0;
+}
+.px-product .px-product-head .product-img-list .item{
+	width: 25%;
+	float: left;
+	box-sizing: border-box;
+	padding: 0 10px;
+	cursor: pointer;
+}
+.px-product .px-product-head .product-img-list .item .item-box{
+	border: 1px solid #ccc;
+}
+.px-product .px-product-head .product-img-list .item .item-box>img{
+	width: 100%;
+}
+.table-panel-btn{
+	display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    margin: 0 8px;
+    outline: 0;
+    background: #6eaef3;
+    color: #fff;
+    float: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

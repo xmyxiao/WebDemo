@@ -96,7 +96,7 @@ img{border: 0;}
 .px-foot-logo>.px-logo{
 	width: 135px;
 	height: 28px;
-	background: url(../img/logo2.png);
+	background: url(../Images/logo2.png);
 }
 .px-foot-address{
 	max-width: 470px;
@@ -142,6 +142,11 @@ img{border: 0;}
 	font-size: 14px;
 	color: #fff;
 	padding-top: 6px;
+}
+.px-ui-textellipsis{
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 @media (max-width: 992px){
