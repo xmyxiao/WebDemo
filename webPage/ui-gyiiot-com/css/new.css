@@ -39,9 +39,13 @@ a:focus{
     margin: 0 8px;
     outline: 0;
 }
+
 .table-panel-head .table-panel-btn{
 	background: #E9E9E9;
 	color: #727272;
+}
+.table-panel-head .table-panel-btn.px-programme{
+	padding: 6px 25px;
 }
 .table-panel-head .table-panel-btn.active{
 	background: #00b4ff;
@@ -137,9 +141,15 @@ a:focus{
     float: left;
     padding: 12px 15px;
 }
+.table-panel-ul.px-programme .item{
+	width: 25%;
+}
 .table-panel-ul .item:hover{
 	-moz-box-shadow: 0px 0px 12px #c6eeff;
 	box-shadow: 0px 0px 12px #c6eeff;
+}
+.table-panel-ul .item:hover .content .content-left .iconfont{
+	color: #c6eeff;
 }
 .table-panel-ul .item .content{
 	padding: 12px 30px 15px 10px;
@@ -147,6 +157,9 @@ a:focus{
 .table-panel-ul .item .content .content-left{
 	float: left;
 	width: 50px;
+}
+.table-panel-ul .item .content .content-left .iconfont{
+	font-size: 40px;
 }
 .table-panel-ul .item .content .content-left .month{
 	font-size: 16px;
@@ -170,16 +183,23 @@ a:focus{
 .table-panel-ul .item .content .content-right .info{
 	font-size: 12px;
 	line-height: 20px;
-	padding-left: 8px;
 	height: 45px;
     overflow: hidden;
 }
 #px-list2{
 	display: none;
 }
+@media (max-width: 1190px) {
+	.wrapper .px-head-title{
+		margin-top: 45px;
+	}
+}
 @media (max-width: 992px){
 	.px-body-content{
 		padding:20px 10% 40px 10% ;
+	}
+	.table-panel-ul.px-programme .item{
+		width: 50%;
 	}
 }
 
@@ -195,6 +215,9 @@ a:focus{
 		margin-right: 1px;
 	}
 	.table-panel-ul .item{
+		width: 100%;
+	}
+	.table-panel-ul.px-programme .item{
 		width: 100%;
 	}
 }
