@@ -1,0 +1,42 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CountUp</title>
+    
+    <script src="js/jquery-1.11.0.js" type="text/javascript"></script>
+    <script src="js/countUp.js" type="text/javascript"></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+  	<body>
+    	<div>CountUp</div>
+    	<span id="numberAnimation" style="color: red;font-weight: bold;font-size: 102px">5,000</span>
+		
+		<script type="text/javascript">
+		    window.onload = function () {
+		        var startVal = 0; //起始数
+		        var endVal = 5000;//结束数
+		        var duration = 5;//秒数
+		        var options = {
+		            useEasing: true,
+		            useGrouping: true,
+		            separator: ',',
+		            decimal: '.',
+		            prefix: '',
+		            suffix: ''
+		        };
+		        var demo = new CountUp("numberAnimation", startVal, endVal, 0, duration, options);
+		        demo.start(); ////methodToCallOnComplete 可以让数字在秒数过后直接到指定的数字
+		        //demo.reset();//归零
+		        //demo.pauseResume();暂停
+		        function shownum() {
+		            startVal = endVal;
+		            endVal = endVal + 5000;
+		            demo.update(endVal);//改变结束数继续增加
+		        }
+		        $(document).ready(function () { //定时任务
+		            setInterval(shownum, 5000);
+		        });
+		    }
+		</script>
+	</body>
+
+</html>
