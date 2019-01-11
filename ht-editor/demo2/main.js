@@ -1,86 +1,225 @@
-
-function handleEditorCreated(editor) {
-    document.body.style.background = '#ccc';
-
-    editor.mainSplitView.setLeftView(editor.mainTabView);
-    
-    var view = editor.mainPane.getView();
-    view.style.left = '370px';
-    view.style.top = '30px';
-    view.style.right = '0';
-    view.style.bottom = '0';
-    view.style.background = 'white';
-    document.body.appendChild(view);
-   
+(function() {
+	window.handleEditorCreated = function(editor) {
+		
+		var view = editor.mainPane.getView();
+	    view.style.left = '0';
+	    view.style.top = '0';
+	    view.style.right = '0';
+	    view.style.bottom = '0';
+	    view.style.background = '#fff';
+	    
+	    var topBorderPane = window.topBorderPane = new ht.widget.BorderPane(),
+	    	topBorderPaneView = topBorderPane.getView(),
+	    	topLogo = createTopLogo(),
+	    	topRightTool = createTopRightTool(),
+	    	topMenu = createTopMenu();
+	    topBorderPaneView.style.left = '0';
+	    topBorderPaneView.style.top = '0';
+	    topBorderPaneView.style.right = '0';
+	    topBorderPaneView.style.bottom = '30px';
+	    
+	    topBorderPane.setLeftView(topLogo);
+	    topBorderPane.setCenterView(topMenu);
+	    topBorderPane.setRightView(topRightTool,'85');
+	    
+	    changeEditorLeftView();
+	    	    
+	    editor.mainPane._topView.setTopView(topBorderPaneView);
+	    editor.mainPane._topView.setHeight('60');
+	    
+	    document.body.appendChild(view);
+	    window.addEventListener('resize', function (e) {
+	    	editor.mainPane.iv();
+	        setTimeout(function(){
+	        	topBorderPane.iv();
+	        },50);
+	        
+	    }, false);
+	}
+	//顶部左侧菜单
+	function createTopMenu(){
+		var json = [
+	        {
+	            label: "文件",
+	            items: [
+	                {
+	                    label: "新建图纸",
+	                    action: function(item) { 
+	                        editor['newDisplayView']();
+	                    }
+	                },
+	                {
+	                    label: "新建图标",
+	                    action: function(item) {
+	                        editor['newSymbolView']();
+	                    }
+	                },
+	                {
+	                    label: "新建组件",
+	                    action: function(item) {
+	                        editor['newComponent']();
+	                    }
+	                }
+	            ]
+	        },
+	        {
+	            label: "编辑",
+	            items: [
+	                {
+	                    label: "拷贝",
+	                    action: function(item) {
+	                        editor['copy']();
+	                    }
+	                },
+	                {
+	                    label: "粘贴",
+	                    action: function(item) {
+	                        editor['paste']();
+	                    }
+	                }
+	            ]
+	        },
+	        {
+	            label: "窗口",
+	            action: function(item) {
+	                alert(item.label);
+	            }
+	        },   
+	        {
+	            label: "帮助",
+	            items: [
+	                {
+	                    label: "联系我们",
+	                    action: function(item) {
+			                window.open('http://wlw.fdauto.com/');
+			            }
+	                },
+	                {
+	                    label: "使用说明",
+	                    action: function(item) {
+			                 window.open('http://wlw.fdauto.com/');
+			            }
+	                },
+	                {
+	                    label: "发布日志",
+	                    action: function(item) {
+			                 window.open('http://wlw.fdauto.com/');
+			            }
+	                }
+	            ]
+	        }
+	    ];
+	    
+	    var menu = new ht.widget.Menu(json);
+	    menu.enableGlobalKey();
+	    var menuView = menu.getView();
+	    menuView.style.background = '#535353';
+	    menu.setHoverBackground('#535353')
+	    return menu;
+	}
+	//顶部右侧工具条
+	function createTopRightTool(){
+		ht.Default.setImage('full_logo', "symbols/icon-ht/全屏.json");
+		var toolbar = new ht.widget.Toolbar([
+		    {
+	            icon: 'editor.toggleleft',
+				id: "toggleLeft",
+				toolTip: "显示/隐藏 左侧",
+				unfocusable: true,
+				action: function (){
+	            	editor.toggleLeft();
+	            },
+		    },
+		    'separator',
+		    {
+				icon: 'editor.toggleright',
+				id: "toggleRight",
+				toolTip: "显示/隐藏 右侧",
+				unfocusable: true,
+				action: function (){
+	            	editor.toggleRight();
+	            },
+		    },
+		    'separator',
+		    {
+				icon: 'full_logo',
+				id: "fullScreen",
+				toolTip: "全屏",
+				unfocusable: true,
+				action: function (){
+	            	ht.Default.toggleFullscreen(editor.mainPane);
+	            },
+		    }
+	    ]);
 	
-    editor.leftTopTabView.select(1);
-    var test = editor.displays.getView();
-    test.style.position = "absolute";
-    test.style.left = '0';
-    test.style.top = '30px';
-    test.style.width = '370px';
-    test.style.bottom = '0';
-	document.getElementById('leftPanel').appendChild(test);
-    window.addEventListener('resize', function() {
-        editor.mainPane.iv();
-        palette.iv();
-    });
-
-    editor.addEventListener(function(event){
-        var params = event.params;
-        if (event.type === 'displayViewSaving') {
-            var data = listView.dm().getDataByTag(params.url);
-            data.a('content', params.displayView.content);
-            data.setIcon(hteditor.snapshot(params.displayView.graphView));
-            params.preventDefault = true;
-            params.displayView.dirty = false;
-        }
-        if (event.type === 'symbolViewSaving') {
-            var data = listView.dm().getDataByTag(params.url);
-            data.a('content', params.symbolView.content);
-            data.setIcon(hteditor.snapshot(params.symbolView.graphView));
-            params.preventDefault = true;
-            params.symbolView.dirty = false;
-        }
-        if (event.type === 'componentViewSaving') {
-            var data = listView.dm().getDataByTag(params.url);
-            data.a('content', params.componentView.content);
-            data.setIcon(hteditor.snapshot(params.componentView.graphView));
-            params.preventDefault = true;
-            params.componentView.hide();
-        }
-    });
-}
-
-function leftClick(){
-	var test = editor.symbols.list.getDataModel();
-	var test1 = test.getDataById('symbols/3d场景用/长沙站区域.json');
-	var test2 = test.getDataById('symbols/3d场景用/长沙站区域.png');
-	$.ajax({
-		type:"get",
-		url:test1.url,
-		async:true,
-		scope : test1,
-		success:function(data){
-			var type = this.scope.fileType;
-	        var url = this.scope.url;
-	        var name = this.scope._styleMap.label;
-	        var json = data;
-	        editor.openByJSON(type, url, name, json);
-		},
-		error:function(data){
-			
-		}
-	});
-}
-
-
-
-
-
-
-
-
+	    toolbar.enableToolTip();
+	    toolbar.setItemGap(6);
+	    //toolbar.setStickToRight(true);
+	    toolbar.setSeparatorColor('#717171');
+	
+	
+	    toolbarView = toolbar.getView();
+	    toolbarView.style.background = '#535353';
+	    return toolbar;                
+	}
+	//底部logo
+	function createTopLogo(){
+		ht.Default.setImage('top_left_logo', "symbols/icon-ht/logo.json");
+	    var logoSrc = 'top_left_logo';
+		var json = [
+	        {
+	            icon: logoSrc
+	        }
+	    ];
+	    
+	    var menu = new ht.widget.Menu(json);
+	    menu.enableGlobalKey();
+	    menu.setLayout('iconsonly');
+	
+	    var menuView = menu.getView();
+	    menuView.style.background = '#535353';
+		menuView.style.paddingLeft = '10px';
+	    menu.setHoverBackground('#535353')
+	    return menu;
+	}
+	//leftTopTabView 样式调整
+	function changeEditorLeftView(){
+		var leftTopTabView = editor.leftTopTabView;
+		leftTopTabView.setTabPosition('left');
+	    leftTopTabView.setTabHeight(45);
+	    leftTopTabView.setTabGap(5);
+	    leftTopTabView.getTitleDiv().style.borderRight = '1px solid #e4e4e4';
+	    
+	    var displaysTab = editor.displaysTab,
+	    	symbolsTab = editor.symbolsTab,
+	    	componentsTab = editor.componentsTab,
+	    	assetsTab = editor.assetsTab;
+	    
+	    //displaysTab.setIcon();
+	    
+	    ht.Default.setImage('tabIconDisplays', "symbols/icon-ht/图纸.json");
+	    ht.Default.setImage('tabIconSymbols', "symbols/icon-ht/图标.json");
+	    ht.Default.setImage('tabIconComponents', "symbols/icon-ht/组件.json");
+	    ht.Default.setImage('tabIconAssets', "symbols/icon-ht/资源.json");
+	    
+	    displaysTab.setName('');
+	    displaysTab.setIcon('tabIconDisplays');
+	    displaysTab.setToolTip('图纸');
+	    
+	    symbolsTab.setName('');
+	    symbolsTab.setIcon('tabIconSymbols');
+	    symbolsTab.setToolTip('图标');
+	    
+ 		componentsTab.setName('');
+	    componentsTab.setIcon('tabIconComponents');
+	    componentsTab.setToolTip('组件');
+	    
+	    assetsTab.setName('');
+	    assetsTab.setIcon('tabIconAssets');
+	    assetsTab.setToolTip('资源');		
+	}
+	
+})();
 
 
 
