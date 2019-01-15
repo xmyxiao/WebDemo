@@ -23,6 +23,10 @@
 	    topBorderPane.setRightView(topRightTool,'85');
 	    
 	    changeEditorLeftView();
+	    document.getElementById('displaysContent').style.display = 'block';
+	    document.getElementById('symbolsContent').style.display = 'block';
+	    createDisplaysDialog();
+	    createSymbolsDialog();
 	    	    
 	    editor.mainPane._topView.setTopView(topBorderPaneView);
 	    editor.mainPane._topView.setHeight('60');
@@ -44,14 +48,20 @@
 	            items: [
 	                {
 	                    label: "新建图纸",
-	                    action: function(item) { 
-	                        editor['newDisplayView']();
+	                    action: function(item) {
+	                    	editor.displaysDialog.show();
+	                    	document.querySelector(".displaysfileUrl").value = 'displays/basic';
+							document.querySelector(".displaysfileName").value = '';
+	                        //editor['newDisplayView']();
 	                    }
 	                },
 	                {
 	                    label: "新建图标",
 	                    action: function(item) {
-	                        editor['newSymbolView']();
+	                    	editor.symbolsDialog.show();
+	                    	document.querySelector(".symbolsfileUrl").value = 'symbols/basic';
+							document.querySelector(".symbolsfileName").value = '';
+	                        //editor['newSymbolView']();
 	                    }
 	                },
 	                {
@@ -219,6 +229,85 @@
 	    assetsTab.setToolTip('资源');		
 	}
 	
+	function createDisplaysDialog(){
+		var dialog = editor.displaysDialog = new ht.widget.Dialog();
+		
+        dialog.setConfig({
+            title: "新增图纸",
+            closable: true,
+            draggable: true,
+            contentPadding: 10,
+            content: document.getElementById("displaysContent"),
+            buttons: [
+                {
+                    label: "确定",
+                    action: function(button, e) {
+                    	var fileUrl = dialog.getView().querySelector(".displaysfileUrl").value,
+                    		fileName = dialog.getView().querySelector(".displaysfileName").value;
+                    	if(!fileName || fileName === '' || !fileUrl || fileUrl === ''){
+                    		editor.showMessage('文件路径与文件名称必须填写！');
+                    		return;
+                    	}
+                    	var saveUrl = fileUrl + "/" + fileName + ".json";
+                    	if(editor.getFileNode(saveUrl)){
+                    		editor.showMessage('文件名冲突！');
+                    		return;
+                    	}
+                    	editor['newDisplayView']();
+                    	editor.save('',saveUrl);
+			            dialog.hide();
+			        }
+                },
+                {
+                    label: "取消",
+                    action: function(button, e) {
+			            dialog.hide();
+			        }
+                }
+            ],
+            buttonsAlign: "right"
+        });
+	}
+	
+	function createSymbolsDialog(){
+		var dialog = editor.symbolsDialog = new ht.widget.Dialog();
+		
+        dialog.setConfig({
+            title: "新增图标",
+            closable: true,
+            draggable: true,
+            contentPadding: 10,
+            content: document.getElementById("symbolsContent"),
+            buttons: [
+                {
+                    label: "确定",
+                    action: function(button, e) {
+                    	var fileUrl = dialog.getView().querySelector(".symbolsfileUrl").value,
+                    		fileName = dialog.getView().querySelector(".symbolsfileName").value;
+                    	if(!fileName || fileName === '' || !fileUrl || fileUrl === ''){
+                    		editor.showMessage('文件路径与文件名称必须填写！');
+                    		return;
+                    	}
+                    	var saveUrl = fileUrl + "/" + fileName + ".json";
+                    	if(editor.getFileNode(saveUrl)){
+                    		editor.showMessage('文件名冲突！');
+                    		return;
+                    	}
+                    	editor['newSymbolView']();
+                    	editor.save('',saveUrl);
+			            dialog.hide();
+			        }
+                },
+                {
+                    label: "取消",
+                    action: function(button, e) {
+			            dialog.hide();
+			        }
+                }
+            ],
+            buttonsAlign: "right"
+        });
+	}
 })();
 
 

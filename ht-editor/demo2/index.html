@@ -10,32 +10,33 @@
                 padding: 0px;
                 margin: 0px;
             }
-            .top-panel{
-            	width: 100%;
-            	height: 30px;
-            	background-color: #535353;
-            	box-sizing: border-box;
+            .ht-widget-menu .header-item{
+            	line-height: 2.3em !important;
+            	padding: 0 !important;
+            	color: #d4d4d4;
             }
-            .left-panel{
-            	position: absolute;
-            	top: 30px;
-            	left: 0;
-            	width: 370px;
-            	bottom: 0;
+            .ht-widget-menu .header-item>span{
+            	padding: 0 1.2em;
             }
-            .left-panel-menu{
-            	position: absolute;
-            	top: 30px;
-            	left: 0;
-            	width: 50px;
-            	background: #fff;
+           	.ht-widget-menu .header-item>.menu-item-icon{
+           		height: 22px !important;
+    			width: 22px !important;
+    			display: inline-block !important;
+    			vertical-align: middle;
+           	}
+           	.ht-widget-menu .header.header-right .header-item>.menu-item-icon{
+           		padding: 0 0.8em;
+           		height: 16px !important;
+    			width: 16px !important;
+    			display: inline-block !important;
+    			vertical-align: middle;
+           	}
+            .ht-widget-menu .header-item:after{
+            	content: '|';
+            	color: #717171;
             }
-            .left-panel-body{
-            	position: absolute;
-            	top: 30px;
-            	left: 0;
-            	width: 50px;
-            	background: #fff;
+            .ht-widget-menu .header-item:last-child:after{
+            	content: ' ';
             }
         </style>
 
@@ -43,13 +44,12 @@
         <script src='custom/configs/htconfig.js'></script>
 
         <!-- configuration for editor -->
-        <script src='custom/test/config2.js'></script>
+        <script src='custom/configs/config.js'></script>
 
         <!-- ht core -->
         <script src='libs/ht.js'></script>
         <!-- ht plugins -->
         <script src="libs/ht-cssanimation.js"></script>
-        <script src='libs/ht-palette.js'></script>
         <script src='libs/ht-contextmenu.js'></script>
         <script src='libs/ht-dialog.js'></script>
         <script src='libs/ht-edgetype.js'></script>
@@ -60,16 +60,16 @@
         <script src="libs/ht-historymanager.js"></script>
         <script src="libs/ht-ui.js"></script>
         <script src="libs/ht-vector.js"></script>
+		<script src="libs/ht-menu.js"></script>
 
         <!-- socket.io -->
         <script src="/socket.io/socket.io.js"></script>
 
-		<script src = "custom/libs/jquery-1.11.0.js"></script>
         <script>
             function init() {
                 var urls = hteditor_config.subConfigs || [];
                 urls.push('client.js');
-                urls.push('main3.js');
+                urls.push('custom/configs/main.js');
                 ht.Default.loadJS(urls, function(){
                     urls = [
                         'locales/' + hteditor.config.locale + '.js',
@@ -95,19 +95,13 @@
         </script>
     </head>
     <body onload='init()'>
-		<div id="topPanel" class="top-panel">
-			
-		</div>
-		<div id="leftPanel" class="left-panel">
-			<div id="leftPanelMenu" class="left-panel-menu">
-				
-			</div>
-			<div id="leftPanelBody" class="left-panel-body">
-				
-			</div>
-			<button onclick="leftClick()">点击测试</button>
-			<img style="width: 100px;" src='symbols/3d场景用/长沙站区域.png' />
-		</div>
-		<div id="containerId" style="position: absolute;top: 30px;left: 370px;right: 0;bottom: 0;"></div>
+    	<div id="displaysContent" style="display: none;">
+            <div>图纸路径: <input class="displaysfileUrl" value="displays/basic" style="font-size: 14px;"></div>
+            <div style="margin-top: 15px;">图纸名称: <input class="displaysfileName" style="font-size: 14px;"></div>
+        </div>
+        <div id="symbolsContent" style="display: none;">
+            <div>图标路径: <input class="symbolsfileUrl" value="symbols/basic" style="font-size: 14px;"></div>
+            <div style="margin-top: 15px;">图标名称: <input class="symbolsfileName" style="font-size: 14px;"></div>
+        </div>
     </body>
 </html>
