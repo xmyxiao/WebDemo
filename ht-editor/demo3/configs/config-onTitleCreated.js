@@ -1,10 +1,10 @@
 (function() {
-	//属性面板创建结束
+
     var isHandling = false;
     window.hteditor_config.onTitleCreated = function(editor, params) {
         if (!isHandling) {
             isHandling = true;
-            handleTitleCreated(editor, params);
+            //handleTitleCreated(editor, params);
             isHandling = false;
         }
     };
@@ -14,7 +14,7 @@
         var oldTitle = params.oldTitle;
         var inspector = params.inspector;
         if (inspector.type === 'display' && title === 'TitleBasic') {
-            // addPropertiesToDisplay(inspector);
+             addPropertiesToDisplay(inspector);
         }
 
         if (inspector.type === 'data' && title === 'TitleBasic') {

@@ -1,5 +1,5 @@
 (function() {
-	//属性面板创建时
+	
     var isHandling = false;
     window.hteditor_config.onTitleCreating = function(editor, params) {
         if (!isHandling) {
@@ -13,8 +13,8 @@
         var title = params.title;
         var oldTitle = params.oldTitle;
         var inspector = params.inspector;
-
-        if (inspector.type === 'symbol' && oldTitle === 'TitleBasic') {
+		//仅图元有绑定数据集
+        if (inspector.type === 'data' && oldTitle === 'TitleBasic') {
             addPropertiesToSymbol(inspector);
         }
     }
@@ -23,10 +23,10 @@
         var S = hteditor.getString;
         var indent = hteditor.config.indent;
 
-        inspector.addTitle('TitleTest');
+        inspector.addTitle('绑定数据集');
 
         var items = [];
-        items.push(S('Type'));
+        items.push('选择数据集');
         var textField = new ht.widget.TextField();
         textField.setEditable(false);
         items.push(textField);
@@ -37,18 +37,34 @@
         var onClicked = function() {
             var dataModel = new ht.DataModel();
             var tree = new ht.widget.TreeView(dataModel);
-            for (var i = 0; i < 3; i++) {
+            var testTreeNode = editor.dataSetPanel.itemList
+            for (var i = 0; i < testTreeNode.length; i++){
+            	var parent = new ht.Data();
+                parent.setName(testTreeNode[i].name);
+                parent.setIcon('symbols/basic/ht.json');
+                dataModel.add(parent);
+                if(testTreeNode[i].child){
+                	for (var j = 0; j < testTreeNode[i].child.length; j++) {
+	                    var child = new ht.Data();
+	                    child.setName(testTreeNode[i].child[j].name);
+	                    child.setParent(parent);
+	                    child.para = testTreeNode[i].child[j].para;
+	                    dataModel.add(child);
+	                }
+                }
+            }
+            /*for (var i = 0; i < 3; i++) {
                 var parent = new ht.Data();
-                parent.setName('Type-' + i);
+                parent.setName('data-' + i);
                 parent.setIcon('symbols/basic/ht.json');
                 dataModel.add(parent);
                 for (var j = 0; j < 3; j++) {
                     var child = new ht.Data();
-                    child.setName('Type-' + i + '-' + j);
+                    child.setName('data-' + i + '-' + j);
                     child.setParent(parent);
                     dataModel.add(child);
                 }
-            }
+            }*/
             tree.expandAll();
             dataModel.sm().setSelectionMode('single');
 
@@ -70,14 +86,14 @@
                     label: S('OK'),
                     action: function() {
                         var data = dataModel.sm().ld();
-                        var value = data ? data.getName() : undefined;
-                        inspector.setPropertyValue('test.type', value);
+                        var value = data ? data.para : undefined;
+                        inspector.setPropertyValue('dataSet', value);
                         dialog.hide();
                     }
                 }
             );
             dialog.setConfig({
-                title: S('PickType'),
+                title: '选择数据集',
                 draggable: true,
                 width: 200,
                 height: 300,
@@ -91,18 +107,18 @@
         var button = hteditor.createButton(label, toolTip, icon, onClicked);
         items.push(button);
 
-        label = null;
+        /*label = null;
         toolTip = 'HT for Web';
         icon = 'symbols/demo/gas/red.json';
         onClicked = function() { setTimeout(function() {
             alert('HIGHTOPO is AWESOME!!!');
         }, 20)};
         button = hteditor.createButton(label, toolTip, icon, onClicked);
-        items.push(button);
+        items.push(button);*/
 
         inspector.addRow(items, [indent, 0.1, 40, 20]);
 
-        inspector.addCustomProperty({
+        /*inspector.addCustomProperty({
             property: 'test.name',
             name: 'Name',
             valueType: 'String'
@@ -112,10 +128,10 @@
             property: 'test.description',
             name: 'Description',
             valueType: 'Multiline'
-        });
+        });*/
 
         inspector.addUpdateHandler(function() {
-            textField.setText(inspector.getPropertyValue('test.type') || '')
+            textField.setText(inspector.getPropertyValue('dataSet') || '')
         });
     }
 

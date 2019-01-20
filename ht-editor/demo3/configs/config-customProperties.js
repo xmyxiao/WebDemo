@@ -1,4 +1,3 @@
-//所有值类型的自定义属性
 window.hteditor_config.customProperties = {
     // display: [
     //     {

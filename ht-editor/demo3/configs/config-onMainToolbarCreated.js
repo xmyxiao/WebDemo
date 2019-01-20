@@ -1,5 +1,5 @@
 (function() {
-	//顶部工具条
+
     window.hteditor_config.onMainToolbarCreated = function(editor) {
 
         var mainToolbar = editor.mainToolbar;
@@ -9,18 +9,36 @@
         mainToolbar.setItemVisible('star', false);
         mainToolbar.setItemVisible('Triangle', false);
         mainToolbar.setItemVisible('triangle', false);
+        mainToolbar.setItemVisible('menu',false);
 
         // remove items from main toolbar
         mainToolbar.removeItemById('Node');
         mainToolbar.removeItemById('Group');
         mainToolbar.removeItemById('SubGraph');
         mainToolbar.removeItemById('Edge');
-
+		
+		
+		mainToolbar._view.style.borderBottom = '1px solid #a0a0a1';
         // Add some items to main toolbar
+        //mainToolbar.addItem(createShowRulersItem());
+        
+        
         addItemsForDisplay(editor);
         addItemsForSymbol(editor);
     };
 
+	/*function createShowRulersItem(){
+    	var id = 'showRulers';
+        var toolTip = '显示刻度尺';
+        var iconName = 'assets/icon-ht/测量.json';
+        var item = hteditor.createItem(id, toolTip, iconName);
+
+        item.action = function() {
+        	editor.toggleRulerEnabled();
+        };
+        return item;
+    }*/
+	
     function addItemsForDisplay(editor) {
         var mainToolbar = editor.mainToolbar;
         var S = hteditor.getString;

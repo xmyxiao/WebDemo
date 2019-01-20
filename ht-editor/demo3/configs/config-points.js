@@ -75,7 +75,7 @@ function createPointsExplorer(editor, draggable) {
         }
       ]
     };
-    var pointsExplorer = new hteditor.Explorer(editor, '测点根目录', true);
+    var pointsExplorer = new hteditor.Explorer(editor, '测点根目录', false);
     var json = {
         '电池': {
             'B001': { fileType: 'point', fileIcon: 'symbols/demo/battery/battery.json' },

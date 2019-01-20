@@ -1,5 +1,4 @@
 (function() {
-	//属性页过滤器机制
     var detail_data_titles = [
         'TitleNote'
     ];

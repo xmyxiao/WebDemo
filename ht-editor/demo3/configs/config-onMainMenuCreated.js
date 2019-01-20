@@ -1,5 +1,5 @@
 (function() {
-	//左上角菜单
+
     window.hteditor_config.onMainMenuCreated = function(editor, params) {
         var S = hteditor.getString;
         var mainMenu = editor.mainMenu;
@@ -8,7 +8,6 @@
         mainMenu.setItemVisible('undo', false);
         mainMenu.setItemVisible('redo', false);
         mainMenu.setItemVisible('afterRedo', false);
-
         // Add some items on main menu
         var items = [
                 {

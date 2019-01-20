@@ -1,10 +1,11 @@
 (function() {
-	//事件
+
     window.hteditor_config.handleEvent = function(editor, type, params) {
         var S = hteditor.getString;
         if (type === 'editorCreated') {
             handleEditorCreated(editor);
-            createPointsTab(editor);
+            //createPointsTab(editor);
+            createDataSetTab(editor);
         }
         else if (type === 'displayViewCreated' || type === 'displayViewOpened') {
             addPrintSelectionItem(params.displayView.displayTree, 'editor.displayTree');
@@ -18,27 +19,17 @@
             addPrintSelectionItem(params.symbolView.graphView, 'editor.symbolView.graphView');
         }
         else if (type === 'displayViewSaving') {
-			//console.log('displayViewSaving')
             // if (!params.displayView.dm.size()) {
             //     window.alert(S('NothingToBeSaved'));
             //     params.preventDefault = true;
             // }
         }
         else if (type === 'symbolViewSaving') {
-			//console.log('symbolViewSaving')
             // if (!params.symbolView.dm.size()) {
             //     window.alert(S('NothingToBeSaved'));
             //     params.preventDefault = true;
             // }
         }
-		else if (type === 'displayViewSaved') {
-			console.log('拓扑图保存事件');
-			console.log(params.displayView.dm.toJSON());
-		}
-		else if (type === 'symbolViewSaved') {
-			console.log('矢量图保存事件');
-			console.log(params.symbolView.dm.toJSON());
-		}
         else if (type === 'paste') {
             params.datas.forEach(function(data) {
                 var dataBindings = data.getDataBindings();
@@ -60,9 +51,7 @@
                     }
                 }
             });
-        }else if(type === 'propertiesUpdated'){
-			//console.log(params.datas)
-		}
+        }
     };
 
     function addPrintSelectionItem(view, name) {
