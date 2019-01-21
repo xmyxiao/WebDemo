@@ -82,132 +82,26 @@ function createDataSetPanel(editor) {
     }
     //新增/编辑 数据集
     dataSetPanel.addMenuNode = function(item){
-    	var data = {
-    		_name:'',
-    		value:{
-    			para:{
-    				type: '',
-    				path: '',
-    				para: '',
-    				port: ''
-    			}
-    		}
+    	var dir = editor.dataSetPanel.currentDir;
+    	if(item && item.fileType === 'dir'){
+    		item = ''
     	}
-    	$.extend(data,item);
-    	var config = {
-    		fileName: data._name || '',
-    		fileType: data.value.para.type || '',
-    		filePath: data.value.para.path || '',
-    		filePara: data.value.para.para || '',
-    		filePara: data.value.para.port || ''
+    	if(!dir){
+    		editor.showMessage('请选中一个文件夹！');
+    		return;
     	}
-    	if(data){
-    		config.title = '编辑数据集';
-    	}else{
-    		config.title = '新增数据集';
+    	var type = dir.split('dataSetRoot/')[1];
+    	if(type === 'SQL' || type === 'sql'){
+    		createDataSqlDialog(item);
+    	}else if(type === 'HTTP' || type === 'http'){
+    		createDataHttpDialog(item);
     	}
-    	var S = hteditor.getString;
-    	var dialog = new ht.widget.Dialog();
-		var formPane = new ht.widget.FormPane();
-        formPane.addRow([
-        	'名称',
-	        {
-	            id: 'fileName',
-	            textField: {
-	                text: config.fileName
-	            }
-	        }
-	    ], [30, 0.1]);
-	    
-	    formPane.addRow([
-        	'类型',
-	        {
-	            id: 'fileType',
-	            textField: {
-	                text: config.fileType
-	            }
-	        }
-	    ], [30, 0.1]);
-	    formPane.addRow([
-        	'路径',
-	        {
-	            id: 'filePath',
-	            textField: {
-	                text: config.filePath
-	            }
-	        }
-	    ], [30, 0.1]);
-	    formPane.addRow([
-        	'参数',
-	        {
-	            id: 'filePara',
-	            textField: {
-	                text: config.filePara
-	            }
-	        }
-	    ], [30, 0.1]);
-	    
-	    var buttons = [{
-	        label: S('OK'),
-	        action: function() {
-	            var fieldName = formPane.v('fileName'),
-	            	fileType = formPane.v('fileType'),
-	            	filePath = formPane.v('filePath'),
-	            	filePara = formPane.v('filePara');
-	            if(!fieldName || fieldName === '' ){
-            		editor.showMessage('数据集名称必须填写！');
-            		return;
-            	}
-	            if(!fileType || fileType === '' ){
-            		editor.showMessage('数据集类型必须填写！');
-            		return;
-            	}
-	            if(!filePath || filePath === '' ){
-            		editor.showMessage('数据集路径必须填写！');
-            		return;
-            	}
-	           	$.ajax({
-	            	url : hteditor_config.detailedDataSetUrl,  
-				    type : "POST",
-				    async : true,
-				    data : {
-				    	fieldName : fieldName,
-				    	fileType : fileType,
-				    	filePath : filePath,
-				    	filePara : filePara,
-				    },
-				    success : function(data){
-				    	editor.dataSetPanel.reloadList();
-				    },
-				    fail : function(data){
-				    	editor.showMessage(data);
-				    }
-	            });
-	            dialog.hide();
-	        }
-	    },{
-	        label: S('Cancel'),
-	        action: function() {
-	            dialog.hide();
-	        }
-	    }];
-	    dialog.setConfig({
-	        title: config.title,
-	        draggable: true,
-	        width:250,
-	        height:170,
-	        contentPadding: 4,
-	        content: formPane,
-	        buttons: buttons,
-	        buttonsAlign: 'right'
-	    });
-        dialog.show();
     }
     //编辑数据集
     dataSetPanel.editMenuNode = function(){
     	var panel = this;
     	var data = panel.accordion.sm().ld();
-    	if(!data){
+    	if(!data || data.fileType === 'dir'){
     		return;
     	}
     	panel.addMenuNode(data);
@@ -303,6 +197,334 @@ function initDataSetMenu(){
 	contextmenu.addTo(editor.dataSetPanel.accordion.getView());
 }
 
+//创建sql弹出框
+function createDataSqlDialog(item){
+	var data = {
+		_name:'',
+		value:{
+			para:{
+				dataSource: '',
+				sql: ''
+			}
+		}
+	}
+	$.extend(data,item);
+	var config = {
+		fileName: data._name || '',
+		dataSource: data.value.para.dataSource || '',
+		sql: data.value.para.sql || ''
+	}
+	if(item){
+		config.title = '编辑数据集';
+	}else{
+		config.title = '新增数据集';
+	}
+	
+	var S = hteditor.getString;
+	var dialog = new ht.widget.Dialog();
+	var formPane = new ht.widget.FormPane();
+    formPane.addRow([
+    	{
+    		element:'名称',
+    		align: 'right'
+    	},
+        {
+            id: 'fileName',
+            textField: {
+                text: config.fileName
+            }
+        }
+    ], [55, 0.1]);
+    
+    formPane.addRow([
+    	{
+    		element:'数据源',
+    		align: 'right'
+    	},
+    	{
+            unfocusable: true,
+            id: 'dataSource',
+            comboBox: {
+                values: [1, 2, 3, 4],
+                labels: ['数据源1', '数据源2', '数据源3', '数据源4']
+            }
+        }
+        
+    ], [55, 0.1]);
+    formPane.addRow([
+    	{
+    		element:'SQL语句',
+    		vAlign: 'top',
+    		align: 'right'
+    	},
+        {
+            id: 'sql',
+            textArea: {
+                text: config.sql
+            }
+        }
+    ], [55, 0.1],100);
+    formPane.addRow([
+    	{
+    		element:'测试',
+    		align: 'right'
+    	},
+    	{
+	        unfocusable: true,
+	        button: {
+	            label: '测试连接',
+	            orientation: 'v',
+	            width: 120,
+	            onClicked:function(e){
+	            	console.log(1)
+	            }
+	        }
+	    }
+    ],[55, 0.1],25);
+    
+    var buttons = [{
+        label: S('OK'),
+        action: function() {
+            var fieldName = formPane.v('fileName'),
+            	dataSource = formPane.v('dataSource'),
+            	sql = formPane.v('sql');
+            	
+            if(!fieldName || fieldName === '' ){
+        		editor.showMessage('数据集名称必须填写！');
+        		return;
+        	}
+            if(!dataSource || dataSource === '' ){
+        		editor.showMessage('数据源必须填写！');
+        		return;
+        	}
+            if(!sql || sql === '' ){
+        		editor.showMessage('SQL语句必须填写！');
+        		return;
+        	}
+           	$.ajax({
+            	url : hteditor_config.detailedDataSetUrl,  
+			    type : "POST",
+			    async : true,
+			    data : {
+			    	fieldName : fieldName,
+			    	dataSource : dataSource,
+			    	sql : sql
+			    },
+			    success : function(data){
+			    	editor.dataSetPanel.reloadList();
+			    },
+			    fail : function(data){
+			    	editor.showMessage(data);
+			    }
+            });
+            dialog.hide();
+        }
+    },{
+        label: S('Cancel'),
+        action: function() {
+            dialog.hide();
+        }
+    }];
+    dialog.setConfig({
+        title: config.title,
+        draggable: true,
+        width:300,
+        height:270,
+        contentPadding: 4,
+        content: formPane,
+        buttons: buttons,
+        buttonsAlign: 'right'
+    });
+    dialog.show();
+}
+
+function createDataHttpDialog(item){
+	var data = {
+		_name:'',
+		value:{
+			para:{
+				httpUrl: '',
+				addtionParam: [
+					{
+						name:'参数名',
+						type: 'POST',
+						value: '值'
+					}
+				]
+			}
+		}
+	}
+	$.extend(data,item);
+	var config = {
+		fileName: data._name || '',
+		httpUrl: data.value.para.httpUrl || '',
+		addtionParam: data.value.para.addtionParam || ''
+	}
+	if(item){
+		config.title = '编辑数据集';
+	}else{
+		config.title = '新增数据集';
+	}
+	
+	var S = hteditor.getString;
+	var dialog = new ht.widget.Dialog();
+	var formPane = new ht.widget.FormPane();
+	formPane.addRow([
+    	{
+    		element:'名称',
+    		align: 'right'
+    	},
+        {
+            id: 'fileName',
+            textField: {
+                text: config.fileName
+            }
+        }
+    ], [60, 0.1]);
+    formPane.addRow([
+    	{
+    		element:'接口地址',
+    		align: 'right'
+    	},
+        {
+            id: 'httpUrl',
+            textField: {
+                text: config.httpUrl
+            }
+        }
+    ], [60, 0.1]);
+    
+    var tableModel = new ht.DataModel;
+    var tablePane =  new ht.widget.TablePane(tableModel);
+    var tableView = tablePane.getTableView();
+    tablePane.getView().style.border = hteditor_config.color_line + " solid 1px";
+    tablePane.addColumns([
+        {
+            accessType: "attr",
+			align: "center",
+			displayName: "参数",
+			editable: true,
+			enum: undefined,
+			name: "paramName",
+			tag: "paramName",
+			width: 80
+        },
+        {
+            accessType: "attr",
+			align: "center",
+			displayName: "获取方式",
+			editable: true,
+			enum: ['GET','POST'],
+			name: "paramType",
+			tag: "paramType",
+			width: 80
+        },
+        {
+            accessType: "attr",
+			align: "center",
+			displayName: "参数值",
+			editable: true,
+			enum: undefined,
+			name: "paramValue",
+			tag: "paramValue",
+			width: 80
+        }
+    ]);
+    if(config.addtionParam){
+    	for(var i = 0; i < config.addtionParam.length; i++){
+    		var V = new ht.Data;
+			V.a({
+				paramName: config.addtionParam.name,
+				paramType: config.addtionParam.type,
+				paramValue: config.addtionParam.paramValue
+			}), 
+			tableModel.add(V)
+    	}
+    }
+    formPane.addRow([tablePane], [.1], .1);
+    formPane.addRow([{
+		button: {
+			label: '添加',
+			onClicked: function() {
+				var V = new ht.Data;
+				V.a({
+					paramName: "param",
+					paramType: "GET"
+				}), 
+				tableModel.add(V)
+			}
+		}
+	}, {
+		button: {
+			label: '删除',
+			onClicked: function() {
+				tableView.removeSelection()
+			}
+		}
+	}, null], [50, 50, .1])
+    var buttons = [{
+        label: S('OK'),
+        action: function() {
+            var fieldName = formPane.v('fileName'),
+            	httpUrl = formPane.v('httpUrl');
+            	
+            if(!fieldName || fieldName === '' ){
+        		editor.showMessage('数据集名称必须填写！');
+        		return;
+        	}
+            if(!httpUrl || httpUrl === '' ){
+        		editor.showMessage('接口地址必须填写！');
+        		return;
+        	}
+			addtionParam = [];
+			if(tableModel.getDatas().length > 0){
+				tableModel.getDatas().forEach(function(node){
+					var item = {
+						name: node.a('paramName'),
+						type: node.a('paramType'),
+						value: node.a('paramValue')
+					}
+					addtionParam.push(item)
+				})
+			}
+			
+           	$.ajax({
+            	url : hteditor_config.detailedDataSetUrl,  
+			    type : "POST",
+			    async : true,
+			    data : {
+			    	fieldName : fieldName,
+			    	httpUrl : httpUrl,
+			    	addtionParam : addtionParam
+			    },
+			    success : function(data){
+			    	editor.dataSetPanel.reloadList();
+			    },
+			    fail : function(data){
+			    	editor.showMessage(data);
+			    }
+            });
+            dialog.hide();
+        }
+    },{
+        label: S('Cancel'),
+        action: function() {
+            dialog.hide();
+        }
+    }];
+    //var splitView = new ht.widget.SplitView(formPane, tablePane, 'v', 55)
+    dialog.setConfig({
+        title: config.title,
+        draggable: true,
+        width:300,
+        height:270,
+        contentPadding: 4,
+        content: formPane,
+        buttons: buttons,
+        buttonsAlign: 'right'
+    });
+    dialog.show();
+}
 //数据
 function returnData(){
 	var fileIcon = 'symbols/demo/icon/数据可视化.json';
@@ -315,18 +537,16 @@ function returnData(){
 				'type':'data',
 				'name':'数据集1',
 				'para':{
-	            	'type': 'http',
-	            	'path': 'root/http',
-	            	'port': '8080'
-	            }
+	            	'httpUrl': '',
+	            	'addtionParam': []
+	           }
 			},
 			{
 				'type':'data',
 				'name':'数据集2',
 				'para':{
-	            	'type': 'http',
-	            	'path': 'root/http',
-	            	'port': '8080'
+	            	'httpUrl': '',
+	            	'addtionParam': []
 	            }
 			}
 		]
@@ -339,18 +559,16 @@ function returnData(){
 				'type':'data',
 				'name':'数据集3',
 				'para':{
-	            	'type': 'sql',
-	            	'path': 'root/sql',
-	            	'port': ''
+	            	'dataSource': '',
+	            	'sql': ''
 	            }
 			},
 			{
 				'type':'data',
 				'name':'数据集4',
 				'para':{
-	            	'type': 'sql',
-	            	'path': 'root/sql',
-	            	'port': ''
+	            	'dataSource': '',
+	            	'sql': ''
 	            }
 			}
 		]
