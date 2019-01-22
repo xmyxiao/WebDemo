@@ -17,7 +17,7 @@ window.hteditor_config = {
     assetsEditable: !isPracticing,
     locateFileEnabled: !isPracticing,
     fontPreview: '图扑软件 - Hightopo',
-   	dataSetUrl: '',
+   	dataSetUrl: 'http://192.168.7.47:5888/database/',
    	detailedDataSetUrl: 'symbols/icon-ht/图纸.json',
     expandedTitles: {
         TitleExtension: false

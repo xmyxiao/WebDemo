@@ -42,7 +42,19 @@ window.hteditor_config.dataBindings = {
     onButtonClicked: function(data, accessType, name) {
     	if(accessType === 'a' && data.a('dataSet')){
     		var para = data.a('dataSet');
-			$.ajax({
+    		var dataItem = [];
+    		for(var i = 0; i < para.column.length; i++){
+    			for(key in para.column[i]){
+    				var item = {
+	    				name: key,
+	    				description: para.column[i][key]
+	    			};
+    				dataItem.push(item);
+    			}
+    		}
+    		data.a('dataSet').dataItem = dataItem;
+			createBindDialog(data,accessType,name,dataItem);
+			/*$.ajax({
 			    url : hteditor_config.detailedDataSetUrl,  
 			    type : "GET",
 			    async : true,   //同步：false，异步：true 
@@ -70,7 +82,7 @@ window.hteditor_config.dataBindings = {
 			    fail : function(data){
 			    	createBindDialog(this.scope.data,this.scope.accessType,this.scope.name);
 			    }
-			})
+			})*/
 		}else{
 			createBindDialog(data, accessType, name);
 		}
@@ -173,12 +185,6 @@ function createBindDialog(data, accessType, name,fileJson){
             if (fieldName && data.a('dataSet').dataItem) {
             	var dataArr = data.a('dataSet').dataItem;
                 dataBindings[accessType][name].fieldName = fieldName;
-                for(var i = 0; i < dataArr.length; i++){
-                	if(dataArr[i].name === fieldName){
-                		data.a(name,dataArr[i].value);
-                		break;
-                	}
-                }
             }
             if (!id) {
                 delete dataBindings[accessType][name];

@@ -48,7 +48,7 @@
 	                    var child = new ht.Data();
 	                    child.setName(testTreeNode[i].child[j].name);
 	                    child.setParent(parent);
-	                    child.para = testTreeNode[i].child[j].para;
+	                    child.para = testTreeNode[i].child[j];
 	                    dataModel.add(child);
 	                }
                 }

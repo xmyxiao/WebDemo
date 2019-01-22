@@ -22,9 +22,9 @@ function createDataSetTab(editor) {
 function createDataSetPanel(editor) {
     var fileIcon = 'symbols/demo/icon/数据可视化.json';
     var dataSetPanel = editor.dataSetPanel = new hteditor.Explorer(editor, 'dataSetRoot', true);
-    var json = returnData();
+    var json = returnData(dataSetPanel);
     
-    dataSetPanel.parse(json);
+    
     //新增文件夹
     dataSetPanel.addMenuFile = function(){
     	var S = hteditor.getString;
@@ -47,8 +47,9 @@ function createDataSetPanel(editor) {
             		return;
             	}
 	           	$.ajax({
-	            	url : hteditor_config.detailedDataSetUrl,  
+	            	url : hteditor_config.dataSetUrl,  
 				    type : "POST",
+				    dataType:'json',
 				    async : true,   //同步：false，异步：true 
 				    data : {
 				    	name : fieldName
@@ -110,7 +111,7 @@ function createDataSetPanel(editor) {
     dataSetPanel.delMenuNode = function(){
     	var panel = this;
     	var data = panel.accordion.sm().ld();
-    	if(!data){
+    	if(!data || data.fileType === 'dir'){
     		return;
     	}
     	var title = '删除[' + data._name + ']';
@@ -121,13 +122,29 @@ function createDataSetPanel(editor) {
 	    var buttons = [{
 	        label: S('OK'),
 	        action: function() {
+	        	var addItem = {
+					type : 'delete',
+					content: [{
+						"id":  data.value.para.id,
+						"name":'',
+						"type":"",
+						"host":'',
+						"port":'',
+						"username": '',
+						"password": '',
+						"database": '',
+						"sql":''
+					}]
+				}
+	        	addItem.content[0].column = [];
+
 	           	$.ajax({
-	            	url : hteditor_config.detailedDataSetUrl,  
+	            	url : hteditor_config.dataSetUrl + 'dir',  
 				    type : "POST",
 				    async : true,
-				    data : {
-				    	path : data.value.para.path
-				    },
+				    contentType: "application/json; charset=utf-8",
+			    	dataType:'json',
+			    	data : JSON.stringify(addItem),
 				    success : function(data){
 				    	editor.dataSetPanel.reloadList();
 				    },
@@ -158,7 +175,6 @@ function createDataSetPanel(editor) {
     dataSetPanel.reloadList = function(){
     	var dataExplorer = this;
     	var reJson = returnData();
-    	dataExplorer.parse(reJson);
     }
     dataSetPanel.accordion.onDataDoubleClicked = function(data,e){
     	editor.dataSetPanel.editMenuNode();
@@ -168,12 +184,12 @@ function createDataSetPanel(editor) {
 //初始化数据集右键菜单
 function initDataSetMenu(){
 	var json = [
-        {
+        /*{
             label: "新建文件夹",
             action: function(item) {
                 editor.dataSetPanel.addMenuFile();
             }
-        },
+        },*/
         {
             label: "新建数据集",
             action: function(item) {
@@ -203,15 +219,28 @@ function createDataSqlDialog(item){
 		_name:'',
 		value:{
 			para:{
-				dataSource: '',
-				sql: ''
+				id: '',
+				name: '',
+				host: '',
+				port: '',
+				username: '',
+				password: '',
+				database: '',
+				sql: '',
+				column: []
 			}
 		}
 	}
 	$.extend(data,item);
 	var config = {
 		fileName: data._name || '',
-		dataSource: data.value.para.dataSource || '',
+		fileId: data.value.para.id || '',
+		host: data.value.para.host || '',
+		port: data.value.para.port || '',
+		username: data.value.para.username || '',
+		password: data.value.para.password || '',
+		database: data.value.para.database || '',
+		column: data.value.para.column || [],
 		sql: data.value.para.sql || ''
 	}
 	if(item){
@@ -223,6 +252,22 @@ function createDataSqlDialog(item){
 	var S = hteditor.getString;
 	var dialog = new ht.widget.Dialog();
 	var formPane = new ht.widget.FormPane();
+	if(item){
+		formPane.addRow([
+	        {
+    			element:'ID',
+    			align: 'right'
+    		},
+	        {
+	        	id: 'fileId',
+	            textField: {
+	                text: config.fileId,
+	                editable: false
+	            }
+	        }
+	    ], [55, 0.1]);
+	}
+	
     formPane.addRow([
     	{
     		element:'名称',
@@ -235,8 +280,67 @@ function createDataSqlDialog(item){
             }
         }
     ], [55, 0.1]);
-    
     formPane.addRow([
+    	{
+    		element:'地址',
+    		align: 'right'
+    	},
+        {
+            id: 'host',
+            textField: {
+                text: config.host
+            }
+        }
+    ], [55, 0.1]);
+    formPane.addRow([
+    	{
+    		element:'端口',
+    		align: 'right'
+    	},
+        {
+            id: 'port',
+            textField: {
+                text: config.port
+            }
+        }
+    ], [55, 0.1]);
+    formPane.addRow([
+    	{
+    		element:'用户名',
+    		align: 'right'
+    	},
+        {
+            id: 'username',
+            textField: {
+                text: config.username
+            }
+        }
+    ], [55, 0.1]);
+    formPane.addRow([
+    	{
+    		element:'密码',
+    		align: 'right'
+    	},
+        {
+            id: 'password',
+            textField: {
+                text: config.password
+            }
+        }
+    ], [55, 0.1]);
+    formPane.addRow([
+    	{
+    		element:'数据库',
+    		align: 'right'
+    	},
+        {
+            id: 'database',
+            textField: {
+                text: config.database
+            }
+        }
+    ], [55, 0.1]);
+    /*formPane.addRow([
     	{
     		element:'数据源',
     		align: 'right'
@@ -250,7 +354,66 @@ function createDataSqlDialog(item){
             }
         }
         
-    ], [55, 0.1]);
+    ], [55, 0.1]);*/
+   	var tableModel = new ht.DataModel;
+    var tablePane =  new ht.widget.TablePane(tableModel);
+    var tableView = tablePane.getTableView();
+    tablePane.getView().style.border = hteditor_config.color_line + " solid 1px";
+    tablePane.addColumns([
+        {
+            accessType: "attr",
+			align: "center",
+			displayName: "字段ID",
+			editable: true,
+			enum: undefined,
+			name: "fileName",
+			tag: "fileName",
+			width: 170
+        },
+        {
+            accessType: "attr",
+			align: "center",
+			displayName: "字段名称",
+			editable: true,
+			enum: undefined,
+			name: "fileDes",
+			tag: "fileDes",
+			width: 170
+        }
+    ]);
+    if(config.column){
+    	for(var i = 0; i < config.column.length; i++){
+    		for(key in config.column[i]){
+    			var V = new ht.Data;
+				V.a({
+					fileName: key,
+					fileDes: config.column[i][key]
+				}), 
+				tableModel.add(V)
+    		}
+    	}
+    }
+    formPane.addRow([tablePane], [.1], .1);
+    formPane.addRow([{
+		button: {
+			label: '添加字段',
+			onClicked: function() {
+				var V = new ht.Data;
+				V.a({
+					fileName: "",
+					fileDes: ""
+				}), 
+				tableModel.add(V)
+			}
+		}
+	}, {
+		button: {
+			label: '删除字段',
+			onClicked: function() {
+				tableView.removeSelection()
+			}
+		}
+	}, null], [50, 50, .1])
     formPane.addRow([
     	{
     		element:'SQL语句',
@@ -276,7 +439,53 @@ function createDataSqlDialog(item){
 	            orientation: 'v',
 	            width: 120,
 	            onClicked:function(e){
-	            	console.log(1)
+	            	var fieldName = formPane.v('fileName'),
+		            	host = formPane.v('host'),
+		            	port = formPane.v('port'),
+		            	username = formPane.v('username'),
+		            	password = formPane.v('password'),
+		            	database = formPane.v('database'),
+		            	sql = formPane.v('sql');
+		            var fieldId = '';
+		            if(formPane.getItemById('fileId')){
+		            	fieldId = formPane.v('fileId')
+		            }
+		            if(!fieldName || !host || !port || !username || !password || !database || !sql){
+		        		editor.showMessage('数据必须填写完整！');
+		        		return;
+		        	}
+					var addItem = {
+						type : 'add',
+						content: {
+							"id": fieldId,
+							"name":fieldName,
+							"type":"mysql",
+							"host":host,
+							"port":port,
+							"username": username,
+							"password": password,
+							"database": database,
+							"sql":sql,
+							"column":[
+								
+							]
+						}
+					}
+					
+		           	$.ajax({
+		            	url : hteditor_config.dataSetUrl + 'test',
+					    type : "POST",
+					    async : true,
+					    contentType: "application/json; charset=utf-8",
+					    dataType:'json',
+					    data : JSON.stringify(addItem),
+					    success : function(data){
+					    	editor.showMessage(data.msg);
+					    },
+					    fail : function(data){
+					    	editor.showMessage(data.msg);
+					    }
+		            });
 	            }
 	        }
 	    }
@@ -286,30 +495,55 @@ function createDataSqlDialog(item){
         label: S('OK'),
         action: function() {
             var fieldName = formPane.v('fileName'),
-            	dataSource = formPane.v('dataSource'),
+            	host = formPane.v('host'),
+            	port = formPane.v('port'),
+            	username = formPane.v('username'),
+            	password = formPane.v('password'),
+            	database = formPane.v('database'),
             	sql = formPane.v('sql');
+            var fieldId = uuid();
+            if(formPane.getItemById('fileId')){
+            	fieldId = formPane.v('fileId')
+            }else{
             	
-            if(!fieldName || fieldName === '' ){
-        		editor.showMessage('数据集名称必须填写！');
+            }
+            if(editor.dataSetPanel.dataModel.getDatas('dataSetRoot/SQL/' + fieldName) && editor.dataSetPanel.dataModel.getDataById('dataSetRoot/SQL/' + fieldName).value.para.id != fieldId){
+            	editor.showMessage('数据集名称不能重复！');
+        		return;
+            }
+            if(!fieldName || !host || !port || !username || !password || !database || !sql){
+        		editor.showMessage('数据必须填写完整！');
         		return;
         	}
-            if(!dataSource || dataSource === '' ){
-        		editor.showMessage('数据源必须填写！');
-        		return;
-        	}
-            if(!sql || sql === '' ){
-        		editor.showMessage('SQL语句必须填写！');
-        		return;
-        	}
+            
+			var addItem = {
+				type : 'add',
+				content: [{
+					"id": fieldId,
+					"name":fieldName,
+					"type":"mysql",
+					"host":host,
+					"port":port,
+					"username": username,
+					"password": password,
+					"database": database,
+					"sql":sql
+				}]
+			}
+			addItem.content[0].column = [];
+			if(tableModel.getDatas().length > 0){
+				tableModel.getDatas().forEach(function(node){
+					var item = {}
+					item[node.a('fileName')] = node.a('fileDes')
+					addItem.content[0].column.push(item);
+				})
+			}
            	$.ajax({
-            	url : hteditor_config.detailedDataSetUrl,  
+            	url : hteditor_config.dataSetUrl + 'dir',  
 			    type : "POST",
-			    async : true,
-			    data : {
-			    	fieldName : fieldName,
-			    	dataSource : dataSource,
-			    	sql : sql
-			    },
+			    contentType: "application/json; charset=utf-8",
+			    dataType:'json',
+			    data : JSON.stringify(addItem),
 			    success : function(data){
 			    	editor.dataSetPanel.reloadList();
 			    },
@@ -328,8 +562,8 @@ function createDataSqlDialog(item){
     dialog.setConfig({
         title: config.title,
         draggable: true,
-        width:300,
-        height:270,
+        width:450,
+        height:500,
         contentPadding: 4,
         content: formPane,
         buttons: buttons,
@@ -343,23 +577,35 @@ function createDataHttpDialog(item){
 		_name:'',
 		value:{
 			para:{
-				httpUrl: '',
-				addtionParam: [
-					{
-						name:'参数名',
-						type: 'POST',
-						value: '值'
-					}
-				]
+				id: '',
+				name: '',
+				host: '',
+				port: '',
+				username: '',
+				password: '',
+				database: '',
+				sql: '',
+				httpType: '',
+				addtionParam: [],
+				column: []
 			}
 		}
 	}
 	$.extend(data,item);
 	var config = {
 		fileName: data._name || '',
-		httpUrl: data.value.para.httpUrl || '',
-		addtionParam: data.value.para.addtionParam || ''
+		fileId: data.value.para.id || '',
+		host: data.value.para.host || '',
+		type: data.value.para.httpType || '',
+		port: data.value.para.port || '',
+		username: data.value.para.username || '',
+		password: data.value.para.password || '',
+		database: data.value.para.database || '',
+		addtionParam: data.value.para.addtionParam || [],
+		column: data.value.para.column || [],
+		sql: data.value.para.sql || ''
 	}
+
 	if(item){
 		config.title = '编辑数据集';
 	}else{
@@ -369,6 +615,21 @@ function createDataHttpDialog(item){
 	var S = hteditor.getString;
 	var dialog = new ht.widget.Dialog();
 	var formPane = new ht.widget.FormPane();
+	if(item){
+		formPane.addRow([
+	        {
+    			element:'ID',
+    			align: 'right'
+    		},
+	        {
+	        	id: 'fileId',
+	            textField: {
+	                text: config.fileId,
+	                editable: false
+	            }
+	        }
+	    ], [55, 0.1]);
+	}
 	formPane.addRow([
     	{
     		element:'名称',
@@ -389,7 +650,46 @@ function createDataHttpDialog(item){
         {
             id: 'httpUrl',
             textField: {
-                text: config.httpUrl
+                text: config.host
+            }
+        }
+    ], [60, 0.1]);
+    formPane.addRow([
+    	{
+    		element:'用户名',
+    		align: 'right'
+    	},
+        {
+            id: 'username',
+            textField: {
+                text: config.username
+            }
+        }
+    ], [60, 0.1]);
+    formPane.addRow([
+    	{
+    		element:'密码',
+    		align: 'right'
+    	},
+        {
+            id: 'password',
+            textField: {
+                text: config.password
+            }
+        }
+    ], [60, 0.1]);
+    formPane.addRow([
+    	{
+    		element:'获取方式',
+    		align: 'right'
+    	},
+        {
+            unfocusable: true,
+            id: 'httpType',
+            comboBox: {
+            	value: config.type || 'GET',
+                values: ['GET', 'POST'],
+                labels: ['GET', 'POST']
             }
         }
     ], [60, 0.1]);
@@ -407,17 +707,7 @@ function createDataHttpDialog(item){
 			enum: undefined,
 			name: "paramName",
 			tag: "paramName",
-			width: 80
-        },
-        {
-            accessType: "attr",
-			align: "center",
-			displayName: "获取方式",
-			editable: true,
-			enum: ['GET','POST'],
-			name: "paramType",
-			tag: "paramType",
-			width: 80
+			width: 170
         },
         {
             accessType: "attr",
@@ -427,7 +717,7 @@ function createDataHttpDialog(item){
 			enum: undefined,
 			name: "paramValue",
 			tag: "paramValue",
-			width: 80
+			width: 170
         }
     ]);
     if(config.addtionParam){
@@ -435,7 +725,6 @@ function createDataHttpDialog(item){
     		var V = new ht.Data;
 			V.a({
 				paramName: config.addtionParam.name,
-				paramType: config.addtionParam.type,
 				paramValue: config.addtionParam.paramValue
 			}), 
 			tableModel.add(V)
@@ -444,59 +733,153 @@ function createDataHttpDialog(item){
     formPane.addRow([tablePane], [.1], .1);
     formPane.addRow([{
 		button: {
-			label: '添加',
+			label: '添加参数',
+			align:'right',
 			onClicked: function() {
 				var V = new ht.Data;
 				V.a({
-					paramName: "param",
-					paramType: "GET"
+					paramName: "param"
 				}), 
 				tableModel.add(V)
 			}
 		}
 	}, {
 		button: {
-			label: '删除',
+			label: '删除参数',
 			onClicked: function() {
 				tableView.removeSelection()
 			}
 		}
 	}, null], [50, 50, .1])
+    //配置字段
+    var paraTableModel = new ht.DataModel;
+    var paraTablePane =  new ht.widget.TablePane(paraTableModel);
+    var paraTableView = paraTablePane.getTableView();
+    paraTablePane.getView().style.border = hteditor_config.color_line + " solid 1px";
+    paraTablePane.addColumns([
+        {
+            accessType: "attr",
+			align: "center",
+			displayName: "字段ID",
+			editable: true,
+			enum: undefined,
+			name: "fileName",
+			tag: "fileName",
+			width: 170
+        },
+        {
+            accessType: "attr",
+			align: "center",
+			displayName: "字段名称",
+			editable: true,
+			enum: undefined,
+			name: "fileDes",
+			tag: "fileDes",
+			width: 170
+        }
+    ]);
+    if(config.column){
+    	for(var i = 0; i < config.column.length; i++){
+    		for(key in config.column[i]){
+    			var V = new ht.Data;
+				V.a({
+					fileName: key,
+					fileDes: config.column[i][key]
+				}), 
+				paraTableModel.add(V)
+    		}
+    	}
+    }
+    formPane.addRow([paraTablePane], [.1], .1);
+    formPane.addRow([{
+		button: {
+			label: '添加字段',
+			onClicked: function() {
+				var V = new ht.Data;
+				V.a({
+					fileName: "",
+					fileDes: ""
+				}), 
+				paraTableModel.add(V)
+			}
+		}
+	}, {
+		button: {
+			label: '删除字段',
+			onClicked: function() {
+				paraTableView.removeSelection()
+			}
+		}
+	}, null], [50, 50, .1])
+    
     var buttons = [{
         label: S('OK'),
         action: function() {
             var fieldName = formPane.v('fileName'),
+            	fieldType = formPane.v('httpType'),
+            	username = formPane.v('username'),
+            	password = formPane.v('password'),
             	httpUrl = formPane.v('httpUrl');
             	
-            if(!fieldName || fieldName === '' ){
-        		editor.showMessage('数据集名称必须填写！');
+            if(editor.dataSetPanel.dataModel.getDatas('dataSetRoot/HTTP/' + fieldName) && editor.dataSetPanel.dataModel.getDataById('dataSetRoot/SQL/' + fieldName).value.para.id != fieldId){
+            	editor.showMessage('数据集名称不能重复！');
+        		return;
+            }
+            if(!fieldName || !httpUrl || !fieldType || !username || !password){
+        		editor.showMessage('数据必须填写完整！');
         		return;
         	}
-            if(!httpUrl || httpUrl === '' ){
-        		editor.showMessage('接口地址必须填写！');
-        		return;
-        	}
-			addtionParam = [];
+
+            var fieldId = uuid();
+            if(formPane.getItemById('id')){
+            	fieldId = formPane.v('id')
+            }
+            var addItem = {
+				type : 'add',
+				content: [{
+					"id": fieldId,
+					"name":fieldName,
+					"type":"http",
+					"host":httpUrl,
+					"port":'',
+					"username": username,
+					"password": password,
+					"httpType": fieldType,
+					"database": '',
+					"sql":''
+				}]
+			}
+			addItem.content[0].column = [];
+			if(paraTableModel.getDatas().length > 0){
+				paraTableModel.getDatas().forEach(function(node){
+					var item = {}
+					if(node.a('fileName')){
+						item[node.a('fileName')] = node.a('fileDes')
+						addItem.content[0].column.push(item);
+					}
+				})
+			}
+			addItem.content[0].addtionParam = [];
 			if(tableModel.getDatas().length > 0){
 				tableModel.getDatas().forEach(function(node){
-					var item = {
-						name: node.a('paramName'),
-						type: node.a('paramType'),
-						value: node.a('paramValue')
+					if(node.a('paramName')){
+						var item = {
+							name: node.a('paramName'),
+							value: node.a('paramValue')
+						}
+						addItem.content[0].addtionParam.push(item)
 					}
-					addtionParam.push(item)
+					
 				})
 			}
 			
            	$.ajax({
-            	url : hteditor_config.detailedDataSetUrl,  
+            	url : hteditor_config.dataSetUrl + 'dir',
 			    type : "POST",
 			    async : true,
-			    data : {
-			    	fieldName : fieldName,
-			    	httpUrl : httpUrl,
-			    	addtionParam : addtionParam
-			    },
+			   	contentType: "application/json; charset=utf-8",
+			    dataType:'json',
+			    data : JSON.stringify(addItem),
 			    success : function(data){
 			    	editor.dataSetPanel.reloadList();
 			    },
@@ -516,8 +899,8 @@ function createDataHttpDialog(item){
     dialog.setConfig({
         title: config.title,
         draggable: true,
-        width:300,
-        height:270,
+        width:450,
+        height:450,
         contentPadding: 4,
         content: formPane,
         buttons: buttons,
@@ -528,68 +911,57 @@ function createDataHttpDialog(item){
 //数据
 function returnData(){
 	var fileIcon = 'symbols/demo/icon/数据可视化.json';
-	var reJson = [
-	{
-		'type':'dir',
-		'name':'HTTP',
-		'child':[
+	var dataSetUrl = hteditor_config.dataSetUrl + 'info';
+	$.ajax({
+		type:"get",
+		url:dataSetUrl,
+		async:true,
+		success:function(data){
+			var reJson = [
 			{
-				'type':'data',
-				'name':'数据集1',
-				'para':{
-	            	'httpUrl': '',
-	            	'addtionParam': []
-	           }
+				'type':'dir',
+				'name':'HTTP',
+				'child':[
+					
+				]
 			},
 			{
-				'type':'data',
-				'name':'数据集2',
-				'para':{
-	            	'httpUrl': '',
-	            	'addtionParam': []
-	            }
+				'type':'dir',
+				'name':'SQL',
+				'child':[
+					
+				]
 			}
-		]
-	},
-	{
-		'type':'dir',
-		'name':'SQL',
-		'child':[
-			{
-				'type':'data',
-				'name':'数据集3',
-				'para':{
-	            	'dataSource': '',
-	            	'sql': ''
-	            }
-			},
-			{
-				'type':'data',
-				'name':'数据集4',
-				'para':{
-	            	'dataSource': '',
-	            	'sql': ''
-	            }
-			}
-		]
-	}
-	]
-	editor.dataSetPanel.itemList = reJson;
-	var dataJson = {};
-	for(var i = 0; i < reJson.length; i++){
-		if(reJson[i].type === 'dir'){
-			dataJson[reJson[i].name] = {}
-			if(reJson[i].child && reJson[i].child.length > 0){
-				for(var j = 0; j < reJson[i].child.length; j++){
-					var item = {
-						fileType: 'set', 
-						fileIcon: fileIcon
-					}
-					item.para = reJson[i].child[j].para;
-					dataJson[reJson[i].name][reJson[i].child[j].name] = item;
+			]
+			for(i in data.msg){
+				if(data.msg[i].type === 'mysql'){
+					reJson[1].child.push(data.msg[i]);
+				}else if(data.msg[i].type === 'http'){
+					reJson[0].child.push(data.msg[i]);
 				}
 			}
+			editor.dataSetPanel.itemList = reJson;
+			var dataJson = {};
+			for(var i = 0; i < reJson.length; i++){
+				if(reJson[i].type === 'dir'){
+					dataJson[reJson[i].name] = {}
+					if(reJson[i].child && reJson[i].child.length > 0){
+						for(var j = 0; j < reJson[i].child.length; j++){
+							var item = {
+								fileType: 'set', 
+								fileIcon: fileIcon
+							}
+							item.para = reJson[i].child[j];
+							dataJson[reJson[i].name][reJson[i].child[j].name] = item;
+						}
+					}
+				}
+			}
+			editor.dataSetPanel.parse(dataJson);
+			return dataJson
+		},
+		error:function(){
+			
 		}
-	}
-	return dataJson
+	});
 }
