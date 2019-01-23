@@ -86,7 +86,9 @@
                     label: S('OK'),
                     action: function() {
                         var data = dataModel.sm().ld();
-                        var value = data ? data.para : undefined;
+                        var value = data ? data.para.id : undefined;
+                        var name = data ? data.para.name : undefined;
+                        inspector.setPropertyValue('dataSetName', name);
                         inspector.setPropertyValue('dataSet', value);
                         dialog.hide();
                     }
@@ -131,7 +133,7 @@
         });*/
 
         inspector.addUpdateHandler(function() {
-            textField.setText(inspector.getPropertyValue('dataSet') || '')
+            textField.setText(inspector.getPropertyValue('dataSetName') || '')
         });
     }
 

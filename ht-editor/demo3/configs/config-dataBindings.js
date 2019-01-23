@@ -41,48 +41,36 @@ window.hteditor_config.dataBindings = {
 
     onButtonClicked: function(data, accessType, name) {
     	if(accessType === 'a' && data.a('dataSet')){
-    		var para = data.a('dataSet');
-    		var dataItem = [];
-    		for(var i = 0; i < para.column.length; i++){
-    			for(key in para.column[i]){
-    				var item = {
-	    				name: key,
-	    				description: para.column[i][key]
-	    			};
-    				dataItem.push(item);
+    		var dataSetId = data.a('dataSet');
+    		var selectDataSet = null;
+    		var list = editor.dataSetPanel.itemList;
+    		for(var i = 0; i < list.length; i++){
+    			if(list[i] && list[i].child && list[i].child.length > 0){
+    				for(var j = 0; j < list[i].child.length; j++){
+    					if(list[i].child[j].id == dataSetId){
+    						selectDataSet = list[i].child[j];
+    						break;
+    					}
+    				}
     			}
     		}
-    		data.a('dataSet').dataItem = dataItem;
-			createBindDialog(data,accessType,name,dataItem);
-			/*$.ajax({
-			    url : hteditor_config.detailedDataSetUrl,  
-			    type : "GET",
-			    async : true,   //同步：false，异步：true 
-			    scope : {
-			        data : data,
-			        accessType : accessType,
-			        name : name
-			    },
-			    success : function(data){
-			    	var dataItem = [
-						{
-						'description' : '字段1',
-						'name' : 'fc1',
-						'value' : '0.1'
-						},
-						{
-							'description' : '字段2',
-							'name' : 'fc2',
-							'value' : '0.2'
-						}
-					]
-			    	this.scope.data.a('dataSet').dataItem = dataItem;
-			    	createBindDialog(this.scope.data,this.scope.accessType,this.scope.name,dataItem);
-			    },
-			    fail : function(data){
-			    	createBindDialog(this.scope.data,this.scope.accessType,this.scope.name);
-			    }
-			})*/
+    		if(selectDataSet){
+    			var para = selectDataSet;
+	    		var dataItem = [];
+	    		for(var i = 0; i < para.column.length; i++){
+	    			for(key in para.column[i]){
+	    				var item = {
+		    				name: key,
+		    				description: para.column[i][key]
+		    			};
+	    				dataItem.push(item);
+	    			}
+	    		}
+	    		data.a('dataSet').dataItem = dataItem;
+				createBindDialog(data,accessType,name,dataItem);
+    		}else{
+    			createBindDialog(data, accessType, name);
+    		}
 		}else{
 			createBindDialog(data, accessType, name);
 		}
