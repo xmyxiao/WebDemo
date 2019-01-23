@@ -110,6 +110,8 @@ function createDataSetPanel(editor) {
     		createDataSqlDialog(data);
     	}else if(type === 'HTTP' || type === 'http'){
     		createDataHttpDialog(data);
+    	}else if(type === 'DATASOURCE' || type === 'dataSource'){
+    		createDataSourceDialog(data);
     	}
     }
     //删除数据集
@@ -198,7 +200,7 @@ function initDataSetMenu(){
         {
             label: "新建数据源",
             action: function(item) {
-                
+                createDataSourceDialog();
             }
         },
         {

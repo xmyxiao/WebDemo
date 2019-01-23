@@ -12,6 +12,7 @@ function createDataSqlDialog(item){
 				password: '',
 				database: '',
 				sql: '',
+				dataSource: '',
 				column: []
 			}
 		}
@@ -25,6 +26,7 @@ function createDataSqlDialog(item){
 		username: data.value.para.username || '',
 		password: data.value.para.password || '',
 		database: data.value.para.database || '',
+		dataSource: data.value.para.dataSource || '',
 		column: data.value.para.column || [],
 		sql: data.value.para.sql || ''
 	}
@@ -65,67 +67,17 @@ function createDataSqlDialog(item){
             }
         }
     ], [55, 0.1]);
+    
+    var dataSourceList = editor.dataSetPanel.accordion.getDataModel().getDataById('dataSetRoot/数据源').getChildren()._as;
+    var dataSourceIds = [],dataSourceNames = [];
+    if(dataSourceList && dataSourceList.length > 0){
+    	for(var i = 0; i < dataSourceList.length; i++){
+    		dataSourceIds.push(dataSourceList[i].getId());
+    		dataSourceNames.push(dataSourceList[i].getName());
+    	}
+    }
+    
     formPane.addRow([
-    	{
-    		element:'地址',
-    		align: 'right'
-    	},
-        {
-            id: 'host',
-            textField: {
-                text: config.host
-            }
-        }
-    ], [55, 0.1]);
-    formPane.addRow([
-    	{
-    		element:'端口',
-    		align: 'right'
-    	},
-        {
-            id: 'port',
-            textField: {
-                text: config.port
-            }
-        }
-    ], [55, 0.1]);
-    formPane.addRow([
-    	{
-    		element:'用户名',
-    		align: 'right'
-    	},
-        {
-            id: 'username',
-            textField: {
-                text: config.username
-            }
-        }
-    ], [55, 0.1]);
-    formPane.addRow([
-    	{
-    		element:'密码',
-    		align: 'right'
-    	},
-        {
-            id: 'password',
-            textField: {
-                text: config.password
-            }
-        }
-    ], [55, 0.1]);
-    formPane.addRow([
-    	{
-    		element:'数据库',
-    		align: 'right'
-    	},
-        {
-            id: 'database',
-            textField: {
-                text: config.database
-            }
-        }
-    ], [55, 0.1]);
-    /*formPane.addRow([
     	{
     		element:'数据源',
     		align: 'right'
@@ -134,12 +86,13 @@ function createDataSqlDialog(item){
             unfocusable: true,
             id: 'dataSource',
             comboBox: {
-                values: [1, 2, 3, 4],
-                labels: ['数据源1', '数据源2', '数据源3', '数据源4']
+                values: dataSourceIds,
+                labels: dataSourceNames,
+                value: config.dataSource,
             }
         }
         
-    ], [55, 0.1]);*/
+    ], [55, 0.1]);
    	var tableModel = new ht.DataModel;
     var tablePane =  new ht.widget.TablePane(tableModel);
     var tableView = tablePane.getTableView();
@@ -153,7 +106,7 @@ function createDataSqlDialog(item){
 			enum: undefined,
 			name: "fileName",
 			tag: "fileName",
-			width: 170
+			width: 180
         },
         {
             accessType: "attr",
@@ -163,7 +116,7 @@ function createDataSqlDialog(item){
 			enum: undefined,
 			name: "fileDes",
 			tag: "fileDes",
-			width: 170
+			width: 180
         }
     ]);
     if(config.column){
@@ -229,29 +182,35 @@ function createDataSqlDialog(item){
 	            width: 120,
 	            onClicked:function(e){
 	            	var fieldName = formPane.v('fileName'),
-		            	host = formPane.v('host'),
+		            	/*host = formPane.v('host'),
 		            	port = formPane.v('port'),
 		            	username = formPane.v('username'),
 		            	password = formPane.v('password'),
-		            	database = formPane.v('database'),
+		            	database = formPane.v('database'),*/
+		            	dataSource = formPane.v('dataSource'),
 		            	sql = formPane.v('sql');
 		            var fieldId = 'SqlEntity_' + uuid(8);
 		            if(formPane.getItemById('fileId')){
 		            	fieldId = formPane.v('fileId')
 		            }
-		            if(!fieldName || !host || !port || !username || !password || !database || !sql){
+		            if(!fieldName || !dataSource || !sql){
 		        		editor.showMessage('数据必须填写完整！');
 		        		return;
 		        	}
+		            var dataSourceItem = editor.dataSetPanel.accordion.getDataModel().getDataById(dataSource).value.para;
+		            if(!dataSourceItem){
+		            	editor.showMessage('无效的数据集！');
+		        		return;
+		            }
 					var addItem = {
 						"id": fieldId,
 						"name":fieldName,
 						"type":"mysql",
-						"host":host,
-						"port":port,
-						"username": username,
-						"password": password,
-						"database": database,
+						"host":dataSourceItem.host,
+						"port":dataSourceItem.port,
+						"username": dataSourceItem.username,
+						"password": dataSourceItem.password,
+						"database": dataSourceItem.database,
 						"sql":sql
 					}
 					if(!editor.dataSetPanel.disabledDiv){
@@ -297,36 +256,42 @@ function createDataSqlDialog(item){
         label: S('OK'),
         action: function() {
             var fieldName = formPane.v('fileName'),
-            	host = formPane.v('host'),
+            	/*host = formPane.v('host'),
             	port = formPane.v('port'),
             	username = formPane.v('username'),
             	password = formPane.v('password'),
-            	database = formPane.v('database'),
+            	database = formPane.v('database'),*/
+            	dataSource = formPane.v('dataSource'),
             	sql = formPane.v('sql');
             var fieldId = 'SqlEntity_' + uuid(8);
             if(formPane.getItemById('fileId')){
             	fieldId = formPane.v('fileId')
             }
-            if(editor.dataSetPanel.dataModel.getDataById('dataSetRoot/SQL/' + fieldName) && editor.dataSetPanel.dataModel.getDataById('dataSetRoot/SQL/' + fieldName).value.para.id != fieldId){
+            if(editor.dataSetPanel.dataModel.getDataById('dataSetRoot/SQL实体/' + fieldName) && editor.dataSetPanel.dataModel.getDataById('dataSetRoot/SQL实体/' + fieldName).value.para.id != fieldId){
             	editor.showMessage('数据集名称不能重复！');
         		return;
             }
-            if(!fieldName || !host || !port || !username || !password || !database || !sql){
+            if(!fieldName || !dataSource || !sql){
         		editor.showMessage('数据必须填写完整！');
         		return;
         	}
-            
+            var dataSourceItem = editor.dataSetPanel.accordion.getDataModel().getDataById(dataSource).value.para;
+            if(!dataSourceItem){
+            	editor.showMessage('无效的数据集！');
+        		return;
+            }
 			var addItem = {
 				type : 'add',
 				content: [{
 					"id": fieldId,
 					"name":fieldName,
 					"type":"mysql",
-					"host":host,
-					"port":port,
-					"username": username,
-					"password": password,
-					"database": database,
+					"host":dataSourceItem.host,
+					"port":dataSourceItem.port,
+					"username": dataSourceItem.username,
+					"password": dataSourceItem.password,
+					"database": dataSourceItem.database,
+					"dataSource": dataSource,
 					"sql":sql
 				}]
 			}
@@ -363,7 +328,7 @@ function createDataSqlDialog(item){
         title: config.title,
         draggable: true,
         width:450,
-        height:500,
+        height:400,
         contentPadding: 4,
         content: formPane,
         buttons: buttons,
@@ -621,7 +586,7 @@ function createDataHttpDialog(item){
             	password = formPane.v('password'),
             	httpUrl = formPane.v('httpUrl');
             	
-            if(editor.dataSetPanel.dataModel.getDataById('dataSetRoot/HTTP/' + fieldName) && editor.dataSetPanel.dataModel.getDataById('dataSetRoot/SQL/' + fieldName).value.para.id != fieldId){
+            if(editor.dataSetPanel.dataModel.getDataById('dataSetRoot/接口实体/' + fieldName) && editor.dataSetPanel.dataModel.getDataById('dataSetRoot/接口实体/' + fieldName).value.para.id != fieldId){
             	editor.showMessage('数据集名称不能重复！');
         		return;
             }
@@ -732,6 +697,14 @@ function returnData(){
 				'child':[
 					
 				]
+			},
+			{
+				'type':'dir',
+				'name':'数据源',
+				'dataType':'DataSource',
+				'child':[
+					
+				]
 			}
 			]
 			for(i in data.msg){
@@ -739,6 +712,8 @@ function returnData(){
 					reJson[1].child.push(data.msg[i]);
 				}else if(data.msg[i].type === 'http'){
 					reJson[0].child.push(data.msg[i]);
+				}else if(data.msg[i].type === 'dataSource'){
+					reJson[2].child.push(data.msg[i]);
 				}
 			}
 			editor.dataSetPanel.itemList = reJson;

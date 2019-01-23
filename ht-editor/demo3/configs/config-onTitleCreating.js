@@ -39,19 +39,21 @@
             var tree = new ht.widget.TreeView(dataModel);
             var testTreeNode = editor.dataSetPanel.itemList
             for (var i = 0; i < testTreeNode.length; i++){
-            	var parent = new ht.Data();
-                parent.setName(testTreeNode[i].name);
-                parent.setIcon('symbols/basic/ht.json');
-                dataModel.add(parent);
-                if(testTreeNode[i].child){
-                	for (var j = 0; j < testTreeNode[i].child.length; j++) {
-	                    var child = new ht.Data();
-	                    child.setName(testTreeNode[i].child[j].name);
-	                    child.setParent(parent);
-	                    child.para = testTreeNode[i].child[j];
-	                    dataModel.add(child);
+            	if(testTreeNode[i].dataType != 'DataSource'){
+            		var parent = new ht.Data();
+	                parent.setName(testTreeNode[i].name);
+	                parent.setIcon('symbols/basic/ht.json');
+	                dataModel.add(parent);
+	                if(testTreeNode[i].child){
+	                	for (var j = 0; j < testTreeNode[i].child.length; j++) {
+		                    var child = new ht.Data();
+		                    child.setName(testTreeNode[i].child[j].name);
+		                    child.setParent(parent);
+		                    child.para = testTreeNode[i].child[j];
+		                    dataModel.add(child);
+		                }
 	                }
-                }
+            	}
             }
             /*for (var i = 0; i < 3; i++) {
                 var parent = new ht.Data();
