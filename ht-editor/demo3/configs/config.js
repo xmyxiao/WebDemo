@@ -25,6 +25,7 @@ window.hteditor_config = {
     subConfigs: [
         //'custom/configs/config-points.js',
         'custom/configs/config-createDataSource.js',
+        'custom/configs/config-createDataITO.js',
         'custom/configs/config-createDataSet.js',
         'custom/configs/config-dataSet.js',
         'custom/configs/config-handleEvent.js',

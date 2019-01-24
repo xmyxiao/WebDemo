@@ -158,7 +158,10 @@ function createBindDialog(data, accessType, name,fileJson){
         label: S('OK'),
         action: function(fileJson,a,b,fileJson) {
             var id = formPane.v('input');
-            var fieldName = formPane.v('dataField');
+            var fieldName = '';
+            if(formPane.getItemById('dataField')){
+            	fieldName = formPane.v('dataField');
+            }
             var func = formPane.v('textArea');
             var dataBindings = data.getDataBindings();
             if (!dataBindings) {

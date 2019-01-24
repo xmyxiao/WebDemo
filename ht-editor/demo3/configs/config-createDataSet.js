@@ -681,6 +681,7 @@ function returnData(){
 		url:dataSetUrl,
 		async:true,
 		success:function(data){
+			//这里的name在组件中作为id使用  修改后通过id获取的方法也要一起修改
 			var reJson = [
 			{
 				'type':'dir',
@@ -705,6 +706,14 @@ function returnData(){
 				'child':[
 					
 				]
+			},
+			{
+				'type':'dir',
+				'name':'ITO云',
+				'dataType':'ITOData',
+				'child':[
+					
+				]
 			}
 			]
 			for(i in data.msg){
@@ -713,6 +722,8 @@ function returnData(){
 				}else if(data.msg[i].type === 'http'){
 					reJson[0].child.push(data.msg[i]);
 				}else if(data.msg[i].type === 'dataSource'){
+					reJson[2].child.push(data.msg[i]);
+				}else if(data.msg[i].type === 'ITOData'){
 					reJson[2].child.push(data.msg[i]);
 				}
 			}

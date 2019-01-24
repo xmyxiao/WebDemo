@@ -112,6 +112,8 @@ function createDataSetPanel(editor) {
     		createDataHttpDialog(data);
     	}else if(type === 'DATASOURCE' || type === 'dataSource'){
     		createDataSourceDialog(data);
+    	}else if(type === 'ITOData' || type === 'itodata'){
+    		createDataITODialog(data);
     	}
     }
     //删除数据集
@@ -213,6 +215,12 @@ function initDataSetMenu(){
             label: "新建接口实体",
             action: function(item) {
                createDataHttpDialog();
+            }
+        },
+        {
+            label: "新建ITO设备",
+            action: function(item) {
+               createDataITODialog();
             }
         },
         {
