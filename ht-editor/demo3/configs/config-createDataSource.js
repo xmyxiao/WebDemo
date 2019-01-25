@@ -166,6 +166,9 @@ function createDataSourceDialog(item){
 			    type : "POST",
 			    contentType: "application/json; charset=utf-8",
 			    dataType:'json',
+			    headers: {
+		            'cookies':document.cookie
+		       	},
 			    data : JSON.stringify(addItem),
 			    success : function(data){
 			    	editor.dataSetPanel.reloadList();

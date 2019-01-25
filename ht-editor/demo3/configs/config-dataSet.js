@@ -151,6 +151,9 @@ function createDataSetPanel(editor) {
 	            	url : hteditor_config.dataSetUrl + 'dir',  
 				    type : "POST",
 				    async : true,
+				    headers: {
+			            'cookies':document.cookie
+			       	},
 				    contentType: "application/json; charset=utf-8",
 			    	dataType:'json',
 			    	data : JSON.stringify(addItem),

@@ -227,6 +227,9 @@ function createDataSqlDialog(item){
 		            	url : hteditor_config.dataSetUrl + 'test',
 					    type : "POST",
 					    async : true,
+					    headers: {
+				            'cookies':document.cookie
+				       	},
 					    contentType: "application/json; charset=utf-8",
 					    dataType:'json',
 					    data : JSON.stringify(addItem),
@@ -308,6 +311,9 @@ function createDataSqlDialog(item){
 			    type : "POST",
 			    contentType: "application/json; charset=utf-8",
 			    dataType:'json',
+			    headers: {
+		            'cookies':document.cookie
+		       	},
 			    data : JSON.stringify(addItem),
 			    success : function(data){
 			    	editor.dataSetPanel.reloadList();
@@ -586,6 +592,10 @@ function createDataHttpDialog(item){
             	password = formPane.v('password'),
             	httpUrl = formPane.v('httpUrl');
             	
+            var fieldId = 'InfcEntity_' + uuid(8);
+            if(formPane.getItemById('fileId')){
+            	fieldId = formPane.v('fileId')
+            }
             if(editor.dataSetPanel.dataModel.getDataById('dataSetRoot/接口实体/' + fieldName) && editor.dataSetPanel.dataModel.getDataById('dataSetRoot/接口实体/' + fieldName).value.para.id != fieldId){
             	editor.showMessage('数据集名称不能重复！');
         		return;
@@ -594,11 +604,6 @@ function createDataHttpDialog(item){
         		editor.showMessage('数据必须填写完整！');
         		return;
         	}
-
-            var fieldId = 'InfcEntity_' + uuid(8);
-            if(formPane.getItemById('id')){
-            	fieldId = formPane.v('id')
-            }
             var addItem = {
 				type : 'add',
 				content: [{
@@ -644,6 +649,9 @@ function createDataHttpDialog(item){
 			    async : true,
 			   	contentType: "application/json; charset=utf-8",
 			    dataType:'json',
+			    headers: {
+		            'cookies':document.cookie
+		       	},
 			    data : JSON.stringify(addItem),
 			    success : function(data){
 			    	editor.dataSetPanel.reloadList();
@@ -680,6 +688,9 @@ function returnData(){
 		type:"get",
 		url:dataSetUrl,
 		async:true,
+		headers: {
+            'cookies':document.cookie
+       	},
 		success:function(data){
 			//这里的name在组件中作为id使用  修改后通过id获取的方法也要一起修改
 			var reJson = [
@@ -724,7 +735,7 @@ function returnData(){
 				}else if(data.msg[i].type === 'dataSource'){
 					reJson[2].child.push(data.msg[i]);
 				}else if(data.msg[i].type === 'ITOData'){
-					reJson[2].child.push(data.msg[i]);
+					reJson[3].child.push(data.msg[i]);
 				}
 			}
 			editor.dataSetPanel.itemList = reJson;

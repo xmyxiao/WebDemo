@@ -6,10 +6,10 @@ function createDataITODialog(item){
 			para:{
 				id: '',
 				name: '',
-				host: '',
-				port: '',
-				username: '',
-				password: '',
+				productKey: '',
+				productPassWord: '',
+				equKey: '',
+				yunUrl: '',
 				column: []
 			}
 		}
@@ -18,10 +18,10 @@ function createDataITODialog(item){
 	var config = {
 		fileName: data._name || '',
 		fileId: data.value.para.id || '',
-		host: data.value.para.host || '',
-		port: data.value.para.port || '',
-		username: data.value.para.username || '',
-		password: data.value.para.password || '',
+		productKey: data.value.para.productKey || '',
+		productPassWord: data.value.para.productPassWord || '',
+		equKey: data.value.para.equKey || '',
+		yunUrl: data.value.para.yunUrl || '',
 		column: data.value.para.column || []
 	}
 	if(item){
@@ -63,49 +63,49 @@ function createDataITODialog(item){
     ], [55, 0.1]);
     formPane.addRow([
     	{
-    		element:'地址',
+    		element:'产品Key',
     		align: 'right'
     	},
         {
-            id: 'host',
+            id: 'productKey',
             textField: {
-                text: config.host
+                text: config.productKey
             }
         }
     ], [55, 0.1]);
     formPane.addRow([
     	{
-    		element:'端口',
+    		element:'产品密钥',
     		align: 'right'
     	},
         {
-            id: 'port',
+            id: 'productPassWord',
             textField: {
-                text: config.port
+                text: config.productPassWord
             }
         }
     ], [55, 0.1]);
     formPane.addRow([
     	{
-    		element:'用户名',
-    		align: 'right'
+    		element:'设备Key',
+    		align: 'productKey'
     	},
         {
-            id: 'username',
+            id: 'equKey',
             textField: {
-                text: config.username
+                text: config.productKey
             }
         }
     ], [55, 0.1]);
     formPane.addRow([
     	{
-    		element:'密码',
+    		element:'云地址',
     		align: 'right'
     	},
         {
-            id: 'password',
+            id: 'yunUrl',
             textField: {
-                text: config.password
+                text: config.yunUrl
             }
         }
     ], [55, 0.1]);
@@ -176,10 +176,10 @@ function createDataITODialog(item){
         label: S('OK'),
         action: function() {
             var fieldName = formPane.v('fileName'),
-            	host = formPane.v('host'),
-            	port = formPane.v('port'),
-            	username = formPane.v('username'),
-            	password = formPane.v('password');
+            	productKey = formPane.v('productKey'),
+            	productPassWord = formPane.v('productPassWord'),
+            	equKey = formPane.v('equKey'),
+            	yunUrl = formPane.v('yunUrl');
 
             var fieldId = 'ITOEntity_' + uuid(8);
             if(formPane.getItemById('fileId')){
@@ -189,7 +189,7 @@ function createDataITODialog(item){
             	editor.showMessage('设备名称不能重复！');
         		return;
             }
-            if(!fieldName || !host || !port || !username || !password){
+            if(!fieldName || !productKey || !productPassWord || !equKey || !yunUrl){
         		editor.showMessage('数据必须填写完整！');
         		return;
         	}
@@ -200,10 +200,10 @@ function createDataITODialog(item){
 					"id": fieldId,
 					"name":fieldName,
 					"type":"ITOData",
-					"host":host,
-					"port":port,
-					"username": username,
-					"password": password
+					"productKey":productKey,
+					"productPassWord":productPassWord,
+					"equKey": equKey,
+					"yunUrl": yunUrl
 				}]
 			}
 			
@@ -222,6 +222,9 @@ function createDataITODialog(item){
             	url : hteditor_config.dataSetUrl + 'dir',  
 			    type : "POST",
 			    contentType: "application/json; charset=utf-8",
+			    headers: {
+		            'cookies':document.cookie
+		       	},
 			    dataType:'json',
 			    data : JSON.stringify(addItem),
 			    success : function(data){

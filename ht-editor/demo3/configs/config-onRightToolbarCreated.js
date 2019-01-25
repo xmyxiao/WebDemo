@@ -55,13 +55,25 @@
     function createUserMenu(){
     	var json = [
 	        {
-	            label: "用户信息1",
+	            label: "用户名",
+	            action: function(item) {
+	                
+	            }
+	        },
+	        {
+	            label: "版本",
+	            action: function(item) {
+	                
+	            }
+	        },
+	        {
+	            label: "详情",
 	            action: function(item) {
 	                window.open('http://wlw.fdauto.com/');
 	            }
 	        },
 	        {
-	            label: "用户信息2",
+	            label: "升级",
 	            action: function(item) {
 	                window.open('http://wlw.fdauto.com/');
 	            }
