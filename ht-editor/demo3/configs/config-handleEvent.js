@@ -1,6 +1,7 @@
 (function() {
 
     window.hteditor_config.handleEvent = function(editor, type, params) {
+    	//console.log(type);
         var S = hteditor.getString;
         if (type === 'editorCreated') {
             handleEditorCreated(editor);
@@ -116,6 +117,7 @@
 
     function handleEditorCreated(editor) {
         // Prevent some files from being renamed, moved or deleted
+        //删除事件   可以设置公共图标和文件夹不可删除
         editor.addEventListener(function(event) {
             if (event.type === 'fileRenaming' ||
                 event.type === 'fileMoving' ||

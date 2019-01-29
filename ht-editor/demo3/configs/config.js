@@ -18,6 +18,8 @@ window.hteditor_config = {
     locateFileEnabled: !isPracticing,
     fontPreview: '图扑软件 - Hightopo',
    	dataSetUrl: 'http://192.168.7.47:5888/database/',
+   	//公共图标路径
+   	publicIconPath: 'symbols/公共图标',
    	detailedDataSetUrl: 'symbols/icon-ht/图纸.json',
     expandedTitles: {
         TitleExtension: false

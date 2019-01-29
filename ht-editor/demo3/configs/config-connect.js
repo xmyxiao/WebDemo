@@ -10,7 +10,8 @@ ht.DataModel.prototype.connectInit = function() {
     socket.on("connect", function() {
 		console.log('连接')
 	})
-    socket.emit('explore',me.getDataSet())
+    
+    socket.emit('explore',me.getDataSet(),document.cookie);
     
     socket.on("20456/data", function(data) {
     	var item = JSON.parse(data);

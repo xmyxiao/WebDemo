@@ -30,13 +30,15 @@
 	    	    
 	    editor.mainPane._topView.setTopView(topBorderPaneView);
 	    editor.mainPane._topView.setHeight('60');
+	    //组件板块隐藏(根据权限)
+	    editor.leftTopTabView.remove(2);
 	    
 	    document.body.appendChild(view);
 	    window.addEventListener('resize', function (e) {
 	    	editor.mainPane.iv();
 	        setTimeout(function(){
 	        	topBorderPane.iv();
-	        },50);
+	        },100);
 	        
 	    }, false);
 	}
@@ -50,7 +52,7 @@
 	                    label: "新建图纸",
 	                    action: function(item) {
 	                    	editor.displaysDialog.show();
-	                    	document.querySelector(".displaysfileUrl").value = 'displays/basic';
+	                    	document.querySelector(".displaysfileUrl").value = 'displays/';
 							document.querySelector(".displaysfileName").value = '';
 	                        //editor['newDisplayView']();
 	                    }
@@ -59,7 +61,7 @@
 	                    label: "新建图标",
 	                    action: function(item) {
 	                    	editor.symbolsDialog.show();
-	                    	document.querySelector(".symbolsfileUrl").value = 'symbols/basic';
+	                    	document.querySelector(".symbolsfileUrl").value = 'symbols/';
 							document.querySelector(".symbolsfileName").value = '';
 	                        //editor['newSymbolView']();
 	                    }
@@ -248,6 +250,11 @@
                     		editor.showMessage('文件路径与文件名称必须填写！');
                     		return;
                     	}
+                    	var fileUrlArr = fileUrl.split('/')
+                    	if(!fileUrlArr || fileUrlArr.length < 2 || fileUrlArr.indexOf('displays') < 0){
+                    		editor.showMessage('文件路径不正确！');
+                    		return;
+                    	}
                     	var saveUrl = fileUrl + "/" + fileName + ".json";
                     	if(editor.getFileNode(saveUrl)){
                     		editor.showMessage('文件名冲突！');
@@ -286,6 +293,15 @@
                     		fileName = dialog.getView().querySelector(".symbolsfileName").value;
                     	if(!fileName || fileName === '' || !fileUrl || fileUrl === ''){
                     		editor.showMessage('文件路径与文件名称必须填写！');
+                    		return;
+                    	}
+                    	if(fileUrl === hteditor_config.publicIconPath){
+                    		editor.showMessage('无法在公共图标中新增图标！');
+                    		return;
+                    	}
+                    	var fileUrlArr = fileUrl.split('/')
+                    	if(!fileUrlArr || fileUrlArr.length < 2 || fileUrlArr.indexOf('symbols') < 0){
+                    		editor.showMessage('文件路径不正确！');
                     		return;
                     	}
                     	var saveUrl = fileUrl + "/" + fileName + ".json";
