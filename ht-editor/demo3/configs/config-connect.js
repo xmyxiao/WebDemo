@@ -12,13 +12,18 @@ ht.DataModel.prototype.connectInit = function() {
 	})
     
     socket.emit('explore',me.getDataSet(),document.cookie);
+    var userStr = getCookie("user");
+    if(!userStr){
+    	userStr = '{}'
+    }
+	var UserJson = JSON.parse(userStr);
+	if(UserJson && UserJson.name){
+		socket.on(UserJson.name + "/data", function(data) {
+	    	var item = JSON.parse(data);
+	    	me.nodeReassignment(item);
+		})
+	}
     
-    socket.on("20456/data", function(data) {
-    	var item = JSON.parse(data);
-    	for(var i = 0; i < item.length; i++){
-    		me.nodeReassignment(item[i]);
-    	}
-	})
     socket.on("disconnect", function() {
 		console.log('断开')
 	})
@@ -70,7 +75,8 @@ ht.DataModel.prototype.getDataSetFiledInfo = function(){
                 			var info = {
 		                		propertyName : name,
 		                		fieldName : db.fieldName,
-		                		nodeId : data.getId()
+		                		nodeId : data.getId(),
+		                		func : db.func
 		                	}
                 			fieldList[j].bindingNode.push(info)
                 		}
@@ -86,19 +92,20 @@ ht.DataModel.prototype.getDataSetFiledInfo = function(){
 ht.DataModel.prototype.nodeReassignment = function(data){
 	var me = this;
 	var infoList = me.filedInfoList ? me.filedInfoList : me.getDataSetFiledInfo();
+	//需要优化
 	for(var i = 0; i < infoList.length; i++){
 		if(data.id === infoList[i].dataSetId){
 			var item = data.data;
 			for(var k = 0; k < item.length; k++){
 				if(infoList[i].bindingNode && infoList[i].bindingNode.length > 0){
-					for(key in item[k]){
-						for(var j = 0; j < infoList[i].bindingNode.length; j++){
-							if(key === infoList[i].bindingNode[j].fieldName){
-								var selNode = infoList[i].bindingNode[j];
-								me.setDataValueById(selNode.nodeId,selNode.propertyName,item[k][key]);
-							}
+					for(var j = 0; j < infoList[i].bindingNode.length; j++){
+						if(item[k].name === infoList[i].bindingNode[j].fieldName){
+							var selNode = infoList[i].bindingNode[j];
+							if(selNode.func){item[k].value = selNode.func(item[k].value)}
+							me.setDataValueById(selNode.nodeId,selNode.propertyName,item[k].value);
 						}
 					}
+					
 				}
 			}
 		}

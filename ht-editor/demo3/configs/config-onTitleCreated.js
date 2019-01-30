@@ -4,7 +4,7 @@
     window.hteditor_config.onTitleCreated = function(editor, params) {
         if (!isHandling) {
             isHandling = true;
-            //handleTitleCreated(editor, params);
+            handleTitleCreated(editor, params);
             isHandling = false;
         }
     };
@@ -14,10 +14,10 @@
         var oldTitle = params.oldTitle;
         var inspector = params.inspector;
         if (inspector.type === 'display' && title === 'TitleBasic') {
-             addPropertiesToDisplay(inspector);
+             addIntoJsToDisplay(inspector);
         }
 
-        if (inspector.type === 'data' && title === 'TitleBasic') {
+        /*if (inspector.type === 'data' && title === 'TitleBasic') {
             var items = [];
             var label = 'HIGHTOPO';
             var toolTip = 'www.hightopo.com';
@@ -52,9 +52,75 @@
             //         inspector.filterPropertiesLater();
             //     }
             // });
-        }
+        }*/
     }
+    //添加js注入
+	function addIntoJsToDisplay(inspector){
+		var S = hteditor.getString;
+        var indent = hteditor.config.indent;
 
+        var items = [];
+        items.push('用户JS');
+
+        var label = '编辑';
+        var toolTip = null;
+        var icon = null;
+        var onClicked = function(a,b,c,d) {
+            var dialog = new ht.widget.Dialog();
+            var formPane = new ht.widget.FormPane();
+            var nodeUrl = editor.mainTabView.currentTab.getView().url;
+            var func = inspector.getPropertyValue('userJs');
+
+            formPane.addRow([
+		        {
+		            id: 'textArea',
+		            element: new hteditor.CodeEditor({
+		                value: func,
+		                language: 'javascript',
+		                //theme:'vs-dark',
+		                minimap: {
+		                    enabled: false
+		                }
+		            })
+		        }
+		    ], [0.1],0.1);
+            
+            var buttons = [];
+            buttons.push(
+                {
+                     label: S('Cancel'),
+                     action: function() {
+                        dialog.hide();
+                     }
+                },
+                {
+                    label: S('OK'),
+                    action: function() {
+                    	var func = formPane.v('textArea');
+                    	inspector.setPropertyValue('userJs', func);
+                        dialog.hide();
+                    }
+                }
+            );
+            dialog.setConfig({
+                title: '用户JS',
+                draggable: true,
+                closable:true,
+                maximizable:true,
+		        width: 650,
+		        height: 500,
+                contentPadding: 0,
+                borderWidth: 0,
+                content: formPane,
+                buttons: buttons,
+                buttonsAlign: 'right'
+            });
+            dialog.show();
+        };
+        var button = hteditor.createButton(label, toolTip, icon, onClicked);
+        items.push(button);
+        inspector.addRow(items, [indent, 0.1, 40, 20]);
+	}
     function addPropertiesToDisplay(inspector) {
         var S = hteditor.getString;
         var indent = hteditor.config.indent;

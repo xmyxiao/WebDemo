@@ -21,7 +21,7 @@
     function createReleaseItem(){
     	var id = 'release';
         var toolTip = '发布';
-        var iconName = 'symbols/icon-ht/发布.json';
+        var iconName = 'custom/images/发布.json';
         var item = hteditor.createItem(id, toolTip, iconName);
         item.action = function() {
         	editor.preview();
@@ -32,7 +32,7 @@
     function createShareItem(){
     	var id = 'share';
         var toolTip = '分享';
-        var iconName = 'symbols/icon-ht/分享.json';
+        var iconName = 'custom/images/分享.json';
         var item = hteditor.createItem(id, toolTip, iconName);
         item.action = function() {
         	
@@ -43,7 +43,7 @@
     function createUserInfoItem() {
         var id = 'userInfo';
         var toolTip = '我的账户';
-        var iconName = 'symbols/icon-ht/user.json';
+        var iconName = 'custom/images/user.json';
         var item = hteditor.createItem(id, toolTip, iconName);
         item.action = function() {
         	var toolLeft = editor.rightToolbar.getView().style.width.split("px")[0];
@@ -53,15 +53,21 @@
     }
         
     function createUserMenu(){
+    	var userStr = getCookie("user");
+    	if(!userStr){
+    		return
+    	}
+	    var UserJson = JSON.parse(userStr);
+
     	var json = [
 	        {
-	            label: "用户名",
+	            label: UserJson.name,
 	            action: function(item) {
 	                
 	            }
 	        },
 	        {
-	            label: "版本",
+	            label: UserJson.level,
 	            action: function(item) {
 	                
 	            }

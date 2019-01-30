@@ -9433,9 +9433,11 @@
 					id: "newDisplayView",
 					label: _("editor.newdisplayview"),
 					action: function() {
-						editor.displaysDialog.show();
-	                    document.querySelector(".displaysfileUrl").value = 'displays/';
-						document.querySelector(".displaysfileName").value = '';
+						if(hteditor_config.displayNumber < 1){
+                    		editor.showMessage('创建图纸个数达到上限！');
+                    		return
+                    	}
+						createDisplaysDialog();
 						//n.editor.newDisplayView(), n.editor.save()
 					},
 					visible: function() {
@@ -9469,9 +9471,7 @@
 					id: "newSymbolView",
 					label: _("editor.newsymbolview"),
 					action: function() {
-						editor.symbolsDialog.show();
-	                    document.querySelector(".symbolsfileUrl").value = 'symbols/';
-						document.querySelector(".symbolsfileName").value = '';
+						createSymbolsDialog();
 						//n.editor.newSymbolView(), n.editor.save()
 					},
 					visible: function() {
@@ -16486,6 +16486,16 @@
 				var _ = hV.config.host || window.location.hostname,
 					x = hV.config.port || window.location.port,
 					O = window.location.protocol + "//" + _ + ":" + x;
+					var userStr = getCookie("user");
+					if(!userStr){
+				    	userStr = '{}'
+				    }
+	    			var UserJson = JSON.parse(userStr);
+	    			var userName = '';
+	    		if(UserJson && UserJson.name){
+	    			userName = UserJson.name + '/';
+	    		}
+	    		//hV.config.userName = userName;
 				this.socket = io.connect(O), this.socket.on("connect", function() {
 					S.handler({
 						type: "connected",
@@ -16496,20 +16506,20 @@
 						type: "disconnected",
 						message: O
 					})
-				}), this.socket.on("fileChanged", function(q) {
+				}), this.socket.on(userName+"fileChanged", function(q) {
 					S.handler({
 						type: "fileChanged",
 						path: q.path,
 						event: q.event
 					})
-				}), this.socket.on("operationDone", function(q, V) {
+				}), this.socket.on(userName+"operationDone", function(q, V) {
 					S.handleRespone(q, V)
 				}), this.socket.on("download", function(q) {
 					S.handler({
 						type: "download",
 						path: q
 					})
-				}), this.socket.on("confirm", function(q, V) {
+				}), this.socket.on(userName+"confirm", function(q, V) {
 					S.handler({
 						type: "confirm",
 						path: q,
@@ -16521,7 +16531,7 @@
 				var S = ++this.cookie;
 				this.callbacks[S] = n, this.cmds[S] = q;
 				var _ = this.editor.sid;
-				this.socket.emit(q, S, V, _ ? {
+				this.socket.emit(q, S,V, _ ? {
 					sid: _
 				} : null);
 				var x = q;

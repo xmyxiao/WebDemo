@@ -21,18 +21,21 @@
 	    topBorderPane.setLeftView(topLogo);
 	    topBorderPane.setCenterView(topMenu);
 	    topBorderPane.setRightView(topRightTool,'85');
-	    
-	    changeEditorLeftView();
-	    document.getElementById('displaysContent').style.display = 'block';
-	    document.getElementById('symbolsContent').style.display = 'block';
-	    createDisplaysDialog();
-	    createSymbolsDialog();
+	    changeEditorLeftView(); 
 	    	    
 	    editor.mainPane._topView.setTopView(topBorderPaneView);
 	    editor.mainPane._topView.setHeight('60');
 	    //组件板块隐藏(根据权限)
-	    editor.leftTopTabView.remove(2);
-	    
+	    var userStr = getCookie("user");
+	    if(!userStr){
+	    	userStr = '{}'
+	    }
+	    var UserJson = JSON.parse(userStr);
+	    if(!UserJson && UserJson.permission !== "admin"){
+	    	editor.leftTopTabView.remove(2);
+	    }
+	    //增加用户可创建图纸数
+	    hteditor_config.displayNumber = 1;
 	    document.body.appendChild(view);
 	    window.addEventListener('resize', function (e) {
 	    	editor.mainPane.iv();
@@ -51,19 +54,17 @@
 	                {
 	                    label: "新建图纸",
 	                    action: function(item) {
-	                    	editor.displaysDialog.show();
-	                    	document.querySelector(".displaysfileUrl").value = 'displays/';
-							document.querySelector(".displaysfileName").value = '';
-	                        //editor['newDisplayView']();
+	                    	if(hteditor_config.displayNumber < 1){
+	                    		editor.showMessage('创建图纸个数达到上限！');
+	                    		return
+	                    	}
+	                    	createDisplaysDialog();
 	                    }
 	                },
 	                {
 	                    label: "新建图标",
 	                    action: function(item) {
-	                    	editor.symbolsDialog.show();
-	                    	document.querySelector(".symbolsfileUrl").value = 'symbols/';
-							document.querySelector(".symbolsfileName").value = '';
-	                        //editor['newSymbolView']();
+	                    	createSymbolsDialog();
 	                    }
 	                },
 	                {
@@ -131,7 +132,7 @@
 	}
 	//顶部右侧工具条
 	function createTopRightTool(){
-		ht.Default.setImage('full_logo', "symbols/icon-ht/全屏.json");
+		ht.Default.setImage('full_logo', "custom/images/全屏.json");
 		var toolbar = new ht.widget.Toolbar([
 		    {
 	            icon: 'editor.toggleleft',
@@ -176,7 +177,7 @@
 	}
 	//顶部logo
 	function createTopLogo(){
-		ht.Default.setImage('top_left_logo', "symbols/icon-ht/logo.json");
+		ht.Default.setImage('top_left_logo', "custom/images/logo.json");
 	    var logoSrc = 'top_left_logo';
 		var json = [
 	        {
@@ -185,7 +186,6 @@
 	    ];
 	    
 	    var menu = new ht.widget.Menu(json);
-	    menu.enableGlobalKey();
 	    menu.setLayout('iconsonly');
 	
 	    var menuView = menu.getView();
@@ -209,10 +209,10 @@
 	    
 	    //displaysTab.setIcon();
 	    
-	    ht.Default.setImage('tabIconDisplays', "symbols/icon-ht/图纸.json");
-	    ht.Default.setImage('tabIconSymbols', "symbols/icon-ht/图标.json");
-	    ht.Default.setImage('tabIconComponents', "symbols/icon-ht/组件.json");
-	    ht.Default.setImage('tabIconAssets', "symbols/icon-ht/资源.json");
+	    ht.Default.setImage('tabIconDisplays', "custom/images/图纸.json");
+	    ht.Default.setImage('tabIconSymbols', "custom/images/图标.json");
+	    ht.Default.setImage('tabIconComponents', "custom/images/组件.json");
+	    ht.Default.setImage('tabIconAssets', "custom/images/资源.json");
 	    
 	    displaysTab.setName('');
 	    displaysTab.setIcon('tabIconDisplays');
@@ -230,102 +230,187 @@
 	    assetsTab.setIcon('tabIconAssets');
 	    assetsTab.setToolTip('资源');		
 	}
-	
-	function createDisplaysDialog(){
-		var dialog = editor.displaysDialog = new ht.widget.Dialog();
 		
-        dialog.setConfig({
-            title: "新增图纸",
-            closable: true,
-            draggable: true,
-            contentPadding: 10,
-            content: document.getElementById("displaysContent"),
-            buttons: [
-                {
-                    label: "确定",
-                    action: function(button, e) {
-                    	var fileUrl = dialog.getView().querySelector(".displaysfileUrl").value,
-                    		fileName = dialog.getView().querySelector(".displaysfileName").value;
-                    	if(!fileName || fileName === '' || !fileUrl || fileUrl === ''){
-                    		editor.showMessage('文件路径与文件名称必须填写！');
-                    		return;
-                    	}
-                    	var fileUrlArr = fileUrl.split('/')
-                    	if(!fileUrlArr || fileUrlArr.length < 2 || fileUrlArr.indexOf('displays') < 0){
-                    		editor.showMessage('文件路径不正确！');
-                    		return;
-                    	}
-                    	var saveUrl = fileUrl + "/" + fileName + ".json";
-                    	if(editor.getFileNode(saveUrl)){
-                    		editor.showMessage('文件名冲突！');
-                    		return;
-                    	}
-                    	editor['newDisplayView']();
-                    	editor.save('',saveUrl);
-			            dialog.hide();
-			        }
-                },
-                {
-                    label: "取消",
-                    action: function(button, e) {
-			            dialog.hide();
-			        }
-                }
-            ],
-            buttonsAlign: "right"
-        });
-	}
-	
-	function createSymbolsDialog(){
-		var dialog = editor.symbolsDialog = new ht.widget.Dialog();
-		
-        dialog.setConfig({
-            title: "新增图标",
-            closable: true,
-            draggable: true,
-            contentPadding: 10,
-            content: document.getElementById("symbolsContent"),
-            buttons: [
-                {
-                    label: "确定",
-                    action: function(button, e) {
-                    	var fileUrl = dialog.getView().querySelector(".symbolsfileUrl").value,
-                    		fileName = dialog.getView().querySelector(".symbolsfileName").value;
-                    	if(!fileName || fileName === '' || !fileUrl || fileUrl === ''){
-                    		editor.showMessage('文件路径与文件名称必须填写！');
-                    		return;
-                    	}
-                    	if(fileUrl === hteditor_config.publicIconPath){
-                    		editor.showMessage('无法在公共图标中新增图标！');
-                    		return;
-                    	}
-                    	var fileUrlArr = fileUrl.split('/')
-                    	if(!fileUrlArr || fileUrlArr.length < 2 || fileUrlArr.indexOf('symbols') < 0){
-                    		editor.showMessage('文件路径不正确！');
-                    		return;
-                    	}
-                    	var saveUrl = fileUrl + "/" + fileName + ".json";
-                    	if(editor.getFileNode(saveUrl)){
-                    		editor.showMessage('文件名冲突！');
-                    		return;
-                    	}
-                    	editor['newSymbolView']();
-                    	editor.save('',saveUrl);
-			            dialog.hide();
-			        }
-                },
-                {
-                    label: "取消",
-                    action: function(button, e) {
-			            dialog.hide();
-			        }
-                }
-            ],
-            buttonsAlign: "right"
-        });
-	}
 })();
 
+function createDisplaysDialog(){
+	var dialog  = new ht.widget.Dialog();
+	var formPane = new ht.widget.FormPane();
+	var fileUrlList = editor.displays.accordion.dirs || [];
+	var fileUrlName = [],fileUrlId = [];
+	for(var i = 0; i < fileUrlList.length; i++){
+		fileUrlName.push(fileUrlList[i].getName());
+		fileUrlId.push(fileUrlList[i].getId());
+	}
+	formPane.addRow([
+    	{
+    		element:'文件路径',
+    		align: 'right'
+    	},
+        {
+            id: 'fileUrl',
+            comboBox: {
+            	value: '',
+                values: fileUrlId,
+                labels: fileUrlName
+            }
+        }
+    ], [55, 0.1]);
+    formPane.addRow([
+    	{
+    		element:'文件名称',
+    		align: 'right'
+    	},
+        {
+            id: 'fileName',
+            textField: {
+                text: ''
+            }
+        }
+    ], [55, 0.1]);
+    formPane.addRow([
+    	{
+    		element:'访问密码',
+    		align: 'right'
+    	},
+        {
+            id: 'filePassWord',
+            textField: {
+                text: ''
+            }
+        }
+    ], [55, 0.1]);
+    
+    dialog.setConfig({
+        title: "新增图纸",
+        closable: true,
+        draggable: true,
+        width:260,
+        height:160,
+        contentPadding: 10,
+        content: formPane,
+        buttons: [
+            {
+                label: "确定",
+                action: function(button, e) {
+                	var fileUrl = formPane.v('fileUrl'),
+                		fileName = formPane.v('fileName');
+                	if(!fileName || fileName === '' || !fileUrl || fileUrl === ''){
+                		editor.showMessage('文件路径与文件名称必须填写！');
+                		return;
+                	}
+                	var fileUrlArr = fileUrl.split('/')
+                	if(!fileUrlArr || fileUrlArr.length < 2 || fileUrlArr.indexOf('displays') < 0){
+                		editor.showMessage('文件路径不正确！');
+                		return;
+                	}
+                	var saveUrl = fileUrl + "/" + fileName + ".json";
+                	if(editor.getFileNode(saveUrl)){
+                		editor.showMessage('文件名冲突！');
+                		return;
+                	}
+                	hteditor_config.displayNumber--;
+                	editor['newDisplayView']();
+                	editor.save('',saveUrl);
+		            dialog.hide();
+		        }
+            },
+            {
+                label: "取消",
+                action: function(button, e) {
+		            dialog.hide();
+		        }
+            }
+        ],
+        buttonsAlign: "right"
+    });
+    dialog.show();
+}
+function createSymbolsDialog(){
+	var dialog = new ht.widget.Dialog();
+	var formPane = new ht.widget.FormPane();
+	var fileUrlList = editor.symbols.accordion.dirs || [];
+	var fileUrlName = [],fileUrlId = [];
+	for(var i = 0; i < fileUrlList.length; i++){
+		if(fileUrlList[i].getId() !== hteditor_config.publicIconPath){
+			fileUrlName.push(fileUrlList[i].getName());
+			fileUrlId.push(fileUrlList[i].getId());
+		}
+	}
+	formPane.addRow([
+    	{
+    		element:'文件路径',
+    		align: 'right'
+    	},
+        {
+            id: 'fileUrl',
+            comboBox: {
+            	value: '',
+                values: fileUrlId,
+                labels: fileUrlName
+            }
+        }
+    ], [55, 0.1]);
+    formPane.addRow([
+    	{
+    		element:'文件名称',
+    		align: 'right'
+    	},
+        {
+            id: 'fileName',
+            textField: {
+                text: ''
+            }
+        }
+    ], [55, 0.1]);
+    dialog.setConfig({
+        title: "新增图标",
+        closable: true,
+        draggable: true,
+        contentPadding: 10,
+        width:260,
+        height:130,
+        content: formPane,
+        buttons: [
+            {
+                label: "确定",
+                action: function(button, e) {
+                	var fileUrl = formPane.v('fileUrl'),
+                		fileName = formPane.v('fileName');
+                	if(!fileName || fileName === '' || !fileUrl || fileUrl === ''){
+                		editor.showMessage('文件路径与文件名称必须填写！');
+                		return;
+                	}
+                	if(fileUrl === hteditor_config.publicIconPath){
+                		editor.showMessage('无法在公共图标中新增图标！');
+                		return;
+                	}
+                	var fileUrlArr = fileUrl.split('/')
+                	if(!fileUrlArr || fileUrlArr.length < 2 || fileUrlArr.indexOf('symbols') < 0){
+                		editor.showMessage('文件路径不正确！');
+                		return;
+                	}
+                	var saveUrl = fileUrl + "/" + fileName + ".json";
+                	if(editor.getFileNode(saveUrl)){
+                		editor.showMessage('文件名冲突！');
+                		return;
+                	}
+                	editor['newSymbolView']();
+                	editor.save('',saveUrl);
+		            dialog.hide();
+		        }
+            },
+            {
+                label: "取消",
+                action: function(button, e) {
+		            dialog.hide();
+		        }
+            }
+        ],
+        buttonsAlign: "right"
+    });
+    dialog.show();
+}
 function guid() {
     var guid = "";
     for (var i = 1; i <= 32; i++){
@@ -364,40 +449,20 @@ function uuid(len, radix) {
  
     return uuid.join('');
 }
-/*
-function ajax(options){
-    var xhr = null;
-    var params = formsParams(options.data);
-    //创建对象
-    if(window.XMLHttpRequest){
-        xhr = new XMLHttpRequest()
-    } else {
-        xhr = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    // 连接
-    if(options.type == "GET"){
-        xhr.open(options.type,options.url + "?"+ params,options.async);
-        xhr.send(null)
-    } else if(options.type == "POST"){
-        xhr.open(options.type,options.url,options.async);
-        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        xhr.send(params);
-    }
-    xhr.onreadystatechange = function(){
-        if(xhr.readyState == 4 && xhr.status == 200 && typeof options.success === 'function'){
-            options.success(xhr.responseText);
-        }else if(xhr.readyState == 4 && xhr.status >= 400 && typeof options.fail === 'function'){
-        	options.fail(xhr);
-        }
-    }
-    function formsParams(data){
-        var arr = [];
-        for(var prop in data){
-            arr.push(prop + "=" + data[prop]);
-        }
-        return arr.join("&");
-    }
-}*/
+//根据name获取cookie
+function getCookie(name) {
+	var cookies = document.cookie;
+	var list = cookies.split("; ");
+
+	for(var i = 0; i < list.length; i++) {
+		var arr = list[i].split("=");
+		if(arr[0] == name){
+			return decodeURIComponent(arr[1]);
+		}
+	}
+  return "";
+}
+
 
 
 

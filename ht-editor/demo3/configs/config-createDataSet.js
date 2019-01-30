@@ -214,7 +214,7 @@ function createDataSqlDialog(item){
 						"sql":sql
 					}
 					if(!editor.dataSetPanel.disabledDiv){
-						editor.dataSetPanel.disabledDiv = ht.Default.createDisabledDiv('symbols/icon-ht/加载.json');
+						editor.dataSetPanel.disabledDiv = ht.Default.createDisabledDiv('custom/images/加载.json');
 						editor.dataSetPanel.disabledDiv.style.top = 0;
 						editor.dataSetPanel.disabledDiv.style.left = 0;
 						editor.dataSetPanel.disabledDiv.style.right = 0;
@@ -725,6 +725,14 @@ function returnData(){
 				'child':[
 					
 				]
+			},
+			{
+				'type':'dir',
+				'name':'模拟数据',
+				'dataType':'ANALOG',
+				'child':[
+					
+				]
 			}
 			]
 			for(i in data.msg){
@@ -736,6 +744,8 @@ function returnData(){
 					reJson[2].child.push(data.msg[i]);
 				}else if(data.msg[i].type === 'ITOData'){
 					reJson[3].child.push(data.msg[i]);
+				}else if(data.msg[i].type === 'analogData'){
+					reJson[4].child.push(data.msg[i]);
 				}
 			}
 			editor.dataSetPanel.itemList = reJson;

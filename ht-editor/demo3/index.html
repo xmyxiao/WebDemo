@@ -11,8 +11,8 @@
                 margin: 0px;
             }
             .ht-widget-menu .header-item{
-            	line-height: 2.3em !important;
             	padding: 0 !important;
+            	padding-top: 0.2em !important;
             	color: #d4d4d4;
             }
             .ht-widget-menu .header-item>span{
@@ -67,6 +67,7 @@
 
         <script>
             function init() {
+            	
                 var urls = hteditor_config.subConfigs || [];
                 urls.push('client.js');
                 urls.push('custom/configs/main.js');
@@ -83,6 +84,25 @@
                     urls.push('vs/editor/editor.main.nls.js');
                     urls.push('vs/editor/editor.main.js');
                     ht.Default.loadJS(urls, function(){
+                    	/*$.ajax({
+		            		type:"get",
+		            		url:'http://192.168.7.47:5888/login/checkLogin',
+		            		async:true,
+		            		success:function(data){
+		            			if(data.code){
+		            				window.location.href = 'error.html'
+		            			}
+		            			window.editor = hteditor.createEditor({
+		                        	container: null,
+		                            onEditorCreated: function(editor) {
+		                                handleEditorCreated(editor);
+		                            }
+		                        });
+		            		},error(data){
+		            			window.location.href = 'error.html'
+		            		}
+		            	});
+		            	*/
                         window.editor = hteditor.createEditor({
                         	container: null,
                             onEditorCreated: function(editor) {
@@ -95,14 +115,6 @@
         </script>
     </head>
     <body onload='init()'>
-    	<div id="displaysContent" style="display: none;">
-            <div>图纸路径: <input class="displaysfileUrl" value="displays/basic" style="font-size: 14px;"></div>
-            <div style="margin-top: 15px;">图纸名称: <input class="displaysfileName" style="font-size: 14px;"></div>
-            <div style="margin-top: 15px;">访问密码: <input class="displaysfilePassWord" style="font-size: 14px;"></div>
-        </div>
-        <div id="symbolsContent" style="display: none;">
-            <div>图标路径: <input class="symbolsfileUrl" value="symbols/basic" style="font-size: 14px;"></div>
-            <div style="margin-top: 15px;">图标名称: <input class="symbolsfileName" style="font-size: 14px;"></div>
-        </div>
+    	
     </body>
 </html>

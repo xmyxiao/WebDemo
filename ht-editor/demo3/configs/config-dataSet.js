@@ -114,6 +114,8 @@ function createDataSetPanel(editor) {
     		createDataSourceDialog(data);
     	}else if(type === 'ITOData' || type === 'itodata'){
     		createDataITODialog(data);
+    	}else if(type === 'AnalogData' || type === 'analogData'){
+    		createDataAnalogDialog(data);
     	}
     }
     //删除数据集
@@ -224,6 +226,12 @@ function initDataSetMenu(){
             label: "新建ITO设备",
             action: function(item) {
                createDataITODialog();
+            }
+        },
+        {
+            label: "新建模拟数据",
+            action: function(item) {
+               createDataAnalogDialog();
             }
         },
         {

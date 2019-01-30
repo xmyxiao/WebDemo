@@ -66,7 +66,7 @@ window.hteditor_config.dataBindings = {
 	    				dataItem.push(item);
 	    			}
 	    		}
-	    		data.a('dataSet').dataItem = dataItem;
+	    		data.a('dataItem',dataItem);
 				createBindDialog(data,accessType,name,dataItem);
     		}else{
     			createBindDialog(data, accessType, name);
@@ -173,8 +173,8 @@ function createBindDialog(data, accessType, name,fileJson){
             if (!dataBindings[accessType][name]) {
                 dataBindings[accessType][name] = {};
             }
-            if (fieldName && data.a('dataSet').dataItem) {
-            	var dataArr = data.a('dataSet').dataItem;
+            if (fieldName && data.a('dataItem')) {
+            	var dataArr = data.a('dataItem');
                 dataBindings[accessType][name].fieldName = fieldName;
             }
             if (!id) {
