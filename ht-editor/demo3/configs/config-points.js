@@ -137,7 +137,7 @@ function createPointsExplorer(editor, draggable) {
         }
     });
 
-    if (draggable) {
+
         pointsExplorer.list.isDroppableToDisplayView = true;
         pointsExplorer.list.handleDropToEditView = function(view, fileNode, point, event) {
             if (fileNode.getIcon() === textIcon) {
@@ -161,7 +161,7 @@ function createPointsExplorer(editor, draggable) {
                 view.addData(node);
             }
         };
-    }
+
 
     return pointsExplorer;
 }

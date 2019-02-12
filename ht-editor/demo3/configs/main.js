@@ -31,11 +31,21 @@
 	    	userStr = '{}'
 	    }
 	    var UserJson = JSON.parse(userStr);
-	    if(!UserJson && UserJson.permission !== "admin"){
-	    	editor.leftTopTabView.remove(2);
+	    
+	    if(!UserJson || UserJson.permission !== "admin"){
+	    	//editor.leftTopTabView.remove(2);
+	    	userPermission = false
+	    }else{
+	    	userPermission = true
 	    }
 	    //增加用户可创建图纸数
 	    hteditor_config.displayNumber = 1;
+	    //图纸右键不可见
+	    editor.displays.accordion.menu.getView().style.display = 'none'
+	    //菜单不可见项目
+	    editor.symbols.accordion.menu.setItemVisible('locateFile',false);
+	    editor.symbols.accordion.menu.setItemVisible('newFolder',false);
+	    
 	    document.body.appendChild(view);
 	    window.addEventListener('resize', function (e) {
 	    	editor.mainPane.iv();
@@ -51,7 +61,7 @@
 	        {
 	            label: "文件",
 	            items: [
-	                {
+	                /*{
 	                    label: "新建图纸",
 	                    action: function(item) {
 	                    	if(hteditor_config.displayNumber < 1){
@@ -60,7 +70,7 @@
 	                    	}
 	                    	createDisplaysDialog();
 	                    }
-	                },
+	                },*/
 	                {
 	                    label: "新建图标",
 	                    action: function(item) {
@@ -104,19 +114,19 @@
 	                {
 	                    label: "联系我们",
 	                    action: function(item) {
-			                window.open('http://wlw.fdauto.com/');
+			                window.open('http://bbs.gkiiot.com/');
 			            }
 	                },
 	                {
 	                    label: "使用说明",
 	                    action: function(item) {
-			                 window.open('http://wlw.fdauto.com/');
+			                 window.open('http://bbs.gkiiot.com/');
 			            }
 	                },
 	                {
 	                    label: "发布日志",
 	                    action: function(item) {
-			                 window.open('http://wlw.fdauto.com/');
+			                 window.open('http://bbs.gkiiot.com/');
 			            }
 	                }
 	            ]
@@ -332,10 +342,10 @@ function createSymbolsDialog(){
 	var fileUrlList = editor.symbols.accordion.dirs || [];
 	var fileUrlName = [],fileUrlId = [];
 	for(var i = 0; i < fileUrlList.length; i++){
-		if(fileUrlList[i].getId() !== hteditor_config.publicIconPath){
+		//if(fileUrlList[i].getId() === hteditor_config.noPublicIconPath){
 			fileUrlName.push(fileUrlList[i].getName());
 			fileUrlId.push(fileUrlList[i].getId());
-		}
+		//}
 	}
 	formPane.addRow([
     	{
@@ -369,7 +379,7 @@ function createSymbolsDialog(){
         draggable: true,
         contentPadding: 10,
         width:260,
-        height:130,
+        height:150,
         content: formPane,
         buttons: [
             {
@@ -381,10 +391,10 @@ function createSymbolsDialog(){
                 		editor.showMessage('文件路径与文件名称必须填写！');
                 		return;
                 	}
-                	if(fileUrl === hteditor_config.publicIconPath){
+                	/*if(fileUrl !== hteditor_config.noPublicIconPath){
                 		editor.showMessage('无法在公共图标中新增图标！');
                 		return;
-                	}
+                	}*/
                 	var fileUrlArr = fileUrl.split('/')
                 	if(!fileUrlArr || fileUrlArr.length < 2 || fileUrlArr.indexOf('symbols') < 0){
                 		editor.showMessage('文件路径不正确！');
@@ -463,7 +473,11 @@ function getCookie(name) {
   return "";
 }
 
-
+//display json change
+function displayJsonChange(V){
+	var newJson = V;
+	return newJson;
+}
 
 
 

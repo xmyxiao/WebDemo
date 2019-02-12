@@ -7,6 +7,7 @@
             handleEditorCreated(editor);
             //createPointsTab(editor);
             createDataSetTab(editor);
+            createPubilcIconTab(editor);
         }
         else if (type === 'displayViewCreated' || type === 'displayViewOpened') {
             addPrintSelectionItem(params.displayView.displayTree, 'editor.displayTree');
@@ -20,10 +21,52 @@
             addPrintSelectionItem(params.symbolView.graphView, 'editor.symbolView.graphView');
         }
         else if (type === 'displayViewSaving') {
+        	var saveJson = params.displayView.dm.getDatas()._as;
+        	var savePublic = {
+        		data : []
+        	};
+        	if(saveJson && saveJson.length){
+        		for(var i = 0; i < saveJson.length; i++){
+        			var item = saveJson[i];
+        			if(item._image && item._image.indexOf('public/') > -1){
+        				savePublic.data.push(item._image);
+        				item._image = item._image.replace('public','temporary');
+        				hteditor_config.publicIconChange = true
+        			}
+        		}
+        	}
+        	if(savePublic.data.length > 0){
+        		$.ajax({
+	            	url : hteditor_config.publicIconSaveUrl,  
+				    type : "POST",
+				    async : true,
+				    headers: {
+			            'cookies':document.cookie
+			       	},
+				    contentType: "application/json; charset=utf-8",
+			    	dataType:'json',
+			    	data : JSON.stringify(savePublic),
+				    success : function(data){
+				    	
+				    }
+	            });
+        	}
             // if (!params.displayView.dm.size()) {
             //     window.alert(S('NothingToBeSaved'));
             //     params.preventDefault = true;
             // }
+        }
+        else if(type === 'displayViewSaved'){
+        	var saveJson = params.displayView.dm.getDatas()._as;
+        	if(saveJson && saveJson.length){
+        		for(var i = 0; i < saveJson.length; i++){
+        			var item = saveJson[i];
+        			if(item._image && item._image.indexOf('temporary/') > -1 && hteditor_config.publicIconChange){
+        				item._image = item._image.replace('temporary','public');
+        			}
+        		}
+        	}
+        	hteditor_config.publicIconChange = false;
         }
         else if (type === 'symbolViewSaving') {
             // if (!params.symbolView.dm.size()) {
@@ -117,7 +160,6 @@
 
     function handleEditorCreated(editor) {
         // Prevent some files from being renamed, moved or deleted
-        //删除事件   可以设置公共图标和文件夹不可删除
         editor.addEventListener(function(event) {
             if (event.type === 'fileRenaming' ||
                 event.type === 'fileMoving' ||
@@ -131,6 +173,10 @@
         });
 
         editor.displays.list.menu.setItemVisible('open', false);
+        editor.displays.list.menu.setItemVisible('locateFile', false);
+        editor.displays.list.menu.setItemVisible('newFolder', false);
+        editor.displays.list.menu.setItemVisible('newDisplayView', false);
+
         editor.symbols.list.menu.setItemVisible('open', false);
         editor.symbols.list.menu.setItemVisible('insert', false);
         editor.components.list.menu.setItemVisible('open', false);

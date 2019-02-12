@@ -20,7 +20,7 @@ function createDataSetTab(editor) {
 }
 
 function createDataSetPanel(editor) {
-    var fileIcon = 'symbols/demo/icon/数据可视化.json';
+    var fileIcon = 'custom/images/数据可视化.json';
     var dataSetPanel = editor.dataSetPanel = new hteditor.Explorer(editor, 'dataSetRoot', true);
     var json = returnData(dataSetPanel);
     

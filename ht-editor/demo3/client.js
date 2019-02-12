@@ -9195,11 +9195,7 @@
 				},
 				visible: function() {
 					var q = V.sm().ld();
-					if(!!q && q.fileType === TV && q.path === hteditor_config.publicIconPath){
-						return false
-					}else if(!!q && q.fileType === 'dir' && q.url === hteditor_config.publicIconPath){
-						return false
-					}
+					
 					return V.sm().ld() && V.isEditable(V.sm().ld())
 				}
 			})
@@ -9245,9 +9241,7 @@
 				},
 				visible: function() {
 					var q = V.ld;
-					if(!!q && q.fileType === TV && q.path === hteditor_config.publicIconPath){
-						return false
-					}
+
 					return !!q && (q.fileType === fV || q.fileType === TV || q.fileType === BV || q.fileType === oV)
 				}
 			})
@@ -9275,20 +9269,12 @@
 				label: _("editor.rename"),
 				action: function() {
 					var q = V.sm().ld();
-					if(!!q && q.fileType === TV && q.path === hteditor_config.publicIconPath){
-						return false
-					}else if(!!q && q.fileType === 'dir' && q.url === hteditor_config.publicIconPath){
-						return false
-					}
+
 					q && q !== n.rootNode && V.beginEditing(q)
 				},
 				visible: function() {
 					var q = V.sm().ld();
-					if(!!q && q.fileType === TV && q.path === hteditor_config.publicIconPath){
-						return false
-					}else if(!!q && q.fileType === 'dir' && q.url === hteditor_config.publicIconPath){
-						return false
-					}
+					
 					return q && V.isEditable(q)
 				}
 			})
@@ -9303,9 +9289,7 @@
 				},
 				visible: function() {
 					var q = V.getFileListView().sm().ld();
-					if(!!q && q.fileType === TV && q.path !== hteditor_config.publicIconPath){
-						return true
-					}
+					
 					return false;
 				}
 			})
@@ -9346,11 +9330,7 @@
 				},
 				visible: function() {
 					var q = V.ld;
-					if(!!q && q.fileType === TV && q.path === hteditor_config.publicIconPath){
-						return false
-					}else if(!!q && q.fileType === 'dir' && q.url === hteditor_config.publicIconPath){
-						return false
-					}
+					
 					return !!V.getFileListView().editable && (!V.isAccordionMode() || !!V.ld)
 				}
 			})
@@ -11225,10 +11205,7 @@
 			return LV(V, q), V.prototype.drawCloseIcon = function(V, n, S, _) {
 				V.a("dirty") ? (n.fillStyle = S, n.beginPath(), n.arc(_.x + _.width / 2, _.y + _.height / 2, 3, 0, 2 * Math.PI, !0), n.fill()) : q.prototype.drawCloseIcon.call(this, V, n, S, _)
 			}, V.prototype.open = function(q) {
-				if(!!q && q.fileType === TV && q.path === hteditor_config.publicIconPath){
-					editor.showMessage('公共文件夹不可编辑！');
-					return false
-				}
+				
 				if(q) {
 					var V = q.fileType,
 						n = V === fV,
@@ -15563,7 +15540,8 @@
 			}, q.prototype.crossDrag = function(q, V) {
 				var n = this._dropView,
 					S = this.$96$(q, V);
-				n !== S ? (n && n.handleCrossDrag(q, "exit", V), S && S.handleCrossDrag(q, "enter", V)) : S && S.handleCrossDrag(q, "over", V), this._dropView = S
+				n !== S ? (n && n.handleCrossDrag(q, "exit", V), S && S.handleCrossDrag(q, "enter", V)) : S && S.handleCrossDrag(q, "over", V), 
+				this._dropView = S
 			}, q.prototype.crossDrop = function(q, V) {
 				this._dropView && (this._dropView.handleCrossDrag(q, "drop", V), this._dropView = null)
 			}, q.prototype.crossCancel = function(q, V) {
@@ -15728,6 +15706,9 @@
 				n.getTag() === q.url && (n.setTag(q.$34$), n.getView().url = q.$34$, n.setName(P(V)))
 			}), !0
 		}, q.prototype.moveFile = function(q, V) {
+			if(V.path === 'public'){
+				return
+			}
 			if(q && V && !q.$34$ && !V.$34$) {
 				var n = {
 					data: q,
@@ -15736,14 +15717,7 @@
 				};
 				if(this.fireEvent("fileMoving", n), !n.preventDefault) {
 					var S = q.getParent();
-					if(V.url === hteditor_config.publicIconPath){
-						editor.showMessage('无法拖拽到公共文件夹中！');
-						return false
-					}
-					if(S.url === hteditor_config.publicIconPath){
-						editor.showMessage('公共文件夹无法拖动到其他文件夹！');
-						return false
-					}
+					
 					if(q.setParent(V), S !== q.getParent()) {
 						q.$34$ = V.url + "/" + q.getName();
 						var _ = {

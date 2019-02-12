@@ -682,7 +682,7 @@ function createDataHttpDialog(item){
 }
 //数据
 function returnData(){
-	var fileIcon = 'symbols/demo/icon/数据可视化.json';
+	var fileIcon = 'custom/images/数据可视化.json';
 	var dataSetUrl = hteditor_config.dataSetUrl + 'info';
 	$.ajax({
 		type:"get",

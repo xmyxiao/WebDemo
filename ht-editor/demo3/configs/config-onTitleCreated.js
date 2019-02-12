@@ -60,7 +60,7 @@
         var indent = hteditor.config.indent;
 
         var items = [];
-        items.push('用户JS');
+        items.push('用户脚本');
 
         var label = '编辑';
         var toolTip = null;
@@ -77,7 +77,7 @@
 		            element: new hteditor.CodeEditor({
 		                value: func,
 		                language: 'javascript',
-		                //theme:'vs-dark',
+		                theme:'vs-dark',
 		                minimap: {
 		                    enabled: false
 		                }
@@ -103,7 +103,7 @@
                 }
             );
             dialog.setConfig({
-                title: '用户JS',
+                title: '用户脚本',
                 draggable: true,
                 closable:true,
                 maximizable:true,

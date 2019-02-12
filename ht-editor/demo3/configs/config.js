@@ -17,9 +17,13 @@ window.hteditor_config = {
     assetsEditable: !isPracticing,
     locateFileEnabled: !isPracticing,
     fontPreview: '图扑软件 - Hightopo',
+    userPermission: false,
    	dataSetUrl: '/database/',
+   	publicIconGetUrl:'/public/icon',
+   	publicIconSaveUrl: '/displays/saveBegin',
+   	publicIconChange: false,
    	//公共图标路径
-   	publicIconPath: 'symbols/公共图标',
+   	//noPublicIconPath: 'symbols/个人图标',
     expandedTitles: {
         TitleExtension: false
     },
@@ -29,6 +33,7 @@ window.hteditor_config = {
         'custom/configs/config-createDataITO.js',
         'custom/configs/config-createDataSet.js',
         'custom/configs/config-dataSet.js',
+        'custom/configs/config-publicIcon.js',
         'custom/configs/config-createDataAnalog.js',
         'custom/configs/config-handleEvent.js',
         //'custom/configs/config-valueTypes.js',
