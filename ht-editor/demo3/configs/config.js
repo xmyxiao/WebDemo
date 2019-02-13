@@ -21,6 +21,7 @@ window.hteditor_config = {
    	dataSetUrl: '/database/',
    	publicIconGetUrl:'/public/icon',
    	publicIconSaveUrl: '/displays/saveBegin',
+   	pushIconToPublic: '/publish/icon',
    	publicIconChange: false,
    	//公共图标路径
    	//noPublicIconPath: 'symbols/个人图标',

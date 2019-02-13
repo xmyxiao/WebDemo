@@ -12,15 +12,15 @@ function createPublicIconValue() {
 //创建公共图标
 function createPubilcIconTab(editor,V) {
     var pubilcIconTab = editor.pubilcIconTab = new ht.Tab();
-    pubilcIconTab.setName('公共');
-    editor.leftTopTabView.getTabModel().add(pubilcIconTab);
+    pubilcIconTab.setName('图标');
+    editor.leftTopTabView.getTabModel().add(pubilcIconTab,1);
     pubilcIconTab.setView(createPublicIconPanel(editor, true));
     return pubilcIconTab;
 }
 //创建面板
 function createPublicIconPanel(editor) {
     var fileIcon = 'custom/images/数据可视化.json';
-    var pubilcIconPanel = editor.pubilcIconPanel = new hteditor.Explorer(editor, 'public', true);
+    var pubilcIconPanel = editor.pubilcIconPanel = new hteditor.Explorer(editor, 'public', false);
     var json = returnIconData(pubilcIconPanel);
     //initPublicIconMenu();
     return pubilcIconPanel;
@@ -50,21 +50,21 @@ function returnIconData(pubilcIconPanel){
 				for(var i = 0; i < editor.pubilcIconPanel.accordion.getDataModel().getDatas()._as.length; i++){
 					var item = editor.pubilcIconPanel.accordion.getDataModel().getDatas()._as[i]
 					if(item.fileType !== 'root' && item.fileType !== 'dir' && item._name.indexOf('.json') > 0){
-						item.fileType = 'icon';
+						item.fileType = 'symbol';
 						item._name = item._name.split('.json')[0];
 						item._image = item.path + '/' + item._name + '.png';
 					}
 				}
 				editor.pubilcIconPanel.accordion.isDroppableToDisplayView = true;
 				//公共图标拖动到图纸
-				editor.pubilcIconPanel.accordion.handleDropToEditView = function(view, fileNode, point, event) {
+				/*editor.pubilcIconPanel.accordion.handleDropToEditView = function(view, fileNode, point, event) {
 	                var node = new ht.Node();
 	                node.setImage(fileNode.getImage());
 	                node.p(point);
 	                node.setDisplayName(fileNode.getName());
 	                view.addData(node);
-	        	};
-				editor.pubilcIconPanel.accordion.onDataDoubleClicked = function(data,e){				
+	        	};*/
+				editor.pubilcIconPanel.accordion.onDataDoubleClicked = function(data,e){
 					//编辑
 				    /*var userStr = getCookie("user");
 				    if(!userStr){
@@ -171,77 +171,43 @@ function initPublicIconMenu(){
 	contextmenu.addTo(editor.pubilcIconPanel.accordion.getView());
 }
 //发布到公共图标
-function sendIconToPublic(node){
-	if(!node || node.fileType !== 'symbol'){
+function sendIconToPublic(){
+
+	var list = [];
+	editor.symbols.accordion.sm().each(function(node){
+		list.push(node.getId());
+		list.push(node.getImage());
+	})
+	if(list.length < 1){
 		return;
 	}
-	var dialog = new ht.widget.Dialog();
-	var formPane = new ht.widget.FormPane();
-	var fileUrlList = editor.pubilcIconPanel.accordion.dirs || [];
-	var fileUrlName = [],fileUrlId = [];
-	for(var i = 0; i < fileUrlList.length; i++){
-		//if(fileUrlList[i].getId() === hteditor_config.noPublicIconPath){
-			fileUrlName.push(fileUrlList[i].getName());
-			fileUrlId.push(fileUrlList[i].getId());
-		//}
+	var iconData = {
+		data:list
 	}
-	formPane.addRow([
-    	{
-    		element:'文件路径',
-    		align: 'right'
-    	},
-        {
-            id: 'fileUrl',
-            comboBox: {
-            	value: '',
-                values: fileUrlId,
-                labels: fileUrlName
-            }
-        }
-    ], [55, 0.1]);
-
-    dialog.setConfig({
-        title: "发布到公共图标",
-        closable: true,
-        draggable: true,
-        contentPadding: 10,
-        width:260,
-        height:120,
-        content: formPane,
-        buttons: [
-            {
-                label: "确定",
-                action: function(button, e) {
-                	var fileUrl = formPane.v('fileUrl');
-                	if(!fileUrl || fileUrl === ''){
-                		editor.showMessage('文件路径必须填写！');
-                		return;
-                	}
-
-                	var fileUrlArr = fileUrl.split('/')
-                	if(!fileUrlArr || fileUrlArr.length < 2 || fileUrlArr.indexOf('public') < 0){
-                		editor.showMessage('文件路径不正确！');
-                		return;
-                	}
-                	var saveUrl = fileUrl + "/" + node._name;
-                	/*if(editor.getFileNode(saveUrl)){
-                		editor.showMessage('文件名冲突！');
-                		return;
-                	}*/
-                	editor['newSymbolView']();
-                	editor.save('',saveUrl);
-		            dialog.hide();
-		            editor.pubilcIconPanel.reloadList();
-		        }
-            },
-            {
-                label: "取消",
-                action: function(button, e) {
-		            dialog.hide();
-		        }
-            }
-        ],
-        buttonsAlign: "right"
-    });
-    dialog.show();
+	$.ajax({
+		url : hteditor_config.pushIconToPublic,  
+	    type : "POST",
+	    async : true,
+	    headers: {
+            'cookies':document.cookie
+       	},
+	    contentType: "application/json; charset=utf-8",
+    	dataType:'json',
+	    data : JSON.stringify(iconData),
+	    success : function(data){
+	    	if(data.msg){
+	    		editor.showMessage(data.msg)
+	    	}else{
+	    		editor.showMessage('发布成功')
+	    	}
+	    	editor.pubilcIconPanel.reloadList();
+	    },
+	    error : function(data){
+	    	if(data.msg){
+	    		editor.showMessage(data.msg)
+	    	}else{
+	    		editor.showMessage('发布成功')
+	    	}
+	    }
+	});
 }

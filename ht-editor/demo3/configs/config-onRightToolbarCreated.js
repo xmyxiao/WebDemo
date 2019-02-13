@@ -15,6 +15,7 @@
         // Add some items to right toolbar
         editor.rightToolbar.addItem(createReleaseItem());
         editor.rightToolbar.addItem(createShareItem());
+        editor.rightToolbar.addItem(createReturnItem());
         editor.rightToolbar.addItem(createUserInfoItem());
     };
     
@@ -39,7 +40,18 @@
         };
         return item;
     }
-
+    
+	function createReturnItem(){
+		var id = 'urlReturn';
+        var toolTip = '返回';
+        var iconName = 'custom/images/撤消.json';
+        var item = hteditor.createItem(id, toolTip, iconName);
+        item.action = function() {
+        	
+        };
+        return item;
+	}
+	
     function createUserInfoItem() {
         var id = 'userInfo';
         var toolTip = '我的账户';

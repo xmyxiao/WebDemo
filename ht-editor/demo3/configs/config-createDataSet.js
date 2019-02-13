@@ -413,7 +413,7 @@ function createDataHttpDialog(item){
             }
         }
     ], [60, 0.1]);
-    formPane.addRow([
+    /*formPane.addRow([
     	{
     		element:'接口地址',
     		align: 'right'
@@ -521,7 +521,7 @@ function createDataHttpDialog(item){
 				tableView.removeSelection()
 			}
 		}
-	}, null], [50, 50, .1])
+	}, null], [50, 50, .1])*/
     //配置字段
     var paraTableModel = new ht.DataModel;
     var paraTablePane =  new ht.widget.TablePane(paraTableModel);
@@ -586,11 +586,8 @@ function createDataHttpDialog(item){
     var buttons = [{
         label: S('OK'),
         action: function() {
-            var fieldName = formPane.v('fileName'),
-            	fieldType = formPane.v('httpType'),
-            	username = formPane.v('username'),
-            	password = formPane.v('password'),
-            	httpUrl = formPane.v('httpUrl');
+            var fieldName = formPane.v('fileName')
+            	
             	
             var fieldId = 'InfcEntity_' + uuid(8);
             if(formPane.getItemById('fileId')){
@@ -600,7 +597,7 @@ function createDataHttpDialog(item){
             	editor.showMessage('数据集名称不能重复！');
         		return;
             }
-            if(!fieldName || !httpUrl || !fieldType || !username || !password){
+            if(!fieldName){
         		editor.showMessage('数据必须填写完整！');
         		return;
         	}
@@ -610,11 +607,11 @@ function createDataHttpDialog(item){
 					"id": fieldId,
 					"name":fieldName,
 					"type":"http",
-					"host":httpUrl,
+					"host":'',
 					"port":'',
-					"username": username,
-					"password": password,
-					"httpType": fieldType,
+					"username": '',
+					"password": '',
+					"httpType": '',
 					"database": '',
 					"sql":''
 				}]
@@ -629,7 +626,7 @@ function createDataHttpDialog(item){
 					}
 				})
 			}
-			addItem.content[0].addtionParam = [];
+			/*addItem.content[0].addtionParam = [];
 			if(tableModel.getDatas().length > 0){
 				tableModel.getDatas().forEach(function(node){
 					if(node.a('paramName')){
@@ -642,7 +639,7 @@ function createDataHttpDialog(item){
 					
 				})
 			}
-			
+			*/
            	$.ajax({
             	url : hteditor_config.dataSetUrl + 'dir',
 			    type : "POST",
@@ -672,7 +669,7 @@ function createDataHttpDialog(item){
         title: config.title,
         draggable: true,
         width:450,
-        height:450,
+        height:250,
         contentPadding: 4,
         content: formPane,
         buttons: buttons,
@@ -702,7 +699,7 @@ function returnData(){
 					
 				]
 			},
-			{
+			/*{
 				'type':'dir',
 				'name':'SQL实体',
 				'dataType':'SQL',
@@ -725,7 +722,7 @@ function returnData(){
 				'child':[
 					
 				]
-			},
+			},*/
 			{
 				'type':'dir',
 				'name':'模拟数据',
@@ -736,7 +733,12 @@ function returnData(){
 			}
 			]
 			for(i in data.msg){
-				if(data.msg[i].type === 'mysql'){
+				if(data.msg[i].type === 'http'){
+					reJson[0].child.push(data.msg[i]);
+				}else if(data.msg[i].type === 'analogData'){
+					reJson[1].child.push(data.msg[i]);
+				}
+				/*if(data.msg[i].type === 'mysql'){
 					reJson[1].child.push(data.msg[i]);
 				}else if(data.msg[i].type === 'http'){
 					reJson[0].child.push(data.msg[i]);
@@ -746,7 +748,7 @@ function returnData(){
 					reJson[3].child.push(data.msg[i]);
 				}else if(data.msg[i].type === 'analogData'){
 					reJson[4].child.push(data.msg[i]);
-				}
+				}*/
 			}
 			editor.dataSetPanel.itemList = reJson;
 			var dataJson = {};

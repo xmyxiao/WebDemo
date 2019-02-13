@@ -204,7 +204,7 @@ function initDataSetMenu(){
                 editor.dataSetPanel.addMenuFile();
             }
         },*/
-        {
+        /*{
             label: "新建数据源",
             action: function(item) {
                 createDataSourceDialog();
@@ -215,19 +215,19 @@ function initDataSetMenu(){
             action: function(item) {
                createDataSqlDialog();
             }
-        },
+        },*/
         {
             label: "新建接口实体",
             action: function(item) {
                createDataHttpDialog();
             }
         },
-        {
+       /* {
             label: "新建ITO设备",
             action: function(item) {
                createDataITODialog();
             }
-        },
+        },*/
         {
             label: "新建模拟数据",
             action: function(item) {

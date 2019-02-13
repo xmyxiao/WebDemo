@@ -44,7 +44,7 @@
 	    editor.displays.accordion.menu.getView().style.display = 'none'
 	    //菜单不可见项目
 	    editor.symbols.accordion.menu.setItemVisible('locateFile',false);
-	    editor.symbols.accordion.menu.setItemVisible('newFolder',false);
+	    //editor.symbols.accordion.menu.setItemVisible('newFolder',false);
 	    
 	    document.body.appendChild(view);
 	    window.addEventListener('resize', function (e) {
@@ -61,7 +61,7 @@
 	        {
 	            label: "文件",
 	            items: [
-	                /*{
+	                {
 	                    label: "新建图纸",
 	                    action: function(item) {
 	                    	if(hteditor_config.displayNumber < 1){
@@ -70,7 +70,7 @@
 	                    	}
 	                    	createDisplaysDialog();
 	                    }
-	                },*/
+	                },
 	                {
 	                    label: "新建图标",
 	                    action: function(item) {
@@ -209,6 +209,7 @@
 		var leftTopTabView = editor.leftTopTabView;
 		leftTopTabView.setTabPosition('left');
 	    leftTopTabView.setTabHeight(45);
+	    
 	    leftTopTabView.setTabGap(5);
 	    leftTopTabView.getTitleDiv().style.borderRight = '1px solid #e4e4e4';
 	    
@@ -461,7 +462,7 @@ function uuid(len, radix) {
 }
 //根据name获取cookie
 function getCookie(name) {
-	var cookies = document.cookie;
+	var cookies = decodeURIComponent(document.cookie);
 	var list = cookies.split("; ");
 
 	for(var i = 0; i < list.length; i++) {
@@ -473,11 +474,6 @@ function getCookie(name) {
   return "";
 }
 
-//display json change
-function displayJsonChange(V){
-	var newJson = V;
-	return newJson;
-}
 
 
 

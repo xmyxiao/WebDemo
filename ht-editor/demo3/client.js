@@ -9285,12 +9285,12 @@
 				label: '发布到公共资源',
 				action: function() {
 					var node = editor.symbols.accordion.sm().ld();
-					debugger;
+					sendIconToPublic();
 				},
 				visible: function() {
 					var q = V.getFileListView().sm().ld();
 					
-					return false;
+					return !!q && q.fileType === 'symbol';
 				}
 			})
 		}, V.prototype.addInsertItem = function(q) {
@@ -15753,6 +15753,14 @@
 		}, q.prototype.requestDisplays = function() {
 			var q = this;
 			this._requestingDisplays || (this.request("explore", "/displays", function(V) {
+				var userStr = getCookie("user");
+			    if(!userStr){
+			    	userStr = '{}'
+			    }
+			    var UserJson = JSON.parse(userStr);
+			    var openJson = 'displays/' + UserJson.pid+'-'+UserJson.appid+'/'+UserJson.file+'.json'
+				q._pendingOpenJSON = openJson;
+				window.disabledDiv.style.display = 'none';
 				q._requestingDisplays = !1, q.displays.parse(V), q._pendingOpenJSON && k(q._pendingOpenJSON) && (q.displays.dataModel.getDataById(q._pendingOpenJSON) ? (q.open(q._pendingOpenJSON), q.selectFileNode(q._pendingOpenJSON)) : hV.config.newIfFailToOpen && (q.newDisplayView(), q.save(null, q._pendingOpenJSON)), delete q._pendingOpenJSON), q._pendingSelectURL && k(q._pendingSelectURL) && q.selectFileNode(q._pendingSelectURL)
 			}, hV.config.requestDelay), this._requestingDisplays = !0)
 		}, q.prototype.requestSymbols = function() {

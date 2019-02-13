@@ -5,7 +5,8 @@ ht.DataModel.prototype.connectInit = function() {
     if(dataSetList.length < 1){
     	return;
     }
-    var O ='http://192.168.7.47:10000';
+    analogEntitySet(dataSetList,me);
+    var O = location.hostname + ':10000';
     var socket = io.connect(O);
     socket.on("connect", function() {
 		console.log('连接')
@@ -133,4 +134,49 @@ function getCookie(name) {
 		}
 	}
   return "";
+}
+//模拟数据
+function analogEntitySet(dataSetList,me){
+	for(var i = 0; i < dataSetList.length; i++){
+		if(dataSetList[i].indexOf('AnalogEntity') > -1){
+			getAnalogData(dataSetList,me)
+			return ;
+		}
+	}
+}
+function getAnalogData(dataSetList,me){
+	var dataSetUrl = '/database/info';
+	$.ajax({
+		type:"get",
+		url:dataSetUrl,
+		async:true,
+		scope:dataSetList,
+		me:me,
+		headers: {
+            'cookies':document.cookie
+       	},
+		success:function(data){
+			var list = this.scope;
+			var me = this.me;
+			for(var i = 0; i < list.length; i++){
+				if(list[i].indexOf('AnalogEntity') > -1 && data.msg){
+					for(var j = 0; j < data.msg.length; j++){
+						if(data.msg[j].type === 'analogData' && data.msg[j].id === list[i]){
+							var json = {
+								"id":data.msg[j].id,
+							    "data":[]
+							}
+							if(JSON.parse(data.msg[j].jsonStr)){
+								json.data.push(JSON.parse(data.msg[j].jsonStr));
+							}
+							me.nodeReassignment(json)
+						}
+					}
+				}
+			}
+		},
+		error:function(){
+			editor.showMessage('数据集获取失败！');
+		}
+	});
 }
