@@ -13,11 +13,12 @@ function createDataAnalogDialog(item){
 		}
 	}
 	$.extend(data,item);
+	var value = '{"name":"FC1","value":0.1}'
 	var config = {
 		fileName: data._name || '',
 		fileId: data.value.para.id || '',
 		jsonType: data.value.para.jsonType || '',
-		jsonStr: data.value.para.jsonStr || '',
+		jsonStr: data.value.para.jsonStr || value,
 		column: data.value.para.column || []
 	}
 	if(item){

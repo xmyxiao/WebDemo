@@ -11,8 +11,11 @@ function createDataSetValue() {
 
 //创建数据集面板
 function createDataSetTab(editor) {
+ 	ht.Default.setImage('tabIconData', "custom/images/数据.json");
     var dataSetTab = editor.dataSetTab = new ht.Tab();
-    dataSetTab.setName('数据');
+    dataSetTab.setName('');
+    dataSetTab.setIcon('tabIconData');
+    dataSetTab.setToolTip('数据');
     editor.leftTopTabView.getTabModel().add(dataSetTab);
     dataSetTab.setView(createDataSetPanel(editor, true));
     initDataSetMenu();
@@ -222,12 +225,12 @@ function initDataSetMenu(){
                createDataHttpDialog();
             }
         },
-       /* {
+        {
             label: "新建ITO设备",
             action: function(item) {
                createDataITODialog();
             }
-        },*/
+        },
         {
             label: "新建模拟数据",
             action: function(item) {

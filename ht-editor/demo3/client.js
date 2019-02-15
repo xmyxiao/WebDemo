@@ -10392,16 +10392,46 @@
 							}
 						})
 					}
-				}), S.displayView = this, this.editor.fireEvent("displayViewSaving", S)) : "symbol" === this.type && (S.symbolView = this, this.editor.fireEvent("symbolViewSaving", S)), !S.preventDefault && (S = {
+				}), S.displayView = this, 
+				this.editor.fireEvent("displayViewSaving", S)) : "symbol" === this.type && (S.symbolView = this, this.editor.fireEvent("symbolViewSaving", S)),
+				!S.preventDefault && (S = {
 					path: S.url,
 					content: W(this.content)
 				}, void this.editor.request("upload", S, function(S) {
 					S === !0 && V.editor.saveImage(V.dm.a("snapshotURL") || V.graphView, n.substr(0, n.length - 5) + ".png", function() {
 						V.dirty = !1
+						if(V.type === 'display'){
+							$.ajax({
+				            	url : hteditor_config.publicIconSaveEndUrl,  
+							    type : "POST",
+							    async : true,
+							    headers: {
+						            'cookies':document.cookie
+						       	},
+							    contentType: "application/json; charset=utf-8",
+						    	dataType:'json',
+							    success : function(data){
+							    	
+							    },
+							    error : function(){
+							    	editor.showMessage('失败！');
+							    }
+				           });
+						}
 					}), q && q(), V.editor.showMessage(_("editor.savedsuccessfully"), qn, 1e3)
 				}))
 			}, q.prototype.$65$ = function(q, V) {
-				this.tab.getTag() && V.indexOf("?") === -1 && (V += "?tag=" + encodeURI(this.tab.getTag()));
+				//this.tab.getTag() && V.indexOf("?") === -1 && (V += "?tag=" + encodeURI(this.tab.getTag()));
+				if("display" === this.type){
+					var userStr = getCookie("user");
+				    if(!userStr){
+				    	userStr = '{}'
+				    }
+				    var UserJson = JSON.parse(userStr);
+				    if(UserJson.appid){
+				    	V = UserJson.appid + '.html';
+				    }
+			  	}
 				var n = {
 					url: V
 				};
@@ -15753,6 +15783,8 @@
 		}, q.prototype.requestDisplays = function() {
 			var q = this;
 			this._requestingDisplays || (this.request("explore", "/displays", function(V) {
+				
+				if(hteditor_config.firstLoad){
 				var userStr = getCookie("user");
 			    if(!userStr){
 			    	userStr = '{}'
@@ -15760,6 +15792,17 @@
 			    var UserJson = JSON.parse(userStr);
 			    var openJson = 'displays/' + UserJson.pid+'-'+UserJson.appid+'/'+UserJson.file+'.json'
 				q._pendingOpenJSON = openJson;
+				setTimeout(function(){
+		        	editor.selectFileNode(openJson);
+		        	//改
+		        	editor.inspector.getRows()[2].items[1].element.setEditable(false);
+		        	if(hteditor_config.firstLoad && editor.inspector.getPropertyValue('previewURL') !== UserJson.appid + '.html'){
+		        		editor.inspector.setPropertyValue('previewURL',UserJson.appid + '.html');
+		        		editor.save()
+		        	}
+		        	hteditor_config.firstLoad = false;
+		        },1000);
+		        }
 				window.disabledDiv.style.display = 'none';
 				q._requestingDisplays = !1, q.displays.parse(V), q._pendingOpenJSON && k(q._pendingOpenJSON) && (q.displays.dataModel.getDataById(q._pendingOpenJSON) ? (q.open(q._pendingOpenJSON), q.selectFileNode(q._pendingOpenJSON)) : hV.config.newIfFailToOpen && (q.newDisplayView(), q.save(null, q._pendingOpenJSON)), delete q._pendingOpenJSON), q._pendingSelectURL && k(q._pendingSelectURL) && q.selectFileNode(q._pendingSelectURL)
 			}, hV.config.requestDelay), this._requestingDisplays = !0)
@@ -15880,6 +15923,9 @@
 		}, q.prototype.isOpenable = function(q) {
 			return !hV.config.isOpenable || hV.config.isOpenable(q)
 		}, q.prototype.open = function(q, V) {
+			if(q.rootDir === 'public'){
+				return ;
+			}
 			var n = this;
 			lq(q) && (q = this.getFileNode(q)), q && !q.$34$ && this.isOpenable(q) && (q.fileType === fV ? this.mainTabView.open(q) : q.fileType === TV ? this.mainTabView.open(q) : q.fileType === BV ? this.componentView.open(q) : q.fileType === DV && (Kq(q.url) ? Q(q.url, function(S) {
 				var _ = ht.Default.svgToShape(S, {

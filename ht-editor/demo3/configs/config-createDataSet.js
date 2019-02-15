@@ -714,7 +714,7 @@ function returnData(){
 				'child':[
 					
 				]
-			},
+			},*/
 			{
 				'type':'dir',
 				'name':'ITO云',
@@ -722,7 +722,7 @@ function returnData(){
 				'child':[
 					
 				]
-			},*/
+			},
 			{
 				'type':'dir',
 				'name':'模拟数据',
@@ -735,8 +735,10 @@ function returnData(){
 			for(i in data.msg){
 				if(data.msg[i].type === 'http'){
 					reJson[0].child.push(data.msg[i]);
-				}else if(data.msg[i].type === 'analogData'){
+				}else if(data.msg[i].type === 'ITOData'){
 					reJson[1].child.push(data.msg[i]);
+				}else if(data.msg[i].type === 'analogData'){
+					reJson[2].child.push(data.msg[i]);
 				}
 				/*if(data.msg[i].type === 'mysql'){
 					reJson[1].child.push(data.msg[i]);

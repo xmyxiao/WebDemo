@@ -11,8 +11,11 @@ function createPublicIconValue() {
 
 //创建公共图标
 function createPubilcIconTab(editor,V) {
+	ht.Default.setImage('tabIconPublic', "custom/images/公共.json");
     var pubilcIconTab = editor.pubilcIconTab = new ht.Tab();
-    pubilcIconTab.setName('图标');
+    pubilcIconTab.setName('');
+    pubilcIconTab.setIcon('tabIconPublic');
+    pubilcIconTab.setToolTip('图标');
     editor.leftTopTabView.getTabModel().add(pubilcIconTab,1);
     pubilcIconTab.setView(createPublicIconPanel(editor, true));
     return pubilcIconTab;

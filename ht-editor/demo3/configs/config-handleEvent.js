@@ -16,6 +16,7 @@
             // params.displayView.graphView.getEditInteractor().setStyle('anchorVisible', false);
             // params.displayView.graphView.getEditInteractor().setStyle('connectGuideVisible', false);
         }
+        
         else if (type === 'symbolViewCreated' || type === 'symbolViewOpened') {
             addPrintSelectionItem(params.symbolView.symbolList, 'editor.symbolList');
             addPrintSelectionItem(params.symbolView.graphView, 'editor.symbolView.graphView');
@@ -25,13 +26,15 @@
         	var savePublic = {
         		data : []
         	};
+        	
+        	params.displayView.dm.a('userCookie',JSON.stringify(JSON.parse(getCookie('user'))));
         	if(saveJson && saveJson.length){
         		for(var i = 0; i < saveJson.length; i++){
         			var item = saveJson[i];
         			if(item._image && item._image.indexOf('public/') > -1){
         				savePublic.data.push(item._image);
-        				item._image = item._image.replace('public','temporary');
-        				hteditor_config.publicIconChange = true
+        				//item._image = item._image.replace('public','temporary');
+        				//hteditor_config.publicIconChange = true
         			}
         		}
         	}
@@ -48,6 +51,10 @@
 			    	data : JSON.stringify(savePublic),
 				    success : function(data){
 				    	
+				    	debugger;
+				    },
+				    error : function(){
+				    	editor.showMessage('保存失败！');
 				    }
 	            });
         	}
@@ -57,16 +64,22 @@
             // }
         }
         else if(type === 'displayViewSaved'){
-        	var saveJson = params.displayView.dm.getDatas()._as;
-        	if(saveJson && saveJson.length){
-        		for(var i = 0; i < saveJson.length; i++){
-        			var item = saveJson[i];
-        			if(item._image && item._image.indexOf('temporary/') > -1 && hteditor_config.publicIconChange){
-        				item._image = item._image.replace('temporary','public');
-        			}
-        		}
-        	}
-        	hteditor_config.publicIconChange = false;
+    		$.ajax({
+            	url : hteditor_config.publicIconSaveEndUrl,  
+			    type : "POST",
+			    async : true,
+			    headers: {
+		            'cookies':document.cookie
+		       	},
+			    contentType: "application/json; charset=utf-8",
+		    	dataType:'json',
+			    success : function(data){
+			    	
+			    },
+			    error : function(){
+			    	editor.showMessage('失败！');
+			    }
+           });
         }
         else if (type === 'symbolViewSaving') {
             // if (!params.symbolView.dm.size()) {
@@ -102,7 +115,6 @@
         var items = view.menu.getItems();
         items.push('separator');
         items.push({
-            icon: 'symbols/basic/ht.json',
             label: hteditor.getString('PrintSelection'),
             visible: function() {
                 if (view instanceof ht.widget.TabView) {
@@ -160,17 +172,6 @@
 
     function handleEditorCreated(editor) {
         // Prevent some files from being renamed, moved or deleted
-        editor.addEventListener(function(event) {
-            if (event.type === 'fileRenaming' ||
-                event.type === 'fileMoving' ||
-                event.type === 'fileDeleting') {
-                if (event.params.url === 'symbols/basic/ht.json' ||
-                    event.params.url === 'symbols/basic' ||
-                    event.params.url === 'displays/basic') {
-                    event.params.preventDefault = true;
-                }
-            }
-        });
 
         editor.displays.list.menu.setItemVisible('open', false);
         editor.displays.list.menu.setItemVisible('locateFile', false);

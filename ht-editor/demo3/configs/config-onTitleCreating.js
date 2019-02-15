@@ -42,7 +42,6 @@
             	if(testTreeNode[i].dataType != 'DataSource'){
             		var parent = new ht.Data();
 	                parent.setName(testTreeNode[i].name);
-	                parent.setIcon('symbols/basic/ht.json');
 	                dataModel.add(parent);
 	                if(testTreeNode[i].child){
 	                	for (var j = 0; j < testTreeNode[i].child.length; j++) {
@@ -88,6 +87,9 @@
                     label: S('OK'),
                     action: function() {
                         var data = dataModel.sm().ld();
+                        if(!data.para){
+                        	return
+                        }
                         var value = data ? data.para.id : undefined;
                         var name = data ? data.para.name : undefined;
                         inspector.setPropertyValue('dataSetName', name);
