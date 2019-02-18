@@ -27,7 +27,7 @@
         		data : []
         	};
         	
-        	params.displayView.dm.a('userCookie',JSON.stringify(JSON.parse(getCookie('user'))));
+        	//params.displayView.dm.a('userCookie',JSON.stringify(JSON.parse(getCookie('user'))));
         	if(saveJson && saveJson.length){
         		for(var i = 0; i < saveJson.length; i++){
         			var item = saveJson[i];
@@ -64,22 +64,7 @@
             // }
         }
         else if(type === 'displayViewSaved'){
-    		$.ajax({
-            	url : hteditor_config.publicIconSaveEndUrl,  
-			    type : "POST",
-			    async : true,
-			    headers: {
-		            'cookies':document.cookie
-		       	},
-			    contentType: "application/json; charset=utf-8",
-		    	dataType:'json',
-			    success : function(data){
-			    	
-			    },
-			    error : function(){
-			    	editor.showMessage('失败！');
-			    }
-           });
+    		
         }
         else if (type === 'symbolViewSaving') {
             // if (!params.symbolView.dm.size()) {

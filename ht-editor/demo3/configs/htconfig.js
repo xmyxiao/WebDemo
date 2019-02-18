@@ -17,6 +17,10 @@ window.htconfig = {
             if(window.sid){
                 url += '&sid=' + window.sid;
             }
+            //请求地址
+            if(location.href.indexOf('previews/') > 0 && (url.indexOf('components/') === 0 || url.indexOf('asset/') === 0)){
+            	url = '/' + url;
+            }
             return url;
         }
     }

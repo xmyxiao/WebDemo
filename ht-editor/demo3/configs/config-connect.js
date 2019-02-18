@@ -11,9 +11,9 @@ ht.DataModel.prototype.connectInit = function() {
     socket.on("connect", function() {
 		console.log('连接')
 	})
-    var pageCookie = encodeURIComponent(userCookieStr) || document.cookie
+    var pageCookie = document.cookie
     socket.emit('explore',me.getDataSet(),pageCookie);
-    var userStr = userCookie || getCookie("user");
+    var userStr = getCookie("user");
     if(!userStr){
     	userStr = '{}'
     }
@@ -146,7 +146,7 @@ function analogEntitySet(dataSetList,me){
 }
 function getAnalogData(dataSetList,me){
 	var dataSetUrl = '/database/info';
-	var pageCookie = encodeURIComponent(userCookieStr) || document.cookie
+	var pageCookie = document.cookie
 	$.ajax({
 		type:"get",
 		url:dataSetUrl,

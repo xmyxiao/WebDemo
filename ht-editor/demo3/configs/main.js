@@ -61,7 +61,7 @@
 	        {
 	            label: "文件",
 	            items: [
-	                {
+	                /*{
 	                    label: "新建图纸",
 	                    action: function(item) {
 	                    	if(hteditor_config.displayNumber < 1){
@@ -70,7 +70,7 @@
 	                    	}
 	                    	createDisplaysDialog();
 	                    }
-	                },
+	                },*/
 	                {
 	                    label: "新建图标",
 	                    action: function(item) {

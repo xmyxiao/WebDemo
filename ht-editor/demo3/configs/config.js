@@ -16,6 +16,7 @@ window.hteditor_config = {
     componentsEditable: !isPracticing,
     assetsEditable: !isPracticing,
     locateFileEnabled: !isPracticing,
+    imageSize: 400,
     fontPreview: '图扑软件 - Hightopo',
     userPermission: false,
    	dataSetUrl: '/database/',
