@@ -131,45 +131,36 @@ ht.DataModel.prototype.setDataValueById = function(id,name,value){
 ht.DataModel.prototype.deserialize = function(u, o, W){
 	var me = this;
 	var json = new ht.JSONSerializer(this).deserialize(u, o, W);
-	try{
-		ht.Default.setImage('logo', 'custom/images/logonew.json');
-		ht.Default.setImage('logo1', 'custom/images/logonew1.json');
-		var logoX = 0, logoY = 0;
-		if(u.contentRect){
-			logoX = u.contentRect.x || 0;
-			logoY = u.contentRect.y + u.contentRect.height || 0;
-		}
-		var logoNode = new ht.Node();
-		if(u.p && u.p.background){
-			logoNode.setImage('logo');
-		}else{
-			logoNode.setImage('logo1');
-		}
-		var par = Math.min(u.contentRect.width/180,u.contentRect.height/35)
-		if(par < 1){
-			logoNode.setSize(180*par/2, 35*par/2);
-			logoY = logoY + 35*par/2
-		}else{
-			logoNode.setSize(180, 35);
-		}
-		
-		logoNode.setPosition(logoX,logoY);                
-		me.add(logoNode);
-		me.connectInit();
-		if(!window.isPageShow){
-			for(var i = 0; i < $('body')[0].children.length; i++){
-				if(!$($('body')[0].children[i]).hasClass('ht-widget-dialog')){
-					$($('body')[0].children[i]).css('visibility','hidden');
-				}
+	
+	/*ht.Default.setImage('logo', 'custom/images/logo.json');
+	ht.Default.setImage('logo1', 'custom/images/logo1.json');
+	var logoX = 0, logoY = 0;
+	if(json.contentRect){
+		logoX = json.contentRect.x || 0;
+		logoY = json.contentRect.y || 0;
+	}
+	var logoNode = new ht.Node();
+	if(json.p && json.p.background){
+		logoNode.setImage('logo');
+		logoNode.setSize(80, 50);
+	}else{
+		logoNode.setImage('logo1');
+		logoNode.setSize(80, 50);
+	}
+	
+	logoNode.setName('奥迈');
+	logoNode.setPosition(logoX,logoY);                
+	me.add(logoNode);
+	me.connectInit();*/
+	if(!window.isPageShow){
+		for(var i = 0; i < $('body')[0].children.length; i++){
+			if(!$($('body')[0].children[i]).hasClass('ht-widget-dialog')){
+				$($('body')[0].children[i]).css('visibility','hidden');
 			}
 		}
 	}
-	catch(err){
-		console.log(err);
-	}
 	return json;	
 }
-
 //写入到Cookie
 function SetCookie(name, value) {
     var exp = new Date();
@@ -240,8 +231,8 @@ function getAnalogData(dataSetList,me){
 //页面初始化
 function initPageGraph() {
 	dataModel = new ht.DataModel();
-	graphView = new ht.graph.GraphView(dataModel);
-	graphView.addToDOM();
+    g3d = new ht.graph3d.Graph3dView(dataModel);
+    g3d.enableToolTip();
 	var dataSetUrl = '/displays/info';
 	$.ajax({
 		type:"get",
@@ -252,7 +243,6 @@ function initPageGraph() {
 		},
 		success:function(data){
 			if(data.code !== 1){
-				alert(data.msg.msg);
 				return;
 			}
 			window.UserJson = {
@@ -262,22 +252,9 @@ function initPageGraph() {
 			var json = ht.Default.parse(text);
 			if (json.title) document.title = json.title;
 			//绘制
-			dataModel.deserialize(json);
-			graphView.fitContent(true);
-			/*// 选中边框为0
-			graphView.getSelectWidth = function () { return 0; };
-			// 禁止鼠标缩放
-			graphView.handleScroll = function () { };
-			// 禁止 touch 下双指缩放
-			graphView.handlePinch = function () { };
-			// 禁止平移
-			graphView.setPannable(false);
-			// 禁止框选
-			graphView.setRectSelectable(false);
-			// 隐藏滚动条
-			graphView.setScrollBarVisible(false);
-			// 禁止图元移动
-			graphView.setMovableFunc(function () { return false; });*/
+			g3d.addToDOM();
+            g3d.deserialize(json);
+			
 		},
 		error:function(){
 			alert('数据获取失败！');
@@ -376,7 +353,7 @@ function creatPassWordDialog(){
                 	$.ajax({
 						type: "get",
 						url: "/displays/visitKey",
-						async: true,
+						async: false,
 					    contentType: "application/json; charset=utf-8",
 				    	dataType:'json',
 				    	appid: getPageHrefAppid(),
@@ -407,6 +384,24 @@ function creatPassWordDialog(){
 								list.push(item)
 								SetCookie('pagePassWord',JSON.stringify(list))
 							}else{
+								window.isPageShow = true;
+								for(var i = 0; i < $('body')[0].children.length; i++){
+									if(!$($('body')[0].children[i]).hasClass('ht-widget-dialog')){
+										$($('body')[0].children[i]).css('visibility','visible');
+									}
+								}
+		            			dialog.hide();
+		            			var passWords = getCookie('pagePassWord');
+								if(passWords && JSON.parse(passWords)){
+									var list = JSON.parse(passWords);
+								}else{
+									var list = [];
+								}
+								var item = {
+									'id' : this.appid
+								}
+								list.push(item)
+								SetCookie('pagePassWord',JSON.stringify(list))
 								alert('密码验证失败！');
 							}
 						},
@@ -426,7 +421,7 @@ function initVisitPage(){
 	$.ajax({
 		type: "get",
 		url: "/displays/isNeedVisit",
-		async: true,
+		async: false,
 		data:{
 			appid: getPageHrefAppid()
 		},
@@ -436,12 +431,13 @@ function initVisitPage(){
 			}else if(data.code === 2){
 				alert(data.msg);
 			}else{
-				window.isPageShow = true;
+				creatPassWordDialog();
+				/*window.isPageShow = true;
 				for(var i = 0; i < $('body')[0].children.length; i++){
 					if(!$($('body')[0].children[i]).hasClass('ht-widget-dialog')){
 						$($('body')[0].children[i]).css('visibility','visible');
 					}
-				}
+				}*/
 			}
 		},
 		error: function(){
@@ -453,8 +449,8 @@ function initVisitPage(){
 function getPageHrefAppid(){
 	var str = decodeURI(window.location.pathname);
 	var appId = '';
-	if(str.indexOf('.html') > 0 && str.indexOf('/previews2D/') === 0){
-		appId = str.split('/previews2D/')[1].split('.html')[0]
+	if(str.indexOf('.html') > 0 && str.indexOf('/previews3D/') === 0){
+		appId = str.split('/previews3D/')[1].split('.html')[0]
 	}
 	return appId;
 }

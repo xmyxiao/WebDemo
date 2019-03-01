@@ -2,6 +2,7 @@ window.htconfig = {
     Default: {
         toolTipDelay: 100,
         toolTipContinual: true,
+        autoHideScrollBar: window.navigator.platform.indexOf('Win') > -1 || !("ontouchend" in document),
         convertURL: function(url) {
             var storagePrefix = '';
             if (storagePrefix && url && !/^data:image/.test(url) && !/^http/.test(url) && !/^https/.test(url)) {
@@ -28,13 +29,14 @@ window.htconfig = {
              || url.indexOf('temporary/') === 0 || url.indexOf('scenes/') === 0 || url.indexOf('models/') === 0){
             	url = '/' + user + '/' + url;
             }
-            /*if(location.href.indexOf('previews2D/') > 0 ){
+            /*if(location.href.indexOf('previews3D/') > 0 && url.indexOf('/previews/') !== 0){
             	url = '/' + url;
             }*/
             return url;
         }
     }
 };
+
 function pageGetUserName(){
 	var userStr = getCookie("user");
     if(!userStr){

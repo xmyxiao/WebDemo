@@ -1,0 +1,143 @@
+@charset "UTF-8";
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Hiragino Sans GB', '微软雅黑', arial, sans-serif;
+	color: #333;
+	font-weight: normal;
+	background: #fff;
+	-webkit-font-smoothing: antialiased;
+}
+p,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,select,textarea,blockquote {
+	padding: 0;
+	margin: 0;
+}
+ul,li,ol {
+	list-style-type: none;
+}
+img {
+	border: 0;
+	vertical-align: bottom;
+}
+a {
+	color: #95989A;
+	text-decoration: none;
+}
+i,b {
+	font-weight: normal;
+	font-style: normal;
+}
+a:hover {
+	text-decoration: none;
+	outline: none;
+}
+input,select,textarea {
+	outline: none;
+}
+em {
+	font-style: normal;
+}
+body * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.clear {
+	clear: both;
+}
+.overflow {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.editor-main{
+	position: relative;
+	height: 100vh;
+}
+.editor-header{
+	height: 60px;
+	background: #1c2128;
+	box-shadow: 0 0 5px rgba(28,33,40,0);
+	position: relative;
+	z-index: 100;
+	width: 100vw;
+}
+.editor-header .header-logo{
+	position: absolute;
+	top: 14px;
+	left: 10px;
+}
+.editor-header .header-logo svg{
+  stroke: #0084ff;
+}
+.editor-header .header-list{
+	height: 60px;
+	font-size: 14px;
+	position: relative;
+	margin-left: 70px;
+}
+.editor-header .nav-list{
+	float: left;
+}
+.editor-header .nav-list.right{
+	float: right;
+}
+.editor-header .nav-list .item{
+	float: left;
+	position: relative;
+	margin-right: 1px;
+}
+.editor-header .nav-list .item .content{
+	box-sizing: border-box;
+	outline: none;
+	text-decoration: none;
+	padding: 0 8px;
+	line-height: 59px;
+	color: #fbfbfb;
+	cursor: pointer;
+}
+.editor-header .nav-list .item .content:hover {
+  border-bottom: 1px solid #0084ff;
+}
+.editor-header .nav-list .item .content svg{
+	vertical-align: middle;
+	position: relative;
+	top: -1px;
+	height: 16px;
+}
+
+.editor-sidebar{
+	padding: 0;
+	margin: 0;
+	font-size: 12px;
+	width: 210px;
+	position: absolute;
+	top: 60px;
+	bottom: 0;
+	left: 0;
+	border-right: 1px solid #2d333b;
+	background: #20262e;
+	display: flex;
+	flex-direction: column;
+	z-index: 20;
+	color: #cfd0d2;
+	box-shadow: 0 0 0 rgba(0,0,0,.5);
+}
+.editor-content{
+	position: relative;
+	margin-left: 210px;
+	background-color: #1e1e1e;
+}
+.editor-loader{
+	position: absolute;
+	top: calc(50vh - 30px);
+	left: calc(50% - 60px);
+}
+.fullyLoaded .editor-loader{
+	display: none;
+}
+#editor {
+	height: calc(100vh - 60px);
+	overflow: hidden;
+}
