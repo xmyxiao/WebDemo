@@ -224,7 +224,14 @@ function getAnalogData(dataSetList,me){
 							    "data":[]
 							}
 							if(JSON.parse(data.msg[j].jsonStr)){
-								json.data.push(JSON.parse(data.msg[j].jsonStr));
+								var jsonList = JSON.parse(data.msg[j].jsonStr)
+								if(jsonList && jsonList.length > 0){
+									for(var i = 0; i < jsonList.length; i++){
+										json.data.push(jsonList[i]);
+									}
+								}else{
+									json.data.push(JSON.parse(data.msg[j].jsonStr));
+								}
 							}
 							me.nodeReassignment(json)
 						}

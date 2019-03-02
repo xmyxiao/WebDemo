@@ -77,7 +77,6 @@
             // }
         }
         else if(type === 'displayViewSaved'){
-        	debugger;
         	var sendData = {
         		url : params.url
         	}
