@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,	minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title>弹出</title>
+		<style>
+			.page-dialog-titlt{
+				padding: 0 80px 0 20px;
+			    height: 42px;
+			    line-height: 42px;
+			    border-bottom: 1px solid #eee;
+			    font-size: 14px;
+			    color: #333;
+			    overflow: hidden;
+			    background-color: #F8F8F8;
+			    border-radius: 2px 2px 0 0;
+			    text-overflow: ellipsis;
+    			white-space: nowrap;
+			}
+			.page-dialog-body{
+				padding: 20px;
+			}
+			.page-dialog-input{
+				display: block;
+			    width: 230px;
+			    height: 36px;
+			    margin: 0 auto;
+			    line-height: 30px;
+			    padding-left: 10px;
+			    border: 1px solid #e6e6e6;
+			    color: #333;
+			    outline: 0;
+			}
+			.page-dialog-btn{
+				text-align: right;
+			    padding: 0 15px 12px;
+			    pointer-events: auto;
+			    user-select: none;
+			    -webkit-user-select: none;
+			}
+			.page-dialog-btn a {
+				display: inline-block;
+			    height: 28px;
+			    line-height: 28px;
+			    margin: 5px 5px 0;
+			    padding: 0 15px;
+			    border: 1px solid #dedede;
+			    background-color: #fff;
+			    color: #333;
+			    border-radius: 2px;
+			    font-weight: 400;
+			    cursor: pointer;
+			    text-decoration: none;
+			}
+			.page-dialog-btn .page-dialog-btn0 {
+			    border-color: #1E9FFF;
+			    background-color: #1E9FFF;
+			    color: #fff;
+			}
+			.layui-m-layershade{
+				background: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<div style="position: absolute;top: 0;left: 0;bottom: 0;right: 0;background-color: rgb(204, 204, 204);opacity: 0.3;z-index: 19891017;">
+			
+		</div>-->
+		<script src="layer/jquery-1.11.0.js"></script>
+		<script src="layer/mobile/layer.js"></script>
+		<script>
+			/*layer.open({
+			  style: 'border:none; background-color:#78BA32; color:#fff;',
+			  content:'内容'
+			})*/
+			var html = '<div style = "width:300px;">'
+			+'<div class="page-dialog-titlt">请输入密码</div>'
+			+'<div class="page-dialog-body"><input type="password" class="page-dialog-input" value=""></div>'
+			+'<div class="page-dialog-btn"><a class="page-dialog-btn0">确定</a></div>'
+			+'</div>'
+			layer.open({
+				type: 1,
+				skin: 'layui-layer-rim', //加上边框
+				content: html
+			});
+		</script>
+	</body>
+</html>
