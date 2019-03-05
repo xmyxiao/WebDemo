@@ -8,17 +8,22 @@ function createDataAnalogDialog(item){
 				name: '',
 				jsonType: '',
 				jsonStr: '',
+				mockStr: '',
+				intervalTime: '',
 				column: []
 			}
 		}
 	}
 	$.extend(data,item);
 	var value = '[{"name":"FC1","value":0.1}]'
+	var mackVal = "Mock.mock({\r\n'list|1-10': [{'id|+1': 1 }]\r\n})"
 	var config = {
 		fileName: data._name || '',
 		fileId: data.value.para.id || '',
-		jsonType: data.value.para.jsonType || '',
+		jsonType: data.value.para.jsonType || 'json',
 		jsonStr: data.value.para.jsonStr || value,
+		mockStr: data.value.para.mockStr || mackVal,
+		intervalTime: data.value.para.intervalTime || '',
 		column: data.value.para.column || []
 	}
 	if(item){
@@ -43,7 +48,7 @@ function createDataAnalogDialog(item){
 	                editable: false
 	            }
 	        }
-	    ], [55, 0.1]);
+	    ], [65, 0.1]);
 	}
 	
     formPane.addRow([
@@ -57,8 +62,21 @@ function createDataAnalogDialog(item){
                 text: config.fileName
             }
         }
-    ], [55, 0.1]);
-    
+    ], [65, 0.1]);
+    formPane.addRow([
+    	{
+    		element:'间隔（秒）',
+    		align: 'right'
+    	},
+        {
+            id: 'intervalTime',
+            type: 'number',
+            textField: {
+                text: config.intervalTime
+            }
+        }
+    ], [65, 0.1]);
+    formPane.getItemById('intervalTime').element.setType('number')
     formPane.addRow([
     	{
     		element:'数据类型',
@@ -67,29 +85,41 @@ function createDataAnalogDialog(item){
         {
             id: 'jsonType',
             comboBox: {
-            	value: config.jsonType || 'json',
-                values: ['json'],
-                labels: ['json']
+            	value: config.jsonType,
+                values: ['json','mock'],
+                labels: ['json','mock'],
+                onValueChanged: function(){
+                	formPane.getItemById('jsonStrLabel').element.innerText = this.getValue();
+                	var valStr = this.getValue() === 'json' ? config.jsonStr : config.mockStr;
+                	formPane.getItemById('jsonStr').element.setValue(valStr);               	
+                }
             }
         }
-    ], [55, 0.1]);
+    ], [65, 0.1]);
+    var el = document.createElement('div');
+    el.innerText = config.jsonType;
+    el.style.textAlign = 'right';
+    el.style.paddingRight = '3px';
+    el.style.boxSizing = 'border-box';
     formPane.addRow([
     	{
-    		element:'json',
+    		id:'jsonStrLabel',
+    		element:el,
     		vAlign: 'top',
     		align: 'right'
     	},
         {
             id: 'jsonStr',
             element: new hteditor.CodeEditor({
-                value: config.jsonStr,
+                value: config.jsonType === 'json' ? config.jsonStr : config.mockStr,
                 language: 'javascript',
                 minimap: {
                     enabled: false
                 }
             })
         }
-    ], [55, 0.1],150);
+    ], [65, 0.1],150);
+
     //配置字段
     var paraTableModel = new ht.DataModel;
     var paraTablePane =  new ht.widget.TablePane(paraTableModel);
@@ -157,6 +187,7 @@ function createDataAnalogDialog(item){
         action: function() {
             var fieldName = formPane.v('fileName'),
             	jsonType = formPane.v('jsonType'),
+            	intervalTime = formPane.v('intervalTime'),
             	jsonStr = formPane.v('jsonStr');
 
             var fieldId = 'AnalogEntity_' + uuid(8);
@@ -172,16 +203,34 @@ function createDataAnalogDialog(item){
         		return;
         	}
             
-			var addItem = {
-				type : 'add',
-				content: [{
-					"id": fieldId,
-					"name":fieldName,
-					"type":"analogData",
-					"jsonType":jsonType,
-					"jsonStr":jsonStr
-				}]
-			}
+            if(jsonType === 'json'){
+            	var addItem = {
+					type : 'add',
+					content: [{
+						"id": fieldId,
+						"name":fieldName,
+						"type":"analogData",
+						"jsonType":jsonType,
+						"mockStr": '',
+						"intervalTime":intervalTime,
+						"jsonStr":jsonStr
+					}]
+				}
+            }else{
+            	var addItem = {
+					type : 'add',
+					content: [{
+						"id": fieldId,
+						"name":fieldName,
+						"type":"analogData",
+						"jsonType":jsonType,
+						"mockStr": jsonStr,
+						"intervalTime":intervalTime,
+						"jsonStr": ''
+					}]
+				}
+            }
+			
 			
 			addItem.content[0].column = [];
 			if(paraTableModel.getDatas().length > 0){

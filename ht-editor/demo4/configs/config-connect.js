@@ -145,20 +145,23 @@ ht.DataModel.prototype.deserialize = function(u, o, W){
 		}else{
 			logoNode.setImage('logo1');
 		}
-		var par = Math.min(u.contentRect.width/180,u.contentRect.height/35)
-		if(par < 1){
-			logoNode.setSize(180*par/2, 35*par/2);
-			logoY = logoY + 35*par/2
+		if(u.contentRect && u.contentRect.width && u.contentRect.height){
+			var par = Math.min(u.contentRect.width/180,u.contentRect.height/35)
+			if(par < 1){
+				logoNode.setSize(180*par/2, 35*par/2);
+				logoY = logoY + 35*par/2
+			}else{
+				logoNode.setSize(180, 35);
+			}
 		}else{
 			logoNode.setSize(180, 35);
 		}
-		
 		logoNode.setPosition(logoX,logoY);                
 		me.add(logoNode);
 		me.connectInit();
 		if(!window.isPageShow){
 			for(var i = 0; i < $('body')[0].children.length; i++){
-				if(!$($('body')[0].children[i]).hasClass('ht-widget-dialog')){
+				if(!$($('body')[0].children[i]).hasClass('ht-widget-dialog') && !$($('body')[0].children[i]).hasClass('layui-m-layer')){
 					$($('body')[0].children[i]).css('visibility','hidden');
 				}
 			}
@@ -166,6 +169,13 @@ ht.DataModel.prototype.deserialize = function(u, o, W){
 	}
 	catch(err){
 		console.log(err);
+		if(!window.isPageShow){
+			for(var i = 0; i < $('body')[0].children.length; i++){
+				if(!$($('body')[0].children[i]).hasClass('ht-widget-dialog') && !$($('body')[0].children[i]).hasClass('layui-m-layer')){
+					$($('body')[0].children[i]).css('visibility','hidden');
+				}
+			}
+		}
 	}
 	return json;	
 }
@@ -219,21 +229,74 @@ function getAnalogData(dataSetList,me){
 				if(list[i].indexOf('AnalogEntity') > -1 && data.msg){
 					for(var j = 0; j < data.msg.length; j++){
 						if(data.msg[j].type === 'analogData' && data.msg[j].id === list[i]){
-							var json = {
-								"id":data.msg[j].id,
-							    "data":[]
-							}
-							if(JSON.parse(data.msg[j].jsonStr)){
-								var jsonList = JSON.parse(data.msg[j].jsonStr)
-								if(jsonList && jsonList.length > 0){
-									for(var i = 0; i < jsonList.length; i++){
-										json.data.push(jsonList[i]);
+							if(data.msg[j].jsonType === 'json'){
+								var json = {
+									"id":data.msg[j].id,
+							    	"data":[]
+								}
+								if(JSON.parse(data.msg[j].jsonStr)){
+									var jsonList = JSON.parse(data.msg[j].jsonStr)
+									if(jsonList && jsonList.length > 0){
+										for(var i = 0; i < jsonList.length; i++){
+											json.data.push(jsonList[i]);
+										}
+									}else{
+										json.data.push(JSON.parse(data.msg[j].jsonStr));
 									}
-								}else{
-									json.data.push(JSON.parse(data.msg[j].jsonStr));
+								}
+							}else if(data.msg[j].jsonType === 'mock'){
+								var mockData = eval(data.msg[j].mockStr);
+								var json = {
+									"id":data.msg[j].id,
+							    	"data":[]
+								}
+								if(mockData){
+									var jsonList = mockData.list;
+									if(jsonList && jsonList.length > 0){
+										for(var i = 0; i < jsonList.length; i++){
+											json.data.push(jsonList[i]);
+										}
+									}else{
+										json.data.push(mockData.list);
+									}
 								}
 							}
-							me.nodeReassignment(json)
+							
+							if(data.msg[j].intervalTime && Number(data.msg[j].intervalTime)){
+								function nodeReassignmentInt(me,json,data){
+									return function(){
+										if(data.jsonType === 'mock'){
+											var mockData = eval(data.mockStr);
+											var json = {
+												"id":data.id,
+										    	"data":[]
+											}
+											if(mockData){
+												var jsonList = mockData.list;
+												if(jsonList && jsonList.length > 0){
+													for(var i = 0; i < jsonList.length; i++){
+														json.data.push(jsonList[i]);
+													}
+												}else{
+													json.data.push(mockData.list);
+												}
+											}
+										}
+								    	me.nodeReassignment(json)
+									} 
+								}
+								function IntervalNode(me,json,time,data){
+									var obj = me;
+									var nodeData = json;
+									var IntTime = time;
+									var item = data;
+									setInterval(nodeReassignmentInt(obj,nodeData,data),1000 * IntTime)
+								}
+								me.nodeReassignment(json);
+								IntervalNode(me,json,Number(data.msg[j].intervalTime),data.msg[j]);
+							}else{
+								me.nodeReassignment(json)
+							}
 						}
 					}
 				}
@@ -271,20 +334,8 @@ function initPageGraph() {
 			//绘制
 			dataModel.deserialize(json);
 			graphView.fitContent(true);
-			/*// 选中边框为0
-			graphView.getSelectWidth = function () { return 0; };
-			// 禁止鼠标缩放
-			graphView.handleScroll = function () { };
-			// 禁止 touch 下双指缩放
-			graphView.handlePinch = function () { };
-			// 禁止平移
-			graphView.setPannable(false);
-			// 禁止框选
-			graphView.setRectSelectable(false);
-			// 隐藏滚动条
-			graphView.setScrollBarVisible(false);
-			// 禁止图元移动
-			graphView.setMovableFunc(function () { return false; });*/
+			//graphView.setPannable(false);
+			//graphView.setMovableFunc(function () { return false; });
 		},
 		error:function(){
 			alert('数据获取失败！');
@@ -309,11 +360,10 @@ function signInByCookie(id,passWord){
 			if(data.code === 1){
 				window.isPageShow = true;
 				for(var i = 0; i < $('body')[0].children.length; i++){
-					if(!$($('body')[0].children[i]).hasClass('ht-widget-dialog')){
+					if(!$($('body')[0].children[i]).hasClass('ht-widget-dialog') && !$($('body')[0].children[i]).hasClass('layui-m-layer')){
 						$($('body')[0].children[i]).css('visibility','visible');
 					}
 				}
-    			dialog.hide();
 			}else{
 				var id = this.appid;
 				var passWords = getCookie('pagePassWord');
@@ -346,6 +396,21 @@ function creatPassWordDialog(){
 				return;	
 			}
 		}
+	}
+	//有弹出的情况
+	if(layer && itoPage){
+		var html = '<div style = "width:300px;">'
+			+'<div class="page-dialog-titlt">请输入密码</div>'
+			+'<div class="page-dialog-body"><input id="pageDialogInput" type="password" class="page-dialog-input" value="" onkeydown="itoPage.submitPassword(event)" ></div>'
+			+'<div class="page-dialog-btn"><a class="page-dialog-btn0" onclick="itoPage.submitPassword()">确定</a></div>'
+			+'</div>'
+			
+		layer.open({
+			type: 1,
+			skin: 'layui-layer-rim', //加上边框
+			content: html
+		});
+		return
 	}
 	var dialog  = new ht.widget.Dialog();
 	var formPane = new ht.widget.FormPane();
@@ -396,7 +461,7 @@ function creatPassWordDialog(){
 							if(data.code === 1){
 								window.isPageShow = true;
 								for(var i = 0; i < $('body')[0].children.length; i++){
-									if(!$($('body')[0].children[i]).hasClass('ht-widget-dialog')){
+									if(!$($('body')[0].children[i]).hasClass('ht-widget-dialog') && !$($('body')[0].children[i]).hasClass('layui-m-layer')){
 										$($('body')[0].children[i]).css('visibility','visible');
 									}
 								}
@@ -445,7 +510,7 @@ function initVisitPage(){
 			}else{
 				window.isPageShow = true;
 				for(var i = 0; i < $('body')[0].children.length; i++){
-					if(!$($('body')[0].children[i]).hasClass('ht-widget-dialog')){
+					if(!$($('body')[0].children[i]).hasClass('ht-widget-dialog') && !$($('body')[0].children[i]).hasClass('layui-m-layer')){
 						$($('body')[0].children[i]).css('visibility','visible');
 					}
 				}
