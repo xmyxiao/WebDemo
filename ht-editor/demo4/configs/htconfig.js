@@ -25,7 +25,8 @@ window.htconfig = {
             	url = '/' + user + url;
             }else if(url.indexOf('displays/') === 0 || url.indexOf('public/') === 0
              || url.indexOf('symbols/') === 0 || url.indexOf('assets/') === 0
-             || url.indexOf('temporary/') === 0 || url.indexOf('scenes/') === 0 || url.indexOf('models/') === 0){
+             || url.indexOf('temporary/') === 0 || url.indexOf('scenes/') === 0 || url.indexOf('models/') === 0
+             || url.indexOf('previews/') === 0){
             	url = '/' + user + '/' + url;
             }
             /*if(location.href.indexOf('previews2D/') > 0 ){
