@@ -266,6 +266,37 @@ function createDataAnalogDialog(item){
         action: function() {
             dialog.hide();
         }
+    },{
+        label: '数据测试',
+        action: function() {
+		    var dataDialog = new ht.widget.Dialog();
+		    var dataBtn = [{
+		    	label: '关闭',
+		        action: function() {
+		            dataDialog.hide();
+		        }
+		    }]
+		    var jsonType = formPane.v('jsonType'),
+        	intervalTime = formPane.v('intervalTime'),
+        	showData = '',
+        	jsonStr = formPane.v('jsonStr');
+        	if(jsonType === 'mock'){
+        		showData = JSON.stringify(eval(jsonStr));
+        	}else{
+        		showData = jsonStr
+        	}
+		    dataDialog.setConfig({
+		        title: '数据测试',
+		        draggable: true,
+		        width:450,
+		        height:250,
+		        contentPadding: 4,
+		        content: '<div id="anaDataDialog" style="width:100%;height:100%;overflow-y: auto;">'+showData+'</dvi>',
+		        buttons: dataBtn,
+		        buttonsAlign: 'right'
+		    });
+		    dataDialog.show();
+        }
     }];
     dialog.setConfig({
         title: config.title,

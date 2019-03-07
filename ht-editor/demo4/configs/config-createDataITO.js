@@ -241,6 +241,72 @@ function createDataITODialog(item){
         action: function() {
             dialog.hide();
         }
+    },{
+        label: '数据测试',
+        action: function() {
+        	var fieldId = '';
+            if(formPane.getItemById('fileId')){
+            	fieldId = formPane.v('fileId')
+            }
+            if(!fieldId){
+            	return
+            }
+            var userStr = getCookie("user");
+	    	if(!userStr){
+	    		return
+	    	}
+		    var UserJson = JSON.parse(userStr);
+		    var dataDialog = new ht.widget.Dialog();
+		    var O = location.hostname + ':10000';
+		    var socket = io.connect(O);
+		    var name = UserJson.name;
+		    var dataBtn = [{
+		    	label: '关闭',
+		        action: function() {
+		        	socket.emit('closeConnection',name);
+		        	socket.close();
+		            dataDialog.hide();
+		        }
+		    }]
+		    dataDialog.setConfig({
+		        title: '数据测试',
+		        draggable: true,
+		        width:450,
+		        height:250,
+		        contentPadding: 4,
+		        content: '<div id="itoDataDialog" style="width:100%;height:100%;overflow-y: auto;"></dvi>',
+		        buttons: dataBtn,
+		        buttonsAlign: 'right'
+		    });
+		    dataDialog.show();
+            
+		    socket.on("connect", function() {
+		    	var content = $("#itoDataDialog");
+		    	var html = '<p>连接</p>';
+		    	if(!content.is(":visible")){
+		    		return;
+		    	}
+		    	content.append(html);
+			})
+		    
+		    socket.emit('explore',[fieldId],name);
+			socket.on(name + "/data", function(data) {
+		    	var content = $("#itoDataDialog");
+		    	var html = '<p>'+data+'</p>';
+		    	if(!content.is(":visible")){
+		    		return;
+		    	}
+		    	content.append(html);
+			})
+		    socket.on("disconnect", function() {
+				var content = $("#itoDataDialog");
+		    	var html = '<p>断开</p>';
+		    	if(!content.is(":visible")){
+		    		return;
+		    	}
+		    	content.append(html);
+			})
+        }
     }];
     dialog.setConfig({
         title: config.title,
