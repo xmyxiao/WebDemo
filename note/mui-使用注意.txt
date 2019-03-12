@@ -1,0 +1,29 @@
+基础注意事项
+http://ask.dcloud.net.cn/article/122
+
+固定定位的元素（比如头尾和固定的工具栏和选项卡）需要写在 .mui-content前面  不然会遮挡部分内容
+除开固定的元素  其余元素都必须在 .mui-contentd
+
+botton元素必须要设定type属性  否则默认为submit类型
+页面初始必须执行mui.init方法
+使用 mui.openWindow来代替href方式的跳转  避免出现空白页面
+跳转的其他方式：http://uikoo9.com/book/chapterDetail/11
+
+不能多次监听backbutton  会导致调用mui的关闭逻辑
+若要使用HTML5+扩展api，必须等plusready事件发生后才能正常使用
+凡涉及到HTML5+的api，建议都写在mui.plusReady方法中
+使用tap来代替click
+
+http://dev.dcloud.net.cn/mui/window/
+mui窗口处理  包括跳转页面、页面拼接等
+拼接实例
+mui.init({
+  subpages:[{
+url:'list.html',
+  id:'list.html',
+  styles:{
+  top:'45px',//mui标题栏默认高度为45px；
+  bottom:'0px'//默认为0px，可不定义；
+  }
+  }]
+});

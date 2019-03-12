@@ -1,0 +1,23 @@
+参考地址
+http://m.blog.csdn.net/article/details?id=7278269
+
+$.ajax({
+   type: "POST",
+   url: url,
+  traditional:true,  //添加这行参数能解决后台无法接收的问题
+  data:{ gender:[0,1] },
+  dataType: "json",
+  async:false
+  });
+用这个方式传递的数据是一个数组 
+
+这个问题，可以通过将数组转化为字符串解决。
+比如
+var arr = new Array(3)
+arr[0] = "George"
+arr[1] = "John"
+arr[2] = "Thomas"
+
+arr.join();//arr的值已经改变
+
+后台接收到的数据为   [George, John, Thomas] 是一串数据

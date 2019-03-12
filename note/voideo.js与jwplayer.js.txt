@@ -1,0 +1,8 @@
+voideo.js的github地址  https://github.com/videojs/video.js
+jwplayer.js的api地址     https://developer.jwplayer.com/jw-player/docs/developer-guide/api/javascript_api_introduction/#
+
+测试文件地址https://github.com/xmyxiao/WebDemo/tree/master/voidDemo
+
+voideo.js在ie8下样式会出现问题
+jwplayer.js在兼容方面表现较好
+直播中基本使用rtmp协议进行视频传输  

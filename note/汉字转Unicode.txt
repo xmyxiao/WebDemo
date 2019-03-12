@@ -1,0 +1,15 @@
+var GB2312UnicodeConverter = {
+  ToUnicode: function (str) {
+  return escape(str).toLocaleLowerCase().replace(/%u/gi, '\\u');
+  }
+  , ToGB2312: function (str) {
+  return unescape(str.replace(/\\u/gi, '%u'));
+  }
+};
+
+调用
+//编码
+GB2312UnicodeConverter.ToUnicode(str);
+
+//解码
+GB2312UnicodeConverter.ToGB2312(unicode);

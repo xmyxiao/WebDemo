@@ -1,0 +1,89 @@
+string.split("@")   //字符串分割成多个字符串
+
+$("input").bind("input propertychange", function () {}); //实时监听输入框变化
+
+$("input").on("change",function(){});  //输入框失去焦点时触发
+
+//数组去除第一个元素
+Arr.splice(0,1)  arr为一个数组，0是起始位置1是要去除的元素个数
+
+//resize
+$(window).resize(function() {
+ 
+});
+
+//判断元素是否显示
+$(".demo").is(":visible")
+
+//赋值
+$("#drawing").attr("style","width: "+$("#drawing svg").width()+"px;");
+
+//截取字符
+str.substr(start,length)   start开始位置   length为截取长度
+
+//.css的用法
+$("p").css("color","red");
+
+//双击不选中文字
+$(".draginput input.nosel").bind("dblclick",function(event){
+    if(document.selection && document.selection.empty) {
+             document.selection.empty();
+    }else if(window.getSelection) {
+             var sel = window.getSelection();
+             sel.removeAllRanges();
+    }
+});
+
+window.document.oncontextmenu = norightclick;//鼠标右键
+window.document.onkeydown = disableKeyClick;//键盘按键
+//禁用鼠标右键
+function norightclick(e){
+     if (window.Event){
+          if (e.which == 2 || e.which == 3) {
+               return false;
+        }     
+     }
+}
+//禁用键盘按键以及启用delete键
+function disableKeyClick(){
+   if(window.event && window.event.keyCode == 122){//F11
+       return false;
+   }     
+  if(window.event && window.event.keyCode == 123){//F12
+         return false;
+  }
+  if(window.event && window.event.keyCode == 46){//Delete
+         var obj = event.target || event.srcElement;
+         if(obj.tagName == "INPUT"){
+              return;
+         }else{
+              delSelectElement();
+         }
+   }
+
+js四舍五入保留小数
+num.toFixed(1)    1代表保留一位小数   如果要保留两位小数 num.toFixed(2)
+num必须为number类型的数据  可以通过Number()将其装换为number类型
+
+循环语句
+for(var i in len){
+
+}
+
+for(var key in data){
+     //key是键名
+     //data是数据
+     //data[key]  键名对应的数据
+}
+
+//addEventListener的参数
+upload.addEventListener('click', function() {
+//函数处理
+}, false);
+第三个参数是useCapture, 一个bool类型。当为false时为冒泡获取(由里向外)，true为capture方式(由外向里)。
+
+
+
+
+
+

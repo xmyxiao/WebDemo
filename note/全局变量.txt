@@ -1,0 +1,44 @@
+http://blog.csdn.net/xllily_11/article/details/52816699
+
+防止js全局变量污染 
+一、创建一个全局变量  把其他全局变量追加在这个命名空间下
+     var my = {}
+     my.name={
+          na : "a"
+     }
+     my.eve = {
+          
+     }
+二、利用匿名函数将脚本包裹起来
+(function(){
+     var exp = "";
+     var name = "";
+})();
+
+1.关于全局变量
+function test1(){}
+var name = "a";
+function test2(){}
+上述代码中的 test1 name test2 都是window底下的全局变量
+2.全局变量的访问方式
+     1 )  直接访问  name test1()
+     2 ) 使用window["name"]  window["test1"]()
+     3 ) 使用window.name  window.test1()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

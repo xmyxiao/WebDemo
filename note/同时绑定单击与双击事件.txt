@@ -1,0 +1,29 @@
+function trClick(){//绑定tr点击事件
+$(".scrollTbody .table tr").click(function(){
+var myThis = $(this);
+var TimeFn = null;
+clearTimeout(TimeFn);
+  TimeFn = setTimeout(function(){
+  if($(this).hasClass("tr-sel")){
+$(this).removeClass("tr-sel");
+}else{
+$(".scrollTbody .table tr").each(function(){
+$(this).removeClass("tr-sel");
+});
+myThis.addClass("tr-sel");
+}},100);
+});
+}
+function trDoubleClick(){//绑定tr双击事件
+$(".scrollTbody .table tr").dblclick(function(){
+$("#table tr").each(function(){
+if($(this).hasClass("tr-sel")){
+$(".netword-name-input").children("span").text($(this).children("td").eq(1).children("div").text());
+$(".netword-address-input").val($(this).children("td").eq(3).children("div").text());
+$("#myIframe").attr("style","display:none");
+}else{
+return;
+}
+});
+});
+}
