@@ -1,0 +1,55 @@
+{
+  "modified": "Tue Mar 12 2019 08:56:36 GMT+0800 (中国标准时间)",
+  "dataBindings": [
+    {
+      "valueType": "String"
+    },
+    {
+      "attr": "icon.background",
+      "valueType": "Color",
+      "defaultValue": "rgb(48,242,120)",
+      "name": "图标颜色",
+      "description": "图标颜色"
+    },
+    {
+      "attr": "icon.points",
+      "valueType": "ObjectArray",
+      "name": "定位信息",
+      "description": "定位信息"
+    },
+    {
+      "attr": "icon.clickfunc",
+      "valueType": "Function",
+      "name": "点击事件",
+      "description": "点击事件"
+    }
+  ],
+  "width": 1130,
+  "height": 970,
+  "interactive": true,
+  "attachStyle": "close",
+  "comps": [
+    {
+      "type": "components/地图/地图组件.json",
+      "displayName": "地图组件",
+      "rect": [
+        0,
+        0,
+        1130,
+        970
+      ],
+      "iconBackground": {
+        "func": "attr@icon.background",
+        "value": "rgb(0,199,7)"
+      },
+      "iconPoints": {
+        "func": "attr@icon.points",
+        "value": []
+      },
+      "iconClickFunc": {
+        "func": "attr@icon.clickfunc",
+        "value": "__ht__function(item){\r\n    \r\n}"
+      }
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "v": "6.3.1",
+  "p": {
+    "autoAdjustIndex": true,
+    "hierarchicalRendering": true
+  },
+  "a": {
+    "rotateAsClock": false,
+    "connectActionType": null,
+    "previewURL": "previews2D/189.html"
+  },
+  "d": [
+    {
+      "c": "ht.Node",
+      "i": 3746,
+      "p": {
+        "displayName": "地图",
+        "dataBindings": {
+          "a": {
+            "icon.points": {
+              "fieldName": "FC1",
+              "id": "2"
+            }
+          }
+        },
+        "image": "symbols/地图/地图.json",
+        "position": {
+          "x": 1317.64534,
+          "y": -1446.05723
+        }
+      },
+      "a": {
+        "icon.points": [],
+        "icon.clickfunc": "__ht__function(item){\r\n    console.log(item)\r\n}",
+        "icon.background": "rgb(212,0,0)",
+        "dataSetName": "地图json测试",
+        "dataSet": "AnalogEntity_VxCHbJ8F",
+        "dataItem": [
+          {
+            "name": "FC1",
+            "description": "城市点"
+          }
+        ]
+      }
+    }
+  ],
+  "modified": "Tue Mar 12 2019 08:57:28 GMT+0800 (中国标准时间)",
+  "contentRect": {
+    "x": 752.64534,
+    "y": -1931.05723,
+    "width": 1130,
+    "height": 970
+  }
+}
