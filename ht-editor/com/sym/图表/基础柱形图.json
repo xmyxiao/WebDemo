@@ -1,0 +1,43 @@
+{
+  "modified": "Tue Mar 12 2019 17:30:39 GMT+0800 (中国标准时间)",
+  "dataBindings": [
+    {
+      "attr": "lineColor",
+      "valueType": "Color",
+      "defaultValue": "#32D3EB",
+      "name": "柱体颜色"
+    },
+    {
+      "attr": "xAxisData",
+      "valueType": "StringArray",
+      "defaultValue": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "name": "x轴坐标"
+    },
+    {
+      "attr": "lineData",
+      "valueType": "NumberArray",
+      "defaultValue": [
+        120,
+        132,
+        101,
+        134,
+        90
+      ],
+      "name": "数据"
+    }
+  ],
+  "snapshotURL": "symbols/basic/snapshot_chart.json",
+  "renderHTML": "__ht__function(data, gv, cache) {var option = {\r\n    tooltip : {\r\n        trigger: 'axis',\r\n        axisPointer: {\r\n            type: 'line',\r\n            label: {\r\n                backgroundColor: '#6a7985'\r\n            }\r\n        }\r\n    },\r\n    legend: {\r\n        show: true,\r\n        left: '80%',\r\n        right: 0,\r\n        top: '30%',\r\n        orient: 'vertical'\r\n    },\r\n    grid: {\r\n        left: '3%',\r\n        right: '5%',\r\n        bottom: 0,\r\n        top: '5%',\r\n        containLabel: true\r\n    },\r\n    xAxis: {\r\n        type: 'category'\r\n    },\r\n    yAxis: {\r\n        type: 'value'\r\n    },\r\n    series: [{\r\n\r\n        type: 'bar'\r\n    }]\r\n};\r\n\r\nif (!cache.htmlView) {\r\n    cache.htmlView = document.createElement('div');\r\n    cache.htmlView.style.position = 'absolute';\r\n    cache.htmlChart = echarts.init(cache.htmlView);\r\n\r\n    // layoutHTML will be called when the data needs to be drawing\r\n    cache.htmlView.layoutHTML = function() {\r\n        gv.layoutHTML(data, cache.htmlView, false);\r\n        cache.htmlChart.resize();\r\n    };\r\n}\r\n\r\n// update data\r\noption.color = [data.a('lineColor')];\r\noption.xAxis.data = data.a('xAxisData');\r\noption.series[0].data = data.a('lineData');\r\n\r\ncache.htmlChart.setOption(option);\r\n\r\n// html for showing\r\nreturn cache.htmlView;}",
+  "width": 250,
+  "height": 170,
+  "fitSize": true,
+  "pixelPerfect": false,
+  "attachStyle": "close",
+  "comps": []
+}

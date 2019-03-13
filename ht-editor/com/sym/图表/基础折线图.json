@@ -1,0 +1,71 @@
+{
+  "modified": "Tue Mar 12 2019 17:42:10 GMT+0800 (中国标准时间)",
+  "dataBindings": [
+    {
+      "attr": "chartBackground",
+      "valueType": "Color",
+      "defaultValue": "rgb(61,61,61)",
+      "name": "背景颜色"
+    },
+    {
+      "attr": "lineSmooth",
+      "valueType": "Boolean",
+      "defaultValue": true,
+      "name": "线条平滑"
+    },
+    {
+      "attr": "lineColor",
+      "valueType": "Color",
+      "defaultValue": "rgb(51,153,255)",
+      "name": "线条颜色"
+    },
+    {
+      "attr": "textColor",
+      "valueType": "Color",
+      "defaultValue": "rgb(93,217,174)",
+      "name": "文字颜色"
+    },
+    {
+      "attr": "lineData",
+      "valueType": "NumberArray",
+      "defaultValue": [
+        120,
+        132,
+        101,
+        134,
+        90,
+        230,
+        210,
+        399,
+        499,
+        599
+      ],
+      "name": "线条数据"
+    },
+    {
+      "attr": "xAxisData",
+      "valueType": "StringArray",
+      "defaultValue": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "name": "横轴数据"
+    }
+  ],
+  "snapshotURL": "symbols/basic/snapshot_chart.json",
+  "renderHTML": "__ht__function(data, gv, cache) {var option = {\r\n    tooltip : {\r\n        trigger: 'axis',\r\n        axisPointer: {\r\n            type: 'line',\r\n            label: {\r\n                backgroundColor: '#6a7985'\r\n            }\r\n        }\r\n    },\r\n    legend: {\r\n        show: true,\r\n        left: '80%',\r\n        right: 0,\r\n        top: '30%',\r\n        orient: 'vertical'\r\n    },\r\n    grid: {\r\n        left: '3%',\r\n        right: '5%',\r\n        bottom: 0,\r\n        top: '5%',\r\n        containLabel: true\r\n    },\r\n    xAxis: {\r\n        type: 'category',\r\n        boundaryGap: false\r\n    },\r\n    yAxis: {\r\n        type: 'value'\r\n    },\r\n    series: [{\r\n        type: 'line',\r\n        areaStyle: {}\r\n    }]\r\n};\r\n\r\nif (!cache.htmlView) {\r\n    cache.htmlView = document.createElement('div');\r\n    cache.htmlView.style.position = 'absolute';\r\n    cache.htmlChart = echarts.init(cache.htmlView);\r\n\r\n    // layoutHTML will be called when the data needs to be drawing\r\n    cache.htmlView.layoutHTML = function() {\r\n        gv.layoutHTML(data, cache.htmlView, false);\r\n        cache.htmlChart.resize();\r\n    };\r\n}\r\n\r\n// update data\r\noption.color = [data.a('lineColor')];\r\noption.series[0].name = data.a('legendData');\r\noption.series[0].data = data.a('lineData');\r\noption.series[0].smooth = data.a('lineSmooth');\r\noption.textStyle = { color: data.a('textColor') };\r\noption.xAxis.data = data.a('xAxisData');\r\ncache.htmlChart.setOption(option);\r\n\r\n// html for showing\r\nreturn cache.htmlView;}",
+  "width": 330,
+  "height": 150,
+  "fitSize": true,
+  "pixelPerfect": false,
+  "attachStyle": "close",
+  "comps": []
+}

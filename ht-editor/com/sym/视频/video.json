@@ -1,0 +1,26 @@
+{
+  "modified": "Fri Mar 01 2019 16:26:00 GMT+0800 (中国标准时间)",
+  "dataBindings": [
+    {
+      "attr": "pcVideoURL",
+      "valueType": "URL",
+      "defaultValue": "rtmp://rtmp.open.ys7.com/openlive/10f68e6a0549487bbd9fa57e7f48bb0b.hd",
+      "name": "pc播放地址",
+      "description": "pc播放地址"
+    },
+    {
+      "attr": "phoneVideoRUL",
+      "valueType": "URL",
+      "defaultValue": "http://hls.open.ys7.com/openlive/10f68e6a0549487bbd9fa57e7f48bb0b.hd.m3u8",
+      "name": "手机播放地址",
+      "description": "手机播放地址"
+    }
+  ],
+  "snapshotURL": "symbols/basic/snapshot_video.json",
+  "renderHTML": "__ht__function(data, gv, cache) {if (!cache.htmlView) {\n    var video = cache.htmlView = document.createElement('div');\n    video.id = 'video_' + guid();\n    video.layoutHTML = function() {\n        gv.layoutHTML(data, video);\n    };\n    var videolURLStr = ''\n    if(IsPC()){\n        videolURLStr = data.a('pcVideoURL')\n    }else{\n        videolURLStr = data.a('phoneVideoURL')\n    }\n    var videoObject = {\n        container: '#' + video.id, //容器的ID或className\n        variable: 'player',//播放函数名称\n        autoplay:false,\n        live:true,\n        video: videolURLStr\n    };\n}\nsetTimeout(function(){\n    var player = new ckplayer(videoObject);\n},100);\nreturn cache.htmlView;\nfunction IsPC() {\n   var userAgentInfo = navigator.userAgent;\n   var Agents = [\"Android\", \"iPhone\",\n      \"SymbianOS\", \"Windows Phone\",\n      \"iPad\", \"iPod\"];\n   var flag = true;\n   for (var v = 0; v < Agents.length; v++) {\n      if (userAgentInfo.indexOf(Agents[v]) > 0) {\n         flag = false;\n         break;\n      }\n   }\n   return flag;\n}}",
+  "width": 300,
+  "height": 300,
+  "pixelPerfect": false,
+  "attachStyle": "close",
+  "comps": []
+}
