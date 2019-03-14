@@ -1,0 +1,164 @@
+{
+  "v": "6.3.1",
+  "p": {
+    "background": "rgb(124,145,155)",
+    "autoAdjustIndex": true,
+    "hierarchicalRendering": true
+  },
+  "a": {
+    "rotateAsClock": false,
+    "connectActionType": null,
+    "previewURL": "previews2D/189.html"
+  },
+  "d": [
+    {
+      "c": "ht.Node",
+      "i": 4323,
+      "p": {
+        "displayName": "table",
+        "image": "symbols/表格/list.json",
+        "position": {
+          "x": 23.09827,
+          "y": 633.43292
+        },
+        "width": 912,
+        "height": 633.56296
+      },
+      "a": {
+        "ht.columns": [
+          {
+            "key": "quota",
+            "displayName": "指标",
+            "align": "center"
+          },
+          {
+            "key": "triggerValue",
+            "displayName": "触发指标",
+            "align": "center",
+            "width": 100
+          },
+          {
+            "key": "startTime",
+            "displayName": "异常开始时间",
+            "align": "center"
+          },
+          {
+            "key": "endTime",
+            "displayName": "异常结束时间",
+            "align": "center"
+          },
+          {
+            "key": "upLimit",
+            "displayName": "上限",
+            "align": "center",
+            "width": 80
+          },
+          {
+            "key": "lowLimit",
+            "displayName": "下限",
+            "align": "center",
+            "width": 80
+          }
+        ],
+        "ht.columnLineWidth": 0,
+        "ht.headFont": "18px sans-serif, arial",
+        "ht.headHeight": 64,
+        "ht.bodyFont": "16px sans-serif, arial",
+        "ht.headTextColor": "rgb(247,247,247)",
+        "ht.headbackground": "rgba(49,210,235,0.2)",
+        "ht.bodyBackground": "rgba(0,32,87,0.00)",
+        "ht.dataSource": [
+          {
+            "quota": "BWG-01A相电流",
+            "triggerValue": "540",
+            "startTime": "2018-04-04 18:03",
+            "endTime": "2018-04-04 19:24",
+            "upLimit": 520,
+            "lowLimit": 180
+          },
+          {
+            "quota": "BWG-01B相电流",
+            "triggerValue": "113",
+            "startTime": "2018-04-04 19:03",
+            "endTime": "2018-04-04 19:04",
+            "upLimit": 530,
+            "lowLimit": 165
+          },
+          {
+            "quota": "BWG-01C相电流",
+            "triggerValue": "143",
+            "startTime": "2018-04-03 19:03",
+            "endTime": "2018-04-03 19:14",
+            "upLimit": 513,
+            "lowLimit": 175
+          },
+          {
+            "quota": "BWG-01A相电压",
+            "triggerValue": "110",
+            "startTime": "2018-04-02 18:03",
+            "endTime": "2018-04-02 18:32",
+            "upLimit": 530,
+            "lowLimit": 175
+          },
+          {
+            "quota": "BWG-01B相电压",
+            "triggerValue": "108",
+            "startTime": "2018-04-01 12:03",
+            "endTime": "2018-04-01 17:54",
+            "upLimit": 578,
+            "lowLimit": 132
+          },
+          {
+            "quota": "BWG-01C相电压",
+            "triggerValue": "112",
+            "startTime": "2018-04-01 11:03",
+            "endTime": "2018-04-01 19:50",
+            "upLimit": 575,
+            "lowLimit": 142
+          },
+          {
+            "quota": "BWG-01有功功率",
+            "triggerValue": "106",
+            "startTime": "2018-03-31 00:03",
+            "endTime": "2018-04-02 12:12",
+            "upLimit": 567,
+            "lowLimit": 221
+          },
+          {
+            "quota": "BWG-01功率因素",
+            "triggerValue": "0.65",
+            "startTime": "2018-03-28 18:03",
+            "endTime": "2018-04-02 15:54",
+            "upLimit": 1,
+            "lowLimit": 0.67
+          },
+          {
+            "quota": "BWG-01AB线电压",
+            "triggerValue": "113",
+            "startTime": "2018-03-27 18:03",
+            "endTime": "2018-03-31 15:32",
+            "upLimit": 585,
+            "lowLimit": 165
+          }
+        ],
+        "ht.rowLineWidth": 0,
+        "ht.rowHeight": 62,
+        "ht.translateX": 0,
+        "ht.bodyTextColor": "rgb(247,247,247)",
+        "ht.hoverBackground": "rgba(255,255,255,0.20)",
+        "ht.translateY": 0,
+        "ht.showScrollBar": true,
+        "ht.cellPadding": 0,
+        "ht.borderWidth": 0,
+        "ht.showHead": true
+      }
+    }
+  ],
+  "modified": "Thu Mar 14 2019 16:27:01 GMT+0800 (中国标准时间)",
+  "contentRect": {
+    "x": -432.90173,
+    "y": 316.65144,
+    "width": 912,
+    "height": 633.56296
+  }
+}

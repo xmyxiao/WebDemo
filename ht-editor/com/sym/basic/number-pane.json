@@ -1,0 +1,84 @@
+{
+  "modified": "Thu Mar 14 2019 09:27:56 GMT+0800 (中国标准时间)",
+  "dataBindings": [
+    {
+      "attr": "ht.value",
+      "valueType": "String",
+      "name": "NumPaneContent"
+    },
+    {
+      "attr": "ht.textAlign",
+      "valueType": "Align",
+      "name": "TBTextAlign"
+    },
+    {
+      "attr": "ht.gap",
+      "valueType": "PositiveNumber",
+      "name": "NumPaneGap"
+    },
+    {
+      "attr": "ht.color",
+      "valueType": "Color",
+      "name": "TBColor"
+    },
+    {
+      "attr": "ht.digit",
+      "valueType": "PositiveNumber",
+      "name": "NumPaneDigitCount"
+    }
+  ],
+  "width": 200,
+  "height": 24,
+  "boundExtend": 20,
+  "fitSize": true,
+  "attachStyle": "close",
+  "comps": [
+    {
+      "type": "components/textBox/numberPane.json",
+      "displayName": "numberPane",
+      "rect": [
+        0,
+        0,
+        200,
+        24
+      ],
+      "imgMap": {
+        "44": "symbols/number/p1.json",
+        "45": "symbols/number/-.json",
+        "46": "symbols/number/p.json",
+        "48": "symbols/number/0.json",
+        "49": "symbols/number/1.json",
+        "50": "symbols/number/2.json",
+        "51": "symbols/number/3.json",
+        "52": "symbols/number/4.json",
+        "53": "symbols/number/5.json",
+        "54": "symbols/number/6.json",
+        "55": "symbols/number/7.json",
+        "56": "symbols/number/8.json",
+        "57": "symbols/number/9.json",
+        "58": "symbols/number/colon.json",
+        "8451": "symbols/number/℃.json"
+      },
+      "value": {
+        "func": "attr@ht.value",
+        "value": "9277"
+      },
+      "textAlign": {
+        "func": "attr@ht.textAlign",
+        "value": "center"
+      },
+      "gap": {
+        "func": "attr@ht.gap",
+        "value": 2
+      },
+      "color": {
+        "func": "attr@ht.color",
+        "value": "#32D3EB"
+      },
+      "digitCount": {
+        "func": "attr@ht.digit",
+        "value": 0
+      }
+    }
+  ]
+}

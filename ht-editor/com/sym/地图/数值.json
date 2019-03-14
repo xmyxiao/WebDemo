@@ -1,0 +1,90 @@
+{
+  "modified": "Wed Mar 13 2019 18:36:21 GMT+0800 (中国标准时间)",
+  "dataBindings": [
+    {
+      "attr": "icon.style",
+      "valueType": "Boolean",
+      "defaultValue": true,
+      "name": "显示样式"
+    },
+    {
+      "attr": "icon.num",
+      "valueType": "Number",
+      "defaultValue": 0,
+      "name": "输入数值"
+    },
+    {
+      "attr": "icon.sign",
+      "valueType": "String",
+      "defaultValue": ",",
+      "name": "分隔符"
+    },
+    {
+      "attr": "icon.backColor",
+      "valueType": "Color",
+      "defaultValue": "rgb(33,33,33)",
+      "name": "背景颜色"
+    },
+    {
+      "attr": "icon.fontBack",
+      "valueType": "Color",
+      "defaultValue": "rgb(54,54,54)",
+      "name": "字体背景"
+    },
+    {
+      "attr": "icon.fontColor",
+      "valueType": "Color",
+      "defaultValue": "rgb(247,247,247)",
+      "name": "字体颜色"
+    },
+    {
+      "attr": "icon.signColor",
+      "valueType": "Color",
+      "defaultValue": "rgb(247,247,247)",
+      "name": "分隔符颜色"
+    }
+  ],
+  "width": 200,
+  "height": 30,
+  "attachStyle": "close",
+  "comps": [
+    {
+      "type": "components/monitor/数值.json",
+      "displayName": "数值",
+      "rect": [
+        0,
+        0,
+        200,
+        30
+      ],
+      "category": {
+        "func": "attr@icon.style",
+        "value": true
+      },
+      "num": {
+        "func": "attr@icon.num",
+        "value": 0
+      },
+      "sign": {
+        "func": "attr@icon.sign",
+        "value": ","
+      },
+      "backColor": {
+        "func": "attr@icon.backColor",
+        "value": "rgb(43,43,43)"
+      },
+      "fontBack": {
+        "func": "attr@icon.fontBack",
+        "value": "rgb(51,51,51)"
+      },
+      "fontColor": {
+        "func": "attr@icon.fontColor",
+        "value": "rgb(247,247,247)"
+      },
+      "signColor": {
+        "func": "attr@icon.signColor",
+        "value": "rgb(247,247,247)"
+      }
+    }
+  ]
+}

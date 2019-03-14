@@ -1,0 +1,123 @@
+{
+  "modified": "Wed Mar 13 2019 15:31:50 GMT+0800 (中国标准时间)",
+  "dataBindings": [
+    {
+      "attr": "data",
+      "valueType": "String",
+      "name": "日期"
+    },
+    {
+      "attr": "time",
+      "valueType": "String",
+      "name": "时间"
+    },
+    {
+      "attr": "week",
+      "valueType": "String",
+      "name": "星期"
+    }
+  ],
+  "renderHTML": "__ht__function(node, view) {\n    if (node.__update__) return;\n\n    var dayMap = {\n        1: '星期一',\n        2: '星期二',\n        3: '星期三',\n        4: '星期四',\n        5: '星期五',\n        6: '星期六',\n        7: '星期日'\n    };\n\n    var addZero = function(v) {\n        if (v < 10) return '0' + v;\n        return v;\n    };\n\n    var update = node.__update__ = function() {\n        var date = new Date();\n        this.a('time', addZero(date.getHours()) + ':' + addZero(date.getMinutes()));\n        this.a('week', dayMap[date.getDay()]);\n        this.a('date', date.getFullYear() + '-' + addZero(date.getMonth() + 1) + '-' + addZero(date.getDate()));\n        setTimeout(function () {\n            update();\n        }, 1000 * 3);\n    }.bind(node);\n\n    update();\n}",
+  "width": 185,
+  "height": 30,
+  "attachStyle": "close",
+  "comps": [
+    {
+      "type": "text",
+      "text": {
+        "func": "attr@date",
+        "value": "2018- 03- 24"
+      },
+      "color": "rgb(124,145,155)",
+      "anchorY": 0.41691,
+      "rect": [
+        109.01439,
+        15.45019,
+        40.98561,
+        12.72489
+      ]
+    },
+    {
+      "type": "text",
+      "text": {
+        "func": "attr@time",
+        "value": "15:06"
+      },
+      "color": "rgb(124,145,155)",
+      "font": "24px arial, sans-serif",
+      "anchorY": 0.41691,
+      "rect": [
+        31.06148,
+        2.52864,
+        82.21605,
+        23.21686
+      ]
+    },
+    {
+      "type": "text",
+      "text": {
+        "func": "attr@week",
+        "value": "星期一"
+      },
+      "color": "rgb(124,145,155)",
+      "anchorY": 0.41691,
+      "rect": [
+        109.01439,
+        2.52864,
+        40.98561,
+        12.72489
+      ]
+    },
+    {
+      "type": "roundRect",
+      "background": "rgba(41,155,217,0.51)",
+      "borderColor": "#979797",
+      "scaleX": -1,
+      "rect": [
+        101.42565,
+        3.74343,
+        1.08811,
+        23.21686
+      ]
+    },
+    {
+      "type": "roundRect",
+      "background": "rgba(41,155,217,0.51)",
+      "borderColor": "#979797",
+      "cornerRadius": 1,
+      "scaleX": -1,
+      "rect": [
+        14.20307,
+        7.84374,
+        2.13233,
+        8.58826
+      ]
+    },
+    {
+      "type": "roundRect",
+      "background": "rgba(41,155,217,0.51)",
+      "borderColor": "#979797",
+      "cornerRadius": 1,
+      "scaleY": -1,
+      "rotation": 1.5708,
+      "rect": [
+        16.32142,
+        12.15337,
+        2.16029,
+        6.39698
+      ]
+    },
+    {
+      "type": "oval",
+      "borderWidth": 1,
+      "borderColor": "rgba(41,155,217,0.51)",
+      "scaleX": -1,
+      "rect": [
+        4.2809,
+        3.96591,
+        21.97667,
+        22.26485
+      ]
+    }
+  ]
+}

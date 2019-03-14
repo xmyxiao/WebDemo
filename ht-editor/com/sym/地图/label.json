@@ -1,0 +1,68 @@
+{
+  "modified": "Wed Mar 13 2019 17:11:37 GMT+0800 (中国标准时间)",
+  "dataBindings": [
+    {
+      "attr": "titleColor",
+      "valueType": "Color",
+      "defaultValue": "rgb(51,153,255)",
+      "name": "标题颜色"
+    },
+    {
+      "attr": "titleValue",
+      "valueType": "String",
+      "defaultValue": "标题：",
+      "name": "标题内容"
+    },
+    {
+      "attr": "itemColor",
+      "valueType": "Color",
+      "defaultValue": "rgb(51,153,255)",
+      "name": "内容颜色"
+    },
+    {
+      "attr": "itemValue",
+      "valueType": "String",
+      "defaultValue": "内容",
+      "name": "内容数值"
+    }
+  ],
+  "width": 150,
+  "height": 25,
+  "comps": [
+    {
+      "type": "text",
+      "text": {
+        "func": "attr@titleValue",
+        "value": "标题："
+      },
+      "align": "right",
+      "color": {
+        "func": "attr@titleColor",
+        "value": "rgb(51,153,255)"
+      },
+      "rect": [
+        -0.18085,
+        0.03191,
+        75,
+        25
+      ]
+    },
+    {
+      "type": "text",
+      "text": {
+        "func": "attr@itemValue",
+        "value": "内容"
+      },
+      "color": {
+        "func": "attr@itemColor",
+        "value": "rgb(51,153,255)"
+      },
+      "rect": [
+        69.26596,
+        0,
+        75,
+        25
+      ]
+    }
+  ]
+}
