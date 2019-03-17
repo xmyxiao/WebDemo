@@ -1,0 +1,295 @@
+{
+  "modified": "Fri Mar 15 2019 10:11:24 GMT+0800 (中国标准时间)",
+  "dataBindings": [
+    {
+      "attr": "ht.columns",
+      "valueType": "Object",
+      "name": "TableColumnDef"
+    },
+    {
+      "attr": "ht.dataSource",
+      "valueType": "Object",
+      "name": "TableDataSource"
+    },
+    {
+      "attr": "ht.headbackground",
+      "valueType": "Color",
+      "name": "TableHeadBackground"
+    },
+    {
+      "attr": "ht.bodyBackground",
+      "valueType": "Color",
+      "name": "TableBodyBackground"
+    },
+    {
+      "attr": "ht.borderWidth",
+      "valueType": "PositiveNumber",
+      "name": "TableBorderWidth",
+      "defaultValue": 0
+    },
+    {
+      "attr": "ht.borderColor",
+      "valueType": "Color",
+      "name": "TableBorderColor"
+    },
+    {
+      "attr": "ht.columnLineColor",
+      "valueType": "Color",
+      "name": "TableColumnLineColor"
+    },
+    {
+      "attr": "ht.columnLineWidth",
+      "valueType": "PositiveNumber",
+      "name": "TableColumnLineWidth",
+      "defaultValue": 0
+    },
+    {
+      "attr": "ht.rowLineColor",
+      "valueType": "Color",
+      "name": "TableRowLineColor"
+    },
+    {
+      "attr": "ht.rowLineWidth",
+      "valueType": "PositiveNumber",
+      "name": "TableRowLineWidth",
+      "defaultValue": 0
+    },
+    {
+      "attr": "ht.headHeight",
+      "valueType": "PositiveNumber",
+      "name": "TableHeadHeight",
+      "defaultValue": 32
+    },
+    {
+      "attr": "ht.rowHeight",
+      "valueType": "PositiveNumber",
+      "name": "TableBodyHeight",
+      "defaultValue": 32
+    },
+    {
+      "attr": "ht.headTextColor",
+      "valueType": "Color",
+      "name": "TableHeadColor"
+    },
+    {
+      "attr": "ht.bodyTextColor",
+      "valueType": "Color",
+      "name": "TableBodyColor"
+    },
+    {
+      "attr": "ht.cellPadding",
+      "valueType": "PositiveNumber",
+      "name": "TableCellPadding",
+      "defaultValue": 0
+    },
+    {
+      "attr": "ht.headFont",
+      "valueType": "Font",
+      "name": "TableHeadFontFamily"
+    },
+    {
+      "attr": "ht.bodyFont",
+      "valueType": "Font",
+      "name": "TableBodyFontFamily"
+    },
+    {
+      "attr": "ht.showHead",
+      "valueType": "Boolean",
+      "name": "TableShowHead",
+      "defaultValue": true
+    },
+    {
+      "attr": "ht.translateX",
+      "valueType": "Number",
+      "name": "TableTranslateX",
+      "defaultValue": 0
+    },
+    {
+      "attr": "ht.translateY",
+      "valueType": "Number",
+      "name": "TableTranslateY",
+      "defaultValue": 0
+    },
+    {
+      "attr": "ht.hoverBackground",
+      "valueType": "Color",
+      "name": "TableHoverBackground"
+    },
+    {
+      "attr": "ht.scrollable",
+      "valueType": "Boolean",
+      "name": "UIScrollable",
+      "defaultValue": true
+    },
+    {
+      "attr": "ht.scrollBarColor",
+      "valueType": "Color",
+      "name": "TableScrollBarColor"
+    },
+    {
+      "attr": "ht.scrollBarWidth",
+      "valueType": "PositiveNumber",
+      "name": "TableScrollBarWidth",
+      "defaultValue": 5
+    },
+    {
+      "attr": "ht.drawRow",
+      "valueType": "Function",
+      "name": "TableDrawRow"
+    },
+    {
+      "attr": "ht.onSelectRow",
+      "valueType": "Function",
+      "defaultValue": "__ht__function(row, data, view){\n\n}",
+      "name": "TableOnSelectRow"
+    },
+    {
+      "attr": "ht.autoHideScrollBar",
+      "valueType": "Boolean",
+      "defaultValue": false,
+      "name": "TableAutoHideScrollBar"
+    },
+    {
+      "attr": "ht.onHoverCell",
+      "valueType": "Function",
+      "name": "TableOnHoverCell"
+    },
+    {
+      "attr": "ht.multiple",
+      "valueType": "Boolean",
+      "defaultValue": false,
+      "name": "UIMultiple"
+    }
+  ],
+  "snapshotURL": "symbols/ht/snapshot/table.json",
+  "width": 420,
+  "height": 300,
+  "fitSize": true,
+  "scrollable": true,
+  "interactive": true,
+  "clip": true,
+  "attachStyle": "close",
+  "comps": [
+    {
+      "type": "components/ht/table.json",
+      "displayName": "table",
+      "rect": [
+        0,
+        0,
+        420,
+        300
+      ],
+      "onDown": "__ht__function(event, data, view, point, width, height) {\nht.vector.tableInteractor.onDown.apply(this, arguments);\n}",
+      "onMove": "__ht__function(event, data, view, point, width, height) {\nht.vector.tableInteractor.onMove.apply(this, arguments);\n}",
+      "onLeave": "__ht__function(event, data, view, point, width, height) {\nht.vector.tableInteractor.onLeave.apply(this, arguments);\n}",
+      "onBeginDrag": "__ht__function(event, data, view, point, width, height) {\nht.vector.tableInteractor.onBeginDrag.apply(this, arguments);\n}",
+      "onDrag": "__ht__function(event, data, view, point, width, height) {\nht.vector.tableInteractor.onDrag.apply(this, arguments);\n}",
+      "onEndDrag": "__ht__function(event, data, view, point, width, height) {\nht.vector.tableInteractor.onEndDrag.apply(this, arguments);\n}",
+      "onScroll": "__ht__function(event, data, view, point, width, height) {\nht.vector.tableInteractor.onScroll.apply(this, arguments);\n}",
+      "columns": {
+        "func": "attr@ht.columns",
+        "value": []
+      },
+      "dataSource": {
+        "func": "attr@ht.dataSource",
+        "value": []
+      },
+      "thBackground": {
+        "func": "attr@ht.headbackground",
+        "value": "rgb(0,0,0)"
+      },
+      "tdBackground": {
+        "func": "attr@ht.bodyBackground",
+        "value": "rgb(0,32,87)"
+      },
+      "borderWidth": {
+        "func": "attr@ht.borderWidth",
+        "value": 0
+      },
+      "borderColor": {
+        "func": "attr@ht.borderColor",
+        "value": "rgb(212,212,212)"
+      },
+      "columnLineColor": {
+        "func": "attr@ht.columnLineColor",
+        "value": "rgb(212,212,212)"
+      },
+      "columnLineWidth": {
+        "func": "attr@ht.columnLineWidth",
+        "value": 1
+      },
+      "rowLineColor": {
+        "func": "attr@ht.rowLineColor",
+        "value": "rgb(212,212,212)"
+      },
+      "rowLineWidth": {
+        "func": "attr@ht.rowLineWidth",
+        "value": 1
+      },
+      "thHeight": {
+        "func": "attr@ht.headHeight",
+        "value": 35
+      },
+      "tdHeight": {
+        "func": "attr@ht.rowHeight",
+        "value": 36
+      },
+      "thColor": {
+        "func": "attr@ht.headTextColor",
+        "value": "#60ACFC"
+      },
+      "tdColor": {
+        "func": "attr@ht.bodyTextColor",
+        "value": "#32D3EB"
+      },
+      "cellPadding": {
+        "func": "attr@ht.cellPadding",
+        "value": 0
+      },
+      "thFont": {
+        "func": "attr@ht.headFont",
+        "value": "12px sans-serif, arial"
+      },
+      "tdFont": {
+        "func": "attr@ht.bodyFont",
+        "value": "12px sans-serif, arial"
+      },
+      "showHead": {
+        "func": "attr@ht.showHead",
+        "value": true
+      },
+      "translateX": {
+        "func": "attr@ht.translateX",
+        "value": 0
+      },
+      "translateY": {
+        "func": "attr@ht.translateY",
+        "value": 0
+      },
+      "hoverBackground": {
+        "func": "attr@ht.hoverBackground",
+        "value": "rgba(51,153,255,0.15)"
+      },
+      "hoverColor": null,
+      "selectBackground": "rgba(51,153,255,0.35)",
+      "selectColor": null,
+      "scrollable": {
+        "func": "attr@ht.scrollable",
+        "value": true
+      },
+      "autoHideScrollBar": {
+        "func": "attr@ht.autoHideScrollBar",
+        "value": false
+      },
+      "scrollBarColor": {
+        "func": "attr@ht.scrollBarColor",
+        "value": "rgba(255,255,255,0.67)"
+      },
+      "scrollBarWidth": {
+        "func": "attr@ht.scrollBarWidth",
+        "value": 5
+      },
+      "scrollBarWidthAbsolute": true
+    }
+  ]
+}

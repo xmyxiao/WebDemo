@@ -1,0 +1,241 @@
+{
+  "modified": "Thu Jan 17 2019 10:51:52 GMT+0800 (中国标准时间)",
+  "dataBindings": [
+    {
+      "attr": "ht.name",
+      "valueType": "String",
+      "name": "UIFormItemName"
+    },
+    {
+      "attr": "ht.value",
+      "valueType": "Number",
+      "defaultValue": 0,
+      "name": "UIFormItemValue"
+    },
+    {
+      "attr": "ht.min",
+      "valueType": "Number",
+      "defaultValue": -10,
+      "name": "ChartMinValue"
+    },
+    {
+      "attr": "ht.max",
+      "valueType": "Number",
+      "defaultValue": 10,
+      "name": "ChartMaxValue"
+    },
+    {
+      "attr": "ht.disabled",
+      "valueType": "Boolean",
+      "defaultValue": false,
+      "name": "UIDisabled"
+    },
+    {
+      "attr": "ht.barBakcground",
+      "valueType": "Color",
+      "name": "UIBackground"
+    },
+    {
+      "attr": "ht.barValueBackground",
+      "valueType": "Color",
+      "name": "SliderValueBackground"
+    },
+    {
+      "attr": "ht.barGradient",
+      "valueType": "Gradient",
+      "name": "editor.gradient"
+    },
+    {
+      "attr": "ht.barGradientColor",
+      "valueType": "Color",
+      "name": "editor.gradientcolor"
+    },
+    {
+      "attr": "ht.barWidth",
+      "valueType": "PositiveNumber",
+      "name": "SliderBarWidth"
+    },
+    {
+      "attr": "ht.barBorderRadius",
+      "valueType": "PositiveNumber",
+      "name": "SliderBarBorderRadius"
+    },
+    {
+      "attr": "ht.sliderImage",
+      "valueType": "Image",
+      "name": "SliderImage"
+    },
+    {
+      "attr": "ht.sliderBorderWidth",
+      "valueType": "PositiveNumber",
+      "name": "SliderBorderWidth"
+    },
+    {
+      "attr": "ht.sliderBorderRadios",
+      "valueType": "PositiveNumber",
+      "name": "SliderBorderRadius"
+    },
+    {
+      "attr": "ht.sliderBorderColor",
+      "valueType": "Color",
+      "name": "SliderBorderColor"
+    },
+    {
+      "attr": "ht.sliderBackground",
+      "valueType": "Color",
+      "name": "SliderBackground"
+    },
+    {
+      "attr": "ht.sliderWidth",
+      "valueType": "PositiveNumber",
+      "name": "SliderWidth"
+    },
+    {
+      "attr": "ht.sliderHeight",
+      "valueType": "PositiveNumber",
+      "name": "SliderHeight"
+    },
+    {
+      "attr": "ht.sliderOffsetX",
+      "valueType": "Int",
+      "defaultValue": 0,
+      "name": "SliderOffsetX"
+    },
+    {
+      "attr": "ht.sliderOffsetY",
+      "valueType": "Int",
+      "defaultValue": 0,
+      "name": "SliderOffsetY"
+    },
+    {
+      "attr": "ht.step",
+      "valueType": "PositiveNumber",
+      "defaultValue": 1,
+      "name": "SliderStep"
+    },
+    {
+      "attr": "ht.showToolTip",
+      "valueType": "Boolean",
+      "defaultValue": true,
+      "name": "UIShowToolTip"
+    },
+    {
+      "attr": "ht.toolTipFormat",
+      "valueType": "Function",
+      "name": "UIToolTipFormat"
+    }
+  ],
+  "width": 200,
+  "height": 30,
+  "fitSize": true,
+  "interactive": true,
+  "disableSelectedBorder": true,
+  "attachStyle": "close",
+  "comps": [
+    {
+      "type": "components/ht/ui/slider.json",
+      "displayName": "slider",
+      "rect": [
+        0,
+        0,
+        200,
+        30
+      ],
+      "onDown": "__ht__function(event, data, view, point, width, height) {\nht.vector.sliderInteractor.onDown.apply(this, arguments);\n}",
+      "onUp": "__ht__function(event, data, view, point, width, height) {\nht.vector.sliderInteractor.onUp.apply(this, arguments);\n}",
+      "onMove": "__ht__function(event, data, view, point, width, height) {\nht.vector.sliderInteractor.onMove.apply(this, arguments);\n}",
+      "onEnter": "__ht__function(event, data, view, point, width, height) {\nht.vector.sliderInteractor.onEnter.apply(this, arguments);\n}",
+      "onLeave": "__ht__function(event, data, view, point, width, height) {\nht.vector.sliderInteractor.onLeave.apply(this, arguments);\n}",
+      "onBeginDrag": "__ht__function(event, data, view, point, width, height) {\nht.vector.sliderInteractor.onBeginDrag.apply(this, arguments);\n}",
+      "onDrag": "__ht__function(event, data, view, point, width, height) {\nht.vector.sliderInteractor.onDrag.apply(this, arguments);\n}",
+      "onEndDrag": "__ht__function(event, data, view, point, width, height) {\nht.vector.sliderInteractor.onEndDrag.apply(this, arguments);\n}",
+      "min": {
+        "func": "attr@ht.min",
+        "value": -10
+      },
+      "max": {
+        "func": "attr@ht.max",
+        "value": 10
+      },
+      "value": {
+        "func": "attr@ht.value",
+        "value": 0
+      },
+      "disabled": {
+        "func": "attr@ht.disabled",
+        "value": false
+      },
+      "barBackground": {
+        "func": "attr@ht.barBakcground",
+        "value": "rgb(237,237,237)"
+      },
+      "barValueBackground": {
+        "func": "attr@ht.barValueBackground",
+        "value": "#32D3EB"
+      },
+      "barGradient": {
+        "func": "attr@ht.barGradient",
+        "value": null
+      },
+      "barGradientColor": {
+        "func": "attr@ht.barGradientColor",
+        "value": "rgb(247,247,247)"
+      },
+      "barWidth": {
+        "func": "attr@ht.barWidth",
+        "value": 3
+      },
+      "barBorderRadius": {
+        "func": "attr@ht.barBorderRadius",
+        "value": 0.5
+      },
+      "sliderImage": {
+        "func": "attr@ht.sliderImage"
+      },
+      "sliderBorderWidth": {
+        "func": "attr@ht.sliderBorderWidth",
+        "value": 2
+      },
+      "sliderBorderRadius": {
+        "func": "attr@ht.sliderBorderRadios",
+        "value": 0.5
+      },
+      "sliderBorderColor": {
+        "func": "attr@ht.sliderBorderColor",
+        "value": "rgb(51,153,255)"
+      },
+      "sliderBackground": {
+        "func": "attr@ht.sliderBackground",
+        "value": "rgb(247,247,247)"
+      },
+      "sliderWidth": {
+        "func": "attr@ht.sliderWidth",
+        "value": 10
+      },
+      "sliderHeight": {
+        "func": "attr@ht.sliderHeight",
+        "value": 10
+      },
+      "sliderOffsetX": {
+        "func": "attr@ht.sliderOffsetX",
+        "value": 0
+      },
+      "sliderOffsetY": {
+        "func": "attr@ht.sliderOffsetY",
+        "value": 0
+      },
+      "padding": 6,
+      "showToolTip": {
+        "func": "attr@ht.showToolTip",
+        "value": true
+      },
+      "toolTipFormat": {
+        "func": "attr@ht.toolTipFormat"
+      },
+      "step": {
+        "func": "attr@ht.step",
+        "value": 0
+      }
+    }
+  ]
+}

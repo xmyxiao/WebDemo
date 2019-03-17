@@ -1,0 +1,34 @@
+{
+  "width": 64,
+  "height": 64,
+  "comps": [
+    {
+      "type": "circle",
+      "borderWidth": 2,
+      "borderColor": "rgb(124,145,155)",
+      "borderCap": "round",
+      "anchorX": 0.37866,
+      "anchorY": 0.60472,
+      "rect": [
+        19.41966,
+        19.78982,
+        24.42036,
+        24.42036
+      ]
+    },
+    {
+      "type": "circle",
+      "background": "rgba(0,0,0,0.10)",
+      "borderColor": "rgb(124,145,155)",
+      "borderCap": "round",
+      "anchorX": 0.37866,
+      "anchorY": 0.60472,
+      "rect": [
+        25.16563,
+        25.53578,
+        12.92843,
+        12.92843
+      ]
+    }
+  ]
+}

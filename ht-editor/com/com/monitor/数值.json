@@ -1,0 +1,44 @@
+{
+  "modified": "Wed Mar 13 2019 18:32:29 GMT+0800 (中国标准时间)",
+  "width": 200,
+  "height": 30,
+  "snapshotURL": "",
+  "func": "__ht__function(g, rect, comp, data, view) {\nvar x = rect.x;\r\nvar y = rect.y;\r\nvar width = rect.width; \r\nvar height = rect.height;\r\nvar category = comp.getValue('category');\r\nvar num = comp.getValue('num');\r\nvar sign = comp.getValue('sign');\r\nvar backColor = comp.getValue('backColor');\r\nvar fontBack = comp.getValue('fontBack');\r\nvar fontColor = comp.getValue('fontColor');\r\nvar signColor = comp.getValue('signColor');\r\nvar min = width > height ? height : width;\r\n\r\n// 绘制背景\r\ng.save();\r\ng.beginPath();\r\n\r\ng.fillStyle = backColor;\r\ng.fillRect(x, y, width, height);\r\n\r\n// 进行数值判断，是否超出最大计量数\r\nif (num > 999999999999) {\r\n    g.fillStyle = 'red';\r\n    g.textAlign = 'center';\r\n    g.textBaseline = 'middle';\r\n    g.fillText('数值超出最大计量数', width / 2 + x, height / 2 + y);\r\n    g.restore();\r\n    return ;\r\n}\r\n\r\n// 取输入数值各位数\r\nvar list = [];\r\nfor(var i = 11; i > -1; i --) {\r\n    list[i] = num % 10;\r\n    num =parseInt(num / 10);   \r\n}\r\n\r\n// 回执数字区域块\r\ng.textAlign = 'center';\r\ng.textBaseline = 'middle';\r\nstr = min  * 20 / 30 + 'px Arial' ;\r\ng.font = str;\r\nvar rectX = x;\r\nvar rectY = y;\r\nfor( var i = 0; i < 12; i ++){\r\n    if (category) {     // 带符号位的绘制\r\n        if (i != 0 && i % 3 == 0) {\r\n            g.fillStyle = fontBack;\r\n            g.fillRect(rectX, rectY, width * 2 / 86, height);\r\n            g.fillStyle = signColor;\r\n            g.fillText(sign, rectX + width * 1 / 86, rectY + height / 2);\r\n            rectX += width * 3 / 86;\r\n            g.fillStyle = fontBack;\r\n            g.fillRect(rectX, rectY, width * 5 / 86, height);\r\n            g.fillStyle = fontColor;\r\n            g.fillText(list[i], rectX + width * 5 / 152, rectY + height / 2);\r\n            rectX += width * 6 / 86;\r\n        } else {\r\n            g.fillStyle = fontBack;\r\n            g.fillRect(rectX, rectY, width * 5 / 76, height);\r\n            g.fillStyle = fontColor;\r\n            g.fillText(list[i], rectX + width * 5 / 152, rectY + height / 2);\r\n            rectX += width * 6 / 76;\r\n        }    \r\n    } else {     // 不带符号位的绘制 \r\n        g.fillStyle = fontBack;\r\n        g.fillRect(rectX, rectY, width * 5 / 70, height);\r\n        g.fillStyle = fontColor;\r\n        g.fillText(list[i], rectX + width * 5 / 140, rectY + height / 2);\r\n        rectX += width * 6 / 70;\r\n    }      \r\n}\r\ng.restore();\n}",
+  "properties": {
+    "category": {
+      "valueType": "Boolean",
+      "defaultValue": true,
+      "name": "显示样式"
+    },
+    "num": {
+      "valueType": "Number",
+      "defaultValue": 0,
+      "name": "输入数值"
+    },
+    "sign": {
+      "valueType": "String",
+      "defaultValue": ",",
+      "name": "千位符号"
+    },
+    "backColor": {
+      "valueType": "Color",
+      "defaultValue": "rgb(43,43,43)",
+      "name": "背景颜色"
+    },
+    "fontBack": {
+      "valueType": "Color",
+      "defaultValue": "rgb(51,51,51)",
+      "name": "字体背景"
+    },
+    "fontColor": {
+      "valueType": "Color",
+      "defaultValue": "rgb(247,247,247)",
+      "name": "字体颜色"
+    },
+    "signColor": {
+      "valueType": "Color",
+      "defaultValue": "rgb(247,247,247)",
+      "name": "分隔符颜色"
+    }
+  }
+}

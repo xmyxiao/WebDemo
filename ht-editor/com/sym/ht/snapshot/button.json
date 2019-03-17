@@ -1,0 +1,49 @@
+{
+  "width": 64,
+  "height": 64,
+  "comps": [
+    {
+      "type": "roundRect",
+      "background": "rgba(0,0,0,0.1)",
+      "borderColor": "rgb(124,145,155)",
+      "borderCap": "round",
+      "cornerRadius": 6,
+      "anchorX": 0.37866,
+      "anchorY": 0.60472,
+      "rect": [
+        12.38907,
+        34.26232,
+        51.32159,
+        12
+      ]
+    },
+    {
+      "type": "roundRect",
+      "borderWidth": 2,
+      "borderColor": "rgb(124,145,155)",
+      "borderCap": "round",
+      "cornerRadius": 13,
+      "anchorX": 0.37866,
+      "anchorY": 0.60472,
+      "rect": [
+        1.5,
+        17.61998,
+        61,
+        26
+      ]
+    },
+    {
+      "type": "text",
+      "text": "BUTTON",
+      "align": "center",
+      "color": "rgb(124,145,155)",
+      "anchorX": 0.62587,
+      "rect": [
+        2.93734,
+        16.91238,
+        56.78865,
+        27.41521
+      ]
+    }
+  ]
+}

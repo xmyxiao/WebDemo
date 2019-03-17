@@ -1,0 +1,25 @@
+{
+  "modified": "Wed Nov 07 2018 15:23:31 GMT+0800 (中国标准时间)",
+  "width": 100,
+  "height": 30,
+  "snapshotURL": "",
+  "func": "__ht__function(g, rect, comp, data, view) {\nvar x = rect.x;\r\nvar y = rect.y;\r\nvar width = rect.width; \r\nvar height = rect.height;\r\nvar category = comp.getValue('category');\r\nvar num = comp.getValue('num');\r\nvar sign = comp.getValue('sign');\r\nvar min = width > height ? height : width;\r\n\r\n// 绘制背景\r\ng.save();\r\ng.beginPath();\r\ng.moveTo(x + width / 10, y);\r\ng.lineTo(x + width * 9 / 10, y);\r\ng.quadraticCurveTo(x + width, y, x + width, y + width / 10);\r\ng.lineTo(x + width, y + height - width /10);\r\ng.quadraticCurveTo(x + width, y + height, x + width * 9 / 10, y + height);\r\ng.lineTo(x + width / 10, y + height);\r\ng.quadraticCurveTo(x, y + height, x, y + height - width / 10);\r\ng.lineTo(x, y + width / 10);\r\ng.quadraticCurveTo(x, y, x + width / 10, y);\r\ng.clip();\r\ng.fillStyle = '#333333';\r\ng.fillRect(x, y, width, height);\r\n\r\n// 进行数值判断，是否超出最大计量数\r\nif (num > 999999) {\r\n    g.fillStyle = 'red';\r\n    g.textAlign = 'center';\r\n    g.textBaseline = 'middle';\r\n    g.fillText('数值超出最大计量数', width / 2 + x, height / 2 + y);\r\n    g.restore();\r\n    return ;\r\n}\r\n\r\n// 取输入数值各位数\r\nvar list = [];\r\nfor(var i = 5; i > -1; i --) {\r\n    list[i] = num % 10;\r\n    num =parseInt(num / 10);   \r\n}\r\n\r\n// 回执数字区域块\r\ng.textAlign = 'center';\r\ng.textBaseline = 'middle';\r\nstr = min  * 20 / 30 + 'px Arial' ;\r\ng.font = str;\r\nvar rectX = x;\r\nvar rectY = y;\r\nfor( var i = 0; i < 6; i ++){   \r\n    if (category) {     // 带符号位的绘制\r\n        if (i == 3) {\r\n            g.fillStyle = '#383838';\r\n            g.fillRect(rectX, rectY, width * 2 / 38, height);\r\n            g.fillStyle = 'white';\r\n            g.fillText(sign, rectX + width * 1 / 38, rectY + height / 2);\r\n            rectX += width * 3 / 38;\r\n            g.fillStyle = '#383838';\r\n            g.fillRect(rectX, rectY, width * 5 / 38, height);\r\n            g.fillStyle = 'white';\r\n            g.fillText(list[i], rectX + width * 5 / 76, rectY + height / 2);\r\n            rectX += width * 6 / 38;\r\n        } else {\r\n            g.fillStyle = '#383838';\r\n            g.fillRect(rectX, rectY, width * 5 / 38, height);\r\n            g.fillStyle = 'white';\r\n            g.fillText(list[i], rectX + width * 5 / 76, rectY + height / 2);\r\n            rectX += width * 6 / 38;\r\n        }    \r\n    } else {     // 不带符号位的绘制 \r\n        g.fillStyle = '#383838';\r\n        g.fillRect(rectX, rectY, width * 5 / 35, height);\r\n        g.fillStyle = 'white';\r\n        g.fillText(list[i], rectX + width * 5 / 70, rectY + height / 2);\r\n        rectX += width * 6 / 35;\r\n    }      \r\n}\r\ng.restore();\n}",
+  "properties": {
+    "category": {
+      "valueType": "Boolean",
+      "defaultValue": true,
+      "name": "显示样式",
+      "description": "共两种显示样式（true：带千位符号、false：不带千位符号）"
+    },
+    "num": {
+      "valueType": "Number",
+      "defaultValue": 0,
+      "name": "输入数值"
+    },
+    "sign": {
+      "valueType": "String",
+      "defaultValue": ",",
+      "name": "千位符号"
+    }
+  }
+}

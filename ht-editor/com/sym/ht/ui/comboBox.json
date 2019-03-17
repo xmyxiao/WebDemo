@@ -1,0 +1,185 @@
+{
+  "modified": "Wed Jan 16 2019 17:30:30 GMT+0800 (中国标准时间)",
+  "dataBindings": [
+    {
+      "attr": "ht.name",
+      "valueType": "String",
+      "name": "UIFormItemName"
+    },
+    {
+      "attr": "ht.value",
+      "valueType": "String",
+      "name": "UIFormItemValue"
+    },
+    {
+      "attr": "ht.placeholder",
+      "valueType": "String",
+      "name": "UIPlaceHolder"
+    },
+    {
+      "attr": "ht.textColor",
+      "valueType": "Color",
+      "name": "UITextColor"
+    },
+    {
+      "attr": "ht.disabled",
+      "valueType": "Boolean",
+      "name": "UIDisabled"
+    },
+    {
+      "attr": "ht.dataSource",
+      "valueType": "Object",
+      "name": "UIDataSource"
+    },
+    {
+      "attr": "ht.borderWidth",
+      "valueType": "PositiveNumber",
+      "name": "UIBorderWidth"
+    },
+    {
+      "attr": "ht.borderColor",
+      "valueType": "Color",
+      "name": "UIBorderColor"
+    },
+    {
+      "attr": "ht.focusBorderColor",
+      "valueType": "Color",
+      "name": "UIFocusBorderColor"
+    },
+    {
+      "attr": "ht.borderRadius",
+      "valueType": "String",
+      "name": "UIBorderRadius"
+    },
+    {
+      "attr": "ht.padding",
+      "valueType": "String",
+      "name": "UIPadding"
+    },
+    {
+      "attr": "ht.background",
+      "valueType": "Color",
+      "name": "UIBackground"
+    },
+    {
+      "attr": "ht.focusBackground",
+      "valueType": "Color",
+      "name": "UIFocusBackground"
+    },
+    {
+      "attr": "ht.font",
+      "valueType": "Font",
+      "name": "UIFont",
+      "defaultValue": "12px Arial"
+    },
+    {
+      "attr": "ht.icon",
+      "valueType": "String",
+      "name": "UIIcon"
+    },
+    {
+      "attr": "ht.iconWidth",
+      "valueType": "PositiveNumber",
+      "defaultValue": 32,
+      "name": "UIIconWidth"
+    },
+    {
+      "attr": "ht.iconHeight",
+      "valueType": "PositiveNumber",
+      "defaultValue": 20,
+      "name": "UIIconHeight"
+    },
+    {
+      "attr": "ht.onChange",
+      "valueType": "Function",
+      "defaultValue": "__ht__function(oldVal, newVal, data, view) {\n}",
+      "name": "UIOnChange"
+    }
+  ],
+  "snapshotURL": "symbols/ht/snapshot/comboBox.json",
+  "width": 160,
+  "height": 32,
+  "boundExtend": 2,
+  "fitSize": true,
+  "interactive": true,
+  "disableSelectedBorder": true,
+  "pixelPerfect": false,
+  "attachStyle": "close",
+  "comps": [
+    {
+      "type": "components/ht/ui/comboBox.json",
+      "displayName": "comboBox",
+      "rect": [
+        0,
+        0,
+        160,
+        32
+      ],
+      "onDown": "__ht__function(event, data, view, point, width, height) {\nht.vector.comboBoxInteractor.onDown.apply(this, arguments);\n}",
+      "onUp": "__ht__function(event, data, view, point, width, height) {\nht.vector.comboBoxInteractor.onUp.apply(this, arguments);\n}",
+      "onEnter": "__ht__function(event, data, view, point, width, height) {\nht.vector.comboBoxInteractor.onEnter.apply(this, arguments);\n}",
+      "onLeave": "__ht__function(event, data, view, point, width, height) {\nht.vector.comboBoxInteractor.onLeave.apply(this, arguments);\n}",
+      "onDrag": "__ht__function(event, data, view, point, width, height) {\nht.vector.comboBoxInteractor.onDrag.apply(this, arguments);\n}",
+      "value": {
+        "func": "attr@ht.value"
+      },
+      "placeholder": {
+        "func": "attr@ht.placeholder"
+      },
+      "dataSource": {
+        "func": "attr@ht.dataSource"
+      },
+      "disabled": {
+        "func": "attr@ht.disabled"
+      },
+      "borderWidth": {
+        "func": "attr@ht.borderWidth",
+        "value": 1
+      },
+      "borderColor": {
+        "func": "attr@ht.borderColor",
+        "value": "#737373"
+      },
+      "focusBorderColor": {
+        "func": "attr@ht.focusBorderColor",
+        "value": "rgb(51,153,255)"
+      },
+      "borderRadius": {
+        "func": "attr@ht.borderRadius",
+        "value": "0"
+      },
+      "padding": {
+        "func": "attr@ht.padding",
+        "value": "0"
+      },
+      "background": {
+        "func": "attr@ht.background"
+      },
+      "focusBackground": {
+        "func": "attr@ht.focusBackground"
+      },
+      "icon": {
+        "func": "attr@ht.icon"
+      },
+      "iconWidth": {
+        "func": "attr@ht.iconWidth",
+        "value": 20
+      },
+      "iconHeight": {
+        "func": "attr@ht.iconHeight",
+        "value": "20"
+      },
+      "font": {
+        "func": "attr@ht.font",
+        "value": "12px arial, sans-serif"
+      },
+      "textColor": {
+        "func": "attr@ht.textColor",
+        "value": "rgb(61,61,61)"
+      },
+      "onChange": {
+        "func": "attr@ht.onChange"
+      }
+    }
+  ]
+}

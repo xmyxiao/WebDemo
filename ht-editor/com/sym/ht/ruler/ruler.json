@@ -1,0 +1,219 @@
+{
+  "modified": "Wed Nov 28 2018 09:46:08 GMT+0800 (中国标准时间)",
+  "dataBindings": [
+    {
+      "attr": "ht.min",
+      "valueType": "Number",
+      "name": "ChartMinValue"
+    },
+    {
+      "attr": "ht.max",
+      "valueType": "Number",
+      "name": "ChartMaxValue"
+    },
+    {
+      "attr": "ht.paddingBefore",
+      "valueType": "PositiveNumber",
+      "name": "RulerPaddingBefore"
+    },
+    {
+      "attr": "ht.paddingAfter",
+      "valueType": "PositiveNumber",
+      "name": "RulerPaddingAfter"
+    },
+    {
+      "attr": "ht.direction",
+      "valueType": "Orientation",
+      "name": "RulerDirection"
+    },
+    {
+      "attr": "ht.reverse",
+      "valueType": "Boolean",
+      "name": "RulerReverse"
+    },
+    {
+      "attr": "ht.labelEvery",
+      "valueType": "PositiveNumber",
+      "name": "RulerLabelEvery"
+    },
+    {
+      "attr": "ht.labelColor",
+      "valueType": "Color",
+      "name": "RulerLabelColor"
+    },
+    {
+      "attr": "ht.labelAlign",
+      "valueType": "Align",
+      "name": "RulerLabelAlign"
+    },
+    {
+      "attr": "ht.labelDistance",
+      "valueType": "PositiveNumber",
+      "name": "RulerLabelDistance"
+    },
+    {
+      "attr": "ht.labelOffsetX",
+      "valueType": "Number",
+      "name": "RulerLabelOffsetX"
+    },
+    {
+      "attr": "ht.labelOffsetY",
+      "valueType": "Number",
+      "name": "RulerLabelOffsetY"
+    },
+    {
+      "attr": "ht.background",
+      "valueType": "Color",
+      "name": "UIBackground"
+    },
+    {
+      "attr": "ht.smallTickEvery",
+      "valueType": "PositiveNumber",
+      "name": "RulerSmallTickEvery"
+    },
+    {
+      "attr": "ht.smallTickColor",
+      "valueType": "Color",
+      "name": "RulerSmallTickColor"
+    },
+    {
+      "attr": "ht.smallTIckLongness",
+      "valueType": "PositiveNumber",
+      "name": "RulerSmallTickLongness"
+    },
+    {
+      "attr": "ht.mediumTickEvery",
+      "valueType": "PositiveNumber",
+      "name": "RulerMediumTickEvery"
+    },
+    {
+      "attr": "ht.mediumTickColor",
+      "valueType": "Color",
+      "name": "RulerMediumTickColor"
+    },
+    {
+      "attr": "ht.mediumTickLongness",
+      "valueType": "PositiveNumber",
+      "name": "RulerMediumTickLongness"
+    },
+    {
+      "attr": "ht.largeTickEvery",
+      "valueType": "PositiveNumber",
+      "name": "RulerLargeTickEvery"
+    },
+    {
+      "attr": "ht.largeTickColor",
+      "valueType": "Color",
+      "name": "RulerLargeTickColor"
+    },
+    {
+      "attr": "ht.largeTickLongness",
+      "valueType": "PositiveNumber",
+      "name": "RulerLargeTickLongness"
+    }
+  ],
+  "width": 400,
+  "height": 40,
+  "fitSize": true,
+  "attachStyle": "close",
+  "comps": [
+    {
+      "type": "components/ht/ruler/ruler.json",
+      "displayName": "ruler",
+      "rect": [
+        0,
+        0,
+        400,
+        40
+      ],
+      "min": {
+        "func": "attr@ht.min",
+        "value": 0
+      },
+      "max": {
+        "func": "attr@ht.max",
+        "value": 100
+      },
+      "paddingBefore": {
+        "func": "attr@ht.paddingBefore",
+        "value": 12
+      },
+      "paddingAfter": {
+        "func": "attr@ht.paddingAfter",
+        "value": 12
+      },
+      "direction": {
+        "func": "attr@ht.direction",
+        "value": "top"
+      },
+      "reverse": {
+        "func": "attr@ht.reverse",
+        "value": false
+      },
+      "labelEvery": {
+        "func": "attr@ht.labelEvery",
+        "value": 10
+      },
+      "labelColor": {
+        "func": "attr@ht.labelColor",
+        "value": "rgb(61,61,61)"
+      },
+      "labelAlign": {
+        "func": "attr@ht.labelAlign",
+        "value": "center"
+      },
+      "labelDistance": {
+        "func": "attr@ht.labelDistance",
+        "value": 0.5
+      },
+      "labelOffsetX": {
+        "func": "attr@ht.labelOffsetX",
+        "value": 0
+      },
+      "labelOffsetY": {
+        "func": "attr@ht.labelOffsetY",
+        "value": 0
+      },
+      "background": {
+        "func": "attr@ht.background",
+        "value": null
+      },
+      "smallTickEvery": {
+        "func": "attr@ht.smallTickEvery",
+        "value": 1
+      },
+      "smallTickColor": {
+        "func": "attr@ht.smallTickColor",
+        "value": "rgb(61,61,61)"
+      },
+      "smallTickLongness": {
+        "func": "attr@ht.smallTIckLongness",
+        "value": 0.2
+      },
+      "mediumTickEvery": {
+        "func": "attr@ht.mediumTickEvery",
+        "value": 5
+      },
+      "mediumTickColor": {
+        "func": "attr@ht.mediumTickColor",
+        "value": "rgb(61,61,61)"
+      },
+      "mediumTickLongness": {
+        "func": "attr@ht.mediumTickLongness",
+        "value": 0.35
+      },
+      "largeTickEvery": {
+        "func": "attr@ht.largeTickEvery",
+        "value": 10
+      },
+      "largeTickColor": {
+        "func": "attr@ht.largeTickColor",
+        "value": "rgb(61,61,61)"
+      },
+      "largeTickLongness": {
+        "func": "attr@ht.largeTickLongness",
+        "value": 0.5
+      }
+    }
+  ]
+}

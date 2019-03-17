@@ -1,0 +1,127 @@
+{
+  "modified": "Fri Jan 25 2019 14:42:18 GMT+0800 (中国标准时间)",
+  "dataBindings": [
+    {
+      "attr": "ht.name",
+      "valueType": "String",
+      "name": "UIFormItemName"
+    },
+    {
+      "attr": "ht.value",
+      "valueType": "Color",
+      "name": "UIFormItemValue"
+    },
+    {
+      "attr": "ht.font",
+      "valueType": "Font",
+      "name": "UIFont"
+    },
+    {
+      "attr": "ht.borderWidth",
+      "valueType": "PositiveNumber",
+      "name": "UIBorderWidth"
+    },
+    {
+      "attr": "ht.borderColor",
+      "valueType": "Color",
+      "name": "UIBorderColor"
+    },
+    {
+      "attr": "ht.focusBorderColor",
+      "valueType": "Color",
+      "name": "UIFocusBorderColor"
+    },
+    {
+      "attr": "ht.borderRadius",
+      "valueType": "String",
+      "name": "UIBorderRadius"
+    },
+    {
+      "attr": "ht.disabled",
+      "valueType": "Boolean",
+      "name": "UIDisabled"
+    },
+    {
+      "attr": "ht.showDropDownIcon",
+      "valueType": "Boolean",
+      "name": "UIShowDropDownIcon"
+    },
+    {
+      "attr": "ht.fullMode",
+      "valueType": "Boolean",
+      "name": "UIFullMode"
+    },
+    {
+      "attr": "ht.onChange",
+      "valueType": "Function",
+      "defaultValue": "__ht__function(oldColor, newColor){\n}",
+      "name": "UIOnChange"
+    }
+  ],
+  "snapshotURL": "symbols/ht/snapshot/colorPicker.json",
+  "width": 180,
+  "height": 32,
+  "boundExtend": 2,
+  "fitSize": true,
+  "scrollable": true,
+  "interactive": true,
+  "disableSelectedBorder": true,
+  "pixelPerfect": false,
+  "attachStyle": "close",
+  "comps": [
+    {
+      "type": "components/ht/ui/colorPicker.json",
+      "displayName": "colorPicker",
+      "rect": [
+        0,
+        0,
+        180,
+        32
+      ],
+      "onDown": "__ht__function(event, data, view, point, width, height) {\nht.vector.colorPickerInteractor.onDown.apply(this, arguments);\n}",
+      "onUp": "__ht__function(event, data, view, point, width, height) {\nht.vector.colorPickerInteractor.onUp.apply(this, arguments);\n}",
+      "onEnter": "__ht__function(event, data, view, point, width, height) {\nht.vector.colorPickerInteractor.onEnter.apply(this, arguments);\n}",
+      "onLeave": "__ht__function(event, data, view, point, width, height) {\nht.vector.colorPickerInteractor.onLeave.apply(this, arguments);\n}",
+      "value": {
+        "func": "attr@ht.value",
+        "value": null
+      },
+      "borderWidth": {
+        "func": "attr@ht.borderWidth",
+        "value": 1
+      },
+      "borderColor": {
+        "func": "attr@ht.borderColor",
+        "value": "#737373"
+      },
+      "focusBorderColor": {
+        "func": "attr@ht.focusBorderColor",
+        "value": "rgb(51,153,255)"
+      },
+      "borderRadius": {
+        "func": "attr@ht.borderRadius",
+        "value": "0"
+      },
+      "disabled": {
+        "func": "attr@ht.disabled",
+        "value": false
+      },
+      "textColor": "#737373",
+      "font": {
+        "func": "attr@ht.font",
+        "value": "12px arial, sans-serif"
+      },
+      "fullMode": {
+        "func": "attr@ht.fullMode",
+        "value": false
+      },
+      "showDropDownIcon": {
+        "func": "attr@ht.showDropDownIcon",
+        "value": true
+      },
+      "onChange": {
+        "func": "attr@ht.onChange"
+      }
+    }
+  ]
+}
