@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="chrome=IE8">
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>Canvas Clip Demo</title>
+<link href="default.css" rel="stylesheet" />
+    <script>
+        var ctx = null; // global variable 2d context
+        var imageTexture = null;
+        window.onload = function() {
+            var canvas = document.getElementById("text_canvas");
+            console.log(canvas.parentNode.clientWidth);
+            canvas.width = canvas.parentNode.clientWidth;
+            canvas.height = canvas.parentNode.clientHeight;
+             
+            if (!canvas.getContext) {
+                console.log("Canvas not supported. Please install a HTML5 compatible browser.");
+                return;
+            }
+            var context = canvas.getContext('2d');
+             
+            // section one - shadow and blur
+            context.fillStyle="black";
+            context.fillRect(0, 0, canvas.width, canvas.height/4);
+            context.font = '60pt Calibri';
+             
+            context.shadowColor = "white";
+            context.shadowOffsetX = 0;
+            context.shadowOffsetY = 0;
+            context.shadowBlur = 20;
+            context.fillText("Blur Canvas", 40, 80);
+            context.strokeStyle = "RGBA(0, 255, 0, 1)";
+            context.lineWidth = 2;
+            context.strokeText("Blur Canvas", 40, 80);
+             
+            // section two - shadow font
+            var hh = canvas.height/4;
+            context.fillStyle="white";
+            context.fillRect(0, hh, canvas.width, canvas.height/4);
+            context.font = '60pt Calibri';
+             
+            context.shadowColor = "RGBA(127,127,127,1)";
+            context.shadowOffsetX = 3;
+            context.shadowOffsetY = 3;
+            context.shadowBlur = 0;
+            context.fillStyle = "RGBA(0, 0, 0, 0.8)";
+            context.fillText("Blur Canvas", 40, 80+hh);
+             
+            // section three - down shadow effect
+            var hh = canvas.height/4 + hh;
+            context.fillStyle="black";
+            context.fillRect(0, hh, canvas.width, canvas.height/4);
+            for(var i = 0; i < 10; i++)
+            {
+                context.shadowColor = "RGBA(255, 255, 255," + ((10-i)/10) + ")";
+                context.shadowOffsetX = i*2;
+                context.shadowOffsetY = i*2;
+                context.shadowBlur = i*2;
+                context.fillStyle = "RGBA(127, 127, 127, 1)";
+                context.fillText("Blur Canvas", 40, 80+hh);
+            }
+             
+            // section four -  fade effect
+            var hh = canvas.height/4 + hh;
+            context.fillStyle="green";
+            context.fillRect(0, hh, canvas.width, canvas.height/4);
+            for(var i = 0; i < 10; i++)
+            {
+                context.shadowColor = "RGBA(255, 255, 255," + ((10-i)/10) + ")";
+                context.shadowOffsetX = 0;
+                context.shadowOffsetY = -i*2;
+                context.shadowBlur = i*2;
+                context.fillStyle = "RGBA(127, 127, 127, 1)";
+                context.fillText("Blur Canvas", 40, 80+hh);
+            }
+            for(var i = 0; i < 10; i++)
+            {
+                context.shadowColor = "RGBA(255, 255, 255," + ((10-i)/10) + ")";
+                context.shadowOffsetX = 0;
+                context.shadowOffsetY = i*2;
+                context.shadowBlur = i*2;
+                context.fillStyle = "RGBA(127, 127, 127, 1)";
+                context.fillText("Blur Canvas", 40, 80+hh);
+            }
+            for(var i = 0; i < 10; i++)
+            {
+                context.shadowColor = "RGBA(255, 255, 255," + ((10-i)/10) + ")";
+                context.shadowOffsetX = i*2;
+                context.shadowOffsetY = 0;
+                context.shadowBlur = i*2;
+                context.fillStyle = "RGBA(127, 127, 127, 1)";
+                context.fillText("Blur Canvas", 40, 80+hh);
+            }
+            for(var i = 0; i < 10; i++)
+            {
+                context.shadowColor = "RGBA(255, 255, 255," + ((10-i)/10) + ")";
+                context.shadowOffsetX = -i*2;
+                context.shadowOffsetY = 0;
+                context.shadowBlur = i*2;
+                context.fillStyle = "RGBA(127, 127, 127, 1)";
+                context.fillText("Blur Canvas", 40, 80+hh);
+            }
+        }
+         
+    </script>
+</head>
+<body>
+    <h1>HTML5 Canvas</h1>
+    <pre>Fill And Stroke Clip</pre>
+    <div id="my_painter">
+        <canvas id="text_canvas"></canvas>
+    </div>
+</body>
+</html>

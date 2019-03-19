@@ -1,0 +1,5 @@
+打包命令   非全局安装webpack   需要指定webpack路径
+node_modules\.bin\webpack
+
+全局安装则是
+webpack
