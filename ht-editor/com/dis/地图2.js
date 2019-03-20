@@ -16,7 +16,7 @@
   "d": [
     {
       "c": "ht.Node",
-      "i": 3490,
+      "i": 5898,
       "p": {
         "displayName": "yk",
         "image": "assets/背景图/yk.jpg",
@@ -38,7 +38,7 @@
     },
     {
       "c": "ht.Node",
-      "i": 3491,
+      "i": 5899,
       "p": {
         "displayName": "symbol",
         "image": "symbols/02244/symbol.json",
@@ -50,7 +50,7 @@
     },
     {
       "c": "ht.Block",
-      "i": 3492,
+      "i": 5900,
       "p": {
         "displayName": "标题",
         "position": {
@@ -66,11 +66,11 @@
     },
     {
       "c": "ht.Shape",
-      "i": 3493,
+      "i": 5901,
       "p": {
         "displayName": "中",
         "parent": {
-          "__i": 3492
+          "__i": 5900
         },
         "position": {
           "x": 957.79482,
@@ -137,11 +137,11 @@
     },
     {
       "c": "ht.Shape",
-      "i": 3494,
+      "i": 5902,
       "p": {
         "displayName": "中",
         "parent": {
-          "__i": 3492
+          "__i": 5900
         },
         "position": {
           "x": 960.37284,
@@ -199,11 +199,11 @@
     },
     {
       "c": "ht.Shape",
-      "i": 3495,
+      "i": 5903,
       "p": {
         "displayName": "中",
         "parent": {
-          "__i": 3492
+          "__i": 5900
         },
         "position": {
           "x": 959.98113,
@@ -261,11 +261,11 @@
     },
     {
       "c": "ht.Shape",
-      "i": 3496,
+      "i": 5904,
       "p": {
         "displayName": "中",
         "parent": {
-          "__i": 3492
+          "__i": 5900
         },
         "position": {
           "x": 968.21421,
@@ -323,10 +323,10 @@
     },
     {
       "c": "ht.Shape",
-      "i": 3497,
+      "i": 5905,
       "p": {
         "parent": {
-          "__i": 3492
+          "__i": 5900
         },
         "position": {
           "x": 1493.5903,
@@ -372,10 +372,10 @@
     },
     {
       "c": "ht.Shape",
-      "i": 3498,
+      "i": 5906,
       "p": {
         "parent": {
-          "__i": 3492
+          "__i": 5900
         },
         "position": {
           "x": 460.61999,
@@ -425,10 +425,10 @@
     },
     {
       "c": "ht.Shape",
-      "i": 3499,
+      "i": 5907,
       "p": {
         "parent": {
-          "__i": 3492
+          "__i": 5900
         },
         "position": {
           "x": 1303.18781,
@@ -472,10 +472,10 @@
     },
     {
       "c": "ht.Shape",
-      "i": 3500,
+      "i": 5908,
       "p": {
         "parent": {
-          "__i": 3492
+          "__i": 5900
         },
         "position": {
           "x": 641.32219,
@@ -523,10 +523,10 @@
     },
     {
       "c": "ht.Text",
-      "i": 3501,
+      "i": 5909,
       "p": {
         "parent": {
-          "__i": 3492
+          "__i": 5900
         },
         "position": {
           "x": 971.06323,
@@ -552,7 +552,7 @@
     },
     {
       "c": "ht.Block",
-      "i": 3502,
+      "i": 5910,
       "p": {
         "displayName": "地图",
         "position": {
@@ -565,11 +565,11 @@
     },
     {
       "c": "ht.Node",
-      "i": 3503,
+      "i": 5911,
       "p": {
         "displayName": "装饰科技圆环",
         "parent": {
-          "__i": 3502
+          "__i": 5910
         },
         "image": "symbols/3d场景用/装饰科技圆环.json",
         "position": {
@@ -585,11 +585,11 @@
     },
     {
       "c": "ht.Block",
-      "i": 3504,
+      "i": 5912,
       "p": {
         "displayName": "年度累计：",
         "parent": {
-          "__i": 3502
+          "__i": 5910
         },
         "position": {
           "x": 669.54047,
@@ -601,11 +601,11 @@
     },
     {
       "c": "ht.Text",
-      "i": 3505,
+      "i": 5913,
       "p": {
         "displayName": "年度累计：",
         "parent": {
-          "__i": 3504
+          "__i": 5912
         },
         "position": {
           "x": 669.54047,
@@ -621,7 +621,7 @@
     },
     {
       "c": "ht.Block",
-      "i": 3506,
+      "i": 5914,
       "p": {
         "displayName": "平台创作统计",
         "position": {
@@ -634,11 +634,11 @@
     },
     {
       "c": "ht.Node",
-      "i": 3507,
+      "i": 5915,
       "p": {
         "displayName": "EAP框",
         "parent": {
-          "__i": 3506
+          "__i": 5914
         },
         "image": "symbols/02244/EAP框.json",
         "position": {
@@ -651,10 +651,10 @@
     },
     {
       "c": "ht.Text",
-      "i": 3508,
+      "i": 5916,
       "p": {
         "parent": {
-          "__i": 3506
+          "__i": 5914
         },
         "position": {
           "x": 245.88104,
@@ -671,7 +671,7 @@
     },
     {
       "c": "ht.Block",
-      "i": 3509,
+      "i": 5917,
       "p": {
         "displayName": "行业统计",
         "position": {
@@ -684,11 +684,11 @@
     },
     {
       "c": "ht.Node",
-      "i": 3510,
+      "i": 5918,
       "p": {
         "displayName": "EAP框",
         "parent": {
-          "__i": 3509
+          "__i": 5917
         },
         "image": "symbols/02244/EAP框.json",
         "position": {
@@ -701,10 +701,10 @@
     },
     {
       "c": "ht.Text",
-      "i": 3511,
+      "i": 5919,
       "p": {
         "parent": {
-          "__i": 3509
+          "__i": 5917
         },
         "position": {
           "x": 245.88104,
@@ -721,7 +721,7 @@
     },
     {
       "c": "ht.Block",
-      "i": 3512,
+      "i": 5920,
       "p": {
         "displayName": "热门产品",
         "position": {
@@ -734,11 +734,11 @@
     },
     {
       "c": "ht.Node",
-      "i": 3513,
+      "i": 5921,
       "p": {
         "displayName": "EAP框",
         "parent": {
-          "__i": 3512
+          "__i": 5920
         },
         "image": "symbols/02244/EAP框.json",
         "position": {
@@ -751,10 +751,10 @@
     },
     {
       "c": "ht.Text",
-      "i": 3514,
+      "i": 5922,
       "p": {
         "parent": {
-          "__i": 3512
+          "__i": 5920
         },
         "position": {
           "x": 245.88104,
@@ -771,7 +771,7 @@
     },
     {
       "c": "ht.Block",
-      "i": 3515,
+      "i": 5923,
       "p": {
         "displayName": "微服务统计",
         "position": {
@@ -784,11 +784,11 @@
     },
     {
       "c": "ht.Node",
-      "i": 3516,
+      "i": 5924,
       "p": {
         "displayName": "EAP框",
         "parent": {
-          "__i": 3515
+          "__i": 5923
         },
         "image": "symbols/02244/EAP框.json",
         "position": {
@@ -801,10 +801,10 @@
     },
     {
       "c": "ht.Text",
-      "i": 3517,
+      "i": 5925,
       "p": {
         "parent": {
-          "__i": 3515
+          "__i": 5923
         },
         "position": {
           "x": 1675,
@@ -821,7 +821,7 @@
     },
     {
       "c": "ht.Block",
-      "i": 3518,
+      "i": 5926,
       "p": {
         "displayName": "用户类型统计",
         "position": {
@@ -834,11 +834,11 @@
     },
     {
       "c": "ht.Node",
-      "i": 3519,
+      "i": 5927,
       "p": {
         "displayName": "EAP框",
         "parent": {
-          "__i": 3518
+          "__i": 5926
         },
         "image": "symbols/02244/EAP框.json",
         "position": {
@@ -851,10 +851,10 @@
     },
     {
       "c": "ht.Text",
-      "i": 3520,
+      "i": 5928,
       "p": {
         "parent": {
-          "__i": 3518
+          "__i": 5926
         },
         "position": {
           "x": 1675,
@@ -871,7 +871,7 @@
     },
     {
       "c": "ht.Block",
-      "i": 3521,
+      "i": 5929,
       "p": {
         "displayName": "实时用户日志",
         "position": {
@@ -884,11 +884,11 @@
     },
     {
       "c": "ht.Node",
-      "i": 3522,
+      "i": 5930,
       "p": {
         "displayName": "EAP框",
         "parent": {
-          "__i": 3521
+          "__i": 5929
         },
         "image": "symbols/02244/EAP框.json",
         "position": {
@@ -901,10 +901,10 @@
     },
     {
       "c": "ht.Text",
-      "i": 3523,
+      "i": 5931,
       "p": {
         "parent": {
-          "__i": 3521
+          "__i": 5929
         },
         "position": {
           "x": 1675,
@@ -921,7 +921,7 @@
     },
     {
       "c": "ht.Node",
-      "i": 3524,
+      "i": 5932,
       "p": {
         "displayName": "日期",
         "image": "symbols/21448/日期.json",
@@ -933,14 +933,14 @@
         "height": 39.08412
       },
       "a": {
-        "time": "17:05",
-        "week": "星期一",
-        "date": "2019-03-18"
+        "time": "14:36",
+        "week": "星期三",
+        "date": "2019-03-20"
       }
     },
     {
       "c": "ht.Node",
-      "i": 3525,
+      "i": 5933,
       "p": {
         "displayName": "地图",
         "dataBindings": {
@@ -960,7 +960,7 @@
         "height": 814
       },
       "a": {
-        "dataSetName": "地图数据2",
+        "dataSetName": "开发者平台驾驶舱",
         "dataSet": "AnalogEntity_YxgJmGWK",
         "dataItem": [
           {
@@ -1008,12 +1008,12 @@
             "description": "折线图数据"
           }
         ],
-        "icon.clickfunc": "__ht__function(event,data,viwe,point,width,height,item){\r\n    ht.Default.setImage('dialogAlarm', 'public/其它/告警绑定.json');\r\n    var alarmNode = new ht.Node();\r\n    alarmNode.setImage('dialogAlarm');\r\n    var mapNode = dataModel.getDataById(data._id)\r\n\talarmNode.setSize(100, 100);\r\n    var nodeX = mapNode.getRect().x + item.rect[0]/(1130/mapNode.getRect().width) + width/2;\r\n    var nodeY = mapNode.getRect().y - 50 + item.rect[1]/(970/mapNode.getRect().height) + height/2;\r\n    alarmNode.setPosition(nodeX,nodeY);    \r\n    alarmNode.setTag('dialogNode');\r\n\tdataModel.add(alarmNode);\r\n    debugger;\r\n}"
+        "icon.clickfunc": "__ht__function(event,data,viwe,point,width,height,item){\r\n    var alarmNode = new ht.Node();\r\n    alarmNode.setImage('symbols/21448/报警.json');\r\n    alarmNode.a(\"icon.content\",'北京电视台\\nIP:192.168.7.136');\r\n    var mapNode = dataModel.getDataById(data._id)\r\n    alarmNode.setSize(228, 127);\r\n    var nodeX = mapNode.getRect().x + item.rect[0]/(1130/mapNode.getRect().width) + width/2;\r\n    var nodeY = mapNode.getRect().y - 127/2 + item.rect[1]/(970/mapNode.getRect().height) + height/2;\r\n    alarmNode.setPosition(nodeX,nodeY);    \r\n    alarmNode.setTag('dialogNode');\r\n    dataModel.add(alarmNode);\r\n}"
       }
     },
     {
       "c": "ht.Node",
-      "i": 3526,
+      "i": 5934,
       "p": {
         "displayName": "number-pane",
         "dataBindings": {
@@ -1088,7 +1088,7 @@
     },
     {
       "c": "ht.Node",
-      "i": 3527,
+      "i": 5935,
       "p": {
         "displayName": "基础柱形图",
         "dataBindings": {
@@ -1164,7 +1164,7 @@
     },
     {
       "c": "ht.Node",
-      "i": 3528,
+      "i": 5936,
       "p": {
         "displayName": "环形饼图",
         "dataBindings": {
@@ -1230,56 +1230,60 @@
           },
           {
             "name": "FC2",
-            "description": "年度累计"
+            "description": "在线活跃用户"
           },
           {
             "name": "FC3",
-            "description": "柱图X轴数据"
+            "description": "平台创作统计x"
           },
           {
             "name": "FC4",
-            "description": "柱图数据"
+            "description": "平台创作统计y"
           },
           {
             "name": "FC5",
-            "description": "环图数据"
+            "description": "行业统计"
           },
           {
             "name": "FC6",
-            "description": "柱图Y轴数据"
+            "description": "热门产品x"
           },
           {
             "name": "FC11",
-            "description": "Y轴柱图数据"
+            "description": "热门产品y"
           },
           {
             "name": "FC7",
-            "description": "列表数据"
+            "description": "实时用户日志"
           },
           {
             "name": "FC8",
-            "description": "折柱图X轴"
+            "description": "微服务统计x"
           },
           {
             "name": "FC9",
-            "description": "柱图数据"
+            "description": "微服数量y"
           },
           {
             "name": "FC10",
-            "description": "折线图数据"
+            "description": "微服调用次数y"
+          },
+          {
+            "name": "F12",
+            "description": "用户类型统计"
           }
         ]
       }
     },
     {
       "c": "ht.Node",
-      "i": 3529,
+      "i": 5937,
       "p": {
         "displayName": "环形饼图",
         "dataBindings": {
           "a": {
             "itemData": {
-              "fieldName": "FC5",
+              "fieldName": "FC12",
               "id": "15"
             }
           }
@@ -1339,50 +1343,54 @@
           },
           {
             "name": "FC2",
-            "description": "年度累计"
+            "description": "在线活跃用户"
           },
           {
             "name": "FC3",
-            "description": "柱图X轴数据"
+            "description": "平台创作统计x"
           },
           {
             "name": "FC4",
-            "description": "柱图数据"
+            "description": "平台创作统计y"
           },
           {
             "name": "FC5",
-            "description": "环图数据"
+            "description": "行业统计"
           },
           {
             "name": "FC6",
-            "description": "柱图Y轴数据"
+            "description": "热门产品x"
           },
           {
             "name": "FC11",
-            "description": "Y轴柱图数据"
+            "description": "热门产品y"
           },
           {
             "name": "FC7",
-            "description": "列表数据"
+            "description": "实时用户日志"
           },
           {
             "name": "FC8",
-            "description": "折柱图X轴"
+            "description": "微服务统计x"
           },
           {
             "name": "FC9",
-            "description": "柱图数据"
+            "description": "微服数量y"
           },
           {
             "name": "FC10",
-            "description": "折线图数据"
+            "description": "微服调用次数y"
+          },
+          {
+            "name": "FC12",
+            "description": "用户类型统计"
           }
         ]
       }
     },
     {
       "c": "ht.Node",
-      "i": 3530,
+      "i": 5938,
       "p": {
         "displayName": "table",
         "dataBindings": {
@@ -1512,7 +1520,7 @@
     },
     {
       "c": "ht.Node",
-      "i": 3531,
+      "i": 5939,
       "p": {
         "displayName": "Y轴柱状图",
         "dataBindings": {
@@ -1588,7 +1596,7 @@
     },
     {
       "c": "ht.Node",
-      "i": 3532,
+      "i": 5940,
       "p": {
         "displayName": "折柱图",
         "dataBindings": {
@@ -1645,7 +1653,7 @@
         "barName": "销量",
         "barMin": 0,
         "barMax": 2500,
-        "barInterval": 500,
+        "barInterval": 5,
         "dataSetName": "地图数据2",
         "dataSet": "AnalogEntity_YxgJmGWK",
         "dataItem": [
@@ -1696,16 +1704,27 @@
         ],
         "barAxisName": "销量",
         "lineAxisName": "个数",
-        "barFormatter": "个",
-        "lineFormatter": "个",
         "lineName": "线图",
         "lineMin": 0,
-        "lineMax": 999,
-        "lineInterval": 200
+        "lineMax": 998,
+        "lineInterval": 5,
+        "lineFormatter": " "
+      }
+    },
+    {
+      "c": "ht.Node",
+      "i": 5941,
+      "p": {
+        "displayName": "显示框",
+        "image": "symbols/21448/显示框.json",
+        "position": {
+          "x": 657.06323,
+          "y": 938.49198
+        }
       }
     }
   ],
-  "modified": "Mon Mar 18 2019 17:05:40 GMT+0800 (中国标准时间)",
+  "modified": "Wed Mar 20 2019 14:36:25 GMT+0800 (中国标准时间)",
   "contentRect": {
     "x": -17.7048,
     "y": 0,

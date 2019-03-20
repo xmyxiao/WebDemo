@@ -301,6 +301,8 @@ function createDataAnalogDialog(item){
     dialog.setConfig({
         title: config.title,
         draggable: true,
+        closable:true,
+        maximizable:true,
         width:500,
         height:450,
         contentPadding: 4,

@@ -17,7 +17,7 @@
   "d": [
     {
       "c": "ht.Node",
-      "i": 5828,
+      "i": 3490,
       "p": {
         "displayName": "yk",
         "image": "assets/背景图/yk.jpg",
@@ -39,7 +39,7 @@
     },
     {
       "c": "ht.Node",
-      "i": 5829,
+      "i": 3491,
       "p": {
         "displayName": "symbol",
         "image": "symbols/02244/symbol.json",
@@ -53,7 +53,7 @@
     },
     {
       "c": "ht.Block",
-      "i": 5830,
+      "i": 3492,
       "p": {
         "displayName": "标题",
         "position": {
@@ -69,11 +69,11 @@
     },
     {
       "c": "ht.Shape",
-      "i": 5831,
+      "i": 3493,
       "p": {
         "displayName": "中",
         "parent": {
-          "__i": 5830
+          "__i": 3492
         },
         "position": {
           "x": 957.81369,
@@ -140,11 +140,11 @@
     },
     {
       "c": "ht.Shape",
-      "i": 5832,
+      "i": 3494,
       "p": {
         "displayName": "中",
         "parent": {
-          "__i": 5830
+          "__i": 3492
         },
         "position": {
           "x": 960.39171,
@@ -202,11 +202,11 @@
     },
     {
       "c": "ht.Shape",
-      "i": 5833,
+      "i": 3495,
       "p": {
         "displayName": "中",
         "parent": {
-          "__i": 5830
+          "__i": 3492
         },
         "position": {
           "x": 960,
@@ -264,11 +264,11 @@
     },
     {
       "c": "ht.Shape",
-      "i": 5834,
+      "i": 3496,
       "p": {
         "displayName": "中",
         "parent": {
-          "__i": 5830
+          "__i": 3492
         },
         "position": {
           "x": 968.23308,
@@ -326,10 +326,10 @@
     },
     {
       "c": "ht.Shape",
-      "i": 5835,
+      "i": 3497,
       "p": {
         "parent": {
-          "__i": 5830
+          "__i": 3492
         },
         "position": {
           "x": 1493.60917,
@@ -375,10 +375,10 @@
     },
     {
       "c": "ht.Shape",
-      "i": 5836,
+      "i": 3498,
       "p": {
         "parent": {
-          "__i": 5830
+          "__i": 3492
         },
         "position": {
           "x": 460.63886,
@@ -428,10 +428,10 @@
     },
     {
       "c": "ht.Shape",
-      "i": 5837,
+      "i": 3499,
       "p": {
         "parent": {
-          "__i": 5830
+          "__i": 3492
         },
         "position": {
           "x": 1303.20668,
@@ -475,10 +475,10 @@
     },
     {
       "c": "ht.Shape",
-      "i": 5838,
+      "i": 3500,
       "p": {
         "parent": {
-          "__i": 5830
+          "__i": 3492
         },
         "position": {
           "x": 641.34106,
@@ -526,10 +526,10 @@
     },
     {
       "c": "ht.Text",
-      "i": 5839,
+      "i": 3501,
       "p": {
         "parent": {
-          "__i": 5830
+          "__i": 3492
         },
         "position": {
           "x": 971.0821,
@@ -555,7 +555,7 @@
     },
     {
       "c": "ht.Block",
-      "i": 5840,
+      "i": 3502,
       "p": {
         "displayName": "地图",
         "position": {
@@ -568,11 +568,11 @@
     },
     {
       "c": "ht.Node",
-      "i": 5841,
+      "i": 3503,
       "p": {
         "displayName": "装饰科技圆环",
         "parent": {
-          "__i": 5840
+          "__i": 3502
         },
         "image": "symbols/3d场景用/装饰科技圆环.json",
         "position": {
@@ -588,11 +588,11 @@
     },
     {
       "c": "ht.Block",
-      "i": 5842,
+      "i": 3504,
       "p": {
         "displayName": "年度累计：",
         "parent": {
-          "__i": 5840
+          "__i": 3502
         },
         "position": {
           "x": 612.57253,
@@ -604,11 +604,11 @@
     },
     {
       "c": "ht.Text",
-      "i": 5843,
+      "i": 3505,
       "p": {
         "displayName": "年度累计：",
         "parent": {
-          "__i": 5842
+          "__i": 3504
         },
         "position": {
           "x": 329.17978,
@@ -624,11 +624,11 @@
     },
     {
       "c": "ht.Node",
-      "i": 5844,
+      "i": 3506,
       "p": {
         "displayName": "number-pane",
         "parent": {
-          "__i": 5842
+          "__i": 3504
         },
         "dataBindings": {
           "a": {
@@ -687,7 +687,7 @@
     },
     {
       "c": "ht.Block",
-      "i": 5845,
+      "i": 3507,
       "p": {
         "displayName": "实时告警趋势",
         "position": {
@@ -700,10 +700,10 @@
     },
     {
       "c": "ht.Block",
-      "i": 5846,
+      "i": 3508,
       "p": {
         "parent": {
-          "__i": 5845
+          "__i": 3507
         },
         "position": {
           "x": 1624.42391,
@@ -715,10 +715,10 @@
     },
     {
       "c": "ht.Node",
-      "i": 5847,
+      "i": 3509,
       "p": {
         "parent": {
-          "__i": 5846
+          "__i": 3508
         },
         "position": {
           "x": 1347.94599,
@@ -743,10 +743,10 @@
     },
     {
       "c": "ht.Node",
-      "i": 5848,
+      "i": 3510,
       "p": {
         "parent": {
-          "__i": 5846
+          "__i": 3508
         },
         "position": {
           "x": 1900.90182,
@@ -771,10 +771,10 @@
     },
     {
       "c": "ht.Node",
-      "i": 5849,
+      "i": 3511,
       "p": {
         "parent": {
-          "__i": 5846
+          "__i": 3508
         },
         "rotation": 1.5708,
         "position": {
@@ -800,10 +800,10 @@
     },
     {
       "c": "ht.Node",
-      "i": 5850,
+      "i": 3512,
       "p": {
         "parent": {
-          "__i": 5846
+          "__i": 3508
         },
         "rotation": 1.5708,
         "position": {
@@ -829,10 +829,10 @@
     },
     {
       "c": "ht.Shape",
-      "i": 5851,
+      "i": 3513,
       "p": {
         "parent": {
-          "__i": 5846
+          "__i": 3508
         },
         "position": {
           "x": 1624.42389,
@@ -947,10 +947,10 @@
     },
     {
       "c": "ht.Shape",
-      "i": 5852,
+      "i": 3514,
       "p": {
         "parent": {
-          "__i": 5845
+          "__i": 3507
         },
         "position": {
           "x": 1625.39338,
@@ -994,10 +994,10 @@
     },
     {
       "c": "ht.Shape",
-      "i": 5853,
+      "i": 3515,
       "p": {
         "parent": {
-          "__i": 5845
+          "__i": 3507
         },
         "position": {
           "x": 1625.93036,
@@ -1074,10 +1074,10 @@
     },
     {
       "c": "ht.Shape",
-      "i": 5854,
+      "i": 3516,
       "p": {
         "parent": {
-          "__i": 5845
+          "__i": 3507
         },
         "position": {
           "x": 1624.3194,
@@ -1212,10 +1212,10 @@
     },
     {
       "c": "ht.Text",
-      "i": 5855,
+      "i": 3517,
       "p": {
         "parent": {
-          "__i": 5845
+          "__i": 3507
         },
         "position": {
           "x": 1625.93036,
@@ -1233,10 +1233,10 @@
     },
     {
       "c": "ht.Shape",
-      "i": 5856,
+      "i": 3518,
       "p": {
         "parent": {
-          "__i": 5845
+          "__i": 3507
         },
         "position": {
           "x": 1625.90191,
@@ -1271,10 +1271,10 @@
     },
     {
       "c": "ht.Text",
-      "i": 5857,
+      "i": 3519,
       "p": {
         "parent": {
-          "__i": 5845
+          "__i": 3507
         },
         "position": {
           "x": 1438.34629,
@@ -1291,10 +1291,10 @@
     },
     {
       "c": "ht.Text",
-      "i": 5858,
+      "i": 3520,
       "p": {
         "parent": {
-          "__i": 5845
+          "__i": 3507
         },
         "position": {
           "x": 1438.34629,
@@ -1311,7 +1311,7 @@
     },
     {
       "c": "ht.Block",
-      "i": 5859,
+      "i": 3521,
       "p": {
         "displayName": "告警时间轴",
         "position": {
@@ -1324,10 +1324,10 @@
     },
     {
       "c": "ht.Block",
-      "i": 5860,
+      "i": 3522,
       "p": {
         "parent": {
-          "__i": 5859
+          "__i": 3521
         },
         "position": {
           "x": 1624.90237,
@@ -1339,10 +1339,10 @@
     },
     {
       "c": "ht.Node",
-      "i": 5861,
+      "i": 3523,
       "p": {
         "parent": {
-          "__i": 5860
+          "__i": 3522
         },
         "position": {
           "x": 1348.42446,
@@ -1367,10 +1367,10 @@
     },
     {
       "c": "ht.Node",
-      "i": 5862,
+      "i": 3524,
       "p": {
         "parent": {
-          "__i": 5860
+          "__i": 3522
         },
         "position": {
           "x": 1901.38029,
@@ -1395,10 +1395,10 @@
     },
     {
       "c": "ht.Node",
-      "i": 5863,
+      "i": 3525,
       "p": {
         "parent": {
-          "__i": 5860
+          "__i": 3522
         },
         "rotation": 1.5708,
         "position": {
@@ -1424,10 +1424,10 @@
     },
     {
       "c": "ht.Node",
-      "i": 5864,
+      "i": 3526,
       "p": {
         "parent": {
-          "__i": 5860
+          "__i": 3522
         },
         "rotation": 1.5708,
         "position": {
@@ -1453,10 +1453,10 @@
     },
     {
       "c": "ht.Shape",
-      "i": 5865,
+      "i": 3527,
       "p": {
         "parent": {
-          "__i": 5860
+          "__i": 3522
         },
         "position": {
           "x": 1624.90236,
@@ -1571,10 +1571,10 @@
     },
     {
       "c": "ht.Shape",
-      "i": 5866,
+      "i": 3528,
       "p": {
         "parent": {
-          "__i": 5859
+          "__i": 3521
         },
         "position": {
           "x": 1625.87184,
@@ -1618,10 +1618,10 @@
     },
     {
       "c": "ht.Shape",
-      "i": 5867,
+      "i": 3529,
       "p": {
         "parent": {
-          "__i": 5859
+          "__i": 3521
         },
         "position": {
           "x": 1626.40883,
@@ -1698,10 +1698,10 @@
     },
     {
       "c": "ht.Shape",
-      "i": 5868,
+      "i": 3530,
       "p": {
         "parent": {
-          "__i": 5859
+          "__i": 3521
         },
         "position": {
           "x": 1624.79787,
@@ -1836,10 +1836,10 @@
     },
     {
       "c": "ht.Text",
-      "i": 5869,
+      "i": 3531,
       "p": {
         "parent": {
-          "__i": 5859
+          "__i": 3521
         },
         "position": {
           "x": 1626.40883,
@@ -1857,7 +1857,7 @@
     },
     {
       "c": "ht.Node",
-      "i": 5870,
+      "i": 3532,
       "p": {
         "displayName": "雷达图",
         "dataBindings": {
@@ -1874,11 +1874,11 @@
         },
         "image": "symbols/图表/雷达图.json",
         "position": {
-          "x": 1710.78466,
-          "y": 543.01783
+          "x": 1624.63865,
+          "y": 550.16996
         },
-        "width": 321.56931,
-        "height": 250
+        "width": 493.86132,
+        "height": 235.69574
       },
       "a": {
         "dataSetName": "地图测试数据",
@@ -1937,12 +1937,14 @@
             "description": "运行时间"
           }
         ],
-        "itemColor": "rgb(48,242,120)"
+        "itemColor": "rgb(48,242,120)",
+        "titleColor": "rgb(51,153,255)",
+        "contentColor": "rgb(247,247,247)"
       }
     },
     {
       "c": "ht.Node",
-      "i": 5871,
+      "i": 3533,
       "p": {
         "displayName": "基础折线图",
         "dataBindings": {
@@ -1998,12 +2000,13 @@
             "name": "FC7",
             "description": "列数据"
           }
-        ]
+        ],
+        "textColor": "rgb(247,247,247)"
       }
     },
     {
       "c": "ht.Node",
-      "i": 5872,
+      "i": 3534,
       "p": {
         "displayName": "地图",
         "dataBindings": {
@@ -2055,12 +2058,12 @@
             "description": "列数据"
           }
         ],
-        "icon.clickfunc": "__ht__function(event,data,viwe,point,width,height,item){\r\n    ht.Default.setImage('dialogAlarm', 'public/其它/告警绑定.json');\r\n    var alarmNode = new ht.Node();\r\n    alarmNode.setImage('dialogAlarm');\r\n    var mapNode = dataModel.getDataById(data._id)\r\n\talarmNode.setSize(100, 100);\r\n    var nodeX = mapNode.getRect().x + item.rect[0]/(1130/mapNode.getRect().width) + width/2;\r\n    var nodeY = mapNode.getRect().y - 50 + item.rect[1]/(970/mapNode.getRect().height) + height/2;\r\n    alarmNode.setPosition(nodeX,nodeY);    \r\n    alarmNode.setTag('dialogNode');\r\n\tdataModel.add(alarmNode);\r\n    debugger;\r\n}"
+        "icon.clickfunc": "__ht__function(event,data,viwe,point,width,height,item){\r\n    var alarmNode = new ht.Node();\r\n    alarmNode.setImage('symbols/21448/报警.json');\r\n    alarmNode.a(\"icon.content\",'北京电视台\\nIP:192.168.7.136');\r\n    var mapNode = dataModel.getDataById(data._id)\r\n    alarmNode.setSize(228, 127);\r\n    var nodeX = mapNode.getRect().x + item.rect[0]/(1130/mapNode.getRect().width) + width/2;\r\n    var nodeY = mapNode.getRect().y - 127/2 + item.rect[1]/(970/mapNode.getRect().height) + height/2;\r\n    alarmNode.setPosition(nodeX,nodeY);    \r\n    alarmNode.setTag('dialogNode');\r\n    dataModel.add(alarmNode);\r\n}"
       }
     },
     {
       "c": "ht.Node",
-      "i": 5873,
+      "i": 3535,
       "p": {
         "displayName": "日期",
         "image": "symbols/21448/日期.json",
@@ -2072,502 +2075,14 @@
         "height": 42.25759
       },
       "a": {
-        "time": "10:51",
-        "week": "星期一",
-        "date": "2019-03-18"
+        "time": "14:36",
+        "week": "星期三",
+        "date": "2019-03-20"
       }
     },
     {
       "c": "ht.Node",
-      "i": 5874,
-      "p": {
-        "displayName": "label",
-        "dataBindings": {
-          "a": {
-            "itemValue": {
-              "fieldName": "CPU",
-              "id": "8"
-            }
-          }
-        },
-        "image": "symbols/21448/label.json",
-        "position": {
-          "x": 1475,
-          "y": 484.16359
-        }
-      },
-      "a": {
-        "itemColor": "rgb(247,247,247)",
-        "itemValue": "12",
-        "titleValue": "CPU：",
-        "titleColor": "rgb(51,153,255)",
-        "dataSetName": "地图测试数据",
-        "dataSet": "AnalogEntity_P1Wr80Tk",
-        "dataItem": [
-          {
-            "name": "FC1",
-            "description": "城市点"
-          },
-          {
-            "name": "FC2",
-            "description": "年度累计"
-          },
-          {
-            "name": "FC3",
-            "description": "折线图横轴"
-          },
-          {
-            "name": "FC4",
-            "description": "折线图数据"
-          },
-          {
-            "name": "FC5",
-            "description": "雷达图指示器"
-          },
-          {
-            "name": "FC6",
-            "description": "雷达图数据"
-          },
-          {
-            "name": "FC7",
-            "description": "列数据"
-          },
-          {
-            "name": "CPU",
-            "description": "CPU"
-          },
-          {
-            "name": "Memory",
-            "description": "内存"
-          },
-          {
-            "name": "Space",
-            "description": "磁盘空间"
-          },
-          {
-            "name": "Inode",
-            "description": "inode"
-          },
-          {
-            "name": "Server",
-            "description": "服务器时间"
-          },
-          {
-            "name": "RunTime",
-            "description": "运行时间"
-          }
-        ]
-      }
-    },
-    {
-      "c": "ht.Node",
-      "i": 5875,
-      "p": {
-        "displayName": "label",
-        "dataBindings": {
-          "a": {
-            "itemValue": {
-              "fieldName": "Memory",
-              "id": "9"
-            }
-          }
-        },
-        "image": "symbols/21448/label.json",
-        "position": {
-          "x": 1475,
-          "y": 511.32253
-        }
-      },
-      "a": {
-        "titleValue": "内存：",
-        "itemValue": "11",
-        "itemColor": "rgb(247,247,247)",
-        "titleColor": "rgb(51,153,255)",
-        "dataSetName": "地图测试数据",
-        "dataSet": "AnalogEntity_P1Wr80Tk",
-        "dataItem": [
-          {
-            "name": "FC1",
-            "description": "城市点"
-          },
-          {
-            "name": "FC2",
-            "description": "年度累计"
-          },
-          {
-            "name": "FC3",
-            "description": "折线图横轴"
-          },
-          {
-            "name": "FC4",
-            "description": "折线图数据"
-          },
-          {
-            "name": "FC5",
-            "description": "雷达图指示器"
-          },
-          {
-            "name": "FC6",
-            "description": "雷达图数据"
-          },
-          {
-            "name": "FC7",
-            "description": "列数据"
-          },
-          {
-            "name": "CPU",
-            "description": "CPU"
-          },
-          {
-            "name": "Memory",
-            "description": "内存"
-          },
-          {
-            "name": "Space",
-            "description": "磁盘空间"
-          },
-          {
-            "name": "Inode",
-            "description": "inode"
-          },
-          {
-            "name": "Server",
-            "description": "服务器时间"
-          },
-          {
-            "name": "RunTime",
-            "description": "运行时间"
-          }
-        ]
-      }
-    },
-    {
-      "c": "ht.Node",
-      "i": 5876,
-      "p": {
-        "displayName": "label",
-        "dataBindings": {
-          "a": {
-            "itemValue": {
-              "fieldName": "Space",
-              "id": "10"
-            }
-          }
-        },
-        "image": "symbols/21448/label.json",
-        "position": {
-          "x": 1475,
-          "y": 536.32253
-        }
-      },
-      "a": {
-        "titleValue": "磁盘空间：",
-        "itemValue": "13",
-        "itemColor": "rgb(247,247,247)",
-        "dataSetName": "地图测试数据",
-        "dataSet": "AnalogEntity_P1Wr80Tk",
-        "dataItem": [
-          {
-            "name": "FC1",
-            "description": "城市点"
-          },
-          {
-            "name": "FC2",
-            "description": "年度累计"
-          },
-          {
-            "name": "FC3",
-            "description": "折线图横轴"
-          },
-          {
-            "name": "FC4",
-            "description": "折线图数据"
-          },
-          {
-            "name": "FC5",
-            "description": "雷达图指示器"
-          },
-          {
-            "name": "FC6",
-            "description": "雷达图数据"
-          },
-          {
-            "name": "FC7",
-            "description": "列数据"
-          },
-          {
-            "name": "CPU",
-            "description": "CPU"
-          },
-          {
-            "name": "Memory",
-            "description": "内存"
-          },
-          {
-            "name": "Space",
-            "description": "磁盘空间"
-          },
-          {
-            "name": "Inode",
-            "description": "inode"
-          },
-          {
-            "name": "Server",
-            "description": "服务器时间"
-          },
-          {
-            "name": "RunTime",
-            "description": "运行时间"
-          }
-        ]
-      }
-    },
-    {
-      "c": "ht.Node",
-      "i": 5877,
-      "p": {
-        "displayName": "label",
-        "dataBindings": {
-          "a": {
-            "itemValue": {
-              "fieldName": "Inode",
-              "id": "11"
-            }
-          }
-        },
-        "image": "symbols/21448/label.json",
-        "position": {
-          "x": 1475,
-          "y": 560.64675
-        }
-      },
-      "a": {
-        "itemColor": "rgb(247,247,247)",
-        "titleValue": "磁盘inode：",
-        "itemValue": "10",
-        "dataSetName": "地图测试数据",
-        "dataSet": "AnalogEntity_P1Wr80Tk",
-        "dataItem": [
-          {
-            "name": "FC1",
-            "description": "城市点"
-          },
-          {
-            "name": "FC2",
-            "description": "年度累计"
-          },
-          {
-            "name": "FC3",
-            "description": "折线图横轴"
-          },
-          {
-            "name": "FC4",
-            "description": "折线图数据"
-          },
-          {
-            "name": "FC5",
-            "description": "雷达图指示器"
-          },
-          {
-            "name": "FC6",
-            "description": "雷达图数据"
-          },
-          {
-            "name": "FC7",
-            "description": "列数据"
-          },
-          {
-            "name": "CPU",
-            "description": "CPU"
-          },
-          {
-            "name": "Memory",
-            "description": "内存"
-          },
-          {
-            "name": "Space",
-            "description": "磁盘空间"
-          },
-          {
-            "name": "Inode",
-            "description": "inode"
-          },
-          {
-            "name": "Server",
-            "description": "服务器时间"
-          },
-          {
-            "name": "RunTime",
-            "description": "运行时间"
-          }
-        ]
-      }
-    },
-    {
-      "c": "ht.Node",
-      "i": 5878,
-      "p": {
-        "displayName": "label",
-        "dataBindings": {
-          "a": {
-            "itemValue": {
-              "fieldName": "Server",
-              "id": "12"
-            }
-          }
-        },
-        "image": "symbols/21448/label.json",
-        "position": {
-          "x": 1475,
-          "y": 586.93423
-        }
-      },
-      "a": {
-        "itemColor": "rgb(247,247,247)",
-        "titleValue": "服务器时间：",
-        "itemValue": "9",
-        "dataSetName": "地图测试数据",
-        "dataSet": "AnalogEntity_P1Wr80Tk",
-        "dataItem": [
-          {
-            "name": "FC1",
-            "description": "城市点"
-          },
-          {
-            "name": "FC2",
-            "description": "年度累计"
-          },
-          {
-            "name": "FC3",
-            "description": "折线图横轴"
-          },
-          {
-            "name": "FC4",
-            "description": "折线图数据"
-          },
-          {
-            "name": "FC5",
-            "description": "雷达图指示器"
-          },
-          {
-            "name": "FC6",
-            "description": "雷达图数据"
-          },
-          {
-            "name": "FC7",
-            "description": "列数据"
-          },
-          {
-            "name": "CPU",
-            "description": "CPU"
-          },
-          {
-            "name": "Memory",
-            "description": "内存"
-          },
-          {
-            "name": "Space",
-            "description": "磁盘空间"
-          },
-          {
-            "name": "Inode",
-            "description": "inode"
-          },
-          {
-            "name": "Server",
-            "description": "服务器时间"
-          },
-          {
-            "name": "RunTime",
-            "description": "运行时间"
-          }
-        ]
-      }
-    },
-    {
-      "c": "ht.Node",
-      "i": 5879,
-      "p": {
-        "displayName": "label",
-        "dataBindings": {
-          "a": {
-            "itemValue": {
-              "fieldName": "RunTime",
-              "id": "13"
-            }
-          }
-        },
-        "image": "symbols/21448/label.json",
-        "position": {
-          "x": 1475,
-          "y": 613.88152
-        }
-      },
-      "a": {
-        "itemColor": "rgb(247,247,247)",
-        "titleValue": "运行时间：",
-        "itemValue": "7",
-        "dataSetName": "地图测试数据",
-        "dataSet": "AnalogEntity_P1Wr80Tk",
-        "dataItem": [
-          {
-            "name": "FC1",
-            "description": "城市点"
-          },
-          {
-            "name": "FC2",
-            "description": "年度累计"
-          },
-          {
-            "name": "FC3",
-            "description": "折线图横轴"
-          },
-          {
-            "name": "FC4",
-            "description": "折线图数据"
-          },
-          {
-            "name": "FC5",
-            "description": "雷达图指示器"
-          },
-          {
-            "name": "FC6",
-            "description": "雷达图数据"
-          },
-          {
-            "name": "FC7",
-            "description": "列数据"
-          },
-          {
-            "name": "CPU",
-            "description": "CPU"
-          },
-          {
-            "name": "Memory",
-            "description": "内存"
-          },
-          {
-            "name": "Space",
-            "description": "磁盘空间"
-          },
-          {
-            "name": "Inode",
-            "description": "inode"
-          },
-          {
-            "name": "Server",
-            "description": "服务器时间"
-          },
-          {
-            "name": "RunTime",
-            "description": "运行时间"
-          }
-        ]
-      }
-    },
-    {
-      "c": "ht.Node",
-      "i": 5880,
+      "i": 3536,
       "p": {
         "displayName": "table",
         "dataBindings": {
@@ -2677,9 +2192,21 @@
           }
         ]
       }
+    },
+    {
+      "c": "ht.Node",
+      "i": 3537,
+      "p": {
+        "displayName": "显示框",
+        "image": "symbols/21448/显示框.json",
+        "position": {
+          "x": 237.14337,
+          "y": 911.04659
+        }
+      }
     }
   ],
-  "modified": "Mon Mar 18 2019 10:51:57 GMT+0800 (中国标准时间)",
+  "modified": "Wed Mar 20 2019 14:36:03 GMT+0800 (中国标准时间)",
   "contentRect": {
     "x": -2,
     "y": 0,

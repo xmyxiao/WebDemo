@@ -1,5 +1,5 @@
 {
-  "modified": "Wed Mar 13 2019 10:40:38 GMT+0800 (中国标准时间)",
+  "modified": "Wed Mar 20 2019 17:09:45 GMT+0800 (中国标准时间)",
   "dataBindings": [
     {
       "attr": "lineColor",
@@ -66,10 +66,34 @@
       "valueType": "Number",
       "defaultValue": 20,
       "name": "字体大小"
+    },
+    {
+      "attr": "isShowText",
+      "valueType": "Boolean",
+      "defaultValue": true,
+      "name": "是否显示文字"
+    },
+    {
+      "attr": "titleColor",
+      "valueType": "Color",
+      "defaultValue": "#32D3EB",
+      "name": "标题颜色"
+    },
+    {
+      "attr": "contentColor",
+      "valueType": "Color",
+      "defaultValue": "rgb(247,247,247)",
+      "name": "内容颜色"
+    },
+    {
+      "attr": "fontAlign",
+      "valueType": "Align",
+      "defaultValue": "left",
+      "name": "文字位置"
     }
   ],
   "snapshotURL": "symbols/basic/snapshot_chart.json",
-  "renderHTML": "__ht__function(data, gv, cache) {var option = {\r\n    tooltip : {\r\n        trigger: 'axis',\r\n        axisPointer: {\r\n            type: 'line',\r\n            label: {\r\n                backgroundColor: '#6a7985'\r\n            }\r\n        }\r\n    },\r\n    grid: {\r\n        left: '3%',\r\n        right: '5%',\r\n        bottom: 0,\r\n        top: '5%',\r\n        containLabel: true\r\n    },\r\n    series: [\r\n        {\r\n            name:'访问来源',\r\n            type:'pie',\r\n            radius: [],\r\n            avoidLabelOverlap: false,\r\n            label: {\r\n                normal: {\r\n                    show: false,\r\n                    position: 'center'\r\n                },\r\n                emphasis: {\r\n                    show: true,\r\n                    textStyle: {\r\n                        fontSize: '30',\r\n                        fontWeight: 'bold'\r\n                    }\r\n                }\r\n            },\r\n            labelLine: {\r\n                normal: {\r\n                    show: false\r\n                }\r\n            },\r\n            data:[\r\n            ]\r\n        }\r\n    ]\r\n};\r\n\r\nif (!cache.htmlView) {\r\n    cache.htmlView = document.createElement('div');\r\n    cache.htmlView.style.position = 'absolute';\r\n    cache.htmlChart = echarts.init(cache.htmlView);\r\n\r\n    // layoutHTML will be called when the data needs to be drawing\r\n    cache.htmlView.layoutHTML = function() {\r\n        gv.layoutHTML(data, cache.htmlView, false);\r\n        cache.htmlChart.resize();\r\n    };\r\n}\r\n\r\n// update data\r\n\r\noption.color = data.a('lineColor');\r\noption.series[0].radius = data.a('radius');\r\noption.series[0].data = data.a('itemData');\r\noption.series[0].name = data.a('itemName');\r\noption.series[0].label.emphasis.textStyle.fontSize = data.a('fontSize');\r\n\r\ncache.htmlChart.setOption(option);\r\n\r\n// html for showing\r\nreturn cache.htmlView;}",
+  "renderHTML": "__ht__function(data, gv, cache) {var option = {\r\n    tooltip : {\r\n        trigger: 'axis',\r\n        axisPointer: {\r\n            type: 'line',\r\n            label: {\r\n                backgroundColor: '#6a7985'\r\n            }\r\n        }\r\n    },\r\n    grid: {\r\n        left: '3%',\r\n        right: '5%',\r\n        bottom: 0,\r\n        top: '5%',\r\n        containLabel: true\r\n    },\r\n    series: [\r\n        {\r\n            name:'',\r\n            type:'pie',\r\n            radius: [],\r\n            avoidLabelOverlap: false,\r\n            label: {\r\n                normal: {\r\n                    show: false,\r\n                    position: 'center'\r\n                },\r\n                emphasis: {\r\n                    show: true,\r\n                    textStyle: {\r\n                        fontSize: '30',\r\n                        fontWeight: 'bold'\r\n                    }\r\n                }\r\n            },\r\n            labelLine: {\r\n                normal: {\r\n                    show: false\r\n                }\r\n            },\r\n            data:[\r\n            ]\r\n        }\r\n    ]\r\n};\r\n\r\nif (!cache.htmlView) {\r\n    cache.htmlView = document.createElement('div');\r\n    cache.htmlView.style.position = 'absolute';\r\n\r\n    if(data.a('isShowText')){\r\n        cache.htmlViewChart = document.createElement('div');\r\n        cache.htmlViewChart.style.width = '70%';\r\n        cache.htmlViewChart.style.height = '100%';\r\n        cache.htmlViewChart.style.float = 'left';\r\n\r\n        cache.htmlViewLabel = document.createElement('div');\r\n        cache.htmlViewLabel.style.width = '30%';\r\n        cache.htmlViewLabel.style.height = '100%';\r\n        cache.htmlViewLabel.style.float = 'left';\r\n\r\n        cache.htmlChart = echarts.init(cache.htmlViewChart);\r\n\r\n        var dataArr = data.a('itemData');\r\n        for(var i = 0; i < dataArr.length; i++){\r\n            var p = document.createElement('p');\r\n            p.style.textAlign = data.a('fontAlign');\r\n            var lab = document.createElement('span');\r\n            lab.style.color = data.a('titleColor');\r\n            lab.textContent = dataArr[i].name + '：';\r\n            var span = document.createElement('span');\r\n            span.textContent = dataArr[i].value\r\n            span.style.color = data.a('contentColor');\r\n            p.appendChild(lab);\r\n            p.appendChild(span);\r\n            cache.htmlViewLabel.appendChild(p);\r\n        }\r\n        \r\n\r\n        cache.htmlView.appendChild(cache.htmlViewLabel);\r\n        cache.htmlView.appendChild(cache.htmlViewChart);\r\n    }else{\r\n        cache.htmlChart = echarts.init(cache.htmlView);\r\n    }\r\n\r\n    // layoutHTML will be called when the data needs to be drawing\r\n    cache.htmlView.layoutHTML = function() {\r\n        gv.layoutHTML(data, cache.htmlView, false);\r\n        cache.htmlChart.resize();\r\n    };\r\n}\r\n\r\nif(data.a('isShowText')){\r\n    $(cache.htmlViewLabel).empty();\r\n    var dataArr = data.a('itemData');\r\n    for(var i = 0; i < dataArr.length; i++){\r\n        var p = document.createElement('p');\r\n        p.style.textAlign = data.a('fontAlign');\r\n        var lab = document.createElement('span');\r\n        lab.style.color = data.a('titleColor');\r\n        lab.textContent = dataArr[i].name + '：';\r\n        var span = document.createElement('span');\r\n        span.textContent = dataArr[i].value\r\n        span.style.color = data.a('contentColor');\r\n        p.appendChild(lab);\r\n        p.appendChild(span);\r\n        cache.htmlViewLabel.appendChild(p);\r\n    }\r\n}\r\n\r\n// update data\r\noption.color = data.a('lineColor');\r\noption.series[0].radius = data.a('radius');\r\noption.series[0].data = data.a('itemData');\r\noption.series[0].name = data.a('itemName');\r\noption.series[0].label.emphasis.textStyle.fontSize = data.a('fontSize');\r\n\r\ncache.htmlChart.setOption(option);\r\n\r\n// html for showing\r\nreturn cache.htmlView;}",
   "width": 200,
   "height": 200,
   "fitSize": true,

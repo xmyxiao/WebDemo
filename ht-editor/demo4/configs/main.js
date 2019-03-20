@@ -41,7 +41,7 @@
 	    //增加用户可创建图纸数
 	    hteditor_config.displayNumber = 1;
 	    //图纸右键不可见
-	    editor.displays.accordion.menu.getView().style.display = 'none'
+	    //editor.displays.accordion.menu.getView().style.display = 'none'
 	    //菜单不可见项目
 	    editor.symbols.accordion.menu.setItemVisible('locateFile',false);
 	    //editor.symbols.accordion.menu.setItemVisible('newFolder',false);

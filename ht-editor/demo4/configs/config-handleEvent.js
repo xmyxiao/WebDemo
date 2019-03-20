@@ -227,7 +227,7 @@
 						hteditor_config.firstLoad = false;
 					},1500);*/
 				}
-				window.disabledDiv.style.display = 'none';
+				layer.close(layer.index)
             }
         });
         // Prevent some files from being renamed, moved or deleted
@@ -236,6 +236,17 @@
         editor.displays.list.menu.setItemVisible('locateFile', false);
         editor.displays.list.menu.setItemVisible('newFolder', false);
         editor.displays.list.menu.setItemVisible('newDisplayView', false);
+
+		editor.displays.accordion.menu.setItemVisible('newDisplayView', false);
+		editor.displays.accordion.menu.setItemVisible('open', false);
+		editor.displays.accordion.menu.setItemVisible('locateFile', false);
+		editor.displays.accordion.menu.setItemVisible('newFolder', false);
+		editor.displays.accordion.menu.setItemVisible('copy', false);
+		editor.displays.accordion.menu.setItemVisible('paste', false);
+		editor.displays.accordion.menu.setItemVisible('rename', false);
+		editor.displays.accordion.menu.setItemVisible('delete', false);
+		//editor.displays.accordion.menu.setItemVisible('export', false);
+		
 
         editor.symbols.list.menu.setItemVisible('open', false);
         editor.symbols.list.menu.setItemVisible('insert', false);
