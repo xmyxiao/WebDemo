@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+ <html>
+     <head>
+         <meta charset="utf-8">
+         <title></title>
+         <script type="text/javascript">
+             function draw(id){
+                var convas = document.getElementById(id);
+                if(canvas == null){
+                    return false;
+                }
+                var context = canvas.getContext('2d');
+                
+                var image = {
+					"width": 1130,
+					"height": 970,
+					"boundExtend": 32,
+					"interactive": true,
+					"attachStyle": "close",
+					"comps":[ {
+					    "type": "circle",
+					    "background": "rgb(152,240,29)",
+					    "borderWidth": 1,
+					    "borderColor": "rgb(176,250,120)",
+					    "opacity": 0.3,
+					    "rect": [
+					    	1.11012,
+					    	0.83643,
+					    	9.77976,
+					    	10.32714
+					    ]
+				    },
+					{
+					    "type": "circle",
+					    "background": "rgb(152,240,29)",
+					    "borderWidth": 1,
+					    "borderColor": "rgb(176,250,120)",
+					    "rect": [
+					    	3.01699,
+					    	2.99708,
+					    	5.96602,
+					    	6.00583
+					    ]
+					}]
+                }
+                //context.drawImage(image,0,0,400,300);
+             }
+         </script>
+     </head>
+     <body onload="draw('canvas');">
+         <canvas id="canvas" width="400" height="300"></canvas>
+     </body>
+ </html>

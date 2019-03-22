@@ -1,5 +1,3 @@
-打包命令   非全局安装webpack   需要指定webpack路径
-node_modules\.bin\webpack
-
-全局安装则是
-webpack
+webpack 报错Cannot find module '@babel/core'
+babel-loader  版本过高  可以使用7.1.5
+npm install babel-loader@7.1.5
