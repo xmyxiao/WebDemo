@@ -70,3 +70,42 @@ mvvm和mvc的差异
 		2.优化CSS精灵
 		3.不要在HTML中拉伸图片
 		4.保证favicon.ico小并且可以缓存
+		
+手机为什么不能播放rtmp视频
+	rtmp协议需要在flash插件才能播放  手机端很多没有集成flash
+	
+em和rem的区别
+	em会继承父级元素的字体大小
+	rem相对的是HTML根元素
+	
+节流和抖动的区别
+	函数节流的要点是，声明一个变量当标志位，记录当前代码是否在执行。
+ 	如果空闲，则可以正常触发方法执行。
+ 	如果代码正在执行，则取消这次方法执行，直接return。
+
+	函数防抖  如果方法多次触发，则把上次记录的延迟执行代码用clearTimeout清掉，重新开始。
+ 	如果计时完毕，没有方法进来访问触发，则执行代码。
+	https://www.cnblogs.com/walls/p/6399837.html
+	
+vue 的v-for中的key值的作用
+	如果数据项的顺序被改变，Vue将不是移动 DOM 元素来匹配数据项的顺序， 而是简单复用此处每个元素，
+	并且确保它在特定索引下显示已被渲染过的每个元素。
+	为了给 Vue 一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一 key 属性。
+	
+webpack怎么解决跨域问题
+	用webpack-dev-server开发时代理，决解开发时跨域问题
+	
+canvas斜线的锯齿感(待测试)
+	https://www.zhihu.com/question/279222232
+	let width = canvas.width,height=canvas.height;
+	if (window.devicePixelRatio) {
+		canvas.style.width = width + "px";
+		canvas.style.height = height + "px";
+		canvas.height = height * window.devicePixelRatio;
+		canvas.width = width * window.devicePixelRatio;
+		ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+	}
+	
+css left top和transform的区别
+	left top在选择%计算时候，是按照父节点的长宽来位移，而transform的%是按照自身节点的宽高来位移
+	
