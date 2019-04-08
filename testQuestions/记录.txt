@@ -1,0 +1,4 @@
+前端核心代码保护
+	wasm.js及WebAssembly  CrossBridge  SecurityWorker
+	https://zhuanlan.zhihu.com/p/61651310
+	https://www.v2ex.com/t/549319
