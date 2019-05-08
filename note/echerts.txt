@@ -1,0 +1,4 @@
+更换主题：
+	不是动态改变的话就直接在init事件里面定义theme
+	动态改变的话需要先dispose  注销实例  然后再通过初始化实例来设置主题
+	https://www.qdfuns.com/note/48832/00a980cbbe4eda3360bfdfd52d06d01c.html

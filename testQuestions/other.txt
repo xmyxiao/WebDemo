@@ -98,7 +98,7 @@ webpack怎么解决跨域问题
 canvas斜线的锯齿感(待测试)
 	https://www.zhihu.com/question/279222232
 	let width = canvas.width,height=canvas.height;
-	if (window.devicePixelRatio) {
+	if (window.devicePixelRatio) { //设备像素比
 		canvas.style.width = width + "px";
 		canvas.style.height = height + "px";
 		canvas.height = height * window.devicePixelRatio;
