@@ -70,3 +70,9 @@ mvvm和mvc的差异
 		2.优化CSS精灵
 		3.不要在HTML中拉伸图片
 		4.保证favicon.ico小并且可以缓存
+		
+1， react 或 vue , less 或sass
+2，做过移动端h5， 知道如何适配(rem)
+3，会webpack配置,起码懂
+4，调试抓包工具 如charles  
+5，jquery , ajax 
