@@ -1,0 +1,89 @@
+{
+  "dataBindings": [
+    {
+      "attr": "chart.label.visible",
+      "valueType": "Boolean",
+      "name": "ChartLabelVisible"
+    },
+    {
+      "attr": "chart.label.color",
+      "valueType": "Color",
+      "name": "ChartLabelColor"
+    },
+    {
+      "attr": "chart.label.font",
+      "valueType": "String",
+      "name": "ChartLabelFont"
+    },
+    {
+      "attr": "chart.hollow",
+      "valueType": "Boolean",
+      "name": "ChartHollow"
+    },
+    {
+      "attr": "chart.start.angle",
+      "valueType": "Angle",
+      "name": "ChartStartAngle"
+    },
+    {
+      "attr": "chart.values",
+      "valueType": "NumberArray",
+      "name": "ChartValues"
+    },
+    {
+      "attr": "chart.colors",
+      "valueType": "ColorArray",
+      "name": "ChartColors"
+    }
+  ],
+  "width": 100,
+  "height": 100,
+  "fitSize": true,
+  "comps": [
+    {
+      "type": "pieChart",
+      "label": {
+        "func": "attr@chart.label.visible",
+        "value": false
+      },
+      "labelColor": {
+        "func": "attr@chart.label.color",
+        "value": "#000"
+      },
+      "labelFont": {
+        "func": "attr@chart.label.font",
+        "value": "12px arial, sans-serif"
+      },
+      "hollow": {
+        "func": "attr@chart.hollow",
+        "value": false
+      },
+      "startAngle": {
+        "func": "attr@chart.start.angle",
+        "value": 0
+      },
+      "values": {
+        "func": "attr@chart.values",
+        "value": [
+          10,
+          15,
+          20
+        ]
+      },
+      "colors": {
+        "func": "attr@chart.colors",
+        "value": [
+          "#32D3EB",
+          "rgb(226,250,87)",
+          "rgb(48,242,120)"
+        ]
+      },
+      "rect": [
+        0,
+        0,
+        100,
+        100
+      ]
+    }
+  ]
+}

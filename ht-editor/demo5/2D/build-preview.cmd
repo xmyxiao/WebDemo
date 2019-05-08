@@ -1,0 +1,1 @@
+uglifyjs configs/htconfig.js ../../client/libs/ht.js ../../client/libs/ht-edgetype.js ../../client/libs/ht-obj.js ../../client/libs/ht-ui.js ../../client/libs/ht-vector.js ../../client/libs/ht-cssanimation.js ../../client/libs/ht-form.js ../../client/libs/ht-dialog.js configs/config-connect.js configs/config-itoPage.js -o  dist/preview.min.js -c -m

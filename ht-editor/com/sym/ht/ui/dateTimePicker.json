@@ -1,0 +1,156 @@
+{
+  "dataBindings": [
+    {
+      "attr": "ht.name",
+      "valueType": "String",
+      "name": "UIFormItemName"
+    },
+    {
+      "attr": "ht.value",
+      "valueType": "String",
+      "name": "UIFormItemValue"
+    },
+    {
+      "attr": "ht.placeholder",
+      "valueType": "String",
+      "name": "UIPlaceHolder"
+    },
+    {
+      "attr": "ht.disabled",
+      "valueType": "Boolean",
+      "defaultValue": false,
+      "name": "UIDisabled"
+    },
+    {
+      "attr": "ht.format",
+      "valueType": "String",
+      "defaultValue": "YYYY-MM-DD",
+      "name": "UIFormat"
+    },
+    {
+      "attr": "ht.dateType",
+      "valueType": "String",
+      "defaultValue": "date",
+      "name": "UIDateType"
+    },
+    {
+      "attr": "ht.textColor",
+      "valueType": "Color",
+      "name": "UITextColor"
+    },
+    {
+      "attr": "ht.font",
+      "valueType": "Font",
+      "name": "UIFont"
+    },
+    {
+      "attr": "ht.padding",
+      "valueType": "String",
+      "name": "UIPadding"
+    },
+    {
+      "attr": "ht.borderRadius",
+      "valueType": "String",
+      "name": "UIBorderRadius"
+    },
+    {
+      "attr": "ht.borderColor",
+      "valueType": "Color",
+      "name": "UIBorderColor"
+    },
+    {
+      "attr": "ht.focusBorderColor",
+      "valueType": "Color",
+      "name": "UIFocusBorderColor"
+    },
+    {
+      "attr": "ht.borderWidth",
+      "valueType": "PositiveNumber",
+      "name": "UIBorderWidth"
+    },
+    {
+      "attr": "ht.background",
+      "valueType": "Color",
+      "name": "UIBackground"
+    },
+    {
+      "attr": "ht.focusBackground",
+      "valueType": "Color",
+      "name": "UIFocusBackground"
+    },
+    {
+      "attr": "ht.onChange",
+      "valueType": "Function",
+      "defaultValue": "__ht__function(oldVal, newVal, data, view) {\n}",
+      "name": "UIOnChange"
+    }
+  ],
+  "snapshotURL": "symbols/ht/snapshot/dateTimePicker.json",
+  "width": 160,
+  "height": 32,
+  "fitSize": true,
+  "interactive": true,
+  "disableSelectedBorder": true,
+  "pixelPerfect": false,
+  "comps": [
+    {
+      "type": "components/ht/ui/comboBox.json",
+      "displayName": "comboBox",
+      "onDown": "__ht__function(event, data, view, point, width, height) {\nht.vector.dateTimePickerInteractor.onDown.apply(this, arguments);\n}",
+      "onUp": "__ht__function(event, data, view, point, width, height) {\nht.vector.dateTimePickerInteractor.onUp.apply(this, arguments);\n}",
+      "onEnter": "__ht__function(event, data, view, point, width, height) {\nht.vector.dateTimePickerInteractor.onEnter.apply(this, arguments);\n}",
+      "onLeave": "__ht__function(event, data, view, point, width, height) {\nht.vector.dateTimePickerInteractor.onLeave.apply(this, arguments);\n}",
+      "rect": [
+        0,
+        0,
+        160,
+        32
+      ],
+      "value": {
+        "func": "attr@ht.value"
+      },
+      "placeholder": {
+        "func": "attr@ht.placeholder"
+      },
+      "disabled": {
+        "func": "attr@ht.disabled"
+      },
+      "borderWidth": {
+        "func": "attr@ht.borderWidth",
+        "value": 1
+      },
+      "borderColor": {
+        "func": "attr@ht.borderColor",
+        "value": "#737373"
+      },
+      "focusBorderColor": {
+        "func": "attr@ht.focusBorderColor",
+        "value": "rgb(51,153,255)"
+      },
+      "borderRadius": {
+        "func": "attr@ht.borderRadius",
+        "value": "0"
+      },
+      "padding": {
+        "func": "attr@ht.padding",
+        "value": "8"
+      },
+      "background": {
+        "func": "attr@ht.background"
+      },
+      "focusBackground": {
+        "func": "attr@ht.focusBackground"
+      },
+      "font": {
+        "func": "attr@ht.font",
+        "value": "12px arial, sans-serif"
+      },
+      "textColor": {
+        "func": "attr@ht.textColor",
+        "value": "#737373"
+      },
+      "dropDownIcon": "ht.vector.date",
+      "drawUnMatchValue": true
+    }
+  ]
+}

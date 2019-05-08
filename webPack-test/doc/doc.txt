@@ -1,0 +1,7 @@
+webpack 报错Cannot find module '@babel/core'
+babel-loader  版本过高  可以使用7.1.5
+npm install babel-loader@7.1.5
+
+webpack 报错Requires Babel "^7.0.0-0", but was loaded with "6.26.3".
+npm remove babel-preset-env babel-core @babel/core regenerator-runtime
+npm install babel-preset-env babel-core@^7.0.0-bridge.0 @babel/core -D

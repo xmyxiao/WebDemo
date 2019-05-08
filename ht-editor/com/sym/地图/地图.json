@@ -1,5 +1,5 @@
 {
-  "modified": "Tue Mar 12 2019 08:56:36 GMT+0800 (中国标准时间)",
+  "modified": "Wed Mar 20 2019 09:41:43 GMT+0800 (中国标准时间)",
   "dataBindings": [
     {
       "valueType": "String"
@@ -10,6 +10,13 @@
       "defaultValue": "rgb(48,242,120)",
       "name": "图标颜色",
       "description": "图标颜色"
+    },
+    {
+      "attr": "icon.bordColor",
+      "valueType": "Color",
+      "defaultValue": "rgb(176,250,120)",
+      "name": "光圈颜色",
+      "description": "光圈颜色"
     },
     {
       "attr": "icon.points",
@@ -42,13 +49,17 @@
         "func": "attr@icon.background",
         "value": "rgb(0,199,7)"
       },
+      "iconBoderColor": {
+        "func": "attr@icon.bordColor",
+        "value": "rgb(176,250,120)"
+      },
       "iconPoints": {
         "func": "attr@icon.points",
         "value": []
       },
       "iconClickFunc": {
         "func": "attr@icon.clickfunc",
-        "value": "__ht__function(item){\r\n    \r\n}"
+        "value": "__ht__function(event,data,viwe,point,width,height){\r\n    \r\n}"
       }
     }
   ]

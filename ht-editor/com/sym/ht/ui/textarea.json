@@ -1,0 +1,196 @@
+{
+  "modified": "Fri Jan 04 2019 15:17:28 GMT+0800 (中国标准时间)",
+  "dataBindings": [
+    {
+      "attr": "ht.name",
+      "valueType": "String",
+      "name": "UIFormItemName"
+    },
+    {
+      "attr": "ht.value",
+      "valueType": "Multiline",
+      "name": "UIFormItemValue"
+    },
+    {
+      "attr": "ht.placeholder",
+      "valueType": "Multiline",
+      "name": "UIPlaceHolder"
+    },
+    {
+      "attr": "ht.disabled",
+      "valueType": "Boolean",
+      "name": "UIDisabled"
+    },
+    {
+      "attr": "ht.maxLength",
+      "valueType": "PositiveNumber",
+      "name": "UIMaxLength"
+    },
+    {
+      "attr": "ht.textColor",
+      "valueType": "Color",
+      "name": "UITextColor",
+      "defaultValue": "rgb(61,61,61)"
+    },
+    {
+      "attr": "ht.textAlign",
+      "valueType": "Align",
+      "name": "UITextAlign"
+    },
+    {
+      "attr": "ht.font",
+      "valueType": "Font",
+      "name": "UIFont"
+    },
+    {
+      "attr": "ht.padding",
+      "valueType": "String",
+      "name": "UIPadding"
+    },
+    {
+      "attr": "ht.borderRadius",
+      "valueType": "String",
+      "name": "UIBorderRadius"
+    },
+    {
+      "attr": "ht.borderColor",
+      "valueType": "Color",
+      "name": "UIBorderColor"
+    },
+    {
+      "attr": "ht.focusBorderColor",
+      "valueType": "Color",
+      "name": "UIFocusBorderColor"
+    },
+    {
+      "attr": "ht.borderWidth",
+      "valueType": "PositiveNumber",
+      "name": "UIBorderWidth"
+    },
+    {
+      "attr": "ht.lineHeight",
+      "valueType": "PositiveNumber",
+      "defaultValue": 18,
+      "name": "UILineHeight"
+    },
+    {
+      "attr": "ht.background",
+      "valueType": "Color",
+      "name": "UIBackground"
+    },
+    {
+      "attr": "ht.wordBreak",
+      "valueType": "Boolean",
+      "name": "UIWordBreak"
+    },
+    {
+      "attr": "ht.onKeyDown",
+      "valueType": "Function",
+      "name": "UIOnKeyDown",
+      "description": "event, data"
+    },
+    {
+      "attr": "ht.onKeyUp",
+      "valueType": "Function",
+      "name": "UIOnKeyUp",
+      "description": "event, data"
+    },
+    {
+      "attr": "ht.onChange",
+      "valueType": "Function",
+      "name": "UIOnChange",
+      "description": "value, data"
+    }
+  ],
+  "snapshotURL": "symbols/ht/snapshot/textarea.json",
+  "width": 100,
+  "height": 100,
+  "boundExtend": 2,
+  "fitSize": true,
+  "interactive": true,
+  "disableSelectedBorder": true,
+  "pixelPerfect": false,
+  "attachStyle": "close",
+  "comps": [
+    {
+      "type": "components/ht/ui/textarea.json",
+      "displayName": "textarea",
+      "rect": [
+        0,
+        0,
+        100,
+        100
+      ],
+      "onDown": "__ht__function(event, data, view, point, width, height) {\nht.vector.textAreaInteractor.onDown.apply(this, arguments)\n}",
+      "onUp": "__ht__function(event, data, view, point, width, height) {\nht.vector.textAreaInteractor.onUp.apply(this, arguments)\n}",
+      "onEnter": "__ht__function(event, data, view, point, width, height) {\nht.vector.textAreaInteractor.onEnter.apply(this, arguments)\n}",
+      "onLeave": "__ht__function(event, data, view, point, width, height) {\nht.vector.textAreaInteractor.onLeave.apply(this, arguments)\n}",
+      "onDrag": "__ht__function(event, data, view, point, width, height) {\nht.vector.textAreaInteractor.onDrag.apply(this, arguments)\n}",
+      "value": {
+        "func": "attr@ht.value"
+      },
+      "placeholder": {
+        "func": "attr@ht.placeholder"
+      },
+      "disabled": {
+        "func": "attr@ht.disabled",
+        "value": false
+      },
+      "borderWidth": {
+        "func": "attr@ht.borderWidth",
+        "value": "1"
+      },
+      "borderColor": {
+        "func": "attr@ht.borderColor",
+        "value": "#737373"
+      },
+      "focusBorderColor": {
+        "func": "attr@ht.focusBorderColor",
+        "value": "rgb(51,153,255)"
+      },
+      "borderRadius": {
+        "func": "attr@ht.borderRadius",
+        "value": "0"
+      },
+      "padding": {
+        "func": "attr@ht.padding",
+        "value": "0"
+      },
+      "background": {
+        "func": "attr@ht.background"
+      },
+      "textAlign": {
+        "func": "attr@ht.textAlign",
+        "value": "left"
+      },
+      "textColor": {
+        "func": "attr@ht.textColor",
+        "value": "rgb(61,61,61)"
+      },
+      "lineHeight": {
+        "func": "attr@ht.lineHeight",
+        "value": 18
+      },
+      "font": {
+        "func": "attr@ht.font",
+        "value": "12px arial, sans-serif"
+      },
+      "wordBreak": {
+        "func": "attr@ht.wordBreak",
+        "value": false
+      },
+      "maxLength": {
+        "func": "attr@ht.maxLength"
+      },
+      "onKeyDown": {
+        "func": "attr@ht.onKeyDown"
+      },
+      "onKeyUp": {
+        "func": "attr@ht.onKeyUp"
+      },
+      "onChange": {
+        "func": "attr@ht.onChange"
+      }
+    }
+  ]
+}

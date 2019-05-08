@@ -1,0 +1,204 @@
+{
+  "dataBindings": [
+    {
+      "attr": "chart.label.visible",
+      "valueType": "Boolean",
+      "name": "ChartLabelVisible"
+    },
+    {
+      "attr": "chart.label.color",
+      "valueType": "Color",
+      "name": "ChartLabelColor"
+    },
+    {
+      "attr": "chart.label.font",
+      "valueType": "String",
+      "name": "ChartLabelFont"
+    },
+    {
+      "attr": "chart.values0",
+      "valueType": "NumberArray",
+      "name": "ChartValues0"
+    },
+    {
+      "attr": "chart.values1",
+      "valueType": "NumberArray",
+      "name": "ChartValues1"
+    },
+    {
+      "attr": "chart.values2",
+      "valueType": "NumberArray",
+      "name": "ChartValues2"
+    },
+    {
+      "attr": "chart.values3",
+      "valueType": "NumberArray",
+      "name": "ChartValues3"
+    },
+    {
+      "attr": "chart.values4",
+      "valueType": "NumberArray",
+      "name": "ChartValues4"
+    },
+    {
+      "attr": "chart.values5",
+      "valueType": "NumberArray",
+      "name": "ChartValues5"
+    },
+    {
+      "attr": "chart.color0",
+      "valueType": "Color",
+      "name": "ChartColor0"
+    },
+    {
+      "attr": "chart.color1",
+      "valueType": "Color",
+      "name": "ChartColor1"
+    },
+    {
+      "attr": "chart.color2",
+      "valueType": "Color",
+      "name": "ChartColor2"
+    },
+    {
+      "attr": "chart.color3",
+      "valueType": "Color",
+      "name": "ChartColor3"
+    },
+    {
+      "attr": "chart.color4",
+      "valueType": "Color",
+      "name": "ChartColor4"
+    },
+    {
+      "attr": "chart.color5",
+      "valueType": "Color",
+      "name": "ChartColor5"
+    }
+  ],
+  "width": 100,
+  "height": 100,
+  "boundExtend": 100,
+  "fitSize": true,
+  "comps": [
+    {
+      "type": "lineChart",
+      "label": {
+        "func": "attr@chart.label.visible",
+        "value": false
+      },
+      "labelColor": {
+        "func": "attr@chart.label.color",
+        "value": "#000"
+      },
+      "labelFont": {
+        "func": "attr@chart.label.font",
+        "value": "12px arial, sans-serif"
+      },
+      "series": [
+        {
+          "values": {
+            "value": [
+              30,
+              10,
+              40,
+              30,
+              50
+            ],
+            "func": "attr@chart.values0"
+          },
+          "color": {
+            "value": "#32D3EB",
+            "func": "attr@chart.color0"
+          }
+        },
+        {
+          "values": {
+            "value": [
+              40,
+              20,
+              50,
+              40,
+              60
+            ],
+            "func": "attr@chart.values1"
+          },
+          "color": {
+            "value": "rgb(226,250,87)",
+            "func": "attr@chart.color1"
+          }
+        },
+        {
+          "values": {
+            "value": [
+              50,
+              30,
+              60,
+              50,
+              70
+            ],
+            "func": "attr@chart.values2"
+          },
+          "color": {
+            "value": "#60ACFC",
+            "func": "attr@chart.color2"
+          }
+        },
+        {
+          "values": {
+            "value": [
+              60,
+              40,
+              70,
+              60,
+              80
+            ],
+            "func": "attr@chart.values3"
+          },
+          "color": {
+            "value": "rgb(125,195,125)",
+            "func": "attr@chart.color3"
+          }
+        },
+        {
+          "values": {
+            "value": [
+              70,
+              50,
+              80,
+              70,
+              90
+            ],
+            "func": "attr@chart.values4"
+          },
+          "color": {
+            "value": "rgb(241,125,164)",
+            "func": "attr@chart.color4"
+          }
+        },
+        {
+          "values": {
+            "value": [
+              80,
+              60,
+              90,
+              80,
+              100
+            ],
+            "func": "attr@chart.values5"
+          },
+          "color": {
+            "value": "rgb(145,115,205)",
+            "func": "attr@chart.color5"
+          }
+        }
+      ],
+      "rect": [
+        0,
+        0,
+        100,
+        100
+      ]
+    }
+  ]
+}

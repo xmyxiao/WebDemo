@@ -132,15 +132,15 @@ ht.DataModel.prototype.deserialize = function(u, o, W){
 	var me = this;
 	var json = new ht.JSONSerializer(this).deserialize(u, o, W);
 	try{
-		ht.Default.setImage('logo', 'custom/images/logonew.json');
-		ht.Default.setImage('logo1', 'custom/images/logonew1.json');
+		ht.Default.setImage('logo', 'custom/images/logowhite.json');
+		ht.Default.setImage('logo1', 'custom/images/logocolor.json');
 		var logoX = 0, logoY = 0;
 		if(u.contentRect){
 			logoX = u.contentRect.x || 0;
 			logoY = u.contentRect.y + u.contentRect.height || 0;
 		}
 		var logoNode = new ht.Node();
-		if(u.p && u.p.background){
+		if(u.p && u.p.background && u.p.background !='rgb(255,255,255)'){
 			logoNode.setImage('logo');
 		}else{
 			logoNode.setImage('logo1');
@@ -148,13 +148,13 @@ ht.DataModel.prototype.deserialize = function(u, o, W){
 		if(u.contentRect && u.contentRect.width && u.contentRect.height){
 			var par = Math.min(u.contentRect.width/180,u.contentRect.height/35)
 			if(par < 1){
-				logoNode.setSize(180*par/2, 35*par/2);
-				logoY = logoY + 35*par/2
+				logoNode.setSize(200*par/2, 53*par/2);
+				logoY = logoY + 53*par/2
 			}else{
-				logoNode.setSize(180, 35);
+				logoNode.setSize(200, 53);
 			}
 		}else{
-			logoNode.setSize(180, 35);
+			logoNode.setSize(200, 53);
 		}
 		logoNode.setPosition(logoX,logoY);                
 		me.add(logoNode);

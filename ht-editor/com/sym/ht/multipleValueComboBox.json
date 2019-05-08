@@ -1,0 +1,130 @@
+{
+  "modified": "Thu Jan 31 2019 16:18:30 GMT+0800 (中国标准时间)",
+  "dataBindings": [
+    {
+      "attr": "ht.name",
+      "valueType": "String",
+      "name": "UIFormItemName"
+    },
+    {
+      "attr": "ht.value",
+      "valueType": "StringArray",
+      "name": "UIFormItemValue"
+    },
+    {
+      "attr": "ht.dataSource",
+      "valueType": "Object",
+      "name": "UIDataSource"
+    },
+    {
+      "attr": "ht.placeholder",
+      "valueType": "String",
+      "name": "UIPlaceHolder"
+    },
+    {
+      "attr": "ht.disabled",
+      "valueType": "Boolean",
+      "defaultValue": false,
+      "name": "UIDisabled"
+    },
+    {
+      "attr": "ht.itemFont",
+      "valueType": "Font",
+      "name": "UIItemFont"
+    },
+    {
+      "attr": "ht.itemTextColor",
+      "valueType": "Color",
+      "name": "UIItemTextColor"
+    },
+    {
+      "attr": "ht.itemBorderColor",
+      "valueType": "Color",
+      "name": "UIItemBorderColor"
+    },
+    {
+      "attr": "ht.itemBackground",
+      "valueType": "Color",
+      "name": "UIItemBackground"
+    },
+    {
+      "attr": "ht.maxSelection",
+      "valueType": "PositiveNumber",
+      "defaultValue": 0,
+      "name": "UIMaxSelection"
+    },
+    {
+      "attr": "ht.hideSelected",
+      "valueType": "Boolean",
+      "defaultValue": false,
+      "name": "UIHideSelected"
+    },
+    {
+      "attr": "ht.onChange",
+      "valueType": "Function",
+      "name": "UIOnChange"
+    }
+  ],
+  "snapshotURL": "symbols/ht/snapshot/comboBox.json",
+  "width": 200,
+  "height": 48,
+  "boundExtend": 2,
+  "fitSize": true,
+  "interactive": true,
+  "disableSelectedBorder": true,
+  "pixelPerfect": false,
+  "attachStyle": "close",
+  "comps": [
+    {
+      "type": "components/ht/ui/multipleValueComboBox.json",
+      "layoutH": "leftright",
+      "layoutV": "topbottom",
+      "displayName": "multipleValueComboBox",
+      "rect": [
+        0,
+        0,
+        200,
+        48
+      ],
+      "onDown": "__ht__function(event, data, view, point, width, height) {\nht.vector.multipleComboBoxInteractor.onDown.apply(this, arguments);\n}",
+      "onUp": "__ht__function(event, data, view, point, width, height) {\nht.vector.multipleComboBoxInteractor.onUp.apply(this, arguments);\n}",
+      "onMove": "__ht__function(event, data, view, point, width, height) {\nht.vector.multipleComboBoxInteractor.onMove.apply(this, arguments);\n}",
+      "onEnter": "__ht__function(event, data, view, point, width, height) {\nht.vector.multipleComboBoxInteractor.onEnter.apply(this, arguments);\n}",
+      "onLeave": "__ht__function(event, data, view, point, width, height) {\nht.vector.multipleComboBoxInteractor.onLeave.apply(this, arguments);\n}",
+      "value": {
+        "func": "attr@ht.value"
+      },
+      "dataSource": {
+        "func": "attr@ht.dataSource"
+      },
+      "placeholder": {
+        "func": "attr@ht.placeholder"
+      },
+      "disabled": {
+        "func": "attr@ht.disabled",
+        "value": false
+      },
+      "background": null,
+      "itemFont": {
+        "func": "attr@ht.itemFont",
+        "value": "12px Arial"
+      },
+      "itemTextColor": {
+        "func": "attr@ht.itemTextColor",
+        "value": "rgb(61,61,61)"
+      },
+      "itemBorderColor": {
+        "func": "attr@ht.itemBorderColor",
+        "value": "rgb(61,61,61)"
+      },
+      "itemBackground": {
+        "func": "attr@ht.itemBackground",
+        "value": "rgb(247,247,247)"
+      },
+      "itemGradientColor": null,
+      "onChange": {
+        "func": "attr@ht.onChange"
+      }
+    }
+  ]
+}

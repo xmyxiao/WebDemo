@@ -1,0 +1,1 @@
+const aaa = require('./aaa.js');

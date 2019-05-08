@@ -1,0 +1,7 @@
+控制页面大小    body直接设置1920*1080
+	https://blog.csdn.net/znyaiw/article/details/80326781
+排除dvi
+	https://zhuanlan.zhihu.com/p/53349096
+	
+大屏参考
+	https://blog.csdn.net/hwhsong/article/details/83097924

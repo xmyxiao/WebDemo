@@ -1,0 +1,1 @@
+uglifyjs configs/3d/config-onEditor3dCreated.js configs/3d/config-handleEvent.js configs/config-points.js configs/config-valueTypes.js configs/config-dataBindings.js configs/config-customProperties.js configs/3d/config-onTitleCreated.js libs/NewWebSocketService.js -o dist/subConfig.min.js -c -m

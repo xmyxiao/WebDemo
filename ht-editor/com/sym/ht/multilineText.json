@@ -1,0 +1,108 @@
+{
+  "modified": "Mon Jan 14 2019 17:10:33 GMT+0800 (中国标准时间)",
+  "dataBindings": [
+    {
+      "attr": "ht.content",
+      "valueType": "Multiline",
+      "defaultValue": "HT 2D Editor\nHightopo",
+      "name": "TBContent"
+    },
+    {
+      "attr": "ht.font",
+      "valueType": "Font",
+      "defaultValue": "12px sans-serif, Arial",
+      "name": "UIFont"
+    },
+    {
+      "attr": "ht.textAlign",
+      "valueType": "Align",
+      "defaultValue": "left",
+      "name": "TBTextAlign"
+    },
+    {
+      "attr": "ht.lineHeight",
+      "valueType": "PositiveNumber",
+      "defaultValue": 18,
+      "name": "TBLineHeight"
+    },
+    {
+      "attr": "ht.background",
+      "valueType": "Color",
+      "name": "TBBackground"
+    },
+    {
+      "attr": "ht.padding",
+      "valueType": "String",
+      "defaultValue": "0",
+      "name": "TBPadding",
+      "description": "like CSS"
+    },
+    {
+      "attr": "ht.borderColor",
+      "valueType": "Color",
+      "defaultValue": "rgb(51,153,255)",
+      "name": "UIBorderColor"
+    }
+  ],
+  "width": {
+    "func": "__ht__function(data, view) {\nvar w = ht.vector.caluMultilineSize(data).width;\nif (data._width !== w) {\n    data.setWidth(w);\n}\nreturn w;\n}",
+    "value": 100
+  },
+  "height": {
+    "func": "__ht__function(data, view) {\nvar h = ht.vector.caluMultilineSize(data).height;\nif (data._height !== h) {\n    data.setHeight(h);\n}\nreturn h;\n}",
+    "value": 100
+  },
+  "boundExtend": 10,
+  "fitSize": true,
+  "pixelPerfect": false,
+  "attachStyle": "close",
+  "comps": [
+    {
+      "type": "components/ht/ui/multilineText.json",
+      "displayName": "multilineText",
+      "rect": {
+        "func": "__ht__function(data, view) {\nvar size = ht.vector.caluMultilineSize(data);\nreturn [0, 0, size.width, size.height];\n}",
+        "value": [
+          0,
+          0,
+          100,
+          100
+        ]
+      },
+      "content": {
+        "func": "attr@ht.content",
+        "value": "HT 2D Editor\nHightopo"
+      },
+      "font": {
+        "func": "attr@ht.font",
+        "value": "12px Impact"
+      },
+      "textAlign": {
+        "func": "attr@ht.textAlign",
+        "value": "left"
+      },
+      "lineHeight": {
+        "func": "attr@ht.lineHeight",
+        "value": 18
+      },
+      "background": {
+        "func": "attr@ht.background",
+        "value": null
+      },
+      "padding": {
+        "func": "attr@ht.padding",
+        "value": "10"
+      },
+      "borderColor": {
+        "func": "attr@ht.borderColor",
+        "value": "rgb(51,153,255)"
+      },
+      "borderRadius": "5",
+      "dash": true,
+      "dashPattern": [
+        8,
+        4
+      ]
+    }
+  ]
+}

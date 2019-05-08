@@ -1,0 +1,941 @@
+{
+  "dataBindings": [
+    {
+      "attr": "ht.startAngle",
+      "valueType": "Angle",
+      "name": "ChartStartAngle"
+    },
+    {
+      "attr": "ht.endAngle",
+      "valueType": "Angle",
+      "name": "ChartEndAngle"
+    },
+    {
+      "attr": "ht.PoinertRadius",
+      "valueType": "PositiveNumber",
+      "name": "ChartPointerRadius"
+    },
+    {
+      "attr": "ht.pointerColor",
+      "valueType": "Color",
+      "name": "ChartPointerColor"
+    },
+    {
+      "attr": "ht.value",
+      "valueType": "Number",
+      "name": "ChartValue"
+    },
+    {
+      "attr": "ht.min",
+      "valueType": "Number",
+      "name": "ChartMinValue"
+    },
+    {
+      "attr": "ht.max",
+      "valueType": "Number",
+      "name": "ChartMaxValue"
+    },
+    {
+      "attr": "ht.clockwise",
+      "valueType": "Boolean",
+      "name": "ChartClockwise"
+    },
+    {
+      "attr": "ht.showLabel",
+      "valueType": "Boolean",
+      "name": "ChartShowLabel"
+    },
+    {
+      "attr": "ht.labelEvery",
+      "valueType": "PositiveNumber",
+      "name": "ChartLabelEvery"
+    },
+    {
+      "attr": "ht.labelColor",
+      "valueType": "Color",
+      "name": "ChartLabelColor"
+    },
+    {
+      "attr": "ht.showTick",
+      "valueType": "Boolean",
+      "name": "ChartShowTick"
+    },
+    {
+      "attr": "ht.tickEvery",
+      "valueType": "PositiveNumber",
+      "name": "ChartTickEvery"
+    },
+    {
+      "attr": "ht.tickColor",
+      "valueType": "Color",
+      "name": "ChartTickColor"
+    },
+    {
+      "attr": "ht.bigTickEvery",
+      "valueType": "PositiveNumber",
+      "name": "ChartBigTickEvery"
+    },
+    {
+      "attr": "ht.bigTickColor",
+      "valueType": "Color",
+      "name": "ChartBigTickColor"
+    }
+  ],
+  "width": 200,
+  "height": 200,
+  "comps": [
+    {
+      "type": "circle",
+      "background": "rgba(0,0,0,0.3)",
+      "borderColor": "rgb(117,175,255)",
+      "rect": [
+        0,
+        0,
+        200,
+        200
+      ]
+    },
+    {
+      "type": "circle",
+      "background": "rgb(222,222,222)",
+      "borderColor": "rgb(117,175,255)",
+      "rect": [
+        1.13686,
+        0,
+        197.72629,
+        200
+      ]
+    },
+    {
+      "type": "circle",
+      "background": "rgb(115,115,115)",
+      "borderColor": "rgb(184,214,255)",
+      "gradient": "linear.south",
+      "rect": [
+        9.08557,
+        1.15177,
+        181.82886,
+        197.69647
+      ]
+    },
+    {
+      "type": "circle",
+      "background": "rgb(222,222,222)",
+      "borderColor": "rgb(184,214,255)",
+      "gradient": "linear.north",
+      "gradientColor": "rgb(0,0,0)",
+      "rect": [
+        17.04356,
+        1.15177,
+        165.91288,
+        197.69647
+      ]
+    },
+    {
+      "type": "oval",
+      "background": "rgb(28,28,28)",
+      "borderColor": "rgb(184,214,255)",
+      "gradientColor": "rgb(46,46,46)",
+      "rect": [
+        17.27442,
+        21.30217,
+        165.45116,
+        157.39566
+      ]
+    },
+    {
+      "type": "arc",
+      "borderWidth": 5,
+      "borderColor": "rgba(255,255,255,0.63)",
+      "borderCap": "round",
+      "arcFrom": 3.14159,
+      "arcClose": false,
+      "rect": [
+        9.08557,
+        10.26231,
+        181.82886,
+        179.47538
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rect": [
+        100.26438,
+        25.20955,
+        1.17495,
+        13.86832
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 0.5236,
+      "rect": [
+        134.55427,
+        33.56896,
+        1.17495,
+        13.86832
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.0472,
+      "rect": [
+        159.65622,
+        58.25956,
+        1.17495,
+        13.86832
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.0472,
+      "rect": [
+        40.87254,
+        125.71556,
+        1.17495,
+        13.86832
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.5708,
+      "rect": [
+        168.85379,
+        92.55002,
+        1.15569,
+        14.09936
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.5708,
+      "rect": [
+        31.69422,
+        92.55002,
+        1.15569,
+        14.09936
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 2.0944,
+      "rect": [
+        159.65622,
+        126.39353,
+        1.17495,
+        13.86832
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 2.0944,
+      "rect": [
+        40.87254,
+        58.93754,
+        1.17495,
+        13.86832
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 2.61799,
+      "rect": [
+        65.97449,
+        34.24694,
+        1.17495,
+        13.86832
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 0.08727,
+      "rect": [
+        106.40994,
+        27.03966,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 0.17453,
+      "rect": [
+        112.50872,
+        27.82942,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 0.34907,
+      "rect": [
+        124.38102,
+        30.95846,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 0.43633,
+      "rect": [
+        130.06419,
+        33.27393,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 0.61087,
+      "rect": [
+        140.7086,
+        39.31879,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 0.69813,
+      "rect": [
+        145.58884,
+        43.00217,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 0.87266,
+      "rect": [
+        154.27998,
+        51.55088,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 0.95993,
+      "rect": [
+        158.02471,
+        56.35115,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 2.70526,
+      "rect": [
+        70.46458,
+        33.27393,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 2.79253,
+      "rect": [
+        76.14774,
+        30.95846,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 2.96706,
+      "rect": [
+        88.02005,
+        27.82942,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 3.05433,
+      "rect": [
+        94.11883,
+        27.03966,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.13446,
+      "rect": [
+        163.96158,
+        66.52114,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.13446,
+      "rect": [
+        36.14979,
+        125.14412,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.22173,
+      "rect": [
+        166.31562,
+        72.11119,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.22173,
+      "rect": [
+        33.79575,
+        119.55409,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.39626,
+      "rect": [
+        169.49679,
+        83.78893,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.39626,
+      "rect": [
+        30.61457,
+        107.87633,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.48353,
+      "rect": [
+        170.29971,
+        89.78778,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.48353,
+      "rect": [
+        29.81166,
+        101.87749,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 0.2618,
+      "rect": [
+        118.51432,
+        27.57283,
+        1.17495,
+        10.06653
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 0.7854,
+      "rect": [
+        150.12414,
+        45.52372,
+        1.17495,
+        10.06653
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.65806,
+      "rect": [
+        170.50841,
+        102.17747,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.65806,
+      "rect": [
+        30.02036,
+        90.08777,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.74533,
+      "rect": [
+        169.7055,
+        108.17632,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.74533,
+      "rect": [
+        30.82328,
+        84.08892,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.91986,
+      "rect": [
+        166.52432,
+        119.85407,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.91986,
+      "rect": [
+        34.00446,
+        72.41116,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 2.00713,
+      "rect": [
+        164.17028,
+        125.44411,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 2.00713,
+      "rect": [
+        36.35849,
+        66.82113,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 2.18166,
+      "rect": [
+        42.50405,
+        56.35114,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 2.26893,
+      "rect": [
+        46.24879,
+        51.55087,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 2.44346,
+      "rect": [
+        54.93991,
+        43.00215,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 2.53073,
+      "rect": [
+        59.82016,
+        39.31878,
+        1.17495,
+        6.93416
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 2.87979,
+      "rect": [
+        82.01445,
+        27.57283,
+        1.17495,
+        10.06653
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.309,
+      "rect": [
+        168.16539,
+        76.31557,
+        1.17495,
+        10.06653
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.309,
+      "rect": [
+        31.94599,
+        112.21733,
+        1.17495,
+        10.06653
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.8326,
+      "rect": [
+        168.37409,
+        112.51732,
+        1.17495,
+        10.06653
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 1.8326,
+      "rect": [
+        32.15469,
+        76.61555,
+        1.17495,
+        10.06653
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "rotation": 2.35619,
+      "rect": [
+        50.40462,
+        45.52371,
+        1.17495,
+        10.06653
+      ]
+    },
+    {
+      "type": "circle",
+      "background": "rgb(28,28,28)",
+      "borderColor": "rgb(28,28,28)",
+      "rect": [
+        32.30435,
+        28.35501,
+        137.65171,
+        142.86576
+      ]
+    },
+    {
+      "type": "circle",
+      "background": "rgba(255,255,255,0.20)",
+      "borderColor": "rgb(117,175,255)",
+      "rect": [
+        85.50032,
+        82.62303,
+        30.70306,
+        35.10908
+      ]
+    },
+    {
+      "type": "arc",
+      "borderWidth": 2,
+      "borderColor": "rgb(148,255,207)",
+      "arcFrom": 2.61799,
+      "arcTo": 5.51524,
+      "arcClose": false,
+      "rect": [
+        37.95488,
+        27.81843,
+        126.06866,
+        143.56254
+      ]
+    },
+    {
+      "type": "circle",
+      "background": "rgb(148,255,207)",
+      "borderColor": "rgb(117,175,255)",
+      "rect": [
+        143.22572,
+        52.69977,
+        5.18727,
+        5.93166
+      ]
+    },
+    {
+      "type": "arc",
+      "borderWidth": 2,
+      "borderColor": "rgb(250,122,122)",
+      "arcFrom": 5.74213,
+      "arcTo": 0.5236,
+      "arcClose": false,
+      "rect": [
+        38.40499,
+        28.25928,
+        126.06866,
+        143.56254
+      ]
+    },
+    {
+      "type": "shape",
+      "background": "rgb(255,255,255)",
+      "borderColor": "#979797",
+      "visible": false,
+      "anchorY": 1.03145,
+      "rotation": -0.89651,
+      "points": [
+        169.1416,
+        174.60872,
+        175.28871,
+        54.51044,
+        181.1364,
+        174.99565
+      ]
+    },
+    {
+      "type": "circle",
+      "background": "rgb(163,163,163)",
+      "borderColor": "rgb(117,175,255)",
+      "rotation": -0.89651,
+      "rect": [
+        91.71184,
+        91.06115,
+        16.27261,
+        18.6078
+      ]
+    },
+    {
+      "type": "rect",
+      "background": "rgb(0,0,0)",
+      "borderWidth": 2,
+      "borderColor": "rgb(148,255,207)",
+      "rect": [
+        64.14883,
+        127.47198,
+        72.2311,
+        17.42843
+      ]
+    },
+    {
+      "type": "text",
+      "text": {
+        "func": "attr@ht.value",
+        "value": ""
+      },
+      "align": "center",
+      "color": "rgb(148,255,207)",
+      "rect": [
+        82.2066,
+        131.82909,
+        36.11555,
+        8.71422
+      ]
+    },
+    {
+      "type": "components/ht/gauge/gauge.json",
+      "shadowColor": "rgb(176,215,255)",
+      "shadowBlur": 15,
+      "displayName": "gauge",
+      "rect": [
+        0,
+        0,
+        200,
+        200
+      ],
+      "startAngle": {
+        "func": "attr@ht.startAngle",
+        "value": -3.65297
+      },
+      "endAngle": {
+        "func": "attr@ht.endAngle",
+        "value": 0.50615
+      },
+      "pointerRadius": {
+        "func": "attr@ht.PoinertRadius",
+        "value": 0.7
+      },
+      "pointerColor": {
+        "func": "attr@ht.pointerColor",
+        "value": "rgb(242,83,75)"
+      },
+      "value": {
+        "func": "attr@ht.value",
+        "value": 0
+      },
+      "min": {
+        "func": "attr@ht.min",
+        "value": 0
+      },
+      "max": {
+        "func": "attr@ht.max",
+        "value": 100
+      },
+      "clockwise": {
+        "func": "attr@ht.clockwise",
+        "value": true
+      },
+      "showLabel": {
+        "func": "attr@ht.showLabel",
+        "value": false
+      },
+      "labelEvery": {
+        "func": "attr@ht.labelEvery",
+        "value": 10
+      },
+      "labelColor": {
+        "func": "attr@ht.labelColor",
+        "value": "#FEB64D"
+      },
+      "showTick": {
+        "func": "attr@ht.showTick",
+        "value": false
+      },
+      "tickEvery": {
+        "func": "attr@ht.tickEvery",
+        "value": 2
+      },
+      "tickColor": {
+        "func": "attr@ht.tickColor",
+        "value": "#32D3EB"
+      },
+      "bigTickEvery": {
+        "func": "attr@ht.bigTickEvery",
+        "value": 20
+      },
+      "bigTickColor": {
+        "func": "attr@ht.bigTickColor",
+        "value": "#60ACFC"
+      },
+      "showShadow": true
+    }
+  ]
+}

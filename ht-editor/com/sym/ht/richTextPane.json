@@ -1,0 +1,162 @@
+{
+  "modified": "Mon Jan 14 2019 17:04:05 GMT+0800 (中国标准时间)",
+  "dataBindings": [
+    {
+      "attr": "ht.content",
+      "valueType": "Object",
+      "defaultValue": [
+        [
+          {
+            "text": "面板标题",
+            "color": "#ff8210",
+            "font": "28px arial"
+          }
+        ],
+        [
+          {
+            "text": "平均温度"
+          },
+          {
+            "text": "100",
+            "color": "red",
+            "font": "24px arial"
+          },
+          {
+            "text": "℃"
+          }
+        ],
+        [
+          {
+            "text": "湿度"
+          },
+          {
+            "text": "760",
+            "color": "green",
+            "font": "24px arial"
+          },
+          {
+            "text": "%"
+          }
+        ]
+      ],
+      "name": "UIContent"
+    },
+    {
+      "attr": "ht.showArrow",
+      "valueType": "Boolean",
+      "defaultValue": true,
+      "name": "UIShowArrow"
+    },
+    {
+      "attr": "ht.arrowOrientation",
+      "valueType": "Orientation",
+      "defaultValue": "bottom",
+      "name": "UIArrowOrientation"
+    },
+    {
+      "attr": "ht.arrowPosition",
+      "valueType": "Percentage",
+      "defaultValue": 0.5,
+      "name": "UIArrowPosition"
+    },
+    {
+      "attr": "ht.padding",
+      "valueType": "String",
+      "defaultValue": "10 5",
+      "name": "UIPadding"
+    },
+    {
+      "attr": "ht.vGap",
+      "valueType": "PositiveNumber",
+      "defaultValue": 5,
+      "name": "UIVGap"
+    },
+    {
+      "attr": "ht.hGap",
+      "valueType": "PositiveNumber",
+      "defaultValue": 5,
+      "name": "UIHGap"
+    },
+    {
+      "attr": "ht.borderWidth",
+      "valueType": "PositiveNumber",
+      "defaultValue": 1,
+      "name": "UIBorderWidth"
+    },
+    {
+      "attr": "ht.borderColor",
+      "valueType": "Color",
+      "name": "UIBorderColor"
+    },
+    {
+      "attr": "ht.background",
+      "valueType": "Color",
+      "name": "UIBackground"
+    }
+  ],
+  "width": {
+    "func": "__ht__function(data, view) {\nvar w = ht.vector.caluRichTextPaneSize(data).width;\nif (data._width !== w) {\n    data.setWidth(w);\n}\nreturn w;\n}",
+    "value": 100
+  },
+  "height": {
+    "func": "__ht__function(data, view) {\nvar h = ht.vector.caluRichTextPaneSize(data).height;\nif (data._height !== h) {\n    data.setHeight(h);\n}\nreturn h;\n}",
+    "value": 100
+  },
+  "fitSize": true,
+  "pixelPerfect": false,
+  "attachStyle": "close",
+  "comps": [
+    {
+      "type": "components/ht/ui/richTextPane.json",
+      "displayName": "infoPane",
+      "rect": {
+        "func": "__ht__function(data, view) {\nvar size = ht.vector.caluRichTextPaneSize(data);\nreturn [0, 0, size.width, size.height];\n}",
+        "value": [
+          0,
+          0,
+          100,
+          100
+        ]
+      },
+      "content": {
+        "func": "attr@ht.content",
+        "value": []
+      },
+      "borderColor": {
+        "func": "attr@ht.borderColor",
+        "value": "rgb(135,144,204)"
+      },
+      "borderWidth": {
+        "func": "attr@ht.borderWidth",
+        "value": 1
+      },
+      "background": {
+        "func": "attr@ht.background"
+      },
+      "showArrow": {
+        "func": "attr@ht.showArrow",
+        "value": true
+      },
+      "arrowOrientation": {
+        "func": "attr@ht.arrowOrientation",
+        "value": "bottom"
+      },
+      "arrowPosition": {
+        "func": "attr@ht.arrowPosition",
+        "value": 0.5
+      },
+      "padding": {
+        "func": "attr@ht.padding",
+        "value": "5"
+      },
+      "vGap": {
+        "func": "attr@ht.vGap",
+        "value": 5
+      },
+      "hGap": {
+        "func": "attr@ht.hGap",
+        "value": 5
+      }
+    }
+  ]
+}
