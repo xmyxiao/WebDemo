@@ -10,3 +10,22 @@ nodejs 上传文件测试
 js监听资源加载完成
 
 项目文档生成
+
+setTimeout 第一个参数为字符串时的内部实现原理
+闭包在setTimeout中的作用
+setTimeout的几种参数传递方式
+	function nodeReassignmentInt(me){
+		return function(){
+	    	nodeReassignment(me)
+		} 
+	}
+	function nodeReassignment(a){
+		console.log(a)
+	}
+	function IntervalNode(me){
+		var obj = me;
+		setTimeout(nodeReassignmentInt(obj),1000)
+	}
+	IntervalNode(1);
+	
+切换页面导致计时器停止，JS暂停
