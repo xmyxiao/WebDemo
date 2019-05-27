@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>layui</title>
+  <link rel="stylesheet" href="node_modules/layui-src/src/css/layui.css">
+</head>
+<body>
+ 
+<!-- 你的HTML代码 -->
+<form class="layui-form"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+  <div class="layui-form-item">
+    <label class="layui-form-label">复选框</label>
+    <div class="layui-input-block">
+      <input type="checkbox" name="aids[]" value="1" title="123" lay-skin="primary"  checked>
+      <input type="checkbox" name="" title="写作">
+      <input type="checkbox" name="" title="阅读">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">单选框</label>
+    <div class="layui-input-block">
+      <input type="radio" name="sex" value="0" title="男">
+      <input type="radio" name="sex" value="1" title="女" checked>
+    </div>
+  </div>
+</form>
+
+<script src="node_modules/layui-src/src/layui.js"></script>
+<script>
+//一般直接写在一个js文件中
+layui.use(['layer', 'form'], function(){
+  var layer = layui.layer,form = layui.form;
+});
+</script> 
+</body>
+</html>
