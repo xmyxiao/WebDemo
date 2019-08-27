@@ -1,7 +1,7 @@
 <template>
 	<div class="des-tabpanel">
 		<ul class="tab-head">
-			<li class="item" :class="{'selected':selectItem === index}" v-for="(item,index) in navList" @click="itemSelect(index)">
+			<li class="item" :class="{'selected':selectItem === index}" v-for="(item,index) in navList" @click="itemSelect(index)" :key="index">
 				<div v-if="index===0" class="background-cube"></div>
 	    		<div class="text">{{item.text}}</div>
 			</li>
@@ -26,7 +26,7 @@ export default {
        		required : true
        }
   },
-  	methods:{
+  methods:{
 	    itemSelect(index){
 	    	this.$emit("selectPanel",index);
 	    	var translateX = index * 100 + "%";

@@ -33,7 +33,7 @@
 							document.onmousemove = document.onmouseup = null;
 						}
 						e.preventDefault();//防止默认事件的触发
-					}
+					},
 					color(el,bindings){//默认执行  数据加载之后就执行
 						el.style.background = bindings.value;
 					}
@@ -41,7 +41,7 @@
 				watch:{
 					//watch 默认只能监控一层数据  即是数组包对象  对象中的数据变化无法监听到
 					todos:{
-						handler{
+						handler:{
 							
 						},deep:true //是否深度监听
 					}
@@ -55,7 +55,7 @@
 				//这里的箭头函数是为了防止this重新指向window
 				window.location.hash  //获取页面的哈希值
 				//刷新时默认不触发hashchange 所以一般页面加载时也要取一次hash的值
-			},false);
+			//},false);
 		</script>
 	</body>
 </html>
