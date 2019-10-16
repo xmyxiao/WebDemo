@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>登录页</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_731525_rsxogt9v62.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="p-login-header">
+      <i class="logo"></i>
+      <span class="title">欢迎登录海创物联网平台</span>
+    </div>
+    <div class="p-login-main">
+      <div class="logincontent">
+        <form class="login-form">
+          <h3 class="form-title">用户登录</h3>
+          <div class="alert-danger" style="display: none;">
+            <i class="close iconfont icon-cha1"></i>
+            <span> 请填写用户名和密码 </span>
+          </div>
+          <div class="input-icon">
+            <i class="iconfont icon-wodetubiaodianji"></i>
+            <input class="form-control" id="userId" type="text" autocomplete="off" placeholder="用户名" name="userId">
+          </div>
+          <div class="input-icon">
+            <i class="iconfont icon-mima"></i>
+            <input class="form-control" type="text" autocomplete="off" placeholder="密码" name="password">
+          </div>
+          <div class="form-actions">
+            <label class="rememberme">
+		                    <input type="checkbox" name="remember" class=""> 记住用户名
+		                    <span></span>
+		                </label>
+            <a href="javascript:;" class="back-password">
+              忘记密码？
+            </a>
+          </div>
+          <button type="submit" id="submitBtn" class="btn pull-right"> 登录 </button>
+        </form>
+      </div>
+      <div id="footer">
+        <div class="footer-w">
+          <span>版权所有©2019 福建中海创科技有限责任公司</span>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    window.onload = function() {
+      var $rememberme = document.querySelector(".rememberme");
+      var $submitBtn = document.querySelector("#submitBtn");
+      var userId = localStorage.getItem("aomaiyunuserid");
+      if(userId) {
+        addClass($rememberme, "checked");
+        document.querySelector("#userId").value = userId;
+      }
+      $rememberme.addEventListener("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var _this = this;
+        if(hasClass(_this, "checked")) {
+          removeClass(_this, "checked");
+        } else {
+          addClass(_this, "checked");
+        }
+      });
+      $submitBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $userId = document.querySelector("#userId");
+        var $rememberme = document.querySelector(".rememberme");
+        if(hasClass($rememberme, "checked")) {
+          window.localStorage.setItem("aomaiyunuserid", $userId.value);
+        } else {
+          window.localStorage.removeItem("aomaiyunuserid");
+        }
+      });
+    }
+
+    function hasClass(elements, cName) {
+      return !!elements.className.match(new RegExp("(\\s|^)" + cName + "(\\s|$)"));
+    };
+
+    function addClass(elements, cName) {
+      if(!hasClass(elements, cName)) {
+        elements.className += " " + cName;
+      };
+    };
+
+    function removeClass(elements, cName) {
+      if(hasClass(elements, cName)) {
+        elements.className = elements.className.replace(new RegExp("(\\s|^)" + cName + "(\\s|$)"), " "); // replace方法是替换
+      };
+    };
+  </script>
+
+</html>

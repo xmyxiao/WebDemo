@@ -1,0 +1,9 @@
+前端基础规范
+使用插件来统一代码
+  https://segmentfault.com/a/1190000015315545
+  https://standardjs.com/readme-zhcn.html
+
+文件命名:
+  以小写命名   用下划线风格  例如：  my_list.js
+
+推荐编辑器：vs code

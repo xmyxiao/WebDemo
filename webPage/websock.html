@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>首页</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/sockjs-client/1.4.0/sockjs.min.js"></script>
+    <script src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
+    <script>
+      $(function(){
+        connect();
+      });
+
+      var stompClient = null;
+      function disConnect() {
+        if (stompClient != null) {
+          stompClient.disconnect();
+        }
+      }
+
+      function connect() {
+        var socketUrl = 'http://192.168.4.121:8769'
+        var headers = {deviceKey: "GSigdB9Gv7kym2NB", deviceSecret: "dF8q4fYvoxhYALNpt9OV3iR26IFq10p2"}
+        let socket = new SockJS(socketUrl + '/stomp');
+        stompClient = Stomp.over(socket);
+        stompClient.connect(headers,() => {
+          stompClient.subscribe('/user/system/msg', (msg) => {
+            console.log(msg.body);
+          });
+          stompClient.send("/app/test",headers,JSON.stringify(headers))
+        },(err) => {
+          console.log('失败',err);
+        });
+      }
+    </script>
+</head>
+<body>
+</body>
+</html>

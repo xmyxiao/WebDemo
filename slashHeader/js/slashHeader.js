@@ -85,7 +85,10 @@
 		for(var i = 0; i < pointArr.length; i++){
 			var pathStr = 'M' + options.renderStart.x + ',' + options.renderStart.y
 						+ 'L' + pointArr[i].x + ',' + pointArr[i].y;
-			paper.path(pathStr);
+			paper.path(pathStr).attr({
+		      "stroke": options.stroke,
+		      "stroke-width": options.strokeWidth
+			});
 		}
 		pointArr.push(options.renderEnd);	
 		for(var i = 0; i < headerArr.length; i++){

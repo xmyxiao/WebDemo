@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="" charset="UTF-8">
+		<meta name="description" content="iShare是一个小巧的分享插件，纯JS编写，不依赖于任何第三方库，使用简便.">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="css/ishare.css">
+
+	</head>
+	<body>
+	  <div class="iShare iShare-16 iShare1"></div>
+	  <script href="javascript:;" type="text/javascript" src="iShare.js"></script>
+	  <script>
+	    (new iShare({container:'.iShare1',config:{
+        title: '分享标题',
+        description: '这是分享描述文本',
+        url: 'http://www.baidu.com',
+        isAbroad: false,
+        isTitle: true,
+        initialized: true,
+        WXoptions:{
+          isTitleVisibility: true,
+          title: '二维码标题',
+          isTipVisibility: true,
+          tip: '二维码描述文本',
+          qrcodeW: 140,
+          qrcodeH: 140,
+          qrcodeBgc: '#fff',
+          qrcodeFgc: '#000',
+          bgcolor: '#2BAD13'
+        }
+      }}));
+
+	  </script>
+	</body>
+</html>
