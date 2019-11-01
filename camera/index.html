@@ -6,8 +6,9 @@
 	</head>
 	<body>
 		<video width="200" height="150"></video>
+		<video id="video" width="320" height="240" preload autoplay loop muted></video>
 	    <canvas width="200" height="150" style="display: none;"></canvas>
-	
+	     <input type="file" accept="video/*" capture="camera">
 	    <p>
 	        <button id="snap" onclick="carmup();">截取图像</button>
 	        <button id="close" >关闭摄像头</button>
