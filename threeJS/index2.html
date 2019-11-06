@@ -13,49 +13,20 @@
     <script src="./js/js/controls/OrbitControls.js"></script>
     <script src="./js/de.js"></script>
 	  <script>
-	    createMtlObj()
-	    function createMtlObj(){
-          options={
-              mtlBaseUrl:"",
-              mtlPath:"./objs/shyxy/",
-              mtlFileName:"lud0.mtl",
-              objPath:"./objs/shyxy/",
-              objFileName:"lud0.obj",
-              completeCallback:function(object){  
-              },
-              progress:function(persent){
-                  
-              }
-          }
-          //THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
-          var manager = new THREE.LoadingManager();
-          manager.addHandler( /\.dds$/i, new THREE.DDSLoader() );
-          var mtlLoader = new THREE.MTLLoader(manager);
-          mtlLoader.setPath( options.mtlPath );//设置mtl文件路径
-          mtlLoader.load( options.mtlFileName, function( materials ) {
-              materials.preload();
-              var objLoader = new THREE.OBJLoader(manager);
-              objLoader.setMaterials( materials );//设置三维对象材质库
-              objLoader.setPath( options.objPath );//设置obj文件所在目录
-              objLoader.load( options.objFileName, function ( object ) {
-                   
-                   scene.add( object );
-                  if(typeof options.completeCallback=="function"){
-                      options.completeCallback(object);
-                  }
-              }, function ( xhr ) {
-                  if ( xhr.lengthComputable ) {
-                      var percentComplete = xhr.loaded / xhr.total * 100;
-                      if(typeof options.progress =="function"){
-                          options.progress( Math.round(percentComplete, 2));
-                      }
-                      //console.log( Math.round(percentComplete, 2) + '% downloaded' );
-                  }
-              }, function(error){
-                   
-              });
-       
-          });
+	    var objPath = './testObj/ces/'
+	    var options=[{
+        mtlPath:objPath,
+        mtlFileName:"rotor.mtl",
+        objPath:objPath,
+        objFileName:"rotor.obj",
+        completeCallback:function(object){
+        },
+        progress:function(persent){
+            
+        }
+      }]
+      for(var i = 0, l = options.length; i < l; i++){
+        createMtlObj(options[i])
       }
 	  </script>
 	</body>

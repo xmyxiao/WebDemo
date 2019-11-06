@@ -28,7 +28,7 @@ function init() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color( 0xa1a1a1 );
   // 环境光
-  var ambientLight = new THREE.AmbientLight( 0xffffff, 0.4 );
+  var ambientLight = new THREE.AmbientLight( 0xffffff );
   scene.add( ambientLight );
   // 点光源
   var pointLight = new THREE.PointLight( 0xcccccc, .4 );
@@ -57,50 +57,18 @@ function init() {
   
   // tga纹理
   // comment in the following line and import TGALoader if your asset uses TGA textures
-  // manager.addHandler( /\.tga$/i, new TGALoader() );
-/*
-  new MTLLoader( manager ).load( './obj/3d/machine.mtl', function ( materials ) {
-    materials.preload();
-    new OBJLoader( manager ).setMaterials( materials ).load( './obj/3d/machine.obj', function ( object ) {
-      scene.add( object );
-    }, onProgress, onError );
-  });
-*/
-
-  //loadObj('./obj/male02/', 'male02', manager, onProgress, onError)
-  //loadObj('./obj/file/', 'file', manager, onProgress, onError)
+  //manager.addHandler( /\.tga$/i, new TGALoader() );
   
-  //useParseMain()
-  
-  /*
-  new OBJLoader().load( './obj/NOAA/58pic_53cadeab3fd9f.obj', function ( object ) {
-    scene.add( object );
-  }, onProgress, onError );
-  */
-  var maPath = './obj/3d/'
-  //loadObj('./obj/female02/', 'female02')
-  
-  
-  /*loadObj(maPath, 'machine', manager, onProgress, onError)
-  loadObj(maPath, 'cloth01', manager, onProgress, onError)
-  loadObj(maPath, 'cloth02', manager, onProgress, onError)
-  loadObj(maPath, 'Cotton', manager, onProgress, onError)
-  loadObj(maPath, 'left_door', manager, onProgress, onError)
-  loadObj(maPath, 'right_door', manager, onProgress, onError)
-  loadObj(maPath, 'rotor', manager, onProgress, onError)*/
-
-  //loadObj2('./objs/shyxy/', 'ljt')
-  //loadObj2('./objs/shyxy/', 'lud0')
-  //loadObj2('./objs/shyxy/', 'a_jianzhu')
-  //loadObj2('./objs/shyxy/', 'huap01')
-  //loadObj2('./objs/shyxy/', 'hua05')
-  //loadObj2('./objs/other/', 'phone')
-  //loadObj2('./obj/cs/', 'rotor')
-  //loadObj2('./obj/3d/', 'machine')
-  //loadObj2('./obj/file/', 'file')
-  //loadObj2('./obj/female02/', 'female02')
-  
-  loadObj2('./obj/ceshi/', 'jixin',manager, onProgress, onError)
+  var maPath = './testObj/ces/'
+  loadObj2(maPath, 'machine')
+  loadObj2(maPath, 'cloth01')
+  loadObj2(maPath, 'cloth02')
+  loadObj2(maPath, 'Cotton')
+  loadObj2(maPath, 'left_door')
+  loadObj2(maPath, 'right_door')
+  loadObj2(maPath, 'rotor')
+ 
+  //loadObj2('./testObj/cc/', 'test')
   // 渲染器
   renderer = new THREE.WebGLRenderer();
   renderer.setPixelRatio( window.devicePixelRatio );
@@ -120,8 +88,8 @@ function loadObj(path,name,manager,onProgress,onError){
   function onLoadMtl ( mtlParseResult ) {
     mtlParseResult.preload()
     new OBJLoader(manager).setMaterials( mtlParseResult ).load( path + name +'.obj', function ( object ) {
-        renderer.render(scene, camera);
-        scene.add( object );
+      renderer.render(scene, camera);
+      scene.add( object );
     }, onProgress, onError );
   }
   let mtlLoader = new MTLLoader(manager);

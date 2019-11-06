@@ -56,3 +56,32 @@ function render() {
   camera.lookAt( scene.position );
   renderer.render( scene, camera );
 }
+// 添加模型
+function createMtlObj(option){
+    var manager = new THREE.LoadingManager();
+    manager.addHandler( /\.dds$/i, new THREE.DDSLoader() );
+    var mtlLoader = new THREE.MTLLoader(manager);
+    mtlLoader.setPath( option.mtlPath );//设置mtl文件路径
+    mtlLoader.load( option.mtlFileName, function( materials ) {
+        materials.preload();
+        var objLoader = new THREE.OBJLoader(manager);
+        objLoader.setMaterials( materials );//设置三维对象材质库
+        objLoader.setPath( option.objPath );//设置obj文件所在目录
+        objLoader.load( option.objFileName, function ( object ) {   
+            scene.add( object );
+            if(typeof option.completeCallback=="function"){
+                option.completeCallback(object);
+            }
+        }, function ( xhr ) {
+            if ( xhr.lengthComputable ) {
+                var percentComplete = xhr.loaded / xhr.total * 100;
+                if(typeof option.progress =="function"){
+                    option.progress( Math.round(percentComplete, 2));
+                }
+                //console.log( Math.round(percentComplete, 2) + '% downloaded' );
+            }
+        }, function(error){
+                
+        });
+    });
+}
