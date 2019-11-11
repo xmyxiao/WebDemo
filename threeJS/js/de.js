@@ -70,7 +70,7 @@ function createMtlObj(option){
         objLoader.load( option.objFileName, function ( object ) {   
             scene.add( object );
             if(typeof option.completeCallback=="function"){
-                option.completeCallback(object);
+                option.completeCallback(object,materials);
             }
         }, function ( xhr ) {
             if ( xhr.lengthComputable ) {

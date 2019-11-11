@@ -102,7 +102,6 @@ function loadObj2(path,name){
 
   let objLoader2 = new OBJLoader2().setModelName( modelName );
 
-
   function onLoadMtl ( mtlParseResult ) {
     objLoader2.addMaterials( MtlObjBridge.addMaterialsFromMtlLoader( mtlParseResult ), true );
 

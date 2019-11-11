@@ -2,3 +2,14 @@ body {
   margin: 0;
   overflow: hidden;
 }
+#menu{
+  position: fixed;
+  right: 0;
+  bottom: 200px;
+  background: #fff;
+  padding: 20px;
+}
+#menu .item{
+  cursor: pointer;
+  padding: 10px 0;
+}
