@@ -1,4 +1,4 @@
-function init(){
+function init() {
     var pLeft = [ -600, 0, 0 ];
     var pRight = [ 600, 0, 0 ];
 

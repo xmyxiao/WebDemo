@@ -1,0 +1,73 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+.main {
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 250px;
+}
+#menu{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: #fff;
+  z-index: 1;
+  width: 250px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #ccd5d3;
+}
+#menu .header{
+  width: 100%;
+  height: 35px;
+  background: #26272a;
+}
+#menu .title{
+  font-size: 20px;
+  color: #333;
+  padding: 10px;
+}
+#menu .list{
+  overflow: auto;
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
+  top: 80px;
+  padding: 0 17px;
+  box-sizing: border-box;
+}
+#menu .list .item{
+  display: inline-block;
+  cursor: pointer;
+}
+#menu .list .item img{
+  width: 50px;
+  height: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
