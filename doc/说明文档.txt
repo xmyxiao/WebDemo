@@ -12,6 +12,7 @@ handsontable         handsontable.js
 html5                h5语法
 ie-js                ie兼容js
 knockout             knockout : knockout.js框架示例文件
+load                 页面加载测试
 loadJsAndCss         动态加载js与css
 often                常用的js与css
 slashHeader          斜线表头

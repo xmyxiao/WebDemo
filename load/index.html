@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>加载测试</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js" ></script>
+    <script>
+      console.log('js load')
+    </script>
+    <script>
+      $.ajax({
+        type:"get",
+        url:'https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js',
+        async:false,
+        success:function(data){
+          console.log('ajax成功')
+          var myScript= document.createElement("script");
+          myScript.type = "text/javascript";
+          myScript.setAttribute("src",'https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts.js'); 
+          // chrome下的加载完成   ie使用onreadystatechange
+          myScript.onload = function(data) {
+            console.log(data,'echarts load')
+          }
+          // 这里不能用document.body.appendChild  因为body还没被加载
+          document.head.appendChild(myScript);
+        },
+        error:function(){
+          console.log('ajax失败')
+        }
+      });
+    </script>
+  </head>
+  <body onload="console.log('body load')">
+    <p>这里的加载顺序为：</p>
+    <p>jq -> js -> ajax(同步) -> echarts -> body</p>
+  </body>
+</html>
