@@ -54,8 +54,9 @@
 	               design_text_css="color:#FFFFFF; font-family:Arial;"
 	               design_text_shadow="1"
 	               />
-
-
+    <layer name="pifubox" parent="" zorder="7" caption="皮肤容器" keep="true" type="container" align="center" edge="center" x="0" y="0" width="100%" height="100%" bgalpha="0" bgborder="0 0xFF0000 1" bgroundedge="0 0 0 0" bgshadow="0 0 0 0xFF00FF 0" alpha="1" visible="true"/>
+    <layer name="logo" parent="pifubox" zorder="13" caption="LOGO" keep="true" type="image" url="%FIRSTXML%/skin/logow.png" scale="1" visible="true" align="lefttop" edge="lefttop" y="5" x="5" onclick="showinfo(&apos;info&apos;);
+" enabled="false" handcursor="false" onloaded="global.style[vrm_zoomable].init();global.style[vrm_dragable].init();"/>
 	<!-- save the url path of this xml file (the url value will be adjusted during xml parsing) -->
 	<vtourskinxmlpath url="./" />
 
