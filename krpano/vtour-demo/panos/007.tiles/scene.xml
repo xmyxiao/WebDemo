@@ -1,0 +1,23 @@
+<krpano>
+    <this scenename="scene_007" next="" prev="" title="车间B" shutter="1/13" aperture="F8" iso="100" album="" blend="3"/>
+    <location gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y=""/>
+    <preview url="preview.jpg"/>
+    <view fovtype="DFOV" maxpixelzoom="" hlookat="-49.58" vlookat="0" fov="110" fovmin="50" fovmax="120" limitview="range" hlookatmin="-180" hlookatmax="180" vlookatmin="-90" vlookatmax="90"/>
+    <events name="s20180728135615" keep="false" onxmlcomplete="VRM_SceneOnXMLComplete();" onpreviewcomplete="VRM_SceneOnPreviewComplete();" onloadcomplete="VRM_SceneOnLoadComplete();"/>
+    <hotspot name="ctb" type="image" sound_range="90" targetway="3" targeth="" targetv="" targetf="" onclick="VRM_LoadScene(&quot;g20180725233431/s20180728135627&quot;, -28.51,0.08,110,3,MERGE);" onloaded="hotspot_sync_ui_hide(get(name));hotspot_animate(get(name));VRM_PlayHotspotSound(get(name));addleadvideoplayer();" framecurrent="0" distorted="false" url="%FIRSTXML%/files/hotspot/frame_af_128x128x25.png" animatetype="atframe" framecount="25" framewidth="128" frameheight="128" ath="0.1" atv="8.57" animatespeed="0.02" title_string="成套车间B" title_y="-20" title_bg="true" title_bgcolor="0x8487FF" title_bgroundedge="3 3 3 3" scale="0.5"/>
+    <hotspot name="bgl" type="image" sound_range="90" targetway="3" targeth="" targetv="" targetf="" onclick="VRM_LoadScene(&quot;g20180725233431/s20180726001548&quot;, -1.44,-0.1,110,3,MERGE);" onloaded="hotspot_sync_ui_hide(get(name));hotspot_animate(get(name));VRM_PlayHotspotSound(get(name));addleadvideoplayer();" framecurrent="0" distorted="false" url="%FIRSTXML%/files/hotspot/frame_ar_128x128x25.png" animatetype="atframe" framecount="25" framewidth="128" frameheight="128" ath="-165.24" atv="5.12" animatespeed="0.02" title_string="办公大楼" title_y="-20" title_bg="true" title_bgcolor="0x8487FF" title_bgroundedge="3 3 3 3" scale="0.5"/>
+    <hotspot name="xba" type="image" sound_range="90" targetway="3" targeth="" targetv="" targetf="" onclick="VRM_LoadScene(&quot;g20180725233431/s20180728135405&quot;, -66.64,-0.18,110,3,MERGE);" onloaded="hotspot_sync_ui_hide(get(name));hotspot_animate(get(name));VRM_PlayHotspotSound(get(name));addleadvideoplayer();" framecurrent="0" distorted="false" url="%FIRSTXML%/files/hotspot/frame_af_128x128x25.png" animatetype="atframe" framecount="25" framewidth="128" frameheight="128" ath="-94.77" atv="14.06" animatespeed="0.02" title_string="箱变车间A" title_y="-20" title_bg="true" title_bgcolor="0x8487FF" title_bgroundedge="3 3 3 3" scale="0.5"/>
+    <hotspot name="wb" type="image" sound_range="90" targetway="3" targeth="" targetv="" targetf="" onclick="VRM_LoadScene(&quot;g20180725233431/s20180726001623&quot;, 37.03,-0.19,110,3,MERGE);" onloaded="hotspot_sync_ui_hide(get(name));hotspot_animate(get(name));VRM_PlayHotspotSound(get(name));addleadvideoplayer();" framecurrent="0" distorted="false" url="%FIRSTXML%/files/hotspot/frame_al_128x128x25.png" animatetype="atframe" framecount="25" framewidth="128" frameheight="128" ath="163.96" atv="5.22" animatespeed="0.02" title_string="生产车间外B" title_y="-20" title_bg="true" title_bgcolor="0x8487FF" title_bgroundedge="3 3 3 3" scale="0.5"/>
+    <hotspot name="fd" type="image" sound_range="90" targetway="3" targeth="" targetv="" targetf="" onclick="showmypic(&quot;ct1.jpg&quot;,0.9);" onloaded="hotspot_sync_ui_hide(get(name));hotspot_animate(get(name));VRM_PlayHotspotSound(get(name));addleadvideoplayer();" framecurrent="0" distorted="false" url="%FIRSTXML%/files/hotspot/jing.png" ath="-68.56" atv="4.14" title_string="点击放大" title_y="-35" title_bg="true" title_bgcolor="0x8487FF" title_bgroundedge="3 3 3 3" scale="0.8" animatetype="atscale"/>
+    <image type="CUBE" multires="true" tilesize="512">
+        <level tiledimagewidth="2560" tiledimageheight="2560">
+            <cube url="tiles/l3/%v/l3_%s_%v_%h.jpg"/>
+        </level>
+        <level tiledimagewidth="1280" tiledimageheight="1280">
+            <cube url="tiles/l2/%v/l2_%s_%v_%h.jpg"/>
+        </level>
+        <level tiledimagewidth="640" tiledimageheight="640">
+            <cube url="tiles/l1/%v/l1_%s_%v_%h.jpg"/>
+        </level>
+    </image>
+</krpano>

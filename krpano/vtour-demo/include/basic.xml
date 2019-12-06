@@ -1,0 +1,3 @@
+<krpano>
+  <plugin name="soundinterface" url="%FIRSTXML%/plugins/soundinterface.swf" alturl="%FIRSTXML%/plugins/soundinterface.js" preload="true" keep="true" visible="true"/>
+</krpano>

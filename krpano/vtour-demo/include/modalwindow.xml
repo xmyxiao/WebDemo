@@ -1,0 +1,36 @@
+<krpano>
+<action name="showwebpage">
+    jscall("require(['modalwindow'],function(mw){mw.showwebpage('%1','%2','%3','%4','%5','%6','%7','%8','%9');});");            
+</action>
+<action name="showhtml">
+    jscall("require(['modalwindow'],function(mw){mw.showhtml('%1','%2','%3','%4','%5','%6','%7','%8');});");
+</action>
+<action name="showpicture">
+    jscall("require(['modalwindow'],function(mw){mw.showpicture('%1','%2','%3','%4','%5','%6','%7','%8');});");
+</action>
+<action name="showvideo">
+    jscall("require(['modalwindow'],function(mw){mw.showvideo('%1','%2','%3','%4','%5');});");
+</action>
+<action name="showphotos">
+    jscall("require(['modalwindow'],function(mw){mw.showphotos('%1');});");
+</action>
+<action name="showhint">
+    jscall("require(['modalwindow'],function(mw){mw.showhint('%1','%2');});");
+</action>
+<action name="showmessage">
+    jscall("require(['modalwindow'],function(mw){mw.showmessage('%1','%2','%3','%4','%5');});");
+</action>
+<action name="showinput">
+    jscall("require(['modalwindow'],function(mw){mw.showinput('%1','%2','%3','%4');});");
+</action>
+<action name="showdialog">
+    jscall("require(['modalwindow'],function(mw){mw.showdialog('%1','%2','%3','%4','%5');});");
+</action>
+<action name="showloading">
+    jscall("require(['modalwindow'],function(mw){mw.showloading('%1','%2','%3');});");
+</action>
+<action name="hideloading">
+    jscall("require(['modalwindow'],function(mw){mw.hideloading();});");
+</action>
+
+</krpano>

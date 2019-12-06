@@ -1,0 +1,41 @@
+<krpano>
+    <group groupname="g20180725233431" defaultscene="s20180727222010">
+        <scenes>
+            <sceneitem order="1" name="s20180727222010" title="今日电气航拍" gps_lon="116.27862972" gps_lat="28.03166944" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="2" name="s20180726001536" title="今日电气东门" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="3" name="s20180726001548" title="办公大楼" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="4" name="s20180728120608" title="公司前台" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="5" name="s20180728120638" title="二楼中厅" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="6" name="s20180728121034" title="二楼人力/财务部" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="7" name="s20180728121225" title="二楼工程/商务部" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="8" name="s20180728122039" title="5G智能制造展厅" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="9" name="s20180728122237" title="三楼过道" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="10" name="s20180728122147" title="董事长门厅" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="11" name="s20180728121328" title="董事长会客厅" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="12" name="s20180728121339" title="董事长办公室" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="13" name="s20180728122330" title="三楼会客室" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="14" name="s20180728122427" title="5G智能制造展厅A" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="15" name="s20191116130106" title="5G智能制造展厅B" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="16" name="s20191116130141" title="5G智能制造展厅C" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="17" name="s20191116130219" title="5G智能制造展厅D" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="18" name="s20180726001643" title="生活休闲区" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="19" name="s20180728175700" title="员工食堂" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="20" name="s20180728175606" title="会客包厢" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="21" name="s20180728122528" title="员工宿舍" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="22" name="s20180726001610" title="生产车间外A" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="23" name="s20180726001623" title="生产车间外B" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="24" name="s20180802144319" title="智慧工厂指挥中心" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="25" name="s20180728134929" title="KNE375-12智能柜装配区A" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="26" name="s20180728134945" title="KNE375-12智能柜装配区B" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="27" name="s20180728134958" title="员工休息区" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="28" name="s20180728135405" title="箱变车间A" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="29" name="s20180728135450" title="箱变车间B" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="30" name="s20180728135615" title="成套车间A" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="31" name="s20180728135627" title="成套车间B" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="32" name="s20180815182749" title="铜排加工区" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="33" name="s20180728135540" title="钣金车间A" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="34" name="s20180728135907" title="钣金车间B" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+            <sceneitem order="35" name="s20180728140017" title="喷涂车间" gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y="" blend="3" tiled="true"/>
+        </scenes>
+    </group>
+</krpano>

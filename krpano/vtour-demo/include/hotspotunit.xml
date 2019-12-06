@@ -1,0 +1,222 @@
+<krpano>
+    <action name="hotspot_animate_scale">if(hotspot[%1].loaded,
+    tween(hotspot[%1].scale, 1.5, calc(%2===null?1:%2), default, tween(hotspot[%1].scale, 0.5, calc(%2===null?1:%2), default, hotspot_animate_scale(%1,%2) ) );
+  );</action>
+    <action name="hotspot_animate_alpha">if(hotspot[%1].loaded,
+    tween(hotspot[%1].alpha, 0.0, calc(%2===null?1:%2), default, tween(hotspot[%1].alpha, 1.0, calc(%2===null?1:%2), default, hotspot_animate_alpha(%1,%2) ) );
+  );</action>
+    <action name="hotspot_animate_frame">stopdelayedcall(%1);
+inc(hotspot[%1].framecurrent,1,calc(hotspot[%1].framecount-1),0);
+mul(ypos,hotspot[%1].framecurrent,hotspot[%1].frameheight);
+txtadd(hotspot[%1].crop,&apos;0|&apos;,get(ypos),&apos;|&apos;,get(hotspot[%1].framewidth),&apos;|&apos;,get(hotspot[%1].frameheight));
+delayedcall(%1,calc(%2===null?0.3:%2),
+    set(tmp,get(hotspot[%1].name));
+    if(tmp!==null,hotspot_animate_frame(%1,%2););
+    delete(tmp);
+);
+</action>
+<action name="hotspot_animate_frame_stopall">
+    for(set(i,0), i LT hotspot.count, inc(i),
+        txtadd(aname,'hotspot_animate_frame_',get(hotspot[get(i)].name));
+        def(aname);
+        set(%aname,false);
+    );
+</action>
+    <action name="hotspot_animate">set(Xanimatetype,get(hotspot[%1].animatetype)); 
+if(Xanimatetype === &quot;atalpha&quot;,
+  hotspot_animate_alpha(get(name),get(hotspot[%1].animatespeed));        
+);
+if(Xanimatetype === &quot;atscale&quot;,
+  hotspot_animate_scale(get(name),get(hotspot[%1].animatespeed));        
+);
+if(Xanimatetype === &quot;atframe&quot;,
+  set(hotspot[%1].framecurrent,-1); 
+  hotspot_animate_frame(get(name),get(hotspot[%1].animatespeed));        
+);</action> 
+    <action name="loadpano_way">
+moveto(get(hotspot[%1].ath),get(hotspot[%1].atv),smooth());
+if(hotspot[%1].leadvideo,
+    callwhen(leadvideoplayer_ok,
+        set(layer[leadvideoplayer].visible,true);
+        set(layer[leadvideoplayer].width,get(stagewidth));
+        set(layer[leadvideoplayer].height,calc(900/508*stagewidth));
+        set(videourl,get(hotspot[%1].leadvideo));
+        txtreplace(posterurl,get(videourl),".mp4",".jpg");
+        set(leadvideoready_ok,false);
+        set(leadvideoend_ok,false);
+        VRM_MuteTourMusic(true);
+        plugin[leadvideoplayer].playvideo(get(videourl),get(posterurl));
+        callwhen(leadvideoready_ok,
+            VRM_LoadScene(
+                get(hotspot[%1].targetscene),
+                get(hotspot[%1].targeth),get(hotspot[%1].targetv),get(hotspot[%1].targetf),
+                get(hotspot[%1].targetway)
+            );
+        );
+    );
+    ,
+    VRM_LoadScene(
+        get(hotspot[%1].targetscene),
+        get(hotspot[%1].targeth),get(hotspot[%1].targetv),get(hotspot[%1].targetf),
+        get(hotspot[%1].targetway)
+    );  
+);
+</action>   
+    <action name="addleadvideoplayer">
+if(!plugin[leadvideoplayer],
+    addplugin(leadvideoplayer);
+    set(plugin[leadvideoplayer],
+      url=calc(device.html5?"%FIRSTXML%/plugins/videoplayer.js":"%FIRSTXML%/plugins/videoplayer.swf"),
+      keep="true",
+      align="center",
+      edge="center",
+      width="0",
+      height="prop",
+      pausedonstart="false",
+      zorder="1000",
+      visible="false",
+      onloaded="set(leadvideoplayer_ok,true);",
+      onvideoready="set(leadvideoready_ok,true);",
+      onvideoplay="set(_leadvideo_autonext_bak_,get(AutoNext));set(_leadvideo_autorotate_bak_,get(autorotate.enabled));set(AutoNext,false);set(autorotate.enabled,false);",
+      onvideocomplete="VRM_MuteTourMusic(false);set(leadvideoend_ok,true);set(visible,false);set(width,0);copy(AutoNext,_leadvideo_autonext_bak_);copy(autorotate.enabled,_leadvideo_autorotate_bak_);"
+    );
+    callwhen(leadvideoplayer_ok,
+        plugin[leadvideoplayer].playvideo("%FIRSTXML%/files/video/null.mp4");
+    );
+);
+    </action>
+    <action name="add_hotspot_titles">
+        //set(MustReload_OnEnterVR,true);
+        set(n_hotspot,get(hotspot.count));
+        for(set(i,0), i LT n_hotspot, inc(i), 
+            set(i_hotspot,get(hotspot[get(i)].name));
+            if(hotspot[get(i_hotspot)].title_string!=='',
+                txtadd(hotspot_title_name, "hotspot_title_",get(hotspot[get(i)].name));
+                addhotspot(get(hotspot_title_name));
+                set(hotspot[get(hotspot_title_name)].type,"text");
+                set(hotspot[get(hotspot_title_name)].enabled,"false");
+                
+                if(hotspot[get(i_hotspot)].title_distorted,             
+                    copy(hotspot[get(hotspot_title_name)].distorted,hotspot[get(i_hotspot)].distorted);
+                    copy(hotspot[get(hotspot_title_name)].rx,hotspot[get(i_hotspot)].rx);   
+                    copy(hotspot[get(hotspot_title_name)].ry,hotspot[get(i_hotspot)].ry);   
+                    copy(hotspot[get(hotspot_title_name)].rz,hotspot[get(i_hotspot)].rz);
+                );
+                copy(hotspot[get(hotspot_title_name)].ath,hotspot[get(i_hotspot)].ath);
+                copy(hotspot[get(hotspot_title_name)].atv,hotspot[get(i_hotspot)].atv); 
+                if(hotspot[get(i_hotspot)].title_x,set(hotspot[get(hotspot_title_name)].ox,calc(hotspot[get(i_hotspot)].title_x*1)));
+                if(hotspot[get(i_hotspot)].title_y,set(hotspot[get(hotspot_title_name)].oy,calc(hotspot[get(i_hotspot)].title_y*1)));
+                
+                copy(hotspot[get(hotspot_title_name)].html, hotspot[get(i_hotspot)].title_string);
+                if(hotspot[get(i_hotspot)].title_css,copy(hotspot[get(hotspot_title_name)].css,hotspot[get(i_hotspot)].title_css),set(hotspot[get(hotspot_title_name)].css,"font-family:Arial; font-size:16px; color:#FFFFFF;text-align:center;font-weight:bold;"));
+                set(hotspot[get(hotspot_title_name)].bg,"false");
+                if(hotspot[get(i_hotspot)].title_txtshadow,copy(hotspot[get(hotspot_title_name)].txtshadow,hotspot[get(i_hotspot)].title_txtshadow););              
+                if(hotspot[get(i_hotspot)].title_bg,copy(hotspot[get(hotspot_title_name)].bg,hotspot[get(i_hotspot)].title_bg););               
+                if(hotspot[get(i_hotspot)].title_bgcolor,copy(hotspot[get(hotspot_title_name)].bgcolor,hotspot[get(i_hotspot)].title_bgcolor););                
+                if(hotspot[get(i_hotspot)].title_bgalpha,copy(hotspot[get(hotspot_title_name)].bgalpha,hotspot[get(i_hotspot)].title_bgalpha););                
+                if(hotspot[get(i_hotspot)].title_padding,copy(hotspot[get(hotspot_title_name)].padding,hotspot[get(i_hotspot)].title_padding););        
+                if(hotspot[get(i_hotspot)].title_bgborder,copy(hotspot[get(hotspot_title_name)].bgborder,hotspot[get(i_hotspot)].title_bgborder););             
+                if(hotspot[get(i_hotspot)].title_bgroundedge,copy(hotspot[get(hotspot_title_name)].bgroundedge,hotspot[get(i_hotspot)].title_bgroundedge););                
+                if(hotspot[get(i_hotspot)].title_bgshadow,copy(hotspot[get(hotspot_title_name)].bgshadow,hotspot[get(i_hotspot)].title_bgshadow););     
+                
+                set(hotspot[get(hotspot_title_name)].keep,false);
+                set(hotspot[get(hotspot_title_name)].capture,false);
+                set(hotspot[get(hotspot_title_name)].onloaded,"hotspot_sync_ui_hide(get(name));");
+            );
+        );
+    </action>           
+    
+    <action name="loadhotspotobj">
+        txtadd(preurl,%1,'_objurl');
+        vrm_preload(preurl,get(hotspot[%1].objurl));
+        txtadd(preurl,%1,'_introduce');
+        vrm_preload(preurl,get(hotspot[%1].introduce));
+        delete(preurl);
+    </action>
+    <action name="showhotspotobj">
+        closehotspotobj();
+        
+        set(hotspot[%1].visible,false);
+        set(hotspotobj_name,%1);
+    
+        addhotspot('hotspotobj_introduce');
+        callwith(hotspot[hotspotobj_introduce],
+            copy(url,hotspot[%1].introduce);
+            copy(ath,view.hlookat);
+            copy(atv,view.vlookat);
+            set(onclick,'closehotspotobj();');
+        );
+        addhotspot('hotspotobj_object');
+        set(hotspot[hotspotobj_object].framewidth,get(hotspot[%1].framewidth));
+        set(hotspot[hotspotobj_object].frameheight,get(hotspot[%1].frameheight));   
+        set(hotspot[hotspotobj_object].framecount,get(hotspot[%1].framecount));
+        set(hotspot[hotspotobj_object].animatespeed,get(hotspot[%1].animatespeed));    
+        set(hotspot[hotspotobj_object].framecurrent,-1);
+        callwith(hotspot[hotspotobj_object],
+            copy(url,hotspot[%1].objurl);
+            copy(ath,view.hlookat);
+            copy(atv,view.vlookat);
+            set(edge,center);
+            set(ox,calc(hotspot[%1].obj_ox*stagescale));
+            set(oy,calc(hotspot[%1].obj_oy*stagescale));            
+            if(hotspot[%1].link,
+                txtadd(_url,"if(!webvr.isenabled,showwebpage('",get(hotspot[%1].link),"','",get(hotspot[%1].linktxt),"',90%,90%,true,0.3,1,''););");
+                set(onclick,get(_url));
+                if(!hotspot[%1].introduce,
+                    addhotspot('hotspotobj_closebtn');
+                    copy(o,hotspot[hotspotobj_closebtn]);
+                        set(o.type,"text");
+                        set(o.html,"[b]关闭[b/]");
+                        set(o.css,"font-family:Arial; font-size:16px; color:#FFFFFF;text-align:center;");
+                        set(o.vcenter,"true");
+                        set(o.width,60);
+                        set(o.height,60);
+                        set(o.bg,'true');
+                        set(o.bgcolor,'0x000000');
+                        set(o.bgalpha,'.8');
+                        set(o.bgborder,'8 0x909191 1');
+                        set(o.bgroundedge,'38 38 38 38');               
+                        copy(o.ath,view.hlookat);
+                        copy(o.atv,view.vlookat);
+                        set(o.ox,calc(0.5*hotspot[hotspotobj_object].framewidth*stagescale));
+                        set(o.oy,calc(0.5*-1*hotspot[hotspotobj_object].frameheight*stagescale));                       
+                        set(o.onclick,'closehotspotobj();');
+                );
+                ,
+                set(onclick,'closehotspotobj();');
+            );
+            
+            set(onloaded,'hotspot_animate_frame(get(name),get(animatespeed));');
+        );
+
+        //addhotspot('hotspotobj_linkbtn');
+    </action>
+    <action name="closehotspotobj">
+        removehotspot('hotspotobj_introduce');
+        removehotspot('hotspotobj_object');
+        set(hotspot[get(hotspotobj_name)].visible,true);
+        removehotspot('hotspotobj_closebtn');
+        removelayer('hotspotobj_box');
+        //removehotspot('hotspotobj_linkbtn');
+    </action>   
+    <action name="hotspot_sync_ui_hide">
+        if(_vrm_ui_hide_,
+          set(hotspot[%1]._vrm_ui_show_back,get(hotspot[%1].visible));
+          set(hotspot[%1].visible,false);
+        );  
+    </action>
+    <action name="hotspot_sync_ui_hideall">
+        for(set(i,0), i LT hotspot.count, inc(i),
+          set(hotspot[get(i)]._vrm_ui_show_back,get(hotspot[get(i)].visible));
+          set(hotspot[get(i)].visible,false);
+        );  
+    </action>   
+    <action name="hotspot_sync_ui_showall">
+        for(set(i,0), i LT hotspot.count, inc(i),
+          if(hotspot[get(i)]._vrm_ui_show_back,
+            set(hotspot[get(i)].visible,true);
+            delete(hotspot[get(i)]._vrm_ui_show_back);
+          );
+        );  
+    </action>   
+</krpano>

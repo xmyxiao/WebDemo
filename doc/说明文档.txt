@@ -11,7 +11,8 @@ getTime              获取时区或者转换为北京时间
 handsontable         handsontable.js 
 html5                h5语法
 ie-js                ie兼容js
-knockout             knockout : knockout.js框架示例文件
+knockout             knockout.js框架示例文件
+krpano               360全景展示与场景切换等效果
 load                 页面加载测试
 loadJsAndCss         动态加载js与css
 often                常用的js与css

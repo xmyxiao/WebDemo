@@ -1,0 +1,11 @@
+.device-info.layui-layer-dialog .layui-layer-content{
+    padding: 10px;
+    color: #333;
+    text-align: left;
+}
+#device-content{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    overflow: hidden;
+}

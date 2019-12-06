@@ -1,0 +1,321 @@
+<krpano VRM_Timer="0" leadvideoend_ok="true">
+    <include url="%FIRSTXML%/plugins/showtext.xml"/>
+    <include url="%FIRSTXML%/include/hotspotunit.xml"/>
+    
+
+    <blendmodes name="no blending" caption="无" blend="NOBLEND"/>
+    <blendmodes name="simple crossblending" caption="淡入淡出" blend="BLEND(1.0, easeInCubic)"/>
+    <blendmodes name="zoom blend" caption="穿越过渡" blend="ZOOMBLEND(2.0, 2.0, easeInOutSine)"/>
+    <blendmodes name="vertical open" caption="垂直展开" blend="OPENBLEND(1.0, -1.0, 0.3, 0.0, linear)"/>
+    <blendmodes name="horizontal open" caption="水平展开" blend="OPENBLEND(0.7, 1.0, 0.1, 0.0, linear)"/>
+    <blendmodes name="circle open" caption="圆形展开" blend="OPENBLEND(1.0, 0.0, 0.2, 0.0, linear)"/>
+    <blendmodes name="elliptic + zoom" caption="椭圆展开" blend="OPENBLEND(1.0, -0.5, 0.3, 0.8, linear)"/>
+    <blendmodes name="black-out" caption="黑场过渡" blend="COLORBLEND(2.0, 0x000000, easeOutSine)"/>
+    <blendmodes name="white-flash" caption="白场过渡" blend="LIGHTBLEND(1.0, 0xFFFFFF, 2.0, linear)"/>
+    <blendmodes name="right-to-left" caption="从右到左" blend="SLIDEBLEND(1.0, 0.0, 0.2, linear)"/>
+    <blendmodes name="left-to-right" caption="从左到右" blend="SLIDEBLEND(1.0, 180, 0.2, linear)"/>
+    <blendmodes name="top-to-bottom" caption="从上到下" blend="SLIDEBLEND(1.0, 90.0, 0.2, linear)"/>
+    <blendmodes name="bottom-to-top" caption="从下到上" blend="SLIDEBLEND(1.0, 270.0, 0.2, linear)"/>
+    <blendmodes name="lefttop" caption="左上对角" blend="SLIDEBLEND(1.0, 135.0, 0.4, linear)"/>
+    <blendmodes name="leftbottom" caption="左下对角" blend="SLIDEBLEND(1.0, 225.0, 0.4, linear)"/>
+    <blendmodes name="rightbottom" caption="右下对角" blend="SLIDEBLEND(1.0, 315.0, 0.4, linear)"/>
+    <blendmodes name="righttop" caption="右上对角" blend="SLIDEBLEND(1.0, 45.0, 0.4, linear)"/>
+    <action name="VRM_OnTourStart">set(ide.loadstate,&apos;Loading&apos;);js(ReadRequest());
+if(request_group AND request_scene,
+  copy(defaultgroup,request_group);
+  copy(defaultscene,request_scene);
+);
+if(tourmusic.Enabled===&quot;on&quot;,
+  delayedcall(1,VRM_PlayTourMusic());
+);
+delayedcall(0,js(EnterTour()););
+CallSkin_TourOnstart();
+VRM_AutoNextTimer(0);</action>
+    <action name="VRM_LoadScene" scope="global" args="">if(%2 !== null,                     
+  set(_ath,%2);
+  set(_atv,calc(%3==null?0:%3));
+  set(_fov,calc(%4==null?90:%4));
+  txtadd(_viewsetting,&quot;view.hlookat=&quot;,get(_ath),&quot;&amp;view.vlookat=&quot;,get(_atv),&quot;&amp;view.fov=&quot;,get(_fov));
+  ,
+  if(%4 !== null,
+    set(_fov,calc(%4==null?90:%4));
+    txtadd(_viewsetting,&quot;view.fov=&quot;,get(_fov));
+    ,
+    set(_viewsetting,null);
+  );
+);
+if (%1!==null,
+  VRM_RemoveGroupScenes();
+  txtsplit(%1,&apos;/&apos;,sg,ss);
+  if(%5!==null,set(_blend,%5);,set(_blend,get(scenelist[get(ss)].blend)););
+  set(_flags,%6);
+  if(_flags==null,set(_flags,MERGE);); 
+  if(_blend===&apos;0&apos;,
+    sub(range_var,get(blendmodes.count),2);
+    mul(randomvalue, random, range_var);
+    add(_blend,randomvalue, 2);
+    roundval(_blend, 0););
+  );
+  if(sg===&apos;scene&apos; OR sg===&apos;object&apos; OR sg===&apos;gigaimage&apos;,
+    loadpano(%FIRSTXML%/%1/scene.xml, get(_viewsetting), get(_flags), get(blendmodes[calc(_blend-1)].blend));      
+    ,
+    loadpano(%FIRSTXML%scene/%1/scene.xml, get(_viewsetting), get(_flags), get(blendmodes[calc(_blend-1)].blend));      
+  );
+delete(_ath,_atv,_fov,_viewsetting,_blend,_flags,gg,ss);</action>
+    <action name="VRM_OnXmlComplete">set(ide.loadstate,&apos;OK&apos;);
+if(request_hlookat,copy(view.hlookat,request_hlookat);delete(request_hlookat););
+if(request_vlookat,copy(view.vlookat,request_vlookat);delete(request_vlookat););
+if(request_fov,copy(view.fov,request_fov);delete(request_fov););</action>
+    <action name="VRM_OnPreviewComplete">//;</action>
+    <action name="VRM_OnLoadComplete">set(ide.loadstate,&apos;Loaded&apos;);</action>
+    <action name="VRM_PlayTourMusic">if(device.html5,
+  playH5sound2D(true, get(tourmusic.ID), get(tourmusic.url), 1, get(tourmusic.Volume), get(tourmusic.Loops),get(tourmusic.onload),get(tourmusic.onplay),get(tourmusic.onpause),get(tourmusic.onstop),get(tourmusic.onmute),get(tourmusic.OnComplete));
+  ,
+  if(device.flash,
+    playsound2D(get(tourmusic.ID),get(tourmusic.url), get(tourmusic.Volume),get(tourmusic.Pan),get(tourmusic.Loops),get(tourmusic.OnComplete)),playsound(get(tourmusic.ID),get(tourmusic.url),get(tourmusic.Loops),get(tourmusic.OnComplete));
+    ,
+    playsound(get(tourmusic.ID),get(tourmusic.url),get(tourmusic.Loops),get(tourmusic.OnComplete));
+  );
+);</action>
+    <action name="VRM_PlayGroupMusic">if(group.groupname!==_currentgroup_,
+  set(_currentgroup_,get(group.groupname));
+  if(device.html5, H5SoundUnload(&quot;SYSTEMGROUPSOUND&quot;);, stopsound(&quot;SYSTEMGROUPSOUND&quot;); );
+  set(sid,&quot;SYSTEMGROUPSOUND&quot;);
+  copy(flag,tour.groups.groupitem[get(group.groupname)].MusicEnabled);
+  if(flag===&apos;on&apos;,
+    delayedcall(1,
+      copy(surl,tour.groups.groupitem[get(group.groupname)].musicurl);
+      copy(sloop,tour.groups.groupitem[get(group.groupname)].musicloops);
+      copy(svolume,tour.groups.groupitem[get(group.groupname)].MusicVolume);
+      if(svolume===null,set(svolume,1););
+      copy(span,tour.groups.groupitem[get(group.groupname)].MusicPan);
+      if(span===null,set(span,&quot;0.0&quot;););
+      if(device.html5,
+        copy(sonload,tour.groups.groupitem[get(group.groupname)].onload);
+        copy(sonplay,tour.groups.groupitem[get(group.groupname)].onplay);
+        copy(sonpause,tour.groups.groupitem[get(group.groupname)].onpause);
+        copy(sonstop,tour.groups.groupitem[get(group.groupname)].onstop);                                            
+        copy(sonmute,tour.groups.groupitem[get(group.groupname)].onmute);
+        copy(soncomplete,tour.groups.groupitem[get(group.groupname)].oncomplete);
+        playH5sound2D(true, get(sid), get(surl), 1, get(svolume), get(sloop),get(sonload),get(sonplay),get(sonpause),get(sonstop),get(sonmute),get(copy));
+        ,
+        if(device.flash,
+          playsound2D(get(sid),get(surl), get(svolume),get(span),get(sloop));
+          ,
+          playsound(get(sid),get(surl),get(sloop));
+        );
+      );
+    );
+  );
+);</action>
+    <action name="VRM_CheckSceneMusic" scope="global" args="">if(_currentscenemusicurl_!==scenemusic.url,
+  if(!device.html5,stopsound(get(scenemusic.ID)););
+  H5SoundUnload(get(scenemusic.ID));
+  set(sid,get(scenemusic.ID));
+    set(sound_%sid_gra, false);
+  if(scenemusic.Enabled===&quot;on&quot;,delayedcall(1,VRM_PlaySceneMusic(););,delete(_currentscenemusicurl_););
+  ,
+  if(scenemusic.Enabled!==&quot;on&quot;,
+    if(!device.html5,stopsound(get(scenemusic.ID)););
+    H5SoundUnload(get(scenemusic.ID));
+    set(sid,get(scenemusic.ID));
+    set(sound_%sid_gra, false); 
+  ); 
+);</action>
+    <action name="VRM_PlaySceneMusic" scope="global" args="">callwhen(leadvideoend_ok,
+  VRM_PlaySound(get(scenemusic.PositionEnabled), true, get(scenemusic.ID), get(scenemusic.url),get(scenemusic.ath),get(scenemusic.atv),get(scenemusic.range),1, get(scenemusic.Volume), get(scenemusic.Loops), get(scenemusic.onload),get(scenemusic.onplay), get(scenemusic.onpause),get(scenemusic.onstop),get(scenemusic.onmute), get(scenemusic.OnComplete),get(scenemusic.Pan)); 
+  set(_currentscenemusicurl_,get(scenemusic.url));
+);</action>
+    <action name="VRM_AutoNextTimer">set(VRM_Timer,%1);
+if(autonext,add(VRM_Timer,1);   
+copy(_speed,autorotate.speed);
+math.abs(_speed); 
+div(_timerout,360,_speed);                 
+add(_timerout,autorotate.waittime););
+delayedcall(1,VRM_AutoNextTimer(get(VRM_Timer)));
+if(SceneTimer !== 0, set(_timerout,get(SceneTimer)););
+if(VRM_Timer GE _timerout, 
+  set(VRM_Timer,0);
+  VRM_LoadScene(get(This.Next));
+);</action>
+    <action name="VRM_GetNextAndPrev">if(LoopAll===true,
+  set(_this,0);
+  set(_next,0);
+  set(_prev,0);  
+  set(_count,get(scenelist.Count));
+  for(set(i,0),i LT _count,inc(i),
+    if(scenelist[get(i)].name===This.scenename,
+      copy(_this,i);
+    );      
+  );
+  sub(_max,_count,1);
+  if(_this LT _max,add(_next,_this,1),set(_next,0));
+  if(_this GT 0,sub(_prev,_this,1),set(_prev,get(_max))); 
+  txtadd(This.Next,get(scenelist[get(_next)].group),&quot;/&quot;,get(scenelist[get(_next)].name));
+  txtadd(This.Prev,get(scenelist[get(_prev)].group),&quot;/&quot;,get(scenelist[get(_prev)].name));
+  delete(i,_this,_next,_prev,_count,_max); 
+  ,
+  set(_thisorder,get(Group.Scenes.sceneitem[get(This.scenename)].Order));
+  set(GName,get(Group.groupname));
+  set(_nextorder,0);
+  set(_prevorder,0);
+  set(_count,get(Group.Scenes.SceneItem.Count));
+  if(_thisorder LT _count,add(_nextorder,_thisorder,1),set(_nextorder,1));
+  if(_thisorder GT 1,sub(_prevorder,_thisorder,1),set(_prevorder,get(_count)));
+  for(set(i,0),i LT _count,inc(i),
+    if(Group.Scenes.SceneItem[get(i)].order === _nextorder, 
+      set(This.Next,get(Group.Scenes.SceneItem[get(i)].Name));
+      txtadd(This.Next,get(GName),&quot;/&quot;,get(This.Next));   
+    );
+    if(Group.Scenes.SceneItem[get(i)].order === _prevorder, 
+      set(This.Prev,get(Group.Scenes.SceneItem[get(i)].Name));
+      txtadd(This.Prev,get(GName),&quot;/&quot;,get(This.Prev));   
+    );       
+  );
+  delete(_thisorder,_count,_nextorder,_prevorder,GName);
+);</action>
+    <action name="VRM_GotoGroup">set(m,get(Tour.Groups.GroupItem.Count)); 
+dec(m); 
+set(n,0);   
+set(agroup,&apos;&apos;);
+for(set(i,0),i LT Tour.Groups.GroupItem.Count,inc(i),            
+  if(Tour.Groups.GroupItem[get(i)].name === &quot;%1&quot;,
+    set(agroup,%1);
+    copy(ascene, Tour.Groups.GroupItem[get(i)].defaultscene);        
+  );
+);
+if(agroup===&apos;&apos;,
+  if(%1 === -1,         
+    for(set(i,get(m)),i GT -1,dec(i),   
+      if(Tour.Groups.GroupItem[get(i)].name === group.groupname,
+        if(i === 0,set(n,get(m)),copy(n,i);dec(n));
+      );
+    );
+  ,
+    for(set(i,0),i LT Tour.Groups.GroupItem.Count,inc(i),
+      if(Tour.Groups.GroupItem[get(i)].name === group.groupname,
+        if(i === m,set(n,0),copy(n,i);inc(n));
+      );
+    ); 
+  ); 
+  copy(agroup, Tour.Groups.GroupItem[get(n)].name);
+  copy(ascene, Tour.Groups.GroupItem[get(n)].defaultscene); 
+);   
+txtadd(s,get(agroup),&quot;/&quot;,get(ascene));
+VRM_LoadScene(get(s)); 
+delete(m,n,i,agroup,ascene,s);</action>
+    <action name="VRM_RemoveGroupScenes">set(_count,get(Group.Scenes.SceneItem.Count));
+for(set(i,calc(_count-1)),i GT -1,dec(i),
+    Group.Scenes.SceneItem.removearrayitem(get(i));
+);
+delete(_count,i);</action>
+    <textstyle name="DEFAULT" font="Arial, Helvetica, sans-serif" fontsize="12" bold="False" italic="False" background="True" backgroundcolor="0xFEFEFE" border="True" bordercolor="0xF6F6F6" textcolor="0x000000" alpha="0.8" blendmode="NORMAL" effect="" origin="cursor" edge="bottom" textalign="none" xoffset="0" yoffset="-3" noclip="False" showtime="0.1" fadetime="0" fadeintime="0"/>
+    <action name="VRM_GoBack">if(vrm_lastscene!==&apos;&apos;,VRM_LoadScene(get(vrm_lastscene),get(vrm_lastath),get(vrm_lastatv),get(vrm_lastfov)););</action>
+    <action name="VRM_SceneOnXMLComplete" scope="global" args="">add_hotspot_titles();
+VRM_PlayGroupMusic();   
+VRM_CheckSceneMusic();
+VRM_GetNextAndPrev();
+set(_flag,get(action[CallSkin_SceneOnXMLComplete].name));
+if(_flag!=null,CallSkin_SceneOnXMLComplete(get(This.scenename)););
+VRM_OnXmlComplete();
+VRM_PlaySceneSound();</action>
+    <action name="VRM_SceneOnPreviewComplete">set(_flag,get(action[CallSkin_SceneOnPreviewComplete].name));
+if(_flag!=null,CallSkin_SceneOnPreviewComplete();); 
+VRM_OnPreviewComplete();</action>
+    <action name="VRM_SceneOnLoadComplete">set(_flag,get(action[CallSkin_SceneOnLoadComplete].name));
+if(_flag!=null,CallSkin_SceneOnLoadComplete(););
+VRM_OnLoadComplete();</action>
+    <action name="VRM_JsSet">txtadd(_s, &quot;eval(&quot;,%1,&quot;=&quot;,%2,&quot;)&quot;);
+js(get(_s));
+delete(_s);</action>
+    <action name="VRM_ReloadScene" autorun="" secure="" devices="all">txtadd(thisscene,get(group.groupname),&apos;/&apos;,get(this.scenename));
+VRM_LoadScene(get(thisscene),get(view.hlookat),get(view.vlookat),get(view.fov));</action>
+    <action name="VRM_PreLoad" autorun="" secure="" devices="all">addplugin(pre_%1);
+set(plugin[pre_%1].visible, false);
+set(plugin[pre_%1].onloaded, removeplugin(pre_%1) );
+set(plugin[pre_%1].url, %2);</action>
+    <action name="VRM_PlaySound" autorun="" secure="" devices="all">if(device.html5,                                 
+  if(%1,
+    playH5sound3D(%2, %3, %4, %5, %6, %7, %8, %9, %10,%11,%12,%13,%14,%15,%16); 
+    ,                                                  
+    playH5sound2D(%2, %3, %4, %8, %9, %10,%11,%12,%13,%14,%15,%16);
+  );
+  ,
+  if(device.flash,
+    if(%1,
+      playsound3D(%3, %4, %5, %6, %7, %9,%17,%10,%16);
+      ,
+      playsound2D(%3, %4,%9,%17,%10,%16);                       
+    );
+    ,
+    playsound(%3, %4,%10,%16);
+  );
+);</action>
+    <action name="VRM_PlaySceneSound" autorun="" secure="" devices="all">copy(n_scenesound,scenesound.count);
+for(set(i,0), i LT n_scenesound, inc(i),
+  if(scenesound[get(i)].ID,
+    VRM_PlaySound(get(scenesound[get(i)].positionenabled), false, get(scenesound[get(i)].ID), get(scenesound[get(i)].url),get(scenesound[get(i)].ath),get(scenesound[get(i)].atv),get(scenesound[get(i)].range),1, get(scenesound[get(i)].Volume), get(scenesound[get(i)].Loops), get(scenesound[get(i)].onload),get(scenesound[get(i)].onplay), get(scenesound[get(i)].onpause),get(scenesound[get(i)].onstop),get(scenesound[get(i)].onmute), get(scenesound[get(i)].OnComplete),get(scenesound[get(i)].Pan));
+  );
+); 
+delete(n_scenesound);</action>
+    <action name="VRM_PlayHotspotSound" autorun="" secure="" devices="all">set(_surl,get(sound_url));
+if(_surl,
+  set(_hid,get(name));
+  txtadd(_sid,get(_hid),&quot;_sound&quot;);
+  set(_range,get(sound_range));
+  if(_range,,set(_range,90));
+  set(_play,get(sound_play));
+  set(_oncomplete,get(sound_oncomplete));
+  if(device.html5,
+    playh5sound3DHS(false,get(_sid),get(_surl),get(_hid),get(_range),1,1,true,get(_play),,,,,get(_oncomplete));
+    ,
+    playsound3DHS(get(_sid), get(_surl), get(_hid), get(_range),1,true,get(_oncomplete));  
+  );
+);
+delete(_surl,_sid,_range,_hid,_play,_oncomplete);</action>
+    <action name="VRM_RemoveHotspotSound" autorun="" secure="" devices="all">if(device.flash,
+  for(set(i,0), i LT hotspot.count, inc(i),
+    set(_surl,get(hotspot[get(i)].sound_url));
+    if(_surl,
+      txtadd(_sid,get(hotspot[get(i)].name),&quot;_sound&quot;);
+      stopsound(get(_sid));
+    );
+  );
+  delete(i,_surl,_sid);
+);</action>
+    <action name="VRM_RemoveSceneSound" autorun="" secure="" devices="all" scope="global" args="">if(device.flash,
+  for(set(i,0), i LT scenesound.count, inc(i),
+    set(_surl,get(scenesound[get(i)].url));    
+    if(_surl,
+      set(_sid,get(scenesound[get(i)].ID));
+      stopsound(get(_sid));
+    );
+  );  
+  set(scenesound.count,0);
+  delete(_surl,_sid);
+  ,
+  set(scenesound.count,0);
+);</action>
+    <action name="VRM_HideUI" autorun="" secure="" devices="all">set(_vrm_ui_hide_,true);set(plugin.enabled,false);
+set(hotspot.enabled,false);
+tween(plugin.alpha, 0.0, 0.5, default, set(plugin.visible,false););
+tween(hotspot.alpha, 0.0, 0.5, default, set(hotspot.visible,false));
+hotspot_sync_ui_hideall();</action>
+    <action name="VRM_ShowUI" autorun="" secure="" devices="all">set(plugin.enabled,true);
+set(hotspot.enabled,true);
+set(plugin.visible,true);
+set(hotspot.visible,true);
+tween(plugin.alpha, 1.0,,,delete(_vrm_ui_hide_));
+tween(hotspot.alpha, 1.0);
+hotspot_sync_ui_showall();</action>
+    <action name="VRM_MuteTourMusic" autorun="" secure="" devices="all" scope="global" args="">if(device.html5,
+  h5soundmute("SYSTEMSCENESOUND",%1);
+  ,
+   if(%1===false,
+    resumesound(SYSTEMSCENESOUND);
+    set(sound[SYSTEMSCENESOUND].volume,get(scenemusic.Volume));
+    ,
+    tween(sound[SYSTEMSCENESOUND].volume, 0, 0.25, easeOutQuint, pausesound(SYSTEMSCENESOUND););    
+  );  
+);</action>
+</krpano>

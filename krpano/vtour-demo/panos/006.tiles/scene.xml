@@ -1,0 +1,24 @@
+<krpano>
+    <this scenename="s20180728135405" next="" prev="" title="箱变车间A" time_pano="2019-11-16 12:58:56 下午" time_camer="2019:11:13 14:59:52" shutter="" aperture="F8" iso="100" album="" blend="3"/>
+    <location gps_lon="" gps_lat="" picmap_url="" picmap_x="" picmap_y=""/>
+    <preview url="preview.jpg"/>
+    <view fovtype="DFOV" maxpixelzoom="" hlookat="-27.04" vlookat="0" fov="110" fovmin="50" fovmax="120" limitview="range" hlookatmin="-180" hlookatmax="180" vlookatmin="-90" vlookatmax="90"/>
+    <events name="s20180728135405" keep="false" onxmlcomplete="VRM_SceneOnXMLComplete();" onpreviewcomplete="VRM_SceneOnPreviewComplete();" onloadcomplete="VRM_SceneOnLoadComplete();"/>
+    <hotspot name="xba" type="image" sound_range="90" targetway="3" targeth="" targetv="" targetf="" onclick="VRM_LoadScene(&quot;g20180725233431/s20180728135450&quot;, -27.84,-0.2,110,3,MERGE);" onloaded="hotspot_sync_ui_hide(get(name));hotspot_animate(get(name));VRM_PlayHotspotSound(get(name));addleadvideoplayer();" framecurrent="0" distorted="false" url="%FIRSTXML%/files/hotspot/frame_af_128x128x25.png" animatetype="atframe" framecount="25" framewidth="128" frameheight="128" ath="-0.1" atv="13.13" animatespeed="0.02" title_string="箱变车间B" title_y="-20" title_bg="true" title_bgcolor="0x8487FF" title_bgroundedge="3 3 3 3" scale="0.5"/>
+    <hotspot name="sqa" type="image" sound_range="90" targetway="3" targeth="" targetv="" targetf="" onclick="VRM_LoadScene(&quot;g20180725233431/s20180728134958&quot;, -31.4672046205996,1.32359481083581,110,3,MERGE);" onloaded="hotspot_sync_ui_hide(get(name));hotspot_animate(get(name));VRM_PlayHotspotSound(get(name));addleadvideoplayer();" framecurrent="0" distorted="false" url="%FIRSTXML%/files/hotspot/frame_af_128x128x25.png" animatetype="atframe" framecount="25" framewidth="128" frameheight="128" ath="-91.9" atv="8.8" animatespeed="0.02" title_string="员工休息区" title_y="-20" title_bg="true" title_bgcolor="0x8487FF" title_bgroundedge="3 3 3 3" scale="0.5"/>
+    <hotspot name="cta" type="image" sound_range="90" targetway="3" targeth="" targetv="" targetf="" onclick="VRM_LoadScene(&quot;g20180725233431/s20180728135615&quot;, -24.17,-0.17,110,3,MERGE);" onloaded="hotspot_sync_ui_hide(get(name));hotspot_animate(get(name));VRM_PlayHotspotSound(get(name));addleadvideoplayer();" framecurrent="0" distorted="false" url="%FIRSTXML%/files/hotspot/frame_af_128x128x25.png" animatetype="atframe" framecount="25" framewidth="128" frameheight="128" ath="94.45" atv="10.97" animatespeed="0.02" title_string="成套车间A" title_y="-20" title_bg="true" title_bgcolor="0x8487FF" title_bgroundedge="3 3 3 3" scale="0.5"/>
+    <hotspot name="wa" type="image" sound_range="90" targetway="3" targeth="" targetv="" targetf="" onclick="VRM_LoadScene(&quot;g20180725233431/s20180726001610&quot;, -151.52,0,110,3,MERGE);" onloaded="hotspot_sync_ui_hide(get(name));hotspot_animate(get(name));VRM_PlayHotspotSound(get(name));addleadvideoplayer();" framecurrent="0" distorted="false" url="%FIRSTXML%/files/hotspot/frame_ar_128x128x25.png" animatetype="atframe" framecount="25" framewidth="128" frameheight="128" ath="-167.71" atv="4.7" animatespeed="0.02" title_string="生产车间外A" title_y="-20" title_bg="true" title_bgcolor="0x8487FF" title_bgroundedge="3 3 3 3" scale="0.5"/>
+    <hotspot name="wb" type="image" sound_range="90" targetway="3" targeth="" targetv="" targetf="" onclick="VRM_LoadScene(&quot;g20180725233431/s20180726001623&quot;, 36.19,0.01,110,3,MERGE);" onloaded="hotspot_sync_ui_hide(get(name));hotspot_animate(get(name));VRM_PlayHotspotSound(get(name));addleadvideoplayer();" framecurrent="0" distorted="false" url="%FIRSTXML%/files/hotspot/frame_al_128x128x25.png" animatetype="atframe" framecount="25" framewidth="128" frameheight="128" ath="165.24" atv="4.99" animatespeed="0.02" title_string="生产车间外B" title_y="-20" title_bg="true" title_bgcolor="0x8487FF" title_bgroundedge="3 3 3 3" scale="0.5"/>
+    <hotspot name="fd" type="image" sound_range="90" targetway="3" targeth="" targetv="" targetf="" onclick="showmypic(&quot;xb2.jpg&quot;,0.9);" onloaded="hotspot_sync_ui_hide(get(name));hotspot_animate(get(name));VRM_PlayHotspotSound(get(name));addleadvideoplayer();" framecurrent="0" distorted="false" url="%FIRSTXML%/files/hotspot/jing.png" ath="-37.97" atv="0" title_string="点击放大" title_y="-35" title_bg="true" title_bgcolor="0x8487FF" title_bgroundedge="3 3 3 3" scale="0.8" animatetype="atscale"/>
+    <image type="CUBE" multires="true" tilesize="512">
+        <level tiledimagewidth="2560" tiledimageheight="2560">
+            <cube url="tiles/l3/%v/l3_%s_%v_%h.jpg"/>
+        </level>
+        <level tiledimagewidth="1280" tiledimageheight="1280">
+            <cube url="tiles/l2/%v/l2_%s_%v_%h.jpg"/>
+        </level>
+        <level tiledimagewidth="640" tiledimageheight="640">
+            <cube url="tiles/l1/%v/l1_%s_%v_%h.jpg"/>
+        </level>
+    </image>
+</krpano>
