@@ -25,4 +25,5 @@ vueDemo              vue.js的demo
 WebIM                仿网页微信的im工具
 webPage              静态页面
 zTree                树型插件
+node                 node
 note                 未分类的笔记
