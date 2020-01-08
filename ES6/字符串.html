@@ -7,7 +7,13 @@
 	<body>
 		<div id="test">
 		
-		<div>
+		</div>
+		<div id="test2">
+	
+		</div>
+		<div id="test3">
+	
+		</div>
 		<script>
 			//startsWith()  判断是否以一段字符串开头
 			//endsWith()   判断是否以一段字符串结束
@@ -15,6 +21,9 @@
 			//padStart()   补充空位   也可以填充参数
 			//padEnd()
 			
+			// includes() 是否包含
+			// repeat()  重复
+
 			//字符串模板
 			let a = 'str'
 			let b = `${a}`
@@ -24,8 +33,41 @@
 			let c = '123'
 			let d = '456'
 			let e =`'<p>${c}</p>'`
-				  +`<p>${d}<p>`
-			document.querySelector('#test').append(e);
+				  +`<p>${d}</p>`
+			document.querySelector('#test').innerHTML = e;
+			// 或者  
+			let html = 
+			`<div>
+				<span></span>
+			</div>`.trim()
+			// trim()函数用于移除字符串两侧的空白字符
+
+			let list = [{id: 1,name:2},{id: 3,name:4}]
+			let tem = 
+			`<ul>
+				${list.map(item => {
+					return `<li>${item.id}</li>`
+				}).join('')}
+			</ul>`
+			document.querySelector('#test2').innerHTML = tem;
+			// map返回的是数组  所以使用join去除逗号
+
+			// 标签模板字符串
+			function tagTem(string, ...ars){
+				let tagSpan = ars.map( item => `<span class="tag">${item}</span>`)
+				console.log(string,tagSpan)
+				// 这里开头结尾是参数   所以进来的string头尾为空
+				// 这里必须传空初始值  使得reduce的i从0开始计数  否则i从1开始计数
+ 				return string.reduce((pre,cur,i) => {
+					console.log(i)
+					return `${pre}${cur}${tagSpan[i] || ''}`
+				},'')
+				// 详见数组的reduce 数组的累加
+			}
+			let tagHTML= tagTem`${a} 标签模板 ${b} 这里有三个参数 ${c}`
+			document.querySelector('#test3').innerHTML = tagHTML;
+			// 标签模板字符串可以用于过滤用户输入  防止xxs攻击
+			// 这里可以使用 DOMPurify
 		</script>
 	</body>
 </html>

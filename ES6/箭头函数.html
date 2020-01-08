@@ -14,6 +14,14 @@
 			x => {  } // 一个参数可以省略 ()；
 			(x, y) => {  } // 多参数不能省略 ()；
 			// *重要： 箭头函数没有自己内部的 this 指针。在箭头函数中， this 指针是继承于其所在的作用域。
+			// retuen时 可以不写{}  但是必须要在一行
+			
+			// 默认值的写法  如果某个值不传需要用undefined  例： test(undefined,3)
+			const test = (a = 1, b = 2) => { console.log(a * b) }
+			// 箭头函数的this指向父级的this  所以不能作为构造函数
+
+			// 箭头函数没有argument
+			// 可以使用 （...args）
 		</script>
 	</body>
 </html>

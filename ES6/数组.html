@@ -22,6 +22,7 @@
 		
 		//reduce   汇总                    多对一
 		let reduceArr = [2,4,5,7];
+		// reduce方法接受两个参数  第一个是一个函数  第二个值是初始值
 		let redu = reduceArr.reduce((tmp,item,index)=>{
 			console.log(tmp,item,index)
 			//tmp是上次计算的结果  这里的index是1开始   因为第一个到tmp
@@ -44,5 +45,9 @@
 		console.log(filArr)
 		//forEach  循环（迭代）
 		//arr.forEach((item,index)=>{})
+
+		// Array.from()和Array.of()方法
+		// .from()类数组对象转为数组  比如获取li 然后使用Array.from(lis) 转为数组  from第二个参数可以接收一个函数
+		// Array.of()  传入几个值就用这几个值构成一个数组  避免new Array()传入参数不同导致的行为不一致
 	</script>
 </html>
