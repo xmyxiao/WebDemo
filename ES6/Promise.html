@@ -16,11 +16,16 @@
 			Promise.all([a,b]).then(values => { 
 				//这里的values是a和b两个请求的结构拼接的数组
 				//相当于映射  传入一个数组  输出一个数组
+				// 多个请求都成功才会执行
 			  console.log(values);
 			}, reason => {
+				// 有一个错误就执行
 			  console.log(reason)
 			});
+			// Promise.race 由第一个返回值决定
+
 			//promise.all()用于解决多请求嵌套的情况
+
 			/*
 			 * $.ajax({
 			 * 	success:function(){
@@ -31,6 +36,8 @@
 			 * })
 			 * 
 			 * */
+
+			// 如果是嵌套式的使用可以使用链式调用
 		</script>
 	</body>
 </html>

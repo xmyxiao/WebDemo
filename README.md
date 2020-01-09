@@ -8,7 +8,7 @@ cssDemo              样式demo</br>
 debugger             bug调试</br>
 drawBox              绘图</br>
 easyUIDemo           easyui的测试demo</br>
-ES6                  es6的部分新语法</br>
+ES6                  es6笔记</br>
 getTime              获取时区或者转换为北京时间</br>
 handsontable         handsontable.js </br>
 html5                h5语法</br>

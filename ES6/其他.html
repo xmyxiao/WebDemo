@@ -31,6 +31,30 @@
 				awite
 			}
 			//console.log(arr.keys()); 这个不能直接输出
+
+			// 对象属性简写
+			let name = 1;
+			let obj = {
+				name,
+				getName(){
+					return this.name
+				}
+			}
+			console.log(obj.getName())
+
+			// Symbol()
+			let s1 = Symbol()
+			let s2 = Symbol()
+			console.log(s1 === s2)
+			// 这里的s1不等于s2 Symbol出来的都是不一样的
+			let sObj = {
+				[Symbol('s')]: 1,
+				[Symbol('s')]: 2
+			}
+			console.log(sObj)
+			// for in 循环取不到   遍历可以使用Object.getOwnPropertySymbols(sObj).map()
+			// map里面要使用[] 而不是点
+			// Symbol 无法遍历 可以作为私有对象使用
 		</script>
 	</body>
 </html>
