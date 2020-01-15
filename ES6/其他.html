@@ -55,6 +55,13 @@
 			// for in 循环取不到   遍历可以使用Object.getOwnPropertySymbols(sObj).map()
 			// map里面要使用[] 而不是点
 			// Symbol 无法遍历 可以作为私有对象使用
+
+			// proxy代理  重新定义对象原有的函数  var p = new Proxy(target, handler);
+			// 这里的target是被代理对象  handler是对象上的方法
+			// let target = {name:1}   
+			// handler = {set(){console.log('set')}}
+			// p.name = 2  这里就会触发handler里面的set方法
+			// 这里使用自己的set方法代替了原有对象的set方法
 		</script>
 	</body>
 </html>

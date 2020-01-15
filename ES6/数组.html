@@ -52,5 +52,27 @@
 
 		// .find(element,index,arr)  查找元素  相似的还有findIndex 
 		// .same()只要有一个满足就返回 .every() 全部都满足才返回
+
+		// set
+		let setArr = new Set()
+		setArr.add(1)
+		setArr.add(1)
+		setArr.add('1')
+		// 这里的set会忽略相同值
+		// 数字和字符串不同值
+		setArr.delete()
+		// 返回false 表示没有删除成功
+		setArr.delete(1)
+		// 这里的1不是索引   set没有索引
+		// has用于判断是否有值  clear清除所有  可以使用next来遍历
+		// 或者使用for of  和forEach(item,key,set)
+		// 可以用于去重
+		// WeakSet 元素要是对象  用法与 Set相似
+
+		// map
+		let m1 = new Map()
+		m1.set('name',1)
+		// 赋值使用键值对  方法api与set相似
+		// 相似点WeakMap
 	</script>
 </html>

@@ -40,6 +40,25 @@
 			 * 常用的runner koa
 			 * 
 			 * */
+
+			// 可以用于控制ajax的请求流
+			function* setp(){
+				let user = yield ajax()
+				let data = yield ajax(user)
+			}
+			let s = setp()
+			let user1 = s.next()
+			let user2 = s.next(2)
+			function ajax(id){
+				if(id){
+					return id
+				}else{
+					return 1
+				}
+			}
+			// 这里user1的值为{value: 1, done: false} done表示setp方法还未执行完
+			// user2的值为{value: 2, done: false}  
+			// let user2 = s.next(2)  将2作为上一步的返回值代替了user的值
 		</script>
 	</body>
 </html>
