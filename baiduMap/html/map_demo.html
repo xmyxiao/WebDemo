@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>地图连线</title>
+		<style type="text/css">
+      body, html,#allmap {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        margin:0;
+        font-family:"微软雅黑";
+      }
+      @keyframes biging{
+        0%{
+          transform: scale(1);
+          opacity: 1;  
+        }
+        100%{
+          transform: scale(2.5);
+          opacity: 0;
+        }
+      }
+      @keyframes bgBig{
+        0%{
+          transform: scale(1.2);
+        }
+        50%{
+          transform: scale(1.5);
+        }
+        100%{
+          transform: scale(1.2);
+        }
+      }
+      .point {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+      }
+      .circular{
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        left: 4px;
+        bottom: 4px;
+        background: #F37B1D;
+        border-radius: 50%;
+        z-index: 1;
+        cursor: pointer;
+      }
+      .circular-bg{
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        left: -2px;
+        bottom: -2px;
+        border: 2px solid #F37B1D;
+        border-radius: 50%;
+        z-index: -1;
+      }
+      .circular{
+        -webkit-animation: bgBig 1s ease infinite normal;
+      }
+      .circular-bg{
+        opacity: 0;
+        -webkit-animation: biging 4s ease infinite normal;
+      }
+      .circular-bg:nth-child(2){
+        -webkit-animation-delay: 1s;
+      }
+      .circular-bg:nth-child(3){
+        -webkit-animation-delay: 2s;
+      }
+      .circular-bg:nth-child(4){
+        -webkit-animation-delay: 3s;
+      }
+      .map-text{
+        display: none;
+        height: 25px;
+        position: absolute;
+        left: 30px;
+        color: #fff;
+        font-size: 14px;
+        overflow: hidden;
+        text-align: left;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }  
+    
+    .point:hover .map-text{
+      display: block;
+    }
+    </style>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=N05AG95Umzs3fouk6WpFqtGxcDlw0fRn"></script>
+	</head>
+	<body>
+	  <div id="allmap"></div>
+	</body>
+	
+	<script>    
+	  checkhHtml5(); 
+	  // 地图初始化
+    let map = new BMap.Map('allmap');
+    map.centerAndZoom(new BMap.Point(119.275161,26.029327), 15);
+    let baiduMapStyleId = '22cc9921f4b0cc938d1a9252fa5af69d';
+    map.setMapStyleV2({
+      styleId: baiduMapStyleId
+    });
+    map.enableScrollWheelZoom();
+    function ComplexCustomOverlay(point,color){
+      this._point = point;
+      this._color = color
+    }
+　　 // 继承API的BMap.Overlay  
+    ComplexCustomOverlay.prototype = new BMap.Overlay();
+    // 实现初始化方法  
+    ComplexCustomOverlay.prototype.initialize = function(map){
+      this._map = map;
+      // 创建div元素，作为自定义覆盖物的容器  
+      let div = this._div = document.createElement("div");
+      div.style.zIndex = BMap.Overlay.getZIndex(this._point.lat);
+      let child = `<span class="circular" style="background:${this._color}"></span>
+        <span class="circular-bg" style="border-color:${this._color}"></span>
+        <span class="circular-bg" style="border-color:${this._color}"></span>
+        <span class="circular-bg" style="border-color:${this._color}"></span>
+        <span class="circular-bg" style="border-color:${this._color}"></span>`
+      div.className = 'point';
+      $(div).append(child)
+      map.getPanes().labelPane.appendChild(div);
+      return div;
+    }
+    // 点位置调整
+    ComplexCustomOverlay.prototype.draw = function(){
+      let map = this._map;
+      let pixel = map.pointToOverlayPixel(this._point);
+      this._div.style.left = pixel.x - 10 + "px";
+      this._div.style.top  = pixel.y - 10 + "px";
+    }
+    // 添加点方法
+    ComplexCustomOverlay.prototype.addEventListener = function(event,fun){
+      this._div['on'+event] = fun;
+    }
+    // 根据数据绘制
+    let mapArr = [{
+      id: 1,
+      lng: 119.275161,
+      lat: 26.029327,
+      color:'#f00'
+    },{
+      id: 2,
+      lng: 119.27,
+      lat: 26.02,
+      color:'#00BFFF'
+    }]
+    beforeDraw(mapArr)
+    
+    // 检查浏览器支持
+    function checkhHtml5(){   
+      if (typeof(Worker) === "undefined"){
+        if(navigator.userAgent.indexOf("MSIE 9.0")<=0){  
+          alert("IE9以下不兼容定制地图，推荐使用chrome、firefox、safari、IE10");   
+        } 
+      }  
+    }
+    // 绘制处理
+    function beforeDraw(list){
+      if(typeof list !== 'object'){
+        return
+      }
+      map.clearOverlays()
+      let linePoint = []
+      for(let item of list){
+        drawPoint(item)
+        linePoint.push(new BMap.Point(item.lng,item.lat))
+      }
+      drawLine(linePoint)
+    }
+    // 绘制点
+    function drawPoint(item){
+      if(!item.lng || !item.lat){
+        return
+      }
+      let marker = new ComplexCustomOverlay(new BMap.Point(item.lng, item.lat),item.color);
+      map.addOverlay(marker);
+    }
+    // 绘制线
+    function drawLine(list){
+      let sy = new BMap.Symbol(BMap_Symbol_SHAPE_BACKWARD_OPEN_ARROW, {
+        scale: 0.8,
+        strokeColor:'red',
+        strokeWeight: '2',
+      });
+      let icon_arr = new BMap.IconSequence(sy, '', '80%', false)
+      let polyline =new BMap.Polyline(list, {
+        enableEditing: false,
+        enableClicking: true,
+        enableMassClear: true,
+        strokeStyle: 'dashed',
+        strokeWeight: '2',
+        icons: [icon_arr],
+        strokeOpacity: 0.8,
+        strokeColor:"red" 
+      });
+      map.addOverlay(polyline);
+    }
+	</script>
+</html>
