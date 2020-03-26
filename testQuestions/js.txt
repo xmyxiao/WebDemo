@@ -30,7 +30,9 @@ promise
 				})
 			}
 			调用  pro().then(...);
-			
+	链式调用  避免对调地狱
+	Promise实现原理是将then里面的当做ajax的回调事件
+	
 	http://www.cnblogs.com/rubylouvre/p/3495286.html
 	(还不是很理解，异步代码？)
 	
@@ -92,7 +94,7 @@ async/await 语法以及目的
 js实现深度拷贝
 	1.json拷贝
 		var a = {...}
-		var b = JSON.parse(JSON.stringify(a))
+		var b = JSON.parse(JSON.stringify(a))  //常用方法
 		缺点： json不支持函数、引用、undefined、RegExp、Date...
 	2.递归遍历一个对象  再将值传入到一个对象中
 	

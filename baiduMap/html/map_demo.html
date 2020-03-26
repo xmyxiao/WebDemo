@@ -92,6 +92,7 @@
     }
     </style>
     <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?type=webgl&v=3.0&ak=N05AG95Umzs3fouk6WpFqtGxcDlw0fRn"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=N05AG95Umzs3fouk6WpFqtGxcDlw0fRn"></script>
 	</head>
 	<body>
@@ -119,7 +120,7 @@
       this._map = map;
       // 创建div元素，作为自定义覆盖物的容器  
       let div = this._div = document.createElement("div");
-      div.style.zIndex = BMap.Overlay.getZIndex(this._point.lat);
+      div.style.zIndex = -BMap.Overlay.getZIndex(this._point.lat);
       let child = `<span class="circular" style="background:${this._color}"></span>
         <span class="circular-bg" style="border-color:${this._color}"></span>
         <span class="circular-bg" style="border-color:${this._color}"></span>
@@ -127,6 +128,7 @@
         <span class="circular-bg" style="border-color:${this._color}"></span>`
       div.className = 'point';
       $(div).append(child)
+      map.getPanes().labelPane.style.zIndex = 900
       map.getPanes().labelPane.appendChild(div);
       return div;
     }
@@ -142,6 +144,7 @@
       this._div['on'+event] = fun;
     }
     // 根据数据绘制
+    
     let mapArr = [{
       id: 1,
       lng: 119.275161,
@@ -183,6 +186,10 @@
       }
       let marker = new ComplexCustomOverlay(new BMap.Point(item.lng, item.lat),item.color);
       map.addOverlay(marker);
+      marker.addEventListener('click',function(){
+          alert("点击图标");
+          //hide_show();
+      });
     }
     // 绘制线
     function drawLine(list){
