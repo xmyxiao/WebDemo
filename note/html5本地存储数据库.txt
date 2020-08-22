@@ -1,8 +1,0 @@
-几个基本的方法介绍：
-http://www.cnblogs.com/wshiqtb/archive/2013/04/07/3003698.html
-
-var dataBase = openDatabase("student", "1.0", "学生表", 1024 * 1024, function () { });
-//打开一个已经存在的数据库，如果数据库不存在，创建数据库。
-
-本地存储增删改查：
-http://www.cnblogs.com/xumingxiang/archive/2012/03/25/2416418.html
