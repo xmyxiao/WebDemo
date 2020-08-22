@@ -1,5 +1,5 @@
-box-shadow  //阴影  http://www.cnblogs.com/lhb25/archive/2013/02/20/css3-box-shadow.html
-
+**滚动条样式**</br>
+```css
 /*滚动条*/
 ::-webkit-scrollbar {
   width: 5px;
@@ -20,8 +20,4 @@ box-shadow  //阴影  http://www.cnblogs.com/lhb25/archive/2013/02/20/css3-box-s
 .scroll-bar-style::-webkit-scrollbar-track {
 
 }
-改变滚动条的样式  一般只有chrome支持
-/*背景居中*/
-background-position: center;
-background-repeat: no-repeat;
-background-attachment: fixed;
+```

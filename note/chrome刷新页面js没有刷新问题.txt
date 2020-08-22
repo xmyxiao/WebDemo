@@ -1,2 +1,0 @@
-ctrl+f5清缓存无效
-解决方式： F12->F1->network->Disable cache (while DevTools is open)
