@@ -4,13 +4,17 @@
 　　地图详细接口：http://developer.baidu.com/map/jsdemo.htm#a1_2</br>
 
 　　引用：</br>
-```<script type="text/javascript" src="http://api.map.baidu.com/api?ak=165c70fb6496adae904f0f43e7f98dc5&v=2.0&services=false"></script>```
-　　使用: </br>
-```<a href="http://api.map.baidu.com/geocoder?address=福建省福州市仓山区冠浦路142&amp;output=html" target="_blank"><img type="location" style="width:250px; height:250px;" src="http://api.map.baidu.com/staticimage?&#10;&#9;&#9;&#9;&#9;width=250&amp;height=250&amp;zoom=16&amp;center=福建省福州市仓山区冠浦路142"></a>```
+```javascript
+<script type="text/javascript" src="http://api.map.baidu.com/api?ak=165c70fb6496adae904f0f43e7f98dc5&v=2.0&services=false"></script>
+```
 
+　　使用: </br>
+```javascript
+<a href="http://api.map.baidu.com/geocoder?address=福建省福州市仓山区冠浦路142&amp;output=html" target="_blank"><img type="location" style="width:250px; height:250px;" src="http://api.map.baidu.com/staticimage?&#10;&#9;&#9;&#9;&#9;width=250&amp;height=250&amp;zoom=16&amp;center=福建省福州市仓山区冠浦路142"></a>
+```
 　　展示小图 点击跳转百度地图 address=要定位的地址 output=html必须 否则无法打开</br>
 　　zoom=16 级别可使用3-18数值越大地图放大级数越大</br>
-　　```&#10;&#9;&#9;&#9;&#9 &amp``` 为HTML特殊字符 符号不可去除</br>
+　　`&#10;&#9;&#9;&#9;&#9 &amp` 为HTML特殊字符 符号不可去除</br>
 　　usionconfig项目下的map页面为实例</br>
 ```javascript
 	(function(global){
