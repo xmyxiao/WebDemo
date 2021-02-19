@@ -1,0 +1,77 @@
+<template>
+  <div >
+   
+  </div>
+</template>
+
+<script>
+import Vue from "vue";
+import VueAMap from 'vue-amap';
+Vue.use(VueAMap);
+
+VueAMap.initAMapApiLoader({
+  // 高德key
+  key: 'a4df1b5a57b9ba3e9be795464b7009ac', // 自己到官网申请，我随便写的
+  // 插件集合 （插件按需引入）
+  plugin: ['AMap.Autocomplete', 'AMap.PlaceSearch', 'AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.PolyEditor', 'AMap.CircleEditor', 'AMap.MarkerClusterer'],
+  v: '1.4.15', // 我也不知道为什么要写这个，不写项目会报错，而且我随便写的，跟我下载的版本对应不了
+  uiVersion: '1.0.11' // ui版本号，也是需要写
+})
+import { lazyAMapApiLoaderInstance } from 'vue-amap';
+
+export default {
+  components: {
+    
+  },
+  data() {
+    return {
+      lat: '',
+	  lng: '',
+	  location: '',
+    };
+  },
+  created() {
+    lazyAMapApiLoaderInstance.load().then(() => {
+      let mapObj = new AMap.Map('')
+      let geolocation;
+	  mapObj.plugin(['AMap.Geolocation'], function() {
+      geolocation = new AMap.Geolocation({
+        enableHighAccuracy: true, //  是否使用高精度定位，默认:true
+        timeout: 10000, //  超过10秒后停止定位，默认：无穷大
+        maximumAge: 0, // 定位结果缓存0毫秒，默认：0
+        convert: true, // 自动偏移坐标，偏移后的坐标为高德坐标，默认：true
+        showButton: true, //  显示定位按钮，默认：true
+        buttonPosition: 'LB', // 定位按钮停靠位置，默认：'LB'，左下角
+        buttonOffset: new AMap.Pixel(10, 20), //  定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+        showMarker: true, //  定位成功后在定位到的位置显示点标记，默认：true
+        showCircle: true, //  定位成功后用圆圈表示定位精度范围，默认：true
+        panToLocation: true, //  定位成功后将定位到的位置作为地图中心点，默认：true
+        zoomToAccuracy: true //  定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+      })
+      mapObj.addControl(geolocation)
+      geolocation.getCurrentPosition()
+    })
+    let _that = this
+    AMap.event.addListener(geolocation, 'complete', result => {
+          console.log(result)
+          _that.lat = result.position.lat
+          _that.lng = result.position.lng
+          _that.location = result.formattedAddress
+          console.log(_that.lat,_that.lng,_that.location)
+        })
+    })
+  },
+  mounted() {
+
+  },
+  methods: {
+    
+  }
+};
+</script>
+
+
+
+<style lang="scss">
+
+</style>

@@ -1,0 +1,131 @@
+[{
+	"Dam": [
+		[]
+	],
+	"Reservoir": [
+		[{
+			"DamTopWidth": 8.0,
+			"DSFLZ": 906.37,
+			"DDZ": 868.0,
+			"STNM": "八角水库                      ",
+			"XXSW": null,
+			"CKFLZ": 907.39,
+			"DamBase": null,
+			"DAMEL": 908.5,
+			"DamWidth": null,
+			"DamAxisToLeft": null,
+			"Flch": null,
+			"RZ": 905.11,
+			"TTCP": 1531.0,
+			"KR": null,
+			"DamTop": 908.5,
+			"STCD": "10000002",
+			"TM": "2020-12-22 19:00:37"
+		}]
+	],
+	"PegCode": [{
+		"Code": "",
+		"Peg": [
+			[]
+		],
+		"Data": [
+			[]
+		]
+	}]
+}]
+
+{
+  "dam": {
+    "stcd": "20000002",
+    "length": 0,
+    "height": 125.81,
+    "typename": "迎水坡",
+    "typevalue": "1",
+    "sortid": 1
+  },
+  "peg": [
+    {
+      "mpcd": "2005",
+      "ofax": -10,
+      "tbtpel": 157.41,
+      "tbbtel": 132.41,
+      "tblg": 25,
+      "prtblg": 0.1493,
+      "pipecode": "A1",
+      "f": 2152.5,
+      "t": 23.18,
+      "p": 148.911,
+      "voltage": 0,
+      "water": null,
+      "rectime": "2020-12-24T10:32:16",
+      "unit": 2005
+    },
+    {
+      "mpcd": "2006",
+      "ofax": 10,
+      "tbtpel": 156.4,
+      "tbbtel": 130.4,
+      "tblg": 26,
+      "prtblg": 0.124,
+      "pipecode": "A2",
+      "f": 2071.62,
+      "t": 23,
+      "p": 141.559,
+      "voltage": 0,
+      "water": null,
+      "rectime": "2020-12-24T10:32:16",
+      "unit": 2006
+    },
+    {
+      "mpcd": "2009",
+      "ofax": 40,
+      "tbtpel": 146.22,
+      "tbbtel": 128.22,
+      "tblg": 18,
+      "prtblg": 0.1375,
+      "pipecode": "A3",
+      "f": 2310.65,
+      "t": 23.45,
+      "p": 133.363,
+      "voltage": 0,
+      "water": null,
+      "rectime": "2020-12-24T10:32:16",
+      "unit": 2009
+    },
+    {
+      "mpcd": "2003",
+      "ofax": 70,
+      "tbtpel": 133.22,
+      "tbbtel": 125.22,
+      "tblg": 8,
+      "prtblg": 0.1412,
+      "pipecode": "A4",
+      "f": 2404.69,
+      "t": 24,
+      "p": 125.878,
+      "voltage": 0,
+      "water": null,
+      "rectime": "2020-12-24T10:32:16",
+      "unit": 2003
+    }
+  ],
+  "data": {
+    "stcd": "20000002",
+    "flch": null,
+    "damtop": 100,
+    "dambase": null,
+    "damwidth": null,
+    "damtopwidth": null,
+    "damaxistoleft": null,
+    "damel": 100,
+    "ckflz": null,
+    "dsflz": null,
+    "ddz": 50,
+    "rz": null,
+    "kr": null,
+    "tm": null,
+    "stnm": "凌清水库                      ",
+    "ttcp": null,
+    "xxsw": null
+  }
+}
