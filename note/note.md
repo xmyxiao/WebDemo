@@ -201,8 +201,15 @@ changeSkin (item) {
 迁移到vite
 useInterval、useTimeout
 [java环境搭建](http://wiki.istrongcloud.net/spaces/194554bbc5d444589b884936b35ff796/2df6eeac/view/0207fb85)
-	
-	
+
+js事件循环
+构造函数
+原型链
+promise与ajax的区别
+定时器是否固定时长触发
+new要如何实现
+
+
 	
 	
 
