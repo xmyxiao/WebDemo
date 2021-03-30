@@ -478,3 +478,9 @@
 }
 
 ```
+# eslint忽略规则
+```
+/* eslint-disable */ 
+// eslint-disable-next-line no-console
+// eslint-disable-next-line no-undef
+```

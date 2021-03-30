@@ -13,3 +13,32 @@
 　　路由改变，页面没变化，刷新后页面变化
 　　`this.$router.go(0)` 目前使用刷新来处理这个问题</br>
 
+**provide**</br>
+　　[provide](https://blog.csdn.net/qq_39075021/article/details/106767357)</br>
+　　provide 和 inject 绑定并不是可响应的。</br>
+　　这是刻意为之的。然而，如果你传入了一个可监听的对象，那么其对象的属性还是可响应的。</br>
+```javascript
+	provide () {
+		return {
+			getRefresh: this.getRefresh
+		}
+	},
+	methods: {
+      getRefresh(){
+        return this.refresh
+      }
+    }
+	// 子组件
+	inject:['getRefresh'],
+	watch: {
+	  refresh(val){
+		console.log(val)
+	  }
+	},
+	computed:{
+	  refresh(){
+		return this.getRefresh && this.getRefresh().frequency
+	  }
+	},
+```
+

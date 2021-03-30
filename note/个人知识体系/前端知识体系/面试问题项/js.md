@@ -196,4 +196,45 @@
 	
 **单例模式**</br>
 　　只允许一个实例存在，如果这个实例不存在则实例化，存在则不创建</br>
-　　可以用于保存用户信息等唯一对象</br>
+　　可以用于保存用户信息等唯一对象，例如token</br>
+
+**js事件循环**</br>
+　　首先js是单线程非阻塞的脚本语言</br>
+　　单线程是因为在浏览器中使用，避免多个线程同时对一个demo进行相反的操作（例如一个线程增加事件，一个线程删除事件）</br>
+　　非阻塞的实现是基于event loop（事件循环）</br>
+　　js引擎遇到一个异步事件后并不会一直等待其返回结果，而是会将这个事件挂起，继续执行执行栈中的其他任务。当一个异步事件返回结果后，js会将这个事件加入与当前执行栈不同的另一个队列，我们称之为事件队列。</br>
+　　被放入事件队列不会立刻执行其回调，而是等待当前执行栈中的所有任务都执行完毕， 主线程处于闲置状态时，主线程会去查找事件队列是否有任务。如果有，那么主线程会从中取出排在第一位的事件，并把这个事件对应的回调放入执行栈中，然后执行其中的同步代码。</br>
+
+**自己实现new**</br>
+　　new的实现
+创建一个新的空的对象
+```javascript
+function myNew() {
+    var obj = new Object();
+}
+```
+将构造函数的作用域赋给新对象（因此this就指向了这个新对象）
+```javascript
+function myNew() {
+  var constr = Array.prototype.shift.call(arguments);
+  var obj = Object.create(constr.prototype);
+}
+```
+执行构造函数中的代码（为这个新对象添加属性）
+```javascript
+function myNew() {
+  var constr = Array.prototype.shift.call(arguments);
+  var obj = Object.create(constr.prototype);
+  var result = constr.apply(obj, arguments);
+}
+```
+如果这个函数有返回值，则返回；否则，就会默认返回新对象
+```javascript
+function myNew() {
+  var constr = Array.prototype.shift.call(arguments);
+  var obj = Object.create(constr.prototype);
+  var result = constr.apply(obj, arguments);
+  return result instanceof Object? result : obj;
+}
+```
+
