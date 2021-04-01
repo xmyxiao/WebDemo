@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>CSS3缺角矩形</title>
+		<style>
+			.body-bg{
+				background-color: #ccc;
+			}
+			.bg{
+				width: 120px;
+				height: 80px;
+				background: #58a;
+				color: #fff;
+			}
+			.cover{
+			    position: relative;
+			}
+			.cover::before {
+			    content: '';
+			    width: 0;
+			    height: 0;
+			    position: absolute;
+			    right: 0;
+			    bottom: 0;
+			    border: 5px solid #fff;
+			    border-top-color: transparent;
+			    border-left-color: transparent;
+			}
+			.cover::after{
+			    content: '';
+			    width: 0;
+			    height: 0;
+			    position: absolute;
+			    left: 0;
+			    top: 0;
+			    border: 5px solid #fff;
+			    border-bottom-color: transparent;
+			    border-right-color: transparent;
+			}
+			.missAngle{
+			    background: linear-gradient(-45deg, transparent 10px, #58a 0);
+			}
+			.rect{
+				background: linear-gradient(135deg, transparent 10px, #58a 0) top left,
+				        linear-gradient(-135deg, transparent 10px, #58a 0) top right,
+				        linear-gradient(-45deg, transparent 10px, #58a 0) bottom right,
+				        linear-gradient(45deg, transparent 10px, #58a 0) bottom left;
+				background-size: 50% 50%;
+				background-repeat: no-repeat;
+				/* Internet Explorer 9 及更早版本 IE 浏览器不支持渐变。 */
+			}
+			.cricle{
+				background: radial-gradient(circle at top left, transparent 10px, #58a 0) top left,
+				        radial-gradient(circle at top right, transparent 10px, #58a 0) top right,
+				        radial-gradient(circle at bottom right, transparent 10px, #58a 0) bottom right,
+				        radial-gradient(circle at bottom left, transparent 10px, #58a 0) bottom left;
+				background-size: 50% 50%;
+				background-repeat: no-repeat;
+			}
+			.rect-clip{
+			  background-size: 100% 100%;
+			  background-repeat: no-repeat;
+			  clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 
+			    100% calc(100% - 15px), calc(100% - 15px) 100%,
+			    15px 100%, 0 calc(100% - 15px), 0 15px)
+			}
+			.clip5{
+			    /*clip-path: inset(25% 0 25% 0 round 0 25% 0 25%);*/
+			    clip-path: inset(0 round 0 25%); /* 可以简写 */
+			    /* inset(<top> <right> <bottom> <left> round <top-radius> <right-radius> <bottom-radius> <left-radius>) */
+			    /* inset使用四个值（对应“上 右 下 左”的顺序）来设置圆角半径。 */
+			}
+		</style>
+	</head>
+	<body class="body-bg">
+		<div class="bg cover">伪类实现</div>
+		</br>
+		<div class="bg missAngle">渐变实现</div>
+		</br>
+		<div class="bg rect">渐变多角</div>
+		</br>
+		<div class="bg cricle">渐变圆角</div>
+		</br>
+		<!-- clip-path 创建一个只有元素的部分区域可以显示的剪切区域。区域内的部分显示，区域外的隐藏。 -->
+		<!-- clip-path: polygon(x y, x1 y1, x2 y2, x3 y3, ...) -->
+		<!-- x y, x1 y1, x2 y2, x3 y3, ... 这些表示坐标轴中的点，根据所有的点绘制一个封闭的图形 -->
+		<div class="bg rect-clip">裁剪实现</div>
+		</br>
+		<div class="bg clip5">裁剪圆角</div>
+		</br>
+		<a href="https://www.jb51.net/css/707136.html">来自'https://www.jb51.net/css/707136.html'</a>
+	</body>
+</html>
