@@ -1,16 +1,16 @@
 <template>
   <el-tabs :tab-position="tabPosition" style="height: 100%;">
     <el-tab-pane label="左标签1">
-    	<draggable element="ul" :list="basicComponents" 
+    	<draggable element="ul" :list="basicComponents"
           :options="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
           @end="handleMoveEnd"
           @start="handleMoveStart"
           :move="handleMove"
         >
-          
+
           <li class="form-edit-widget-label" v-for="(item, index) in basicComponents" :key="index">
             <a>
-              <icon class="icon" :name="item.icon"></icon>
+              <!-- <icon class="icon" :name="item.icon"></icon> -->
               <span>{{item.name}}</span>
             </a>
           </li>
@@ -26,6 +26,7 @@
 import draggable from 'vuedraggable'
 
 export default {
+  namem: 'asideLeft',
 	components: {
 	  draggable
 	},
