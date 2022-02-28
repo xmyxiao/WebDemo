@@ -82,3 +82,25 @@ ts的学习
 v-ref的作用与使用场景
 手机端图片预览组件学习
 video组件的实现  接入video.js 与flv.js
+
+1.onkeyup  是发生在数值改变后事件   
+  所以在这个时候再进行value=value.replace(/[^\d]+/g,'')这种改变是无效的
+  
+2.监听插槽[https://segmentfault.com/a/1190000040420267]
+  使用的是HTML5的新API - MutationObserver，用来监视DOM变化，异步执行。
+  不过IE只支持11+
+  
+beforeDestroy() {
+  this.resizeObserver && this.resizeObserver.unobserve(this.$refs.searchForm.$el)
+},
+try {
+  this.resizeObserver = new ResizeObserver(() => {
+	
+  })
+  this.resizeObserver.observe(this.$refs.searchForm.$el)
+} catch (e) {
+  console.error('当前浏览器（版本）不兼容ResizeObserver')
+}
+
+this.$refs.system && this.$refs.system.resizeMap()
+this.$refs.energy && this.$refs.energy.resizeMap()
