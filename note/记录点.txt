@@ -104,3 +104,11 @@ try {
 
 this.$refs.system && this.$refs.system.resizeMap()
 this.$refs.energy && this.$refs.energy.resizeMap()
+
+小程序方面  可以看看支付流程和静默登录
+技术方面要加强ts  vue3.0  和node
+
+
+
+
+
