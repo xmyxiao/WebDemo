@@ -107,6 +107,12 @@ this.$refs.energy && this.$refs.energy.resizeMap()
 
 小程序方面  可以看看支付流程和静默登录
 技术方面要加强ts  vue3.0  和node
+h5 页面内嵌微信扫码功能
+h5 原生实现扫二维码读取内容功能
+vite 图片资源动态加载
+登录流程  记住成功登录用户密码
+
+
 
 
 
