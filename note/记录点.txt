@@ -113,8 +113,80 @@ vite 图片资源动态加载
 登录流程  记住成功登录用户密码
 
 
+oninput="value=value.replace(/[^\w\u4E00-\u9FA5\.\,\?\<\>\。\，\-\——\=\;\@\！\!\+\$]/g, '').trim()"
+导致默认输入法下字数无法统计
 
+.jfif  的文件类型也是 image/jpeg
 
+1px 问题
+https://juejin.cn/post/6844904000484016136
+
+.border-1px{
+  position: relative;
+  &::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200%;
+    border:1px solid red;
+    color: red;
+    height: 200%;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    pointer-events: none; /* 防止点击触发 */
+    box-sizing: border-box;
+    @media screen and (min-device-pixel-ratio:3),(-webkit-min-device-pixel-ratio:3){
+      width: 300%;
+      height: 300%;
+      -webkit-transform: scale(0.33);
+      transform: scale(0.33);
+    }
+  }
+}
+vant 可以使用内置样式
+
+<meta name="viewport" id="WebViewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<script>
+  let viewport = document.querySelector("meta[name=viewport]");
+  //下面是根据设备像素设置viewport
+  if (window.devicePixelRatio == 1) {
+	  viewport.setAttribute('content', 'width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no');
+  }
+  if (window.devicePixelRatio == 2) {
+	  viewport.setAttribute('content', 'width=device-width,initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no');
+  }
+  if (window.devicePixelRatio == 3) {
+	  viewport.setAttribute('content', 'width=device-width,initial-scale=0.3333333333333333, maximum-scale=0.3333333333333333, minimum-scale=0.3333333333333333, user-scalable=no');
+  }
+  let docEl = document.documentElement;
+  let fontsize = 32* (docEl.clientWidth / 750) + 'px';
+  docEl.style.fontSize = fontsize;
+</script>
+会对使用rem的有影响
+
+0.5px
+支持iOS 8+，不支持安卓
+
+vant可以考虑使用内置的van-hairline--top
+
+微信公众号h5页面  下调起输入框导致页面错乱问题
+
+微信公众号h5页面  页面输入组件
+
+微信公众号h5页面  页面跳转ios会出现下方的前进后退按钮
+
+微信公众号h5页面  loading组件  vant组件存在不能及时关闭问题
+
+微信小程序  输入框组件  可基于vant组件
+
+微信小程序  图片上传选择
+
+回车后地址栏多出一个?的问题
+当一个 form 元素中只有一个输入框时，在该输入框中按下回车应提交该表单。
+如果希望阻止这一默认行为，可以在 <el-form> 标签上添加 @submit.native.prevent
 
 
 
